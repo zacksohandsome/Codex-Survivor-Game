@@ -99,3 +99,15 @@ ProgressionConfig現含5武器、5被動、2技能、5屬性，共17定義；三
 
 ## M7 遭遇設定
 Assets/Data/Battle/EncounterConfig.asset控制五段血量／攻擊／移速、生成間隔與敵人比例；四份EnemyDefinition定義射手、自爆、精英與Boss。Melee沿用原數據及ProgressionConfig掉落，以保留舊回歸。特殊保證掉落；出界或自爆不計玩家擊殺。
+
+## M8～M10 現行設定（優先於上方歷史階段紀錄）
+
+五種武器全部可選；完整內容與升級效果見CONTENT_MATRIX.md。角色圖像由EnemyDefinition.sprite及Player prefab綁定，體型／碰撞由數據radius控制，視覺動畫只在子物件。Art/Generated、Audio/Generated均有來源紀錄，重製工具為Tools/Art與M9AudioBuilder，勿重跑早期M2/M3工具覆蓋後續綁定。
+
+FlowConfig持有Battle、字型、官方雙語StringTable、20個圖示及AudioCatalog。所有遊戲文案位於Localization/FlowText兩個JSON；新增文字後需重跑M8ProjectSetup更新官方表與字集，既有字集不自動擴充（新增字形時須明確重建）。TMP使用Noto CJK TC Regular靜態圖集，不在戰鬥動態新增CJK字形。
+
+永久強化基價FlowConfig.metaBasePrice=75，下一級價格為基價×下一級等級，全滿5625；五種加成與最高5級不變。SaveData v3儲存metaUpgradeSpent實付成本以供完整退款；v1/v2按舊基價10遷移，不重估成新價。不要手改存檔或摘要。
+
+設定包含語言、音樂／音效音量、四解析度、視窗／全螢幕。變更顯示15秒未確認自動回復；Editor橋接只改Game View尺寸，OS實際模式仍未驗收。遊戲本身沒有快轉或壓力場景選單。
+
+M10PerformanceProbe及M10BalanceProbe是顯式啟動的Editor驗證工具；前者用合成高血零傷害壓測，後者用真實數值固定步長模擬，不能混作正常實玩證據。CLI auto tick 0只供短期效能量測，之後恢復16。

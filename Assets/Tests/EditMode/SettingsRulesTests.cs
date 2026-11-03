@@ -41,7 +41,7 @@ namespace Survivor.Tests
         {
             var legacy=new SaveData { version=1,currency=44,totalRuns=3,victories=1,totalKills=90,totalSurvivalSeconds=800,language="en",metaUpgradeLevels=new[]{1,2,0,0,0},musicVolume=0.99f,displayWidth=1280,displayHeight=720 };
             Assert.That(SaveRepository.TryDecode(SaveRepository.Encode(legacy),out var migrated),Is.True);
-            Assert.That(migrated.version,Is.EqualTo(2)); Assert.That(migrated.currency,Is.EqualTo(44)); Assert.That(migrated.metaUpgradeLevels,Is.EqualTo(legacy.metaUpgradeLevels));
+            Assert.That(migrated.version,Is.EqualTo(SaveData.CurrentVersion)); Assert.That(migrated.currency,Is.EqualTo(44)); Assert.That(migrated.metaUpgradeLevels,Is.EqualTo(legacy.metaUpgradeLevels));
             Assert.That(migrated.musicVolume,Is.EqualTo(0.6f)); Assert.That(migrated.sfxVolume,Is.EqualTo(0.7f)); Assert.That(migrated.displayWidth,Is.EqualTo(1920));
         }
         [Test] public void InvalidPreferenceValuesNeverEnterTheSave()

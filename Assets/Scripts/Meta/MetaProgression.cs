@@ -8,21 +8,28 @@ namespace Survivor.Meta
     public sealed class MetaProgression
     {
         public const int MaximumLevel = 5;
+        public const int DefaultBasePrice = 75;
+        private readonly int basePrice;
         public static readonly string[] StatIds = { "health", "attack", "speed", "move", "defense" };
         public static readonly float[] Bonuses = { 10, 1, 0.05f, 0.2f, 2 };
         private readonly SaveRepository repository;
         public SaveData Data { get; private set; }
         public string Notice { get; private set; }
-        public MetaProgression(SaveRepository repository)
-        { this.repository = repository; Data = repository.Load(); Notice = repository.Notice; }
-        public static long Price(int currentLevel) => 10L * (currentLevel + 1);
+        public MetaProgression(SaveRepository repository,int basePrice=DefaultBasePrice)
+        { if(basePrice<1)throw new ArgumentOutOfRangeException(nameof(basePrice));this.basePrice=basePrice;this.repository = repository; Data = repository.Load(); Notice = repository.Notice; }
+        public long Price(int currentLevel) => (long)basePrice * (currentLevel + 1);
         public bool CanPurchase(int stat) => stat >= 0 && stat < 5 && !repository.IsReadOnly && Data.metaUpgradeLevels[stat] < MaximumLevel && Data.currency >= Price(Data.metaUpgradeLevels[stat]);
         public bool Purchase(int stat)
         {
             if (!CanPurchase(stat)) return false;
             var next = SaveRepository.Clone(Data);
-            next.currency -= Price(next.metaUpgradeLevels[stat]); next.metaUpgradeLevels[stat]++;
-            return Commit(next);
+            try
+            {
+                long price=Price(next.metaUpgradeLevels[stat]);next.currency-=price;
+                next.metaUpgradeSpent[stat]=checked(next.metaUpgradeSpent[stat]+price);next.metaUpgradeLevels[stat]++;
+                return Commit(next);
+            }
+            catch(OverflowException){Notice="save.failed";return false;}
         }
         public bool Refund()
         {
@@ -31,8 +38,8 @@ namespace Survivor.Meta
             {
                 for (int stat = 0; stat < 5; stat++)
                 {
-                    for (int level = 0; level < next.metaUpgradeLevels[stat]; level++) next.currency = checked(next.currency + Price(level));
-                    next.metaUpgradeLevels[stat] = 0;
+                    next.currency = checked(next.currency + next.metaUpgradeSpent[stat]);
+                    next.metaUpgradeLevels[stat] = 0;next.metaUpgradeSpent[stat]=0;
                 }
                 return Commit(next);
             }

@@ -6,9 +6,11 @@ namespace Survivor.Save
     [Serializable]
     public sealed class SaveData
     {
-        public int version = 2;
+        public const int CurrentVersion = 3;
+        public int version = CurrentVersion;
         public long currency;
         public int[] metaUpgradeLevels = new int[5];
+        public long[] metaUpgradeSpent = new long[5];
         public long totalRuns;
         public long victories;
         public long totalKills;

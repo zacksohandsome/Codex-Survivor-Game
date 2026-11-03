@@ -27,7 +27,7 @@ namespace Survivor.Tests
         [Test] public void MissingFileDefaultsAndRoundTripsAllPermanentFields()
         {
             Assert.That(repository.Load().currency, Is.Zero);
-            var data = new SaveData { currency = 55, totalRuns = 3, victories = 2, totalKills = 42, totalSurvivalSeconds = 1234, language = "en", metaUpgradeLevels = new[] { 1, 2, 3, 4, 5 } };
+            var data = new SaveData { currency = 55, totalRuns = 3, victories = 2, totalKills = 42, totalSurvivalSeconds = 1234, language = "en", metaUpgradeLevels = new[] { 1, 2, 3, 4, 5 },metaUpgradeSpent=new long[]{80,240,480,800,1200} };
             Assert.That(repository.TrySave(data), Is.True);
             var loaded = repository.Load();
             Assert.That(loaded.currency, Is.EqualTo(55)); Assert.That(loaded.totalKills, Is.EqualTo(42));
@@ -62,7 +62,7 @@ namespace Survivor.Tests
             Assert.That(meta.Purchase(0), Is.False); Assert.That(meta.Data.currency, Is.EqualTo(100));
             Assert.That(meta.Data.metaUpgradeLevels[0], Is.Zero); Assert.That(disk.Files[repository.Path], Is.EqualTo(original));
             disk.FailOperation = null; Assert.That(meta.Purchase(0), Is.True);
-            Assert.That(repository.Load().currency, Is.EqualTo(90)); Assert.That(repository.Load().metaUpgradeLevels[0], Is.EqualTo(1));
+            Assert.That(repository.Load().currency, Is.EqualTo(25)); Assert.That(repository.Load().metaUpgradeLevels[0], Is.EqualTo(1));
         }
         [Test] public void SettlementIsIdempotentAcrossReloadAndOlderResultReplay()
         {
@@ -85,12 +85,38 @@ namespace Survivor.Tests
         }
         [Test] public void MaxInsufficientFundsAndFullRefundUseOriginalPrices()
         {
-            repository.TrySave(new SaveData { currency = 150 }); var meta = new MetaProgression(repository);
+            repository.TrySave(new SaveData { currency = 1125 }); var meta = new MetaProgression(repository);
             for (int i = 0; i < 5; i++) Assert.That(meta.Purchase(0), Is.True);
             Assert.That(meta.Purchase(0), Is.False); Assert.That(meta.Purchase(1), Is.False);
-            Assert.That(meta.Refund(), Is.True); Assert.That(meta.Data.currency, Is.EqualTo(150));
+            Assert.That(meta.Refund(), Is.True); Assert.That(meta.Data.currency, Is.EqualTo(1125));
             Assert.That(meta.Data.metaUpgradeLevels, Is.EqualTo(new int[5]));
-            Assert.That(meta.Refund(), Is.True); Assert.That(meta.Data.currency, Is.EqualTo(150));
+            Assert.That(meta.Refund(), Is.True); Assert.That(meta.Data.currency, Is.EqualTo(1125));
+        }
+        [Test] public void LegacyPurchasesRefundHistoricalSpendAfterPricesChange()
+        {
+            var legacy=new SaveData{version=2,currency=500,metaUpgradeLevels=new[]{1,2,0,0,0}};
+            disk.Files[repository.Path]=SaveRepository.Encode(legacy);string original=disk.Files[repository.Path];
+            var meta=new MetaProgression(repository,80);
+            Assert.That(meta.Data.version,Is.EqualTo(3));Assert.That(meta.Data.metaUpgradeSpent,Is.EqualTo(new long[]{10,30,0,0,0}));
+            Assert.That(disk.Files[repository.Path],Is.EqualTo(original),"Loading migration must not overwrite the source");
+            Assert.That(meta.Purchase(1),Is.True);Assert.That(meta.Data.currency,Is.EqualTo(260));Assert.That(meta.Data.metaUpgradeSpent[1],Is.EqualTo(270));
+            meta=new MetaProgression(repository,160);Assert.That(meta.Refund(),Is.True);
+            Assert.That(meta.Data.currency,Is.EqualTo(540),"Refund historical 40 plus newly paid 240, not the current schedule");
+            Assert.That(meta.Data.metaUpgradeSpent,Is.EqualTo(new long[5]));Assert.That(meta.Refund(),Is.True);Assert.That(meta.Data.currency,Is.EqualTo(540));
+        }
+        [Test] public void BalancedFullCatalogCosts5625AndLedgerFailuresAreTransactional()
+        {
+            repository.TrySave(new SaveData{currency=5625});var meta=new MetaProgression(repository);
+            for(int stat=0;stat<5;stat++)for(int level=0;level<5;level++)Assert.That(meta.Purchase(stat),Is.True);
+            Assert.That(meta.Data.currency,Is.Zero);Assert.That(meta.Data.metaUpgradeSpent,Is.EqualTo(new long[]{1125,1125,1125,1125,1125}));
+            disk.FailOperation="replace";Assert.That(meta.Refund(),Is.False);Assert.That(meta.Data.metaUpgradeLevels,Is.EqualTo(new[]{5,5,5,5,5}));
+            disk.FailOperation=null;Assert.That(meta.Refund(),Is.True);Assert.That(meta.Data.currency,Is.EqualTo(5625));
+        }
+        [Test] public void InvalidSpendLedgersAreRejected()
+        {
+            Assert.That(repository.TrySave(new SaveData{metaUpgradeSpent=new long[]{1,0,0,0,0}}),Is.False);
+            Assert.That(repository.TrySave(new SaveData{metaUpgradeLevels=new[]{1,0,0,0,0}}),Is.False);
+            Assert.That(repository.TrySave(new SaveData{metaUpgradeSpent=new long[]{-1,0,0,0,0}}),Is.False);
         }
         [Test] public void TamperAndInvalidNumbersAreRejected()
         {

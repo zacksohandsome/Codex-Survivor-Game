@@ -11,6 +11,7 @@ namespace Survivor.Data
         public WeaponDefinition[] weapons;
         public BattleConfig battle;
         public AudioCatalog audio;
+        [Min(1)] public int metaBasePrice = Survivor.Meta.MetaProgression.DefaultBasePrice;
         public TextAsset traditionalText;
         public TMPro.TMP_FontAsset uiFont;
         public UnityEngine.Localization.Tables.StringTable englishStrings, traditionalStrings;

@@ -91,3 +91,11 @@ BattleWorld依BuildState持有內容驅動各武器獨立WeaponController；Proj
 
 ## M7 遭遇與敵方攻擊
 EncounterTimeline只標記成功生成的180／420秒事件；EnemyActor保存階段快照與預警狀態；普通池64與特殊池2透過Combatants供所有玩家武器查找。HostileProjectileActor池128以獨立Player圖層做CircleCast，World.HitPlayer統一防禦與無敵。玩家移動後先同步Collider才判定爆炸，勝敗清除敵方彈體／特殊／預警。D03倍率由場上特殊狀態推導，不保存過期旗標。
+
+## M8～M10 現行模組補充
+
+- FlowView 使用持久 uGUI Canvas／EventSystem，局部畫面內容按狀態重建；Panels 管理 HUD 群組、Tooltip 與設定。官方 Localization SelectedLocale 為唯一語言狀態，強引用 StringTable 與靜態 TMP 字集避免每幀非同步查表。
+- DisplayPreview 純模型擁有 Saved／Applied／Pending 與15秒時計；SettingsController 僅在確認寫入成功後保存。Editor 由獨立橋接器控制 Game View，Player 才用 Screen.SetResolution。
+- AudioDirector 持久管理兩個音樂聲道、8戰鬥聲道與1個UI聲道；AudioCatalog 強引用預先產生的原創音訊。角色動作只修改視覺子物件，Burst池48、每個32粒子，勝敗與卸載清理。
+- Enemy separation 固定scratch陣列保留原配對／推開順序，將原本每對native讀寫改成每敵一次；ProfilerMarker 提供 World／Separation／Projectiles／Pickups 分段資料。
+- SaveData v3 明確遷移v1→v2→v3，metaUpgradeSpent記錄各屬性實際累積支付額；舊版依歷史固定價格10推回成本，退款使用帳本而非現行價格。磁碟成功後才更換記憶體快照，讀取遷移不主動覆寫原檔。

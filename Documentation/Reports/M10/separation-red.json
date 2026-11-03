@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "duration": 2.41,
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "Survivor.Tests.BattleIntegrationTests.SeparationAtFixedCapacityStaysWithinTargetMachineBudget",
+      "Status": "Failed",
+      "Duration": 2.3449952,
+      "Message": "  1000 separation updates on the M0 target machine\r\n  Expected: less than 300\r\n  But was:  809.02420000000006d\r\n",
+      "StackTrace": "at Survivor.Tests.BattleIntegrationTests+<SeparationAtFixedCapacityStaysWithinTargetMachineBudget>d__6.MoveNext () [0x000e1] in F:\\unity project\\Codex Survivor Game\\Assets\\Tests\\PlayMode\\BattleIntegrationTests.cs:57\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+    }
+  ]
+}

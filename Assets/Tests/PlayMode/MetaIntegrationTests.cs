@@ -43,17 +43,17 @@ namespace Survivor.Tests
         }
         [UnityTest] public IEnumerator SettlementPurchaseRestartAndSecondBattleKeepOnlyPermanentProgress()
         {
-            yield return StartRun(); Flow.Session.Run.CollectedCurrency = 35;
+            yield return StartRun(); Flow.Session.Run.CollectedCurrency = 150;
             Flow.Session.Run.Kills = 9; Flow.Session.Tick(600); yield return null;
             Assert.That(Flow.Session.State, Is.EqualTo(GameState.Result));
-            Assert.That(Flow.PermanentData.currency, Is.EqualTo(35)); Assert.That(Flow.RetrySettlement(), Is.True);
+            Assert.That(Flow.PermanentData.currency, Is.EqualTo(150)); Assert.That(Flow.RetrySettlement(), Is.True);
             Flow.ReturnToMenu(); yield return WaitForLoad();
             Button("meta").onClick.Invoke(); yield return null;
             Button("meta.health").onClick.Invoke(); yield return null;
-            Assert.That(Flow.PermanentData.currency, Is.EqualTo(25));
+            Assert.That(Flow.PermanentData.currency, Is.EqualTo(75));
             Object.Destroy(Flow.gameObject); yield return null;
             yield return SceneManager.LoadSceneAsync("MainMenu");
-            Assert.That(Flow.PermanentData.currency, Is.EqualTo(25)); Assert.That(Flow.PermanentData.totalKills, Is.EqualTo(9));
+            Assert.That(Flow.PermanentData.currency, Is.EqualTo(75)); Assert.That(Flow.PermanentData.totalKills, Is.EqualTo(9));
             Assert.That(Flow.PermanentData.metaUpgradeLevels[0], Is.EqualTo(1));
             yield return StartRun();
             Assert.That(BattleWorld.Instance.Player.Health.Maximum, Is.EqualTo(110));

@@ -6,10 +6,9 @@
 
 本專案是一款使用 Unity 開發的 2D 俯視角倖存者類型遊戲。
 
-目前進度（2026-11-03）：M0～M3完成。可移動戰鬥、拾取經驗／貨幣、三選一升級、取得回復被動，並在死亡或600秒後顯示本場結果。Edit32/32、Play19/19通過（含先前回歸）。M4未開始；永久入帳、局外強化與磁碟存檔尚未實作。詳見[M3報告](Reports/M3/report.md)。
+目前進度（2026-11-04）：M0～M9 已完成 Editor 驗收；M10 已完成五種構築樣本與敵人分離最佳化，仍追蹤偶發 Editor 慢幀，M11 最終回歸進行中。已具完整五武器／五被動／兩技能、三普通敵人／精英／Boss、永久強化與安全存檔、繁中／英文、設定、生成美術及原創合成音訊。詳見 [里程碑](MILESTONES.md) 與各階段 Reports。
 
-在 Unity 開啟 `Assets/Scenes/MainMenu.unity` 後進入 Play Mode 即可操作最小流程。介面目前為英文佔位文字；操作與資料說明見 [DATA_GUIDE](DATA_GUIDE.md)。
-
+在 Unity 開啟 `Assets/Scenes/MainMenu.unity` 後進入 Play Mode 即可遊玩。WASD 移動、ESC 暫停、滑鼠或 1／2／3 選升級；操作見 [Editor指南](EDITOR_PLAY_GUIDE.md)，數值與資產設定見 [資料指南](DATA_GUIDE.md)。Windows Build 依使用者要求全部暫緩。效能限制見 [M10量測](Reports/M10/performance-notes.md)；尚未宣稱穩定60 FPS。
 本專案同時是一項 Codex 自主開發能力測試，目標是讓 Codex 在使用本機 IDE、終端機與 Unity Editor 的情況下，盡可能獨立完成遊戲開發。
 
 使用者不負責日常程式撰寫、Unity Editor 操作或一般除錯。Codex 應自行規劃工作、實作功能、操作 Unity Editor、執行測試、修正問題並維護文件。

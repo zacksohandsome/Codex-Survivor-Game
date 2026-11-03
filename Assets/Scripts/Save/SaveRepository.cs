@@ -110,6 +110,18 @@ namespace Survivor.Save
                     candidate.version = 2; candidate.musicVolume = 0.6f; candidate.sfxVolume = 0.7f;
                     candidate.displayWidth = 1920; candidate.displayHeight = 1080; candidate.fullscreen = false;
                 }
+                if(candidate!=null && candidate.version==2)
+                {
+                    if(candidate.metaUpgradeLevels==null || candidate.metaUpgradeLevels.Length!=5)return false;
+                    candidate.metaUpgradeSpent=new long[5];
+                    for(int i=0;i<5;i++)
+                    {
+                        int level=candidate.metaUpgradeLevels[i];if(level<0 || level>5)return false;
+                        // All v1/v2 purchases used the original base price of 10.
+                        candidate.metaUpgradeSpent[i]=10L*level*(level+1)/2;
+                    }
+                    candidate.version=SaveData.CurrentVersion;
+                }
                 if (!Valid(candidate)) return false;
                 data = candidate; return true;
             }
@@ -121,12 +133,13 @@ namespace Survivor.Save
         }
         public static bool Valid(SaveData data)
         {
-            if (data == null || data.version != 2 || data.currency < 0 || data.totalRuns < 0 || data.victories < 0 || data.victories > data.totalRuns || data.totalKills < 0 ||
+            if (data == null || data.version != SaveData.CurrentVersion || data.currency < 0 || data.totalRuns < 0 || data.victories < 0 || data.victories > data.totalRuns || data.totalKills < 0 ||
                 double.IsNaN(data.totalSurvivalSeconds) || double.IsInfinity(data.totalSurvivalSeconds) || data.totalSurvivalSeconds < 0 ||
-                data.metaUpgradeLevels == null || data.metaUpgradeLevels.Length != 5 || data.settledRunIds == null ||
+                data.metaUpgradeLevels == null || data.metaUpgradeLevels.Length != 5 || data.metaUpgradeSpent==null || data.metaUpgradeSpent.Length!=5 || data.settledRunIds == null ||
                 !ValidVolume(data.musicVolume) || !ValidVolume(data.sfxVolume) || !Survivor.Settings.DisplayPreview.ValidSize(data.displayWidth,data.displayHeight) ||
                 data.language != "" && data.language != "zh-TW" && data.language != "en") return false;
             foreach (int level in data.metaUpgradeLevels) if (level < 0 || level > 5) return false;
+            for(int i=0;i<5;i++)if(data.metaUpgradeSpent[i]<0 || data.metaUpgradeLevels[i]==0 && data.metaUpgradeSpent[i]!=0 || data.metaUpgradeLevels[i]>0 && data.metaUpgradeSpent[i]==0)return false;
             var ids = new System.Collections.Generic.HashSet<string>();
             foreach (string id in data.settledRunIds) if (string.IsNullOrEmpty(id) || !ids.Add(id)) return false;
             return true;

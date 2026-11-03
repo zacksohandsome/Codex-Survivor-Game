@@ -23,6 +23,12 @@ namespace Survivor.UI
         private TextMeshProUGUI bossText, encounterText;
         private TextMeshProUGUI lowHealthText;
         private UnityEngine.UI.Image bossFill;
+        private bool clockCached,vitalsCached,progressCached,bossCached,noticeCached;
+        private (GameState State,int Seconds) lastClock;
+        private (int Health,int Maximum,int Kills,float Attack,float Speed,float Move,float Defense) lastVitals;
+        private (int Level,long Experience,long Required,long Currency,int Revision) lastProgress;
+        private (int Instance,int Health,int Maximum) lastBoss;
+        private (string Key,int Level) lastNotice;
         private string page;
         private string confirmationKey;
         private Action confirmation;
@@ -114,6 +120,7 @@ namespace Survivor.UI
         private void Ask(string key, Action action, Action onCancel = null) { confirmationKey = key; confirmation = action; cancellation = onCancel; Render(); }
         public void Render()
         {
+            clockCached=vitalsCached=progressCached=bossCached=noticeCached=false;
             HideTooltip();
             // These are distinct screen contents, not edits to the persistent Canvas or EventSystem.
             for (int i = content.childCount - 1; i >= 0; i--)
@@ -153,7 +160,7 @@ namespace Survivor.UI
                             var caption = content.GetChild(content.childCount - 1).GetComponentInChildren<TextMeshProUGUI>();
                             caption.text = text.Format("meta.row", text.Get("meta." + MetaProgression.StatIds[i]), level,
                                 level * MetaProgression.Bonuses[i], Mathf.Min(5, level+1) * MetaProgression.Bonuses[i],
-                                level == 5 ? text.Get("meta.max") : text.Format("meta.cost", MetaProgression.Price(level)));
+                                level == 5 ? text.Get("meta.max") : text.Format("meta.cost", flow.Meta.Price(level)));
                             caption.fontSize = 24;
                         }
                         if (flow.Meta.Notice != null) Label(text.Get(flow.Meta.Notice), 22, 65);
@@ -255,34 +262,53 @@ namespace Survivor.UI
             if (clock == null) return;
             var session = flow.Session;
             var encounterWorld = Survivor.Combat.BattleWorld.Instance;
-            if (encounterText != null) encounterText.text = encounterWorld != null && encounterWorld.NoticeRemaining > 0 ? text.Get(encounterWorld.NoticeKey) : flow.UpgradeNoticeRemaining>0 ? flow.UpgradeNoticeLevel>0 ? text.Format("upgrade.notice",text.Get(flow.UpgradeNoticeKey),flow.UpgradeNoticeLevel) : text.Get(flow.UpgradeNoticeKey) : "";
+            if(encounterText!=null)
+            {
+                bool encounter=encounterWorld!=null && encounterWorld.NoticeRemaining>0;
+                var notice=(encounter?encounterWorld.NoticeKey:flow.UpgradeNoticeRemaining>0?flow.UpgradeNoticeKey:null,encounter?0:flow.UpgradeNoticeLevel);
+                if(!noticeCached || notice!=lastNotice)
+                {
+                    lastNotice=notice;noticeCached=true;
+                    encounterText.text=notice.Item1==null?"":notice.Item2>0?text.Format("upgrade.notice",text.Get(notice.Item1),notice.Item2):text.Get(notice.Item1);
+                }
+            }
             if (bossText != null)
             {
                 var boss = encounterWorld == null ? null : encounterWorld.Boss;
                 bool visible = boss != null;
-                bossText.gameObject.SetActive(visible); bossFill.transform.parent.gameObject.SetActive(visible);
-                if (visible)
+                var stamp=(visible?boss.GetInstanceID():0,visible?boss.Health.Current:0,visible?boss.Health.Maximum:0);
+                if (!bossCached || stamp!=lastBoss)
                 {
-                    bossText.text = text.Format("hud.boss", text.Get(boss.Definition.nameKey), boss.Health.Current, boss.Health.Maximum);
-                    SetBar(bossFill, (float)boss.Health.Current / boss.Health.Maximum);
+                    lastBoss=stamp;bossCached=true;
+                    bossText.gameObject.SetActive(visible); bossFill.transform.parent.gameObject.SetActive(visible);
+                    if(visible)
+                    {
+                        bossText.text = text.Format("hud.boss", text.Get(boss.Definition.nameKey), boss.Health.Current, boss.Health.Maximum);
+                        SetBar(bossFill, (float)boss.Health.Current / boss.Health.Maximum);
+                    }
                 }
             }
-            clock.text = session.State == GameState.IntroCountdown
-                ? text.Get("countdown") + "  " + Mathf.CeilToInt((float)session.IntroRemaining)
-                : session.State == GameState.Pause ? text.Format("survival", (int)session.BattleSeconds / 60, (int)session.BattleSeconds % 60)
-                : text.Format("timer", Mathf.CeilToInt((float)(600 - session.BattleSeconds)) / 60,
-                    Mathf.CeilToInt((float)(600 - session.BattleSeconds)) % 60);
+            int seconds=session.State==GameState.IntroCountdown?Mathf.CeilToInt((float)session.IntroRemaining):session.State==GameState.Pause?(int)session.BattleSeconds:Mathf.CeilToInt((float)(600-session.BattleSeconds));
+            var clockStamp=(session.State,seconds);
+            if(!clockCached || clockStamp!=lastClock)
+            {
+                lastClock=clockStamp;clockCached=true;
+                clock.text=session.State==GameState.IntroCountdown?text.Get("countdown")+"  "+seconds:text.Format(session.State==GameState.Pause?"survival":"timer",seconds/60,seconds%60);
+            }
             if (status != null && session.Run != null)
             {
                 var run = session.Run;
-                if(lowHealthText!=null) lowHealthText.gameObject.SetActive(run.MaximumHealth>0 && run.CurrentHealth<run.MaximumHealth*0.3f);
-                status.text = text.Format("hud.stats", run.CurrentHealth, run.MaximumHealth, run.Kills,
-                    run.Attack, run.AttackSpeed, run.MoveSpeed, run.Defense);
-                status.color = run.MaximumHealth > 0 && run.CurrentHealth < run.MaximumHealth * 0.3f
-                    ? new Color(1, 0.4f, 0.3f) : ink;
+                var vitals=(run.CurrentHealth,run.MaximumHealth,run.Kills,run.Attack,run.AttackSpeed,run.MoveSpeed,run.Defense);
+                if(!vitalsCached || vitals!=lastVitals)
+                {
+                    lastVitals=vitals;vitalsCached=true;
+                    if(lowHealthText!=null) lowHealthText.gameObject.SetActive(run.MaximumHealth>0 && run.CurrentHealth<run.MaximumHealth*0.3f);
+                    status.text = text.Format("hud.stats", run.CurrentHealth, run.MaximumHealth, run.Kills,run.Attack,run.AttackSpeed,run.MoveSpeed,run.Defense);
+                    status.color=run.MaximumHealth>0 && run.CurrentHealth<run.MaximumHealth*0.3f?new Color(1,0.4f,0.3f):ink;
+                    if(healthFill!=null)SetBar(healthFill,(float)run.CurrentHealth/Mathf.Max(1,run.MaximumHealth));
+                }
                 if (healthFill != null)
                 {
-                    SetBar(healthFill, (float)run.CurrentHealth / Mathf.Max(1, run.MaximumHealth));
                     var world = Survivor.Combat.BattleWorld.Instance;
                     bool hitFlash = world != null && world.Player.Health.InvincibleRemaining > world.config.invincibleSeconds - world.config.hitFlashSeconds;
                     healthFill.color = hitFlash ? Color.white : run.CurrentHealth < run.MaximumHealth * 0.3f
@@ -290,9 +316,14 @@ namespace Survivor.UI
                 }
                 if (progressText != null && flow.Progression != null)
                 {
-                    progressText.text = text.Format("hud.progress", run.Level, run.Experience, flow.Progression.RequiredExperience, run.CollectedCurrency);
-                    SetBar(experienceFill, (float)((double)run.Experience / flow.Progression.RequiredExperience));
-                    if(buildText != null) buildText.text = DescribeBuild(run.AbilityLevels, true);
+                    var progress=(run.Level,run.Experience,flow.Progression.RequiredExperience,run.CollectedCurrency,run.Build.Revision);
+                    if(!progressCached || progress!=lastProgress)
+                    {
+                        lastProgress=progress;progressCached=true;
+                        progressText.text=text.Format("hud.progress",run.Level,run.Experience,flow.Progression.RequiredExperience,run.CollectedCurrency);
+                        SetBar(experienceFill,(float)((double)run.Experience/flow.Progression.RequiredExperience));
+                        if(buildText!=null)buildText.text=DescribeBuild(run.AbilityLevels,true);
+                    }
                 }
             }
         }

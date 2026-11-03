@@ -51,7 +51,7 @@ namespace Survivor.Core
             Instance = this; originalTimeScale = Time.timeScale;
             DontDestroyOnLoad(gameObject);
             Session = new GameSession();
-            Meta = new MetaProgression(new SaveRepository(SaveDirectoryOverride ?? System.IO.Path.Combine(Application.persistentDataPath, "Saves")));
+            Meta = new MetaProgression(new SaveRepository(SaveDirectoryOverride ?? System.IO.Path.Combine(Application.persistentDataPath, "Saves")),Mathf.Max(1,config.metaBasePrice));
             Settings = new SettingsController(Meta);
             input = new GameInputRouter(inputActions);
             Audio = gameObject.AddComponent<AudioDirector>();

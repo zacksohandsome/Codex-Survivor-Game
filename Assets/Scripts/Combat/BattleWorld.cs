@@ -12,6 +12,10 @@ namespace Survivor.Combat
     [DefaultExecutionOrder(100)]
     public sealed class BattleWorld : MonoBehaviour
     {
+        private static readonly Unity.Profiling.ProfilerMarker TickMarker=new Unity.Profiling.ProfilerMarker("Survivor.World");
+        private static readonly Unity.Profiling.ProfilerMarker SeparationMarker=new Unity.Profiling.ProfilerMarker("Survivor.Separation");
+        private static readonly Unity.Profiling.ProfilerMarker ProjectilesMarker=new Unity.Profiling.ProfilerMarker("Survivor.Projectiles");
+        private static readonly Unity.Profiling.ProfilerMarker PickupsMarker=new Unity.Profiling.ProfilerMarker("Survivor.Pickups");
         public static BattleWorld Instance { get; private set; }
         public BattleConfig config;
         public PlayerActor playerPrefab;
@@ -61,6 +65,9 @@ namespace Survivor.Combat
         private System.Random random;
         private float regenerationRemaining;
         private int buildRevision = -1;
+        private Vector2[] separationPositions;
+        private float[] separationRadii;
+        private bool[] separationAlive,separationMoved;
         private void Awake()
         {
             Instance = this; random = new System.Random(config.randomSeed);
@@ -68,6 +75,8 @@ namespace Survivor.Combat
             Enemies = new BoundedPool<EnemyActor>(config.enemyCapacity, () => Instantiate(enemyPrefab, transform));
             Specials = new BoundedPool<EnemyActor>(2, () => Instantiate(enemyPrefab, transform));
             Combatants = new EnemyActor[config.enemyCapacity + 2];
+            separationPositions=new Vector2[Combatants.Length];separationRadii=new float[Combatants.Length];
+            separationAlive=new bool[Combatants.Length];separationMoved=new bool[Combatants.Length];
             System.Array.Copy(Enemies.Items, Combatants, config.enemyCapacity);
             System.Array.Copy(Specials.Items, 0, Combatants, config.enemyCapacity, 2);
             HostileProjectiles = new BoundedPool<HostileProjectileActor>(config.encounters.hostileProjectileCapacity, () => Instantiate(hostileProjectilePrefab, transform));
@@ -111,6 +120,7 @@ namespace Survivor.Combat
         {
             var flow = GameFlow.Instance;
             if (flow == null || flow.IsTransitioning || flow.Session.State != GameState.Battle || delta <= 0) return;
+            using var tickScope=TickMarker.Auto();
             NoticeRemaining = Mathf.Max(0, NoticeRemaining - delta);
             if(Bursts!=null)foreach(var burst in Bursts.Items)if(burst.IsRented){burst.Tick(delta);if(burst.Remaining<=0)Bursts.Return(burst);}
             ApplyBuild();
@@ -132,7 +142,7 @@ namespace Survivor.Combat
                 if (flow.Session.State != GameState.Battle) break;
             }
             if (flow.Session.State != GameState.Battle) return;
-            SeparateEnemies(delta);
+            using(SeparationMarker.Auto()) SeparateEnemies(delta);
             Physics2D.SyncTransforms();
             if (AutomaticAttacking)
             {
@@ -141,7 +151,7 @@ namespace Survivor.Combat
                     if (weapon.id != config.weapon.id && CurrentBuild.Level(weapon.id) > 0) controllers[weapon.id].Tick(delta, this, weapon);
             }
             Passives.Tick(delta, this);
-            foreach (var projectile in Projectiles.Items) if (projectile.IsRented) projectile.Tick(delta, this);
+            using(ProjectilesMarker.Auto()) foreach (var projectile in Projectiles.Items) if (projectile.IsRented) projectile.Tick(delta, this);
             foreach (var area in Areas.Items) if (area.IsRented) area.Tick(delta, this);
             foreach (var projectile in HostileProjectiles.Items)
             {
@@ -157,7 +167,7 @@ namespace Survivor.Combat
                     if (flow.Session.State != GameState.Battle) break;
                 }
             }
-            if (flow.Session.State == GameState.Battle) Pickups.Tick(delta);
+            if (flow.Session.State == GameState.Battle) using(PickupsMarker.Auto()) Pickups.Tick(delta);
             if (flow.Session.State == GameState.Battle && CurrentBuild.RegenAmount > 0)
             {
                 regenerationRemaining -= delta;
@@ -175,21 +185,32 @@ namespace Survivor.Combat
         private void SeparateEnemies(float delta)
         {
             var items = Combatants;
+            // Read native Transform/Collider state once per actor. Preserve pair order and immediate
+            // position updates in the scratch buffer, then write only actors that actually moved.
+            for(int i=0;i<items.Length;i++)
+            {
+                separationAlive[i]=items[i].IsAlive;separationMoved[i]=false;
+                if(!separationAlive[i])continue;
+                separationPositions[i]=items[i].transform.position;separationRadii[i]=items[i].hitbox.radius;
+            }
             for (int i = 0; i < items.Length; i++)
             {
-                if (!items[i].IsAlive) continue;
+                if (!separationAlive[i]) continue;
                 for (int j = i + 1; j < items.Length; j++)
                 {
-                    if (!items[j].IsAlive) continue;
-                    Vector2 difference = items[i].transform.position - items[j].transform.position;
-                    float length = difference.magnitude, desired = items[i].hitbox.radius + items[j].hitbox.radius;
-                    if (length >= desired) continue;
+                    if (!separationAlive[j]) continue;
+                    Vector2 difference = separationPositions[i] - separationPositions[j];
+                    float desired = separationRadii[i] + separationRadii[j];
+                    if (difference.sqrMagnitude >= desired*desired) continue;
+                    float length=difference.magnitude;
                     Vector2 direction = length > 0.001f ? difference / length : Vector2.right;
                     Vector2 push = direction * Mathf.Min((desired - length) / 2, config.separationSpeed * delta);
-                    items[i].transform.position = PlayerActor.ClampPosition((Vector2)items[i].transform.position + push, config.arenaHalfSize, items[i].hitbox.radius);
-                    items[j].transform.position = PlayerActor.ClampPosition((Vector2)items[j].transform.position - push, config.arenaHalfSize, items[j].hitbox.radius);
+                    separationPositions[i] = PlayerActor.ClampPosition(separationPositions[i] + push, config.arenaHalfSize, separationRadii[i]);
+                    separationPositions[j] = PlayerActor.ClampPosition(separationPositions[j] - push, config.arenaHalfSize, separationRadii[j]);
+                    separationMoved[i]=separationMoved[j]=true;
                 }
             }
+            for(int i=0;i<items.Length;i++)if(separationMoved[i])items[i].transform.position=separationPositions[i];
         }
         public bool TrySpawnEnemy()
         {

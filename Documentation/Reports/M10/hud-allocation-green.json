@@ -1,0 +1,34 @@
+{
+  "status": "completed",
+  "duration": 3.86,
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "Survivor.Tests.BattleIntegrationTests.HudCacheRefreshesOnHealthCurrencyClockAndLocaleChanges",
+      "Status": "Passed",
+      "Duration": 1.6101366,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.BattleIntegrationTests.UnchangedHudAvoidsRepeatedFormattingAllocations",
+      "Status": "Passed",
+      "Duration": 1.0981595,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.SettingsIntegrationTests.HudHasSeparateAbilityTypesCurrentTooltipAndLowHealthWarning",
+      "Status": "Passed",
+      "Duration": 1.0765891,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

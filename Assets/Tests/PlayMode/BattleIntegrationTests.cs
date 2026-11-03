@@ -46,6 +46,54 @@ namespace Survivor.Tests
             if (config != null) { Object.Destroy(config.enemy); Object.Destroy(config.weapon); Object.Destroy(config); }
             yield return null; Time.timeScale = 1; Application.runInBackground = background;
         }
+        [UnityTest, Category("Performance")]
+        public IEnumerator SeparationAtFixedCapacityStaysWithinTargetMachineBudget()
+        {
+            for(int i=0;i<64;i++)world.SpawnEnemy(new Vector2(-10+i%16*1.3f,-6+i/16*3),0);
+            var method=typeof(BattleWorld).GetMethod("SeparateEnemies",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic);
+            var solve=(System.Action<float>)System.Delegate.CreateDelegate(typeof(System.Action<float>),world,method);
+            for(int i=0;i<10;i++)solve(0.016f);
+            var timer=System.Diagnostics.Stopwatch.StartNew();for(int i=0;i<1000;i++)solve(0.016f);timer.Stop();
+            Assert.That(timer.Elapsed.TotalMilliseconds,Is.LessThan(300),"1000 separation updates on the M0 target machine");
+            yield return null;
+        }
+        [UnityTest, Category("Performance")]
+        public IEnumerator UnchangedHudAvoidsRepeatedFormattingAllocations()
+        {
+            var flow=GameFlow.Instance;flow.enabled=false;var view=flow.GetComponent<Survivor.UI.FlowView>();view.RefreshClock();
+            using(var allocations=Unity.Profiling.ProfilerRecorder.StartNew(Unity.Profiling.ProfilerCategory.Memory,"GC Allocated In Frame",1))
+            {
+                yield return null;long baseline=allocations.LastValue;
+                for(int i=0;i<1000;i++)view.RefreshClock();
+                yield return null;long measured=allocations.LastValue;
+                Assert.That(measured-baseline,Is.LessThan(100000),"1000 unchanged HUD refreshes should not format and box every field again");
+            }
+        }
+        [UnityTest] public IEnumerator HudCacheRefreshesOnHealthCurrencyClockAndLocaleChanges()
+        {
+            var flow=GameFlow.Instance;flow.enabled=false;var view=flow.GetComponent<Survivor.UI.FlowView>();view.RefreshClock();
+            world.HitPlayer(14);world.Tick(0.01f,Vector2.zero);view.RefreshClock();
+            var labels=GameObject.Find("Vitals").GetComponentsInChildren<TMPro.TextMeshProUGUI>();
+            StringAssert.Contains(world.Player.Health.Current.ToString(),labels[0].text);
+            flow.Session.Run.CollectedCurrency=19;view.RefreshClock();StringAssert.Contains("19",labels[1].text);
+            var clockLabel=GameObject.Find("ClockAndBoss").GetComponentsInChildren<TMPro.TextMeshProUGUI>()[0];string before=clockLabel.text;
+            flow.Session.Tick(2);view.RefreshClock();Assert.That(clockLabel.text,Is.Not.EqualTo(before));
+            Assert.That(flow.SetLanguage("en"),Is.True);yield return null;
+            labels=GameObject.Find("Vitals").GetComponentsInChildren<TMPro.TextMeshProUGUI>();StringAssert.Contains("HP",labels[0].text);
+            Assert.That(flow.SetLanguage("zh-TW"),Is.True);yield return null;
+            labels=GameObject.Find("Vitals").GetComponentsInChildren<TMPro.TextMeshProUGUI>();StringAssert.Contains("生命",labels[0].text);
+        }
+        [UnityTest] public IEnumerator SeparationMovesOverlapsButLeavesWarningsAndRecycledSlotsUntouched()
+        {
+            var a=world.SpawnEnemy(new Vector2(5,5),0);var b=world.SpawnEnemy(new Vector2(5,5),0);
+            var warning=world.SpawnEnemy(new Vector2(5,5),10);
+            var method=typeof(BattleWorld).GetMethod("SeparateEnemies",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic);
+            var solve=(System.Action<float>)System.Delegate.CreateDelegate(typeof(System.Action<float>),world,method);
+            solve(1);Assert.That(Vector2.Distance(a.transform.position,b.transform.position),Is.EqualTo(config.enemy.radius*2).Within(0.001));
+            Assert.That(warning.transform.position,Is.EqualTo(new Vector3(5,5,0)));
+            world.ReturnEnemy(b);var before=a.transform.position;solve(1);Assert.That(a.transform.position,Is.EqualTo(before));
+            yield return null;
+        }
         [UnityTest]
         public IEnumerator PlayerMovesNormalizesCrossesEnemiesAndSharesContactInvincibility()
         {

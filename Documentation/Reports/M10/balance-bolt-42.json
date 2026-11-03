@@ -1,0 +1,232 @@
+{
+    "weapon": "bolt",
+    "status": "completed",
+    "seed": 42,
+    "kills": 633,
+    "level": 27,
+    "health": 140,
+    "won": true,
+    "eliteKilled": true,
+    "bossKilled": true,
+    "seconds": 600.0,
+    "currency": 490,
+    "choices": [
+        "blast:blast.new",
+        "bloom:bloom.new",
+        "homing:homing.new",
+        "storm:storm.new",
+        "thorns:thorns.new",
+        "echo:echo.new",
+        "sanctuary:sanctuary.new",
+        "magnet:magnet.new",
+        "bolt:bolt.damage",
+        "blast:blast.damage",
+        "blast:blast.area",
+        "homing:homing.pierce",
+        "bolt:bolt.damage",
+        "bloom:bloom.amount",
+        "bolt:bolt.damage",
+        "blast:blast.damage",
+        "stat.health:stat.health",
+        "bolt:bolt.damage",
+        "blast:blast.damage",
+        "stat.health:stat.health",
+        "homing:homing.damage",
+        "stat.attack:stat.attack",
+        "homing:homing.damage",
+        "trail:trail.new",
+        "stat.speed:stat.speed",
+        "bloom:bloom.amount"
+    ],
+    "samples": [
+        {
+            "seconds": 0.03333333507180214,
+            "health": 100,
+            "kills": 0,
+            "level": 1,
+            "enemies": 1,
+            "currency": 0,
+            "bossAlive": false
+        },
+        {
+            "seconds": 30.000001564621927,
+            "health": 100,
+            "kills": 19,
+            "level": 5,
+            "enemies": 5,
+            "currency": 9,
+            "bossAlive": false
+        },
+        {
+            "seconds": 60.00000312924385,
+            "health": 100,
+            "kills": 43,
+            "level": 8,
+            "enemies": 5,
+            "currency": 15,
+            "bossAlive": false
+        },
+        {
+            "seconds": 90.00000469386578,
+            "health": 100,
+            "kills": 66,
+            "level": 11,
+            "enemies": 5,
+            "currency": 25,
+            "bossAlive": false
+        },
+        {
+            "seconds": 120.0000062584877,
+            "health": 100,
+            "kills": 90,
+            "level": 12,
+            "enemies": 5,
+            "currency": 33,
+            "bossAlive": false
+        },
+        {
+            "seconds": 150.00000782310964,
+            "health": 100,
+            "kills": 116,
+            "level": 14,
+            "enemies": 7,
+            "currency": 42,
+            "bossAlive": false
+        },
+        {
+            "seconds": 180.00000938773156,
+            "health": 100,
+            "kills": 144,
+            "level": 16,
+            "enemies": 7,
+            "currency": 55,
+            "bossAlive": false
+        },
+        {
+            "seconds": 210.00001095235349,
+            "health": 100,
+            "kills": 168,
+            "level": 17,
+            "enemies": 8,
+            "currency": 95,
+            "bossAlive": false
+        },
+        {
+            "seconds": 240.0000125169754,
+            "health": 120,
+            "kills": 197,
+            "level": 18,
+            "enemies": 7,
+            "currency": 112,
+            "bossAlive": false
+        },
+        {
+            "seconds": 270.0000140815973,
+            "health": 120,
+            "kills": 228,
+            "level": 19,
+            "enemies": 9,
+            "currency": 133,
+            "bossAlive": false
+        },
+        {
+            "seconds": 300.00001564621928,
+            "health": 120,
+            "kills": 262,
+            "level": 20,
+            "enemies": 9,
+            "currency": 150,
+            "bossAlive": false
+        },
+        {
+            "seconds": 330.0000172108412,
+            "health": 140,
+            "kills": 293,
+            "level": 21,
+            "enemies": 11,
+            "currency": 169,
+            "bossAlive": false
+        },
+        {
+            "seconds": 360.0000187754631,
+            "health": 140,
+            "kills": 327,
+            "level": 21,
+            "enemies": 10,
+            "currency": 185,
+            "bossAlive": false
+        },
+        {
+            "seconds": 390.00002034008505,
+            "health": 140,
+            "kills": 366,
+            "level": 22,
+            "enemies": 10,
+            "currency": 213,
+            "bossAlive": false
+        },
+        {
+            "seconds": 420.00002190470698,
+            "health": 140,
+            "kills": 406,
+            "level": 23,
+            "enemies": 10,
+            "currency": 244,
+            "bossAlive": true
+        },
+        {
+            "seconds": 450.0000234693289,
+            "health": 140,
+            "kills": 432,
+            "level": 23,
+            "enemies": 7,
+            "currency": 255,
+            "bossAlive": true
+        },
+        {
+            "seconds": 480.0000250339508,
+            "health": 140,
+            "kills": 460,
+            "level": 25,
+            "enemies": 9,
+            "currency": 393,
+            "bossAlive": false
+        },
+        {
+            "seconds": 510.00002659857275,
+            "health": 140,
+            "kills": 505,
+            "level": 25,
+            "enemies": 9,
+            "currency": 413,
+            "bossAlive": false
+        },
+        {
+            "seconds": 540.0000281631947,
+            "health": 140,
+            "kills": 549,
+            "level": 26,
+            "enemies": 10,
+            "currency": 436,
+            "bossAlive": false
+        },
+        {
+            "seconds": 570.0000297278166,
+            "health": 140,
+            "kills": 594,
+            "level": 26,
+            "enemies": 10,
+            "currency": 469,
+            "bossAlive": false
+        },
+        {
+            "seconds": 600.0,
+            "health": 140,
+            "kills": 633,
+            "level": 27,
+            "enemies": 0,
+            "currency": 490,
+            "bossAlive": false
+        }
+    ]
+}

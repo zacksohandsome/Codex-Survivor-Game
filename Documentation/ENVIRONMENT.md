@@ -69,3 +69,9 @@ unity command test status --caller plugin --skill unity-cli --format json
 
 ## M5 更新（2026-11-04）
 官方 com.unity.recorder@5.1.7 已透過 UPM 安裝，使用 GameView 1280×720、Variable 30FPS 錄影，Time.captureDeltaTime=0；錄影在 Recordings/M5/mvp-editor.mp4，完整循環見 Reports/M5/report.md。未升級 Editor。
+
+## 2026-11-04 現行套件與入口
+
+Editor版本維持6000.3.27f2。入口現為MainMenu，另含Battle；SampleScene保留使用者原有編輯。後續官方新增Recorder5.1.7、Localization1.5.13及其Addressables2.10.3依賴；InputSystem1.20.1、TestFramework1.6.0、URP17.3.0、uGUI2.0.0。完整解析版本以目前Packages/packages-lock.json為準，M0快照僅作歷史基線。
+
+Windows模組可用不代表已執行建置；依使用者新授權，所有Windows建置／Player驗收暫緩。錄影能力已於M5／M7實測，並非M0時的未驗證狀態。效能量測見Reports/M10，不以背景更新或錄影30FPS宣稱遊戲效能。
