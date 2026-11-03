@@ -2,6 +2,7 @@ using System;
 using Survivor.Core;
 using Survivor.Localization;
 using Survivor.Progression;
+using Survivor.Meta;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -129,6 +130,30 @@ namespace Survivor.UI
             switch (session.State)
             {
                 case GameState.MainMenu:
+                    if (page == "meta")
+                    {
+                        Label(text.Get("meta"), 48, 80);
+                        Label(string.Format(text.Get("currency"), flow.PermanentData.currency), 26, 45);
+                        for (int i = 0; i < 5; i++)
+                        {
+                            int stat = i, level = flow.PermanentData.metaUpgradeLevels[i];
+                            Button("meta." + MetaProgression.StatIds[i], () => flow.PurchaseMeta(stat), flow.Meta.CanPurchase(stat));
+                            var caption = content.GetChild(content.childCount - 1).GetComponentInChildren<TextMeshProUGUI>();
+                            caption.text = text.Get("meta." + MetaProgression.StatIds[i]) + "  " + level + "/5  (+" + MetaProgression.Bonuses[i] + "/level)  " +
+                                (level == 5 ? "MAX" : MetaProgression.Price(level) + " coins");
+                        }
+                        if (flow.Meta.Notice != null) Label(text.Get(flow.Meta.Notice), 22, 65);
+                        Button("meta.refund", () => Ask("meta.refund.confirm", () => flow.RefundMeta()));
+                        Button("back", () => { page = null; Render(); }); break;
+                    }
+                    if (page == "stats")
+                    {
+                        var saved = flow.PermanentData;
+                        Label(text.Get("stats"), 48, 80);
+                        Label(string.Format(text.Get("stats.summary"), saved.totalRuns, saved.victories, saved.totalKills,
+                            (long)saved.totalSurvivalSeconds / 60, (long)saved.totalSurvivalSeconds % 60), 30, 220);
+                        Button("back", () => { page = null; Render(); }); break;
+                    }
                     if (page != null)
                     {
                         Label(text.Get(page), 48, 100); Label(text.Get(page + ".note"), 28, 150);
@@ -136,6 +161,7 @@ namespace Survivor.UI
                     }
                     Label(text.Get("title"), 64, 110); Label(text.Get("menu.note"), 28, 100);
                     Label(string.Format(text.Get("currency"), flow.PermanentData.currency), 22, 40);
+                    if (flow.Meta.Notice != null) Label(text.Get(flow.Meta.Notice), 22, 70);
                     Button("start", () => { page = null; flow.OpenWeaponSelection(); });
                     foreach (string key in new[] { "meta", "settings", "stats" })
                     { string target = key; Button(key, () => { page = target; Render(); }); }
@@ -203,8 +229,10 @@ namespace Survivor.UI
                     Label(string.Format(text.Get("result.summary"), (int)result.SurvivalSeconds / 60, (int)result.SurvivalSeconds % 60,
                         result.Kills, result.Level, result.CollectedCurrency), 28, 150);
                     Label(DescribeBuild(result.AbilityLevels), 22, 220);
-                    Label(text.Get("result.note"), 24, 70);
-                    Button("restart", () => flow.ReturnToMenu(true)); Button("menu", () => flow.ReturnToMenu()); break;
+                    Label(text.Get(flow.SettlementPending ? "save.failed" : "result.note"), 24, 70);
+                    if (flow.SettlementPending) Button("save.retry", () => flow.RetrySettlement());
+                    Button("restart", () => flow.ReturnToMenu(true), !flow.SettlementPending);
+                    Button("menu", () => flow.ReturnToMenu(), !flow.SettlementPending); break;
             }
         }
         public void RefreshClock()

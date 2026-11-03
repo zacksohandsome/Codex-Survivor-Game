@@ -1,6 +1,8 @@
 using Survivor.Combat;
 using Survivor.Data;
 using Survivor.Progression;
+using Survivor.Core;
+using Survivor.Meta;
 using UnityEngine;
 
 namespace Survivor.Player
@@ -30,11 +32,12 @@ namespace Survivor.Player
         }
         public void ApplyBuild(BuildState build)
         {
-            Health.IncreaseMaximum(config.playerHealth + build.HealthBonus - Health.Maximum);
-            Health.Defense = config.playerDefense + build.DefenseBonus;
-            Attack = config.playerAttack + build.AttackBonus;
-            AttackSpeed = Mathf.Clamp(config.playerAttackSpeed + build.AttackSpeedBonus, 0.1f, config.attackSpeedCap);
-            MoveSpeed = Mathf.Clamp(config.playerMoveSpeed + build.MoveSpeedBonus, 0, config.moveSpeedCap);
+            var levels = GameFlow.Instance.PermanentData.metaUpgradeLevels;
+            Health.IncreaseMaximum(config.playerHealth + build.HealthBonus + (int)(levels[0] * MetaProgression.Bonuses[0]) - Health.Maximum);
+            Health.Defense = config.playerDefense + build.DefenseBonus + levels[4] * MetaProgression.Bonuses[4];
+            Attack = config.playerAttack + build.AttackBonus + levels[1] * MetaProgression.Bonuses[1];
+            AttackSpeed = Mathf.Clamp(config.playerAttackSpeed + build.AttackSpeedBonus + levels[2] * MetaProgression.Bonuses[2], 0.1f, config.attackSpeedCap);
+            MoveSpeed = Mathf.Clamp(config.playerMoveSpeed + build.MoveSpeedBonus + levels[3] * MetaProgression.Bonuses[3], 0, config.moveSpeedCap);
         }
         public static Vector2 ClampPosition(Vector2 value, Vector2 half, float radius)
             => new Vector2(Mathf.Clamp(value.x, -half.x + radius, half.x - radius), Mathf.Clamp(value.y, -half.y + radius, half.y - radius));

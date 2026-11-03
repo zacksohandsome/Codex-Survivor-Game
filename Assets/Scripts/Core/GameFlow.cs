@@ -6,6 +6,7 @@ using Survivor.UI;
 using Survivor.Combat;
 using Survivor.Progression;
 using Survivor.Audio;
+using Survivor.Meta;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -19,7 +20,10 @@ namespace Survivor.Core
         [SerializeField] private InputActionAsset inputActions;
         [SerializeField] private TextAsset textTable;
         public GameSession Session { get; private set; }
-        public SaveData PermanentData { get; } = new SaveData();
+        public static string SaveDirectoryOverride { get; set; }
+        public MetaProgression Meta { get; private set; }
+        public SaveData PermanentData => Meta.Data;
+        public bool SettlementPending { get; private set; }
         public FlowConfig Config => config;
         public bool IsTransitioning { get; private set; }
         public Vector2 Movement { get; private set; }
@@ -40,6 +44,7 @@ namespace Survivor.Core
             Instance = this; originalTimeScale = Time.timeScale;
             DontDestroyOnLoad(gameObject);
             Session = new GameSession();
+            Meta = new MetaProgression(new SaveRepository(SaveDirectoryOverride ?? System.IO.Path.Combine(Application.persistentDataPath, "Saves")));
             input = new GameInputRouter(inputActions);
             outcomeAudio = new OutcomeAudio(gameObject);
             view = gameObject.AddComponent<FlowView>();
@@ -82,7 +87,11 @@ namespace Survivor.Core
                 outcomeRemaining = Session.State == GameState.Defeat ? 0.45f : 0;
                 outcomeAudio.Play(Session.State == GameState.Victory);
             }
-            if (Session.State == GameState.Result && BattleWorld.Instance != null) BattleWorld.Instance.Player.body.enabled = false;
+            if (Session.State == GameState.Result)
+            {
+                SettlementPending = !Meta.Settle(Session.Result);
+                if (BattleWorld.Instance != null) BattleWorld.Instance.Player.body.enabled = false;
+            }
             view.Render();
         }
         public bool OpenWeaponSelection() => !IsTransitioning && Session.OpenWeaponSelection();
@@ -112,8 +121,23 @@ namespace Survivor.Core
         }
         public bool ReturnToMenu(bool selectWeapon = false)
         {
-            if (IsTransitioning) return false;
+            if (IsTransitioning || SettlementPending) return false;
             StartCoroutine(LoadMenu(selectWeapon)); return true;
+        }
+        public bool RetrySettlement()
+        {
+            if (Session.State != GameState.Result) return false;
+            SettlementPending = !Meta.Settle(Session.Result); view.Render(); return !SettlementPending;
+        }
+        public bool PurchaseMeta(int stat)
+        {
+            if (IsTransitioning || Session.State != GameState.MainMenu) return false;
+            bool saved = Meta.Purchase(stat); view.Render(); return saved;
+        }
+        public bool RefundMeta()
+        {
+            if (IsTransitioning || Session.State != GameState.MainMenu) return false;
+            bool saved = Meta.Refund(); view.Render(); return saved;
         }
         private IEnumerator LoadMenu(bool selectWeapon)
         {

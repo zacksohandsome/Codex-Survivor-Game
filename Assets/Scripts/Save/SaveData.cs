@@ -2,7 +2,7 @@ using System;
 
 namespace Survivor.Save
 {
-    // Permanent data only. Disk access, migration and settlement transactions arrive in M4.
+    // Permanent data only; live battle objects never enter a save.
     [Serializable]
     public sealed class SaveData
     {
@@ -14,6 +14,7 @@ namespace Survivor.Save
         public long totalKills;
         public double totalSurvivalSeconds;
         public string lastSettledRunId;
+        public string[] settledRunIds = new string[0];
         public string language = "zh-TW";
     }
 }

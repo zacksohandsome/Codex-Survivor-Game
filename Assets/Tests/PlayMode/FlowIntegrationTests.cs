@@ -25,6 +25,7 @@ namespace Survivor.Tests
         [UnitySetUp]
         public IEnumerator SetUp()
         {
+            GameFlow.SaveDirectoryOverride = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "Survivor-PlayTests-" + System.Guid.NewGuid().ToString("N"));
             background = Application.runInBackground; Application.runInBackground = true;
             if (GameFlow.Instance != null) { Object.Destroy(GameFlow.Instance.gameObject); yield return null; }
             yield return SceneManager.LoadSceneAsync("MainMenu");
@@ -105,3 +106,4 @@ namespace Survivor.Tests
         }
     }
 }
+

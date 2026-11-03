@@ -6,7 +6,7 @@
     },
     {
       "key": "stage",
-      "text": "M3 / GROWTH AND SURVIVAL"
+      "text": "M4 / PERMANENT PROGRESS"
     },
     {
       "key": "menu.note",
@@ -254,7 +254,7 @@
     },
     {
       "key": "result.note",
-      "text": "Run results only. Permanent currency and saving arrive in M4."
+      "text": "Currency and statistics saved. Meta upgrades apply to your next run."
     },
     {
       "key": "upgrade.bolt.damage.desc",
@@ -343,6 +343,54 @@
     {
       "key": "upgrade.bloom.interval.desc",
       "text": "Healing interval reduced by 0.5 seconds."
+    },
+    {
+      "key": "meta.health",
+      "text": "Maximum health"
+    },
+    {
+      "key": "meta.attack",
+      "text": "Attack"
+    },
+    {
+      "key": "meta.speed",
+      "text": "Attack speed"
+    },
+    {
+      "key": "meta.move",
+      "text": "Movement speed"
+    },
+    {
+      "key": "meta.defense",
+      "text": "Defense"
+    },
+    {
+      "key": "meta.refund",
+      "text": "Reset all upgrades"
+    },
+    {
+      "key": "meta.refund.confirm",
+      "text": "Reset all permanent upgrades? All spent coins will be refunded."
+    },
+    {
+      "key": "stats.summary",
+      "text": "Runs: {0} / Wins: {1}\nTotal kills: {2}\nTotal survival: {3}:{4:00}"
+    },
+    {
+      "key": "save.failed",
+      "text": "Could not save. Progress was not changed. Retry before leaving this result."
+    },
+    {
+      "key": "save.retry",
+      "text": "Retry saving"
+    },
+    {
+      "key": "save.recovered",
+      "text": "A damaged or missing save was recovered from a valid backup. The original was preserved."
+    },
+    {
+      "key": "save.unreadable",
+      "text": "Save unavailable or unsupported. Originals preserved; saving is disabled. Check the local save folder."
     }
   ]
 }

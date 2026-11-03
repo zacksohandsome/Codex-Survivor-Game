@@ -82,3 +82,6 @@ PlayerActor按BuildState revision重算加成，不修改ScriptableObject。最�
 GameSession.Tick只在Battle推進，最多600秒，達時呼叫Finish(true)；接觸傷害致死呼叫Finish(false)。首次Finish建立不可變結果並鎖住後續事件，故勝敗依實際呼叫順序。GameFlow在勝敗事件中立即清空敵人、彈體、數字與所有掉落；勝利同一更新進結果，死亡先以unscaled時間淡出0.45秒。兩種結果有不同的程式合成音效，非正式音樂／音效資產。
 
 RunResult複製時間、擊殺、角色等級、已拾貨幣與能力等級的唯讀字典。結果介面只讀該快照，不讀BattleWorld；返回後仍保有快照。M3不修改SaveData、不做永久入帳或磁碟保存，介面明示M4後才提供。失焦或最小化回呼會暫停倒數／戰鬥；LevelUp保留原畫面且拒絕未聚焦選擇，還原／聚焦不自動恢復。
+
+## M4 永久資料交易
+SaveRepository 負責版本／摘要驗證、暫存原子替換、三份備份與損毀恢復。MetaProgression 在保存成功後才切換記憶體快照；GameFlow 進入 Result 結算，失敗保留畫面並提供重試。PlayerActor 將五項永久加成與 BuildState 加成相加。詳見 Reports/M4/report.md。

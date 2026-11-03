@@ -23,6 +23,7 @@ namespace Survivor.Tests
         [UnitySetUp]
         public IEnumerator SetUp()
         {
+            GameFlow.SaveDirectoryOverride = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "Survivor-PlayTests-" + System.Guid.NewGuid().ToString("N"));
             background = Application.runInBackground; Application.runInBackground = true;
             if (Flow != null) { Object.Destroy(Flow.gameObject); yield return null; }
             yield return SceneManager.LoadSceneAsync("MainMenu");
@@ -175,7 +176,7 @@ namespace Survivor.Tests
             yield return null;
             Assert.That(Flow.Session.State, Is.EqualTo(GameState.Result));
             Assert.That(GameObject.Find("Button_menu"), Is.Not.Null);
-            Assert.That(Flow.PermanentData.currency, Is.Zero, "M3 must not perform M4 permanent settlement");
+            Assert.That(Flow.PermanentData.currency, Is.EqualTo(7), "M4 settles collected currency exactly once");
             run.AbilityLevels["bloom"] = 5; var snapshot = Flow.Session.Result;
             Flow.ReturnToMenu(); yield return WaitForScene();
             Assert.That(world == null, Is.True); Assert.That(snapshot.AbilityLevels["bloom"], Is.EqualTo(2));
@@ -209,3 +210,4 @@ namespace Survivor.Tests
         }
     }
 }
+
