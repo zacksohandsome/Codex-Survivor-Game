@@ -66,3 +66,6 @@ unity command test status --caller plugin --skill unity-cli --format json
 基底 Commit：bc47031。既有未提交變更包含 Assets/Editor 刪除、SampleScene、UniversalRP、ShaderGraphSettings、URPProjectSettings 修改，以及 PackageManagerSettings、SceneTemplateSettings 與原有 Documentation 未追蹤檔。保留原狀；本次提交只選 M0 測試、PlayerSettings 一行與相關追蹤文件／證據。
 
 `git check-ignore` 已確認 Library、Temp、Logs、Builds、Recordings 忽略；`git ls-files Library Temp Logs Builds` 無輸出。以單次 `-c safe.directory=...` 操作，不修改全域 Git 設定。
+
+## M5 更新（2026-11-04）
+官方 com.unity.recorder@5.1.7 已透過 UPM 安裝，使用 GameView 1280×720、Variable 30FPS 錄影，Time.captureDeltaTime=0；錄影在 Recordings/M5/mvp-editor.mp4，完整循環見 Reports/M5/report.md。未升級 Editor。

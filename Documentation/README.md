@@ -121,3 +121,5 @@ MVP 可以使用幾何圖形、色塊與佔位音效，並只需少量代表性�
 平衡、效能與最佳化應在遊戲完整運作後逐步進行，不應阻礙前期 MVP 的完成。
 
 - [M4 報告](Reports/M4/report.md)：永久強化、可靠存檔、Editor 讀檔與交易測試。
+
+- [M5 報告](Reports/M5/report.md)：正常時間完整 Editor MVP 實玩與錄影；[Editor 操作說明](EDITOR_PLAY_GUIDE.md)。

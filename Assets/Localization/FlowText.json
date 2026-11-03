@@ -6,7 +6,7 @@
     },
     {
       "key": "stage",
-      "text": "M4 / PERMANENT PROGRESS"
+      "text": "M5 / EDITOR MVP VALIDATED"
     },
     {
       "key": "menu.note",
@@ -170,7 +170,7 @@
     },
     {
       "key": "currency",
-      "text": "Currency: {0}  /  Saving arrives in M4"
+      "text": "Currency: {0}"
     },
     {
       "key": "timer",
