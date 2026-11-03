@@ -1,0 +1,13 @@
+# Confidentiality rules
+
+These rules apply to every tool call, file edit, report, screenshot and Git operation in this project.
+
+- Keep credential values local and undisclosed. Never place real tokens, API keys, passwords, account login identifiers, authentication cookies, private keys, license credentials or machine authentication parameters in chat, tool output, screenshots, source files, reports, commit messages or Git history. Use `<REDACTED>` or clearly named placeholders in documentation.
+- Before reading or running a command, select the minimum necessary fields. For process inspection, allow only process name, PID and executable path. Do not request full command lines, dump environment variables, credential stores, authentication files or unfiltered logs. A downstream filter is insufficient if an earlier tool response already exposes the source.
+- When a log is necessary, filter and redact locally before any output reaches the tool response. Report only affected paths, counts and rule categories; never print a matching line, value, prefix, suffix, encoded form or reversible transformation of a credential.
+- Use credentials only through the service's existing credential manager or narrowly scoped local mechanisms. Keep values out of shell arguments and history. Ask the user to complete login or rotation in the service's UI; never ask them to paste credentials into this chat.
+- Before committing, run `Tools/Security/Check-Secrets.ps1 -Staged` and require a successful result. Inspect staged paths and messages without displaying sensitive content. Never bypass or disable the guard with `--no-verify`, hooks overrides, allowlists or equivalent mechanisms to submit a blocked change. Resolve findings with placeholders, local configuration or unstaging the sensitive file.
+- If a possible disclosure is detected, stop the affected operation and report its location and category only. Do not repeat the value. Explain the limits of the evidence: local Git checks do not prove remote repositories, local logs or service-side transcripts are clean. Credential revocation and deletion of account/chat data require explicit user authorization; do not promise that deleting local records retracts previously transmitted data.
+- Existing local commits were checked for the known exposed Unity fields; do not rewrite history solely on speculation. If later evidence identifies an actual committed secret, stop and propose credential rotation and targeted cleanup before changing history.
+
+See [Documentation/SECURITY.md](Documentation/SECURITY.md) for guard installation, scope, testing and incident handling. These protections supplement manual review; pattern matching cannot guarantee detection of every secret.
