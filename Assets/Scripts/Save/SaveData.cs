@@ -6,7 +6,7 @@ namespace Survivor.Save
     [Serializable]
     public sealed class SaveData
     {
-        public int version = 1;
+        public int version = 2;
         public long currency;
         public int[] metaUpgradeLevels = new int[5];
         public long totalRuns;
@@ -15,6 +15,9 @@ namespace Survivor.Save
         public double totalSurvivalSeconds;
         public string lastSettledRunId;
         public string[] settledRunIds = new string[0];
-        public string language = "zh-TW";
+        public string language = "";
+        public float musicVolume = 0.6f, sfxVolume = 0.7f;
+        public int displayWidth = 1920, displayHeight = 1080;
+        public bool fullscreen;
     }
 }

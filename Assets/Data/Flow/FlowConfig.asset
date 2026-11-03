@@ -21,3 +21,50 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aee12e7ec56c62e4cb9f5d592e870e88, type: 2}
   - {fileID: 11400000, guid: b0dd79af86da6aa47950ee58f0054020, type: 2}
   - {fileID: 11400000, guid: b188c9d0de627854ab0b8a2fab58ea13, type: 2}
+  battle: {fileID: 11400000, guid: d0bb4be98b1657a4fba33b967ed9c55d, type: 2}
+  traditionalText: {fileID: 4900000, guid: b70ce9a76700ac143ac42e548f52e0db, type: 3}
+  uiFont: {fileID: 11400000, guid: f9906f79f7b42f1459d6d1c35581805d, type: 2}
+  englishStrings: {fileID: 11400000, guid: 447ce8f928c8f0149a4ea1419bac5d05, type: 2}
+  traditionalStrings: {fileID: 11400000, guid: 9ecac89c934c70a4a8c29167d07ab612, type: 2}
+  iconIds:
+  - bolt
+  - orbit
+  - blast
+  - homing
+  - pulse
+  - bloom
+  - magnet
+  - echo
+  - thorns
+  - trail
+  - storm
+  - sanctuary
+  - stat.health
+  - stat.attack
+  - stat.speed
+  - stat.move
+  - stat.defense
+  - coins
+  - experience
+  - pause
+  icons:
+  - {fileID: -1445477257, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: 1819182712, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: -1083214711, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: -1178596070, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: 409885666, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: -751557705, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: -276365755, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: -1609010737, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: 1240015298, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: -1290690574, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: 1363621058, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: 118168546, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: 442839661, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: -315211951, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: 2044412876, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: -1003409237, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: 2004142583, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: 416817860, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: 1360383236, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}
+  - {fileID: -1161278101, guid: 1710a17bb62e56849ae4bf1f23ad02fb, type: 3}

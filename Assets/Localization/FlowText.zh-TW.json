@@ -1,0 +1,880 @@
+{
+  "entries": [
+    {
+      "key": "title",
+      "text": "秘林倖存者"
+    },
+    {
+      "key": "stage",
+      "text": "秘林守望"
+    },
+    {
+      "key": "menu.note",
+      "text": "在秘林存活十分鐘。收集寶石、選擇升級，打造你的構築。"
+    },
+    {
+      "key": "start",
+      "text": "開始遊戲"
+    },
+    {
+      "key": "meta",
+      "text": "永久強化"
+    },
+    {
+      "key": "settings",
+      "text": "設定"
+    },
+    {
+      "key": "stats",
+      "text": "累計統計"
+    },
+    {
+      "key": "quit",
+      "text": "離開遊戲"
+    },
+    {
+      "key": "back",
+      "text": "返回"
+    },
+    {
+      "key": "select",
+      "text": "選擇初始武器"
+    },
+    {
+      "key": "select.note",
+      "text": "五種武器全部開放，每場最多持有三種武器。"
+    },
+    {
+      "key": "selection.empty",
+      "text": "尚未選擇武器"
+    },
+    {
+      "key": "enter",
+      "text": "進入競技場"
+    },
+    {
+      "key": "weapon.bolt",
+      "text": "祕法飛矢"
+    },
+    {
+      "key": "weapon.bolt.desc",
+      "text": "對最近敵人發射直線飛矢。三級追加偏轉飛矢，五級增加穿透。"
+    },
+    {
+      "key": "weapon.orbit",
+      "text": "環繞明燈"
+    },
+    {
+      "key": "weapon.orbit.desc",
+      "text": "明燈環繞玩家攻擊經過的敵人。三級由兩盞增加為三盞，移動可讓敵人經過環繞路徑。"
+    },
+    {
+      "key": "weapon.blast",
+      "text": "熾火爆裂"
+    },
+    {
+      "key": "weapon.blast.desc",
+      "text": "在目標當下位置預告後爆炸。三級追加較小範圍的餘震。"
+    },
+    {
+      "key": "weapon.homing",
+      "text": "追蹤幽光"
+    },
+    {
+      "key": "weapon.homing.desc",
+      "text": "幽光持續轉向最近敵人。三級增加穿透，五級多發一枚。"
+    },
+    {
+      "key": "weapon.pulse",
+      "text": "寒霜波動"
+    },
+    {
+      "key": "weapon.pulse.desc",
+      "text": "由玩家位置向外擴張的波動。三級追加第二道波動。"
+    },
+    {
+      "key": "battle",
+      "text": "競技場"
+    },
+    {
+      "key": "battle.note",
+      "text": "WASD 移動 ／ 自動攻擊 ／ ESC 暫停"
+    },
+    {
+      "key": "countdown",
+      "text": "準備"
+    },
+    {
+      "key": "pause",
+      "text": "暫停"
+    },
+    {
+      "key": "resume",
+      "text": "繼續遊戲"
+    },
+    {
+      "key": "restart",
+      "text": "重新選擇武器"
+    },
+    {
+      "key": "menu",
+      "text": "返回主選單"
+    },
+    {
+      "key": "abandon",
+      "text": "確定放棄本場？尚未結算的貨幣與統計不會保存。"
+    },
+    {
+      "key": "confirm",
+      "text": "確認"
+    },
+    {
+      "key": "cancel",
+      "text": "取消"
+    },
+    {
+      "key": "quit.confirm",
+      "text": "確定離開遊戲？"
+    },
+    {
+      "key": "meta.note",
+      "text": "使用結算所得的貨幣，強化下一場的初始屬性。"
+    },
+    {
+      "key": "settings.note",
+      "text": "語言、音量與顯示設定"
+    },
+    {
+      "key": "stats.note",
+      "text": "僅累計已結算場次的實際戰鬥時間。"
+    },
+    {
+      "key": "levelup",
+      "text": "選擇一項升級"
+    },
+    {
+      "key": "victory",
+      "text": "生存成功"
+    },
+    {
+      "key": "defeat",
+      "text": "冒險結束"
+    },
+    {
+      "key": "result",
+      "text": "本場結算"
+    },
+    {
+      "key": "loading",
+      "text": "正在載入…"
+    },
+    {
+      "key": "currency",
+      "text": "持有貨幣：{0}"
+    },
+    {
+      "key": "timer",
+      "text": "剩餘 {0:00}:{1:00}"
+    },
+    {
+      "key": "hud.stats",
+      "text": "生命 {0}/{1}　擊殺 {2}\n攻擊 {3:0.#}　攻速 ×{4:0.#}　移速 {5:0.#}　防禦 {6:0.#}"
+    },
+    {
+      "key": "defeat.note",
+      "text": "本場已結束。"
+    },
+    {
+      "key": "ability.bolt",
+      "text": "祕法飛矢"
+    },
+    {
+      "key": "upgrade.reward.coins",
+      "text": "額外貨幣"
+    },
+    {
+      "key": "upgrade.stat.health",
+      "text": "生命強化"
+    },
+    {
+      "key": "upgrade.bolt.damage",
+      "text": "祕法飛矢・威力"
+    },
+    {
+      "key": "upgrade.bloom.interval",
+      "text": "生命綻放・頻率"
+    },
+    {
+      "key": "upgrade.reward.heal.desc",
+      "text": "立即恢復二十五點生命，不超過最大生命。"
+    },
+    {
+      "key": "upgrade.reward",
+      "text": "立即獎勵"
+    },
+    {
+      "key": "upgrade.reward.coins.desc",
+      "text": "立即獲得五枚本場貨幣，正常結算後保存。"
+    },
+    {
+      "key": "survival",
+      "text": "存活 {0:00}:{1:00}"
+    },
+    {
+      "key": "ability.stat.move",
+      "text": "移速強化"
+    },
+    {
+      "key": "upgrade.bolt.pierce",
+      "text": "祕法飛矢・穿透"
+    },
+    {
+      "key": "upgrade.stat.defense.desc",
+      "text": "防禦力增加三。"
+    },
+    {
+      "key": "upgrade.bloom.amount.desc",
+      "text": "每次恢復量增加二點。"
+    },
+    {
+      "key": "upgrade.stat.defense",
+      "text": "防禦強化"
+    },
+    {
+      "key": "upgrade.bloom.new.desc",
+      "text": "每六秒恢復二點生命，不超過最大生命。"
+    },
+    {
+      "key": "upgrade.card",
+      "text": "升級選項"
+    },
+    {
+      "key": "ability.stat.health",
+      "text": "生命強化"
+    },
+    {
+      "key": "result.note",
+      "text": "貨幣與統計已保存。永久強化將在下一場生效。"
+    },
+    {
+      "key": "upgrade.bolt.damage.desc",
+      "text": "此武器傷害倍率增加 0.25，重複選擇可疊加。"
+    },
+    {
+      "key": "upgrade.bloom.amount",
+      "text": "生命綻放・恢復"
+    },
+    {
+      "key": "hud.progress",
+      "text": "等級 {0}　經驗 {1}/{2}　本場貨幣 {3}"
+    },
+    {
+      "key": "upgrade.stat.move.desc",
+      "text": "移動速度增加 0.5。"
+    },
+    {
+      "key": "upgrade.stat.attack.desc",
+      "text": "攻擊力增加二。"
+    },
+    {
+      "key": "upgrade.bloom.new",
+      "text": "取得 生命綻放"
+    },
+    {
+      "key": "upgrade.stat.health.desc",
+      "text": "最大生命增加二十。"
+    },
+    {
+      "key": "result.summary",
+      "text": "存活 {0:00}:{1:00}\n擊殺 {2}　最終等級 {3}\n本場貨幣 {4}"
+    },
+    {
+      "key": "upgrade.stat.attack",
+      "text": "攻擊強化"
+    },
+    {
+      "key": "ability.bloom",
+      "text": "生命綻放"
+    },
+    {
+      "key": "upgrade.stat.speed.desc",
+      "text": "攻速倍率增加 0.12。"
+    },
+    {
+      "key": "upgrade.note",
+      "text": "滑鼠點選或按 1／2／3。選擇期間戰鬥完全暫停。"
+    },
+    {
+      "key": "upgrade.reward.heal",
+      "text": "生命恢復"
+    },
+    {
+      "key": "upgrade.level",
+      "text": "已達到等級 {0}"
+    },
+    {
+      "key": "ability.stat.attack",
+      "text": "攻擊強化"
+    },
+    {
+      "key": "upgrade.stat.move",
+      "text": "移速強化"
+    },
+    {
+      "key": "upgrade.stat.speed",
+      "text": "攻速強化"
+    },
+    {
+      "key": "ability.stat.speed",
+      "text": "攻速強化"
+    },
+    {
+      "key": "ability.stat.defense",
+      "text": "防禦強化"
+    },
+    {
+      "key": "upgrade.current",
+      "text": "目前等級：{0}"
+    },
+    {
+      "key": "upgrade.bolt.pierce.desc",
+      "text": "每顆投射物可多命中一個不同敵人，重複選擇可疊加。"
+    },
+    {
+      "key": "upgrade.bloom.interval.desc",
+      "text": "恢復間隔減少 0.5 秒，最低一秒。"
+    },
+    {
+      "key": "meta.health",
+      "text": "最大生命"
+    },
+    {
+      "key": "meta.attack",
+      "text": "攻擊力"
+    },
+    {
+      "key": "meta.speed",
+      "text": "攻擊速度"
+    },
+    {
+      "key": "meta.move",
+      "text": "移動速度"
+    },
+    {
+      "key": "meta.defense",
+      "text": "防禦力"
+    },
+    {
+      "key": "meta.refund",
+      "text": "重置全部強化"
+    },
+    {
+      "key": "meta.refund.confirm",
+      "text": "重置全部永久強化？所有已花費貨幣將全額退還。"
+    },
+    {
+      "key": "stats.summary",
+      "text": "總場次 {0}　勝利 {1}　死亡 {5}\n累計擊殺 {2}\n累計戰鬥 {3}:{4:00}"
+    },
+    {
+      "key": "save.failed",
+      "text": "無法保存，資料未變更。請重試；結算成功前會保留本場結果。"
+    },
+    {
+      "key": "save.retry",
+      "text": "重新保存"
+    },
+    {
+      "key": "save.recovered",
+      "text": "已從有效備份恢復存檔，原始損毀資料已保留。"
+    },
+    {
+      "key": "save.unreadable",
+      "text": "存檔無法讀取或版本不支援。原始資料已保留，目前禁止覆寫。"
+    },
+    {
+      "key": "upgrade.bolt.new",
+      "text": "取得 祕法飛矢"
+    },
+    {
+      "key": "upgrade.bolt.new.desc",
+      "text": "對最近敵人發射直線飛矢。三級追加偏轉飛矢，五級增加穿透。"
+    },
+    {
+      "key": "upgrade.bolt.area",
+      "text": "祕法飛矢・範圍"
+    },
+    {
+      "key": "upgrade.bolt.area.desc",
+      "text": "此武器範圍半徑增加 0.4，重複選擇可疊加。"
+    },
+    {
+      "key": "ability.orbit",
+      "text": "環繞明燈"
+    },
+    {
+      "key": "upgrade.orbit.new",
+      "text": "取得 環繞明燈"
+    },
+    {
+      "key": "upgrade.orbit.new.desc",
+      "text": "明燈環繞玩家攻擊經過的敵人。三級由兩盞增加為三盞，移動可讓敵人經過環繞路徑。"
+    },
+    {
+      "key": "upgrade.orbit.damage",
+      "text": "環繞明燈・威力"
+    },
+    {
+      "key": "upgrade.orbit.damage.desc",
+      "text": "此武器傷害倍率增加 0.25，重複選擇可疊加。"
+    },
+    {
+      "key": "upgrade.orbit.pierce",
+      "text": "環繞明燈・穿透"
+    },
+    {
+      "key": "upgrade.orbit.pierce.desc",
+      "text": "每顆投射物可多命中一個不同敵人，重複選擇可疊加。"
+    },
+    {
+      "key": "upgrade.orbit.area",
+      "text": "環繞明燈・範圍"
+    },
+    {
+      "key": "upgrade.orbit.area.desc",
+      "text": "此武器範圍半徑增加 0.4，重複選擇可疊加。"
+    },
+    {
+      "key": "ability.blast",
+      "text": "熾火爆裂"
+    },
+    {
+      "key": "upgrade.blast.new",
+      "text": "取得 熾火爆裂"
+    },
+    {
+      "key": "upgrade.blast.new.desc",
+      "text": "在目標當下位置預告後爆炸。三級追加較小範圍的餘震。"
+    },
+    {
+      "key": "upgrade.blast.damage",
+      "text": "熾火爆裂・威力"
+    },
+    {
+      "key": "upgrade.blast.damage.desc",
+      "text": "此武器傷害倍率增加 0.25，重複選擇可疊加。"
+    },
+    {
+      "key": "upgrade.blast.pierce",
+      "text": "熾火爆裂・穿透"
+    },
+    {
+      "key": "upgrade.blast.pierce.desc",
+      "text": "每顆投射物可多命中一個不同敵人，重複選擇可疊加。"
+    },
+    {
+      "key": "upgrade.blast.area",
+      "text": "熾火爆裂・範圍"
+    },
+    {
+      "key": "upgrade.blast.area.desc",
+      "text": "此武器範圍半徑增加 0.4，重複選擇可疊加。"
+    },
+    {
+      "key": "ability.homing",
+      "text": "追蹤幽光"
+    },
+    {
+      "key": "upgrade.homing.new",
+      "text": "取得 追蹤幽光"
+    },
+    {
+      "key": "upgrade.homing.new.desc",
+      "text": "幽光持續轉向最近敵人。三級增加穿透，五級多發一枚。"
+    },
+    {
+      "key": "upgrade.homing.damage",
+      "text": "追蹤幽光・威力"
+    },
+    {
+      "key": "upgrade.homing.damage.desc",
+      "text": "此武器傷害倍率增加 0.25，重複選擇可疊加。"
+    },
+    {
+      "key": "upgrade.homing.pierce",
+      "text": "追蹤幽光・穿透"
+    },
+    {
+      "key": "upgrade.homing.pierce.desc",
+      "text": "每顆投射物可多命中一個不同敵人，重複選擇可疊加。"
+    },
+    {
+      "key": "upgrade.homing.area",
+      "text": "追蹤幽光・範圍"
+    },
+    {
+      "key": "upgrade.homing.area.desc",
+      "text": "此武器範圍半徑增加 0.4，重複選擇可疊加。"
+    },
+    {
+      "key": "ability.pulse",
+      "text": "寒霜波動"
+    },
+    {
+      "key": "upgrade.pulse.new",
+      "text": "取得 寒霜波動"
+    },
+    {
+      "key": "upgrade.pulse.new.desc",
+      "text": "由玩家位置向外擴張的波動。三級追加第二道波動。"
+    },
+    {
+      "key": "upgrade.pulse.damage",
+      "text": "寒霜波動・威力"
+    },
+    {
+      "key": "upgrade.pulse.damage.desc",
+      "text": "此武器傷害倍率增加 0.25，重複選擇可疊加。"
+    },
+    {
+      "key": "upgrade.pulse.pierce",
+      "text": "寒霜波動・穿透"
+    },
+    {
+      "key": "upgrade.pulse.pierce.desc",
+      "text": "每顆投射物可多命中一個不同敵人，重複選擇可疊加。"
+    },
+    {
+      "key": "upgrade.pulse.area",
+      "text": "寒霜波動・範圍"
+    },
+    {
+      "key": "upgrade.pulse.area.desc",
+      "text": "此武器範圍半徑增加 0.4，重複選擇可疊加。"
+    },
+    {
+      "key": "ability.magnet",
+      "text": "引力磁石"
+    },
+    {
+      "key": "upgrade.magnet.new",
+      "text": "取得 引力磁石"
+    },
+    {
+      "key": "upgrade.magnet.new.desc",
+      "text": "寶石與貨幣共用磁吸範圍增加 0.5。三級後每十秒短暫加倍範圍。"
+    },
+    {
+      "key": "ability.echo",
+      "text": "祕法迴響"
+    },
+    {
+      "key": "upgrade.echo.new",
+      "text": "取得 祕法迴響"
+    },
+    {
+      "key": "upgrade.echo.new.desc",
+      "text": "命中後對附近其他敵人連鎖 25% 傷害，每秒最多觸發一次。三級可再跳一次。"
+    },
+    {
+      "key": "ability.thorns",
+      "text": "荊棘披風"
+    },
+    {
+      "key": "upgrade.thorns.new",
+      "text": "取得 荊棘披風"
+    },
+    {
+      "key": "upgrade.thorns.new.desc",
+      "text": "實際受傷後在半徑 2.5 內反擊，造成 120% 攻擊傷害。三級半徑增為四。"
+    },
+    {
+      "key": "ability.trail",
+      "text": "翠綠足跡"
+    },
+    {
+      "key": "upgrade.trail.new",
+      "text": "取得 翠綠足跡"
+    },
+    {
+      "key": "upgrade.trail.new.desc",
+      "text": "移動時每秒留下傷害區，造成 50% 攻擊傷害。三級持續時間增為兩秒。"
+    },
+    {
+      "key": "ability.storm",
+      "text": "星隕"
+    },
+    {
+      "key": "upgrade.storm.new",
+      "text": "取得 星隕"
+    },
+    {
+      "key": "upgrade.storm.new.desc",
+      "text": "每四秒對最近目標位置造成 200% 攻擊範圍傷害。三級追加第二擊。"
+    },
+    {
+      "key": "ability.sanctuary",
+      "text": "庇護之地"
+    },
+    {
+      "key": "upgrade.sanctuary.new",
+      "text": "取得 庇護之地"
+    },
+    {
+      "key": "upgrade.sanctuary.new.desc",
+      "text": "防禦增加四，每六秒推離附近敵人。三級脈動另恢復三點生命，不產生護盾。"
+    },
+    {
+      "key": "upgrade.storm.damage",
+      "text": "星隕・威力"
+    },
+    {
+      "key": "upgrade.storm.damage.desc",
+      "text": "技能傷害倍率增加 0.4，可疊加。"
+    },
+    {
+      "key": "upgrade.echo.damage",
+      "text": "祕法迴響・威力"
+    },
+    {
+      "key": "upgrade.echo.damage.desc",
+      "text": "連鎖傷害倍率增加 0.15，可疊加。"
+    },
+    {
+      "key": "upgrade.trail.damage",
+      "text": "翠綠足跡・威力"
+    },
+    {
+      "key": "upgrade.trail.damage.desc",
+      "text": "足跡傷害倍率增加 0.2，可疊加。"
+    },
+    {
+      "key": "upgrade.magnet.radius",
+      "text": "引力磁石・範圍"
+    },
+    {
+      "key": "upgrade.magnet.radius.desc",
+      "text": "共享磁吸半徑增加 0.5，可疊加。"
+    },
+    {
+      "key": "upgrade.thorns.damage",
+      "text": "荊棘披風・威力"
+    },
+    {
+      "key": "upgrade.thorns.damage.desc",
+      "text": "反擊傷害倍率增加 0.3，可疊加。"
+    },
+    {
+      "key": "upgrade.sanctuary.defense",
+      "text": "庇護之地・防禦"
+    },
+    {
+      "key": "upgrade.sanctuary.defense.desc",
+      "text": "防禦增加二，與局內屬性及永久強化相加。"
+    },
+    {
+      "key": "upgrade.magnet.speed",
+      "text": "引力磁石・速度"
+    },
+    {
+      "key": "upgrade.magnet.speed.desc",
+      "text": "磁吸速度增加一，可疊加。"
+    },
+    {
+      "key": "encounter.stage.3",
+      "text": "熾焰小鬼加入追獵"
+    },
+    {
+      "key": "enemy.ranged",
+      "text": "咒弓射手"
+    },
+    {
+      "key": "encounter.stage.2",
+      "text": "敵群漸增，射手逼近"
+    },
+    {
+      "key": "enemy.bomber",
+      "text": "熾焰小鬼"
+    },
+    {
+      "key": "enemy.melee",
+      "text": "赤帽哥布林"
+    },
+    {
+      "key": "encounter.stage.4",
+      "text": "最後的攻勢即將到來"
+    },
+    {
+      "key": "encounter.boss.defeated",
+      "text": "空心林王已被擊敗！"
+    },
+    {
+      "key": "enemy.boss",
+      "text": "空心林王"
+    },
+    {
+      "key": "encounter.boss",
+      "text": "空心林王"
+    },
+    {
+      "key": "encounter.elite",
+      "text": "荊棘勇士出現了！"
+    },
+    {
+      "key": "enemy.elite",
+      "text": "荊棘勇士"
+    },
+    {
+      "key": "encounter.stage.5",
+      "text": "堅持住，最後兩分鐘"
+    },
+    {
+      "key": "settings.language",
+      "text": "介面語言"
+    },
+    {
+      "key": "language.zh-TW",
+      "text": "繁體中文"
+    },
+    {
+      "key": "meta.max",
+      "text": "已滿級"
+    },
+    {
+      "key": "display.confirm",
+      "text": "保留這個顯示設定？{0} 秒後自動還原。"
+    },
+    {
+      "key": "player.preview",
+      "text": "初始屬性：生命 {0}　攻擊 {1:0.#}　攻速 ×{2:0.#}　移速 {3:0.#}　防禦 {4:0.#}"
+    },
+    {
+      "key": "hud.group.skills",
+      "text": "技能"
+    },
+    {
+      "key": "meta.row",
+      "text": "{0}　{1}/5\n目前 +{2} → 下級 +{3}　{4}"
+    },
+    {
+      "key": "settings.windowed",
+      "text": "視窗"
+    },
+    {
+      "key": "settings.display",
+      "text": "顯示設定"
+    },
+    {
+      "key": "weapon.details",
+      "text": "{0}\n傷害 ×{1:0.##}　冷卻 {2:0.##} 秒　範圍 {3:0.#}\n{4}"
+    },
+    {
+      "key": "ability.effect.count",
+      "text": "{0} ×{1}"
+    },
+    {
+      "key": "hud.lowhealth",
+      "text": "生命危險！"
+    },
+    {
+      "key": "display.unavailable",
+      "text": "此顯示設定目前不可用。"
+    },
+    {
+      "key": "display.preview.note",
+      "text": "先預覽，再確認保存；逾時自動還原。"
+    },
+    {
+      "key": "hud.group.passives",
+      "text": "被動"
+    },
+    {
+      "key": "settings.fullscreen",
+      "text": "全螢幕"
+    },
+    {
+      "key": "ability.tooltip",
+      "text": "{0}　等級 {1}\n{2}"
+    },
+    {
+      "key": "language.en",
+      "text": "English"
+    },
+    {
+      "key": "settings.music",
+      "text": "音樂音量"
+    },
+    {
+      "key": "hud.boss",
+      "text": "{0}　{1}/{2}"
+    },
+    {
+      "key": "meta.cost",
+      "text": "{0} 貨幣"
+    },
+    {
+      "key": "hud.group.weapons",
+      "text": "武器"
+    },
+    {
+      "key": "hud.empty",
+      "text": "空"
+    },
+    {
+      "key": "ability.level",
+      "text": "{0}　等級 {1}"
+    },
+    {
+      "key": "display.restored",
+      "text": "顯示設定已還原。"
+    },
+    {
+      "key": "upgrade.notice",
+      "text": "{0} 升至等級 {1}"
+    },
+    {
+      "key": "settings.sfx",
+      "text": "音效音量"
+    },
+    {
+      "key": "effect.storm",
+      "text": "每四秒造成 {0:0.#}% 攻擊傷害，剩餘冷卻 {1:0.#} 秒。"
+    },
+    {
+      "key": "effect.trail",
+      "text": "足跡造成 {0:0.#}% 攻擊傷害，持續 {1:0.#} 秒。"
+    },
+    {
+      "key": "effect.sanctuary",
+      "text": "防禦 +{0:0.#}；每六秒推離敵人並恢復 {1} 點生命。"
+    },
+    {
+      "key": "effect.bloom",
+      "text": "每 {1:0.#} 秒恢復 {0} 點生命。"
+    },
+    {
+      "key": "pause.summary",
+      "text": "等級 {0}　擊殺 {1}"
+    },
+    {
+      "key": "effect.weapon",
+      "text": "傷害 {0:0.#}　冷卻 {1:0.##} 秒　範圍 {2:0.#}\n彈體命中數 {3}　範圍半徑 {4:0.#}"
+    },
+    {
+      "key": "effect.magnet",
+      "text": "磁吸半徑 {0:0.#}，吸引速度 {1:0.#}。"
+    },
+    {
+      "key": "effect.thorns",
+      "text": "受傷後反擊 {0:0.#}% 攻擊傷害，半徑 {1:0.#}。"
+    },
+    {
+      "key": "effect.echo",
+      "text": "連鎖 {0:0.#}% 傷害，{1} 次跳躍，冷卻一秒。"
+    },
+    {
+      "key": "display.resolution",
+      "text": "{0} × {1}"
+    }
+  ]
+}

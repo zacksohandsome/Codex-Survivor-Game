@@ -1,5 +1,15 @@
 {
   "name": "Survivor.Environment.PlayMode",
-  "references": ["Survivor.Runtime", "Unity.InputSystem", "Unity.ugui", "Unity.TextMeshPro", "Unity.RenderPipelines.Universal.Runtime"],
-  "optionalUnityReferences": ["TestAssemblies"]
+  "references": [
+    "Survivor.Runtime",
+    "Unity.InputSystem",
+    "Unity.ugui",
+    "Unity.TextMeshPro",
+    "Unity.RenderPipelines.Universal.Runtime",
+    "Unity.Localization",
+    "Unity.ResourceManager"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
 }

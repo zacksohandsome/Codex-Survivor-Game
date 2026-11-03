@@ -1,4 +1,10 @@
 {
   "name": "Survivor.Runtime",
-  "references": ["Unity.InputSystem", "Unity.ugui", "Unity.TextMeshPro"]
+  "references": [
+    "Unity.InputSystem",
+    "Unity.ugui",
+    "Unity.TextMeshPro",
+    "Unity.Localization",
+    "Unity.ResourceManager"
+  ]
 }

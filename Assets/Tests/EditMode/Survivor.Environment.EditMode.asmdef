@@ -1,6 +1,17 @@
 {
   "name": "Survivor.Environment.EditMode",
-  "references": ["Survivor.Runtime", "Unity.InputSystem", "Unity.RenderPipelines.Universal.Runtime"],
-  "includePlatforms": ["Editor"],
-  "optionalUnityReferences": ["TestAssemblies"]
+  "references": [
+    "Survivor.Runtime",
+    "Unity.InputSystem",
+    "Unity.RenderPipelines.Universal.Runtime",
+    "Unity.Localization",
+    "Unity.ResourceManager",
+    "Unity.TextMeshPro"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
 }

@@ -1,0 +1,947 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Game_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: b0c89d8602e43f143b44a00ec865a70e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1924689920
+    m_Localized: HOLLOW GROVE / SURVIVOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2008576000
+    m_Localized: HOLLOW GROVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770304
+    m_Localized: Survive for 10 minutes. Collect gems, choose upgrades and build
+      your run.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770305
+    m_Localized: Start game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770306
+    m_Localized: Meta upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770307
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770308
+    m_Localized: Statistics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770309
+    m_Localized: Quit game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770310
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770311
+    m_Localized: CHOOSE YOUR WEAPON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770312
+    m_Localized: Choose any starting weapon. Hold up to three weapons during a run.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770313
+    m_Localized: No weapon selected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770314
+    m_Localized: Enter arena
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770315
+    m_Localized: Arcane Bolt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770316
+    m_Localized: 'Arcane Bolt: nearest target, straight shots. Level 3 adds a second
+      angled bolt.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770317
+    m_Localized: Orbit Lanterns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770318
+    m_Localized: 'Orbit Lanterns: orbiting projectiles protect close range. Level
+      3 adds a third lantern.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770319
+    m_Localized: Ember Blast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770320
+    m_Localized: 'Ember Blast: delayed explosion at a target position. Level 3 adds
+      an aftershock.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770321
+    m_Localized: Seeking Wisp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770322
+    m_Localized: 'Seeking Wisp: missiles steer toward enemies. Level 3 pierces and
+      retargets.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770323
+    m_Localized: Frost Pulse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770324
+    m_Localized: 'Frost Pulse: expanding waves strike nearby enemies. Level 3 adds
+      a second wave.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770325
+    m_Localized: ARENA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770326
+    m_Localized: WASD move / auto-fire / ESC pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770327
+    m_Localized: Prepare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770328
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770329
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770330
+    m_Localized: Choose weapon again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770331
+    m_Localized: Return to menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770332
+    m_Localized: Abandon this run? Unsettled currency and statistics will not be
+      saved.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770333
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770334
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770335
+    m_Localized: Quit the game?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770336
+    m_Localized: Spend earned coins on permanent upgrades.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770337
+    m_Localized: Language, audio and display settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770338
+    m_Localized: Statistics include settled battle time only.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770339
+    m_Localized: CHOOSE AN UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770340
+    m_Localized: VICTORY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770341
+    m_Localized: DEFEAT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770342
+    m_Localized: RUN RESULTS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770343
+    m_Localized: Loading scene...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770344
+    m_Localized: 'Currency: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770345
+    m_Localized: Remaining {0:00}:{1:00}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770346
+    m_Localized: 'HP {0}/{1}   Kills {2}
+
+      ATK {3:0.#}   Speed x{4:0.#}   Move
+      {5:0.#}   DEF {6:0.#}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770347
+    m_Localized: This run has ended.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770348
+    m_Localized: Arcane Bolt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770349
+    m_Localized: Coin Cache
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770350
+    m_Localized: Vitality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964608
+    m_Localized: Arcane Bolt / power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964609
+    m_Localized: Bloom Rhythm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964610
+    m_Localized: Restore 25 HP immediately.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964611
+    m_Localized: Immediate reward
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964612
+    m_Localized: Gain 5 run currency immediately.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964613
+    m_Localized: Survived {0:00}:{1:00}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964614
+    m_Localized: Swiftness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964615
+    m_Localized: Arcane Bolt / pierce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964616
+    m_Localized: Defense +3.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964617
+    m_Localized: Periodic healing +2 HP.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964618
+    m_Localized: Armor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964619
+    m_Localized: Restore 2 HP every 6 seconds. Does not exceed maximum health.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964620
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964621
+    m_Localized: Vitality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964622
+    m_Localized: Currency and statistics saved. Meta upgrades apply to your next
+      run.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964623
+    m_Localized: Add 25% of attack to this weapon damage multiplier. Stacks each
+      time selected.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964624
+    m_Localized: Bloom Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964625
+    m_Localized: Level {0}   XP {1}/{2}   Coins {3}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964626
+    m_Localized: Movement speed +0.5.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964627
+    m_Localized: Attack +2.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964628
+    m_Localized: Acquire Vital Bloom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964629
+    m_Localized: Maximum and current health +20.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964630
+    m_Localized: 'Survived {0:00}:{1:00}
+
+      Kills {2}    Level {3}
+
+      Collected
+      currency {4}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964631
+    m_Localized: Power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964632
+    m_Localized: Vital Bloom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964633
+    m_Localized: Attack speed +0.12.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964634
+    m_Localized: Click a card or press 1 / 2 / 3. Battle is fully paused.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964635
+    m_Localized: Restoration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964636
+    m_Localized: Level {0} reached
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964637
+    m_Localized: Power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964638
+    m_Localized: Swiftness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964639
+    m_Localized: Haste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964640
+    m_Localized: Haste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964641
+    m_Localized: Armor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964642
+    m_Localized: 'Current ability level: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964643
+    m_Localized: This weapon can hit one more distinct enemy per projectile. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964644
+    m_Localized: Healing interval reduced by 0.5 seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964645
+    m_Localized: Maximum health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964646
+    m_Localized: Attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964647
+    m_Localized: Attack speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964648
+    m_Localized: Movement speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964649
+    m_Localized: Defense
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964650
+    m_Localized: Reset all upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964651
+    m_Localized: Reset all permanent upgrades? All spent coins will be refunded.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964652
+    m_Localized: 'Runs: {0} / Wins: {1} / Deaths: {5}
+
+      Total kills: {2}
+
+      Total
+      battle time: {3}:{4:00}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964653
+    m_Localized: Could not save. Progress was not changed. Retry before leaving this
+      result.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964654
+    m_Localized: Retry saving
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964655
+    m_Localized: A damaged or missing save was recovered from a valid backup. The
+      original was preserved.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964656
+    m_Localized: Save unavailable or unsupported. Originals preserved; saving is
+      disabled. Check the local save folder.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964657
+    m_Localized: Acquire Arcane Bolt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964658
+    m_Localized: Acquire a straight auto-firing weapon. Level 3 fires a second angled
+      bolt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964659
+    m_Localized: Arcane Bolt / area
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964660
+    m_Localized: Increase this weapon area radius by 0.4. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964661
+    m_Localized: Orbit Lanterns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964662
+    m_Localized: Acquire Orbit Lanterns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964663
+    m_Localized: Acquire two orbiting lanterns. Level 3 creates three lanterns.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964664
+    m_Localized: Orbit Lanterns / power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964665
+    m_Localized: Add 25% of attack to this weapon damage multiplier. Stacks each
+      time selected.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964666
+    m_Localized: Orbit Lanterns / pierce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964667
+    m_Localized: This weapon can hit one more distinct enemy per projectile. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964668
+    m_Localized: Orbit Lanterns / area
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964669
+    m_Localized: Increase this weapon area radius by 0.4. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964670
+    m_Localized: Ember Blast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964671
+    m_Localized: Acquire Ember Blast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964672
+    m_Localized: Acquire a targeted delayed blast. Level 3 creates an aftershock.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964673
+    m_Localized: Ember Blast / power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964674
+    m_Localized: Add 25% of attack to this weapon damage multiplier. Stacks each
+      time selected.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964675
+    m_Localized: Ember Blast / pierce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964676
+    m_Localized: This weapon can hit one more distinct enemy per projectile. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964677
+    m_Localized: Ember Blast / area
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964678
+    m_Localized: Increase this weapon area radius by 0.4. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964679
+    m_Localized: Seeking Wisp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964680
+    m_Localized: Acquire Seeking Wisp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964681
+    m_Localized: Acquire steering missiles. Level 3 adds piercing and retargeting.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964682
+    m_Localized: Seeking Wisp / power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964683
+    m_Localized: Add 25% of attack to this weapon damage multiplier. Stacks each
+      time selected.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964684
+    m_Localized: Seeking Wisp / pierce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964685
+    m_Localized: This weapon can hit one more distinct enemy per projectile. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964686
+    m_Localized: Seeking Wisp / area
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964687
+    m_Localized: Increase this weapon area radius by 0.4. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964688
+    m_Localized: Frost Pulse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964689
+    m_Localized: Acquire Frost Pulse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964690
+    m_Localized: Acquire an expanding close-range wave. Level 3 adds a second wave.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964691
+    m_Localized: Frost Pulse / power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964692
+    m_Localized: Add 25% of attack to this weapon damage multiplier. Stacks each
+      time selected.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964693
+    m_Localized: Frost Pulse / pierce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964694
+    m_Localized: This weapon can hit one more distinct enemy per projectile. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964695
+    m_Localized: Frost Pulse / area
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964696
+    m_Localized: Increase this weapon area radius by 0.4. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964697
+    m_Localized: Lodestone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964698
+    m_Localized: Acquire Lodestone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964699
+    m_Localized: Increase the shared gem/coin magnet radius by 0.5. Level 3 doubles
+      the radius briefly every 10 seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964700
+    m_Localized: Arc Echo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964701
+    m_Localized: Acquire Arc Echo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964702
+    m_Localized: Weapon and area hits chain 25% damage to a nearby enemy, once per
+      second. Level 3 allows a second bounce.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964703
+    m_Localized: Briar Mantle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964704
+    m_Localized: Acquire Briar Mantle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964705
+    m_Localized: After taking damage, retaliate in a radius of 2.5 for 120% attack.
+      Level 3 increases the radius to 4.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964706
+    m_Localized: Verdant Trail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964707
+    m_Localized: Acquire Verdant Trail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964708
+    m_Localized: While moving, leave a damaging trail each second for 50% attack.
+      Level 3 trails last 2 seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964709
+    m_Localized: Starfall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964710
+    m_Localized: Acquire Starfall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964711
+    m_Localized: 'Automatic targeted area strike: 200% attack every 4 seconds. Level
+      3 adds a second strike.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964712
+    m_Localized: Sanctuary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964713
+    m_Localized: Acquire Sanctuary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964714
+    m_Localized: Gain 4 defense and repel nearby enemies every 6 seconds. Level 3
+      also heals 3 HP per pulse. No shield.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964715
+    m_Localized: Starfall / power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964716
+    m_Localized: Add 40% of attack to strike damage. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964717
+    m_Localized: Arc Echo / power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964718
+    m_Localized: Add 15% to chained damage. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964719
+    m_Localized: Verdant Trail / power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964720
+    m_Localized: Add 20% of attack to trail damage. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964721
+    m_Localized: Lodestone / reach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964722
+    m_Localized: Add 0.5 to the shared gem/coin attraction radius. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964723
+    m_Localized: Briar Mantle / power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964724
+    m_Localized: Add 30% of attack to retaliation damage. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964725
+    m_Localized: Sanctuary / defense
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964726
+    m_Localized: Add 2 defense. Stacks with attributes and permanent upgrades.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964727
+    m_Localized: Lodestone / pull
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964728
+    m_Localized: Add 1 to attraction speed. Stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964729
+    m_Localized: Ember imps join the hunt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964730
+    m_Localized: Hex Archer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964731
+    m_Localized: The horde grows / archers approach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964732
+    m_Localized: Ember Imp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964733
+    m_Localized: Redcap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964734
+    m_Localized: The final onslaught draws near
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964735
+    m_Localized: The Hollow Warden has fallen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964736
+    m_Localized: The Hollow Warden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964737
+    m_Localized: THE HOLLOW WARDEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964738
+    m_Localized: An elite champion has arrived!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964739
+    m_Localized: Briar Champion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964740
+    m_Localized: Hold on / final two minutes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964741
+    m_Localized: Interface language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964742
+    m_Localized: "\u7E41\u9AD4\u4E2D\u6587"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964743
+    m_Localized: MAX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964744
+    m_Localized: Keep these display settings? Reverting in {0} seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964745
+    m_Localized: 'Starting stats: HP {0} / ATK {1:0.#} / Speed x{2:0.#} / Move {3:0.#}
+      / DEF {4:0.#}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964746
+    m_Localized: Skills
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964747
+    m_Localized: '{0}  {1}/5
+
+      Current +{2} -> Next +{3}  {4}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964748
+    m_Localized: Windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964749
+    m_Localized: Display settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964750
+    m_Localized: '{0}
+
+      Damage x{1:0.##} / Cooldown {2:0.##}s / Range {3:0.#}
+
+      {4}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964751
+    m_Localized: '{0} x{1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964752
+    m_Localized: LOW HEALTH!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964753
+    m_Localized: This display setting is unavailable.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964754
+    m_Localized: Preview first, then confirm to save. Unconfirmed changes revert.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964755
+    m_Localized: Passives
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964756
+    m_Localized: Fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964757
+    m_Localized: '{0}  Lv{1}
+
+      {2}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964758
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964759
+    m_Localized: Music volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964760
+    m_Localized: '{0}  {1}/{2}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964761
+    m_Localized: '{0} coins'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964762
+    m_Localized: Weapons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964763
+    m_Localized: Empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964764
+    m_Localized: '{0}  Lv{1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964765
+    m_Localized: Display settings restored.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964766
+    m_Localized: '{0} reached Lv{1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964767
+    m_Localized: Sound effects volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964768
+    m_Localized: 'Strike: {0:0.#}% attack every 4 seconds. Ready in {1:0.#}s.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964769
+    m_Localized: 'Trail: {0:0.#}% attack / {1:0.#} seconds.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964770
+    m_Localized: Defense +{0:0.#}; repel every 6s and heal {1} HP.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964771
+    m_Localized: Restore {0} HP every {1:0.#} seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964772
+    m_Localized: Level {0} / Kills {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964773
+    m_Localized: 'Damage {0:0.#} / Cooldown {1:0.##}s / Range {2:0.#}
+
+      Projectile
+      hits {3} / Area radius {4:0.#}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964774
+    m_Localized: Magnet radius {0:0.#} / pull speed {1:0.#}.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964775
+    m_Localized: Retaliate for {0:0.#}% attack in radius {1:0.#}.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964776
+    m_Localized: Chain {0:0.#}% damage / {1} bounces / 1 second cooldown.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964777
+    m_Localized: "{0} \xD7 {1}"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

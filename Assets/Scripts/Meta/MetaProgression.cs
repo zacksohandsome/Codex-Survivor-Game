@@ -60,6 +60,13 @@ namespace Survivor.Meta
             if (language != "zh-TW" && language != "en") return false;
             var next = SaveRepository.Clone(Data); next.language = language; return Commit(next);
         }
+        public bool SavePreferences(string language, float music, float sfx, int width, int height, bool fullscreen)
+        {
+            var next = SaveRepository.Clone(Data);
+            next.language = language; next.musicVolume = music; next.sfxVolume = sfx;
+            next.displayWidth = width; next.displayHeight = height; next.fullscreen = fullscreen;
+            return Commit(next);
+        }
         private bool Commit(SaveData next)
         {
             if (!repository.TrySave(next)) { Notice = "save.failed"; return false; }

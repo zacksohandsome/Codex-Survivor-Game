@@ -10,7 +10,7 @@ using UnityEngine.InputSystem.UI;
 
 namespace Survivor.UI
 {
-    public sealed class FlowView : MonoBehaviour
+    public sealed partial class FlowView : MonoBehaviour
     {
         private GameFlow flow;
         private FlowText text;
@@ -21,16 +21,19 @@ namespace Survivor.UI
         private UnityEngine.UI.Image healthFill, experienceFill;
         private TextMeshProUGUI progressText, buildText;
         private TextMeshProUGUI bossText, encounterText;
+        private TextMeshProUGUI lowHealthText;
         private UnityEngine.UI.Image bossFill;
         private string page;
         private string confirmationKey;
         private Action confirmation;
+        private Action cancellation;
+        private TextMeshProUGUI confirmationLabel;
         public bool HasModal => confirmation != null;
         private readonly Color ink = new Color(0.88f, 0.92f, 0.96f);
 
         public void Initialize(GameFlow owner, TextAsset table)
         {
-            flow = owner; text = new FlowText(table);
+            flow = owner; text = new FlowText(table, owner.Config.traditionalText, owner.Config.englishStrings, owner.Config.traditionalStrings);
             var canvasObject = new GameObject("FlowCanvas", typeof(RectTransform), typeof(Canvas), typeof(UnityEngine.UI.CanvasScaler), typeof(UnityEngine.UI.GraphicRaycaster));
             canvasObject.transform.SetParent(transform, false);
             canvasObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
@@ -56,6 +59,7 @@ namespace Survivor.UI
             module.AssignDefaultActions();
             // Mouse UI only. Keyboard ESC is routed through GameFlow; no controller navigation.
             module.move = null; module.submit = null; module.cancel = null;
+            InitializeTooltip(canvasObject.transform);
         }
         private static void Stretch(RectTransform rect, Vector2 min, Vector2 max)
         {
@@ -67,6 +71,7 @@ namespace Survivor.UI
             go.transform.SetParent(content, false);
             go.GetComponent<UnityEngine.UI.LayoutElement>().preferredHeight = height;
             var label = go.GetComponent<TextMeshProUGUI>();
+            if (flow.Config.uiFont != null) label.font = flow.Config.uiFont;
             label.text = value; label.fontSize = size; label.color = ink;
             label.alignment = TextAlignmentOptions.Center; label.raycastTarget = false;
             return label;
@@ -98,25 +103,28 @@ namespace Survivor.UI
             var caption = new GameObject("Caption", typeof(RectTransform), typeof(TextMeshProUGUI));
             caption.transform.SetParent(go.transform, false); Stretch(caption.GetComponent<RectTransform>(), Vector2.zero, Vector2.one);
             var label = caption.GetComponent<TextMeshProUGUI>(); label.text = text.Get(key); label.fontSize = 28;
+            if (flow.Config.uiFont != null) label.font = flow.Config.uiFont;
             label.alignment = TextAlignmentOptions.Center; label.color = enabled ? ink : Color.gray; label.raycastTarget = false;
         }
         public void Back()
         {
-            if (HasModal) { confirmation = null; Render(); }
+            if (HasModal) { confirmation = null; var cancel = cancellation; cancellation = null; cancel?.Invoke(); Render(); }
             else if (page != null) { page = null; Render(); }
         }
-        private void Ask(string key, Action action) { confirmationKey = key; confirmation = action; Render(); }
+        private void Ask(string key, Action action, Action onCancel = null) { confirmationKey = key; confirmation = action; cancellation = onCancel; Render(); }
         public void Render()
         {
+            HideTooltip();
             // These are distinct screen contents, not edits to the persistent Canvas or EventSystem.
             for (int i = content.childCount - 1; i >= 0; i--)
             {
                 var child = content.GetChild(i).gameObject; child.SetActive(false); Destroy(child);
             }
             clock = null; status = null; healthFill = null; experienceFill = null; progressText = null; buildText = null;
-            bossText = encounterText = null; bossFill = null;
+            bossText = encounterText = lowHealthText = null; bossFill = null;
             bool battleHud = !flow.IsTransitioning && !HasModal &&
                 (flow.Session.State == GameState.Battle || flow.Session.State == GameState.IntroCountdown);
+            content.GetComponent<UnityEngine.UI.VerticalLayoutGroup>().enabled = !battleHud;
             backgroundImage.color = battleHud ? Color.clear : new Color(0.035f, 0.055f, 0.09f, 0.97f);
             Stretch(content, battleHud ? new Vector2(0.02f, 0.74f) : new Vector2(0.18f, 0.06f),
                 battleHud ? new Vector2(0.98f, 0.99f) : new Vector2(0.82f, 0.94f));
@@ -125,9 +133,9 @@ namespace Survivor.UI
             if (flow.IsTransitioning) { Label(text.Get("loading"), 40); return; }
             if (HasModal)
             {
-                Label(text.Get(confirmationKey), 30, 130);
-                Button("confirm", () => { var action = confirmation; confirmation = null; action(); });
-                Button("cancel", () => { confirmation = null; Render(); }); return;
+                confirmationLabel = Label(text.Get(confirmationKey), 30, 130);
+                Button("confirm", () => { var action = confirmation; confirmation = null; cancellation = null; action(); });
+                Button("cancel", () => Back()); RefreshClock(); return;
             }
             var session = flow.Session;
             switch (session.State)
@@ -136,14 +144,17 @@ namespace Survivor.UI
                     if (page == "meta")
                     {
                         Label(text.Get("meta"), 48, 80);
-                        Label(string.Format(text.Get("currency"), flow.PermanentData.currency), 26, 45);
+                        Label(text.Format("currency", flow.PermanentData.currency), 26, 45);
+                        Label(PlayerPreview(), 20, 48);
                         for (int i = 0; i < 5; i++)
                         {
                             int stat = i, level = flow.PermanentData.metaUpgradeLevels[i];
-                            Button("meta." + MetaProgression.StatIds[i], () => flow.PurchaseMeta(stat), flow.Meta.CanPurchase(stat));
+                            Button("meta." + MetaProgression.StatIds[i], () => flow.PurchaseMeta(stat), flow.Meta.CanPurchase(stat), height: 70);
                             var caption = content.GetChild(content.childCount - 1).GetComponentInChildren<TextMeshProUGUI>();
-                            caption.text = text.Get("meta." + MetaProgression.StatIds[i]) + "  " + level + "/5  (+" + MetaProgression.Bonuses[i] + "/level)  " +
-                                (level == 5 ? "MAX" : MetaProgression.Price(level) + " coins");
+                            caption.text = text.Format("meta.row", text.Get("meta." + MetaProgression.StatIds[i]), level,
+                                level * MetaProgression.Bonuses[i], Mathf.Min(5, level+1) * MetaProgression.Bonuses[i],
+                                level == 5 ? text.Get("meta.max") : text.Format("meta.cost", MetaProgression.Price(level)));
+                            caption.fontSize = 24;
                         }
                         if (flow.Meta.Notice != null) Label(text.Get(flow.Meta.Notice), 22, 65);
                         Button("meta.refund", () => Ask("meta.refund.confirm", () => flow.RefundMeta()));
@@ -153,49 +164,44 @@ namespace Survivor.UI
                     {
                         var saved = flow.PermanentData;
                         Label(text.Get("stats"), 48, 80);
-                        Label(string.Format(text.Get("stats.summary"), saved.totalRuns, saved.victories, saved.totalKills,
-                            (long)saved.totalSurvivalSeconds / 60, (long)saved.totalSurvivalSeconds % 60), 30, 220);
+                        Label(text.Format("stats.summary", saved.totalRuns, saved.victories, saved.totalKills,
+                            (long)saved.totalSurvivalSeconds / 60, (long)saved.totalSurvivalSeconds % 60, saved.totalRuns-saved.victories), 30, 220);
                         Button("back", () => { page = null; Render(); }); break;
                     }
+                    if (page == "settings") { RenderSettings(); break; }
                     if (page != null)
                     {
                         Label(text.Get(page), 48, 100); Label(text.Get(page + ".note"), 28, 150);
                         Button("back", () => { page = null; Render(); }); break;
                     }
                     Label(text.Get("title"), 64, 110); Label(text.Get("menu.note"), 28, 100);
-                    Label(string.Format(text.Get("currency"), flow.PermanentData.currency), 22, 40);
+                    Label(text.Format("currency", flow.PermanentData.currency), 22, 40);
                     if (flow.Meta.Notice != null) Label(text.Get(flow.Meta.Notice), 22, 70);
                     Button("start", () => { page = null; flow.OpenWeaponSelection(); });
                     foreach (string key in new[] { "meta", "settings", "stats" })
                     { string target = key; Button(key, () => { page = target; Render(); }); }
                     Button("quit", () => Ask("quit.confirm", () => { Application.Quit(); Render(); })); break;
                 case GameState.WeaponSelection:
-                    Label(text.Get("select"), 48, 90); Label(text.Get("select.note"), 24, 80);
+                    Label(text.Get("select"), 42, 65); Label(PlayerPreview(), 20, 50);
                     foreach (var weapon in flow.Config.weapons)
-                    { var choice = weapon; Button(weapon.nameKey, () => flow.SelectWeapon(choice.id), true, session.SelectedWeaponId == choice.id); }
+                    { var choice = weapon; Button(weapon.nameKey, () => flow.SelectWeapon(choice.id), true, session.SelectedWeaponId == choice.id); IconOnLastButton(choice.id); }
                     var selected = Array.Find(flow.Config.weapons, w => w.id == session.SelectedWeaponId);
-                    Label(text.Get(selected == null ? "selection.empty" : selected.descriptionKey), 24, 70);
+                    Label(selected == null ? text.Get("selection.empty") : text.Format("weapon.details", text.Get(selected.nameKey),
+                        selected.damageMultiplier, selected.cooldown, selected.range, text.Get(selected.descriptionKey)), 22, 140);
                     Button("enter", () => flow.StartRun(), selected != null && selected.combatAvailable);
                     Button("back", () => session.ReturnToMenu()); break;
                 case GameState.IntroCountdown:
                 case GameState.Battle:
-                    clock = Label("", 28, 32); status = Label("", 22, 50);
-                    healthFill = Bar("HealthBar", new Color(0.25f, 0.9f, 0.45f));
-                    progressText = Label("", 22, 24); experienceFill = Bar("ExperienceBar", new Color(0.2f, 0.6f, 1));
-                    buildText = Label("", 20, 48);
-                    encounterText = Label("", 22, 24);
-                    bossText = Label("", 22, 24); bossFill = Bar("BossHealth", new Color(0.85f, 0.3f, 0.9f));
-                    Label(text.Get("battle.note"), 18, 20);
-                    Button("pause", () => session.Pause(), height: 36); RefreshClock(); break;
+                    BuildBattleHud(); RefreshClock(); break;
                 case GameState.Pause:
                     Label(text.Get("pause"), 52, 100); clock = Label("", 32, 70); RefreshClock();
-                    Label($"Level {session.Run.Level}  /  Kills {session.Run.Kills}", 26, 60);
+                    Label(text.Format("pause.summary", session.Run.Level, session.Run.Kills), 26, 60);
                     Button("resume", () => flow.Resume());
                     Button("restart", () => Ask("abandon", () => flow.ReturnToMenu(true)));
                     Button("menu", () => Ask("abandon", () => flow.ReturnToMenu())); break;
                 case GameState.LevelUp:
                     Label(text.Get("levelup"), 44, 80);
-                    Label(string.Format(text.Get("upgrade.level"), session.Run.Level), 26, 60);
+                    Label(text.Format("upgrade.level", session.Run.Level), 26, 60);
                     var progression = flow.Progression;
                     if (progression != null && progression.Choices != null)
                     {
@@ -207,13 +213,15 @@ namespace Survivor.UI
                             var button = content.GetChild(content.childCount - 1);
                             var label = button.GetComponentInChildren<TextMeshProUGUI>();
                             label.text = (i + 1) + "  " + text.Get(option.Effect.nameKey) + "\n" + text.Get(option.Effect.descriptionKey) +
-                                "\n" + (option.IsSpecial ? text.Get("upgrade.reward") : string.Format(text.Get("upgrade.current"), option.CurrentLevel));
+                                "\n" + (option.IsSpecial ? text.Get("upgrade.reward") : text.Format("upgrade.current", option.CurrentLevel));
                             label.fontSize = 24;
                             var icon = new GameObject("Icon", typeof(RectTransform), typeof(UnityEngine.UI.Image));
                             icon.transform.SetParent(button, false);
                             var iconRect = icon.GetComponent<RectTransform>(); iconRect.anchorMin = iconRect.anchorMax = new Vector2(0, 0.5f);
                             iconRect.sizeDelta = new Vector2(36, 36); iconRect.anchoredPosition = new Vector2(38, 0);
                             icon.GetComponent<UnityEngine.UI.Image>().color = option.IsSpecial ? new Color(1, 0.8f, 0.25f) : Color.cyan;
+                            var cardSprite = flow.Config.Icon(option.IsSpecial ? option.Effect.effect == Survivor.Data.UpgradeEffect.CurrencyReward ? "coins" : "stat.health" : option.AbilityId);
+                            if(cardSprite != null) { icon.GetComponent<UnityEngine.UI.Image>().sprite = cardSprite; icon.GetComponent<UnityEngine.UI.Image>().color = Color.white; }
                             icon.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
                             label.rectTransform.offsetMin = new Vector2(75, 0);
                             button.GetComponent<UnityEngine.UI.Image>().color = option.IsSpecial
@@ -231,7 +239,7 @@ namespace Survivor.UI
                 case GameState.Result:
                     var result = session.Result;
                     Label(text.Get(result.Won ? "victory" : "defeat"), 52, 90).color = result.Won ? new Color(0.4f, 1, 0.6f) : new Color(1, 0.4f, 0.3f);
-                    Label(string.Format(text.Get("result.summary"), (int)result.SurvivalSeconds / 60, (int)result.SurvivalSeconds % 60,
+                    Label(text.Format("result.summary", (int)result.SurvivalSeconds / 60, (int)result.SurvivalSeconds % 60,
                         result.Kills, result.Level, result.CollectedCurrency), 28, 150);
                     Label(DescribeBuild(result.AbilityLevels), 20, 360);
                     Label(text.Get(flow.SettlementPending ? "save.failed" : "result.note"), 24, 70);
@@ -242,10 +250,12 @@ namespace Survivor.UI
         }
         public void RefreshClock()
         {
+            if (HasModal && confirmationKey == "display.confirm" && confirmationLabel != null)
+                confirmationLabel.text = text.Format("display.confirm", Mathf.CeilToInt((float)flow.Settings.Display.Remaining));
             if (clock == null) return;
             var session = flow.Session;
             var encounterWorld = Survivor.Combat.BattleWorld.Instance;
-            if (encounterText != null) encounterText.text = encounterWorld != null && encounterWorld.NoticeRemaining > 0 ? text.Get(encounterWorld.NoticeKey) : "";
+            if (encounterText != null) encounterText.text = encounterWorld != null && encounterWorld.NoticeRemaining > 0 ? text.Get(encounterWorld.NoticeKey) : flow.UpgradeNoticeRemaining>0 ? flow.UpgradeNoticeLevel>0 ? text.Format("upgrade.notice",text.Get(flow.UpgradeNoticeKey),flow.UpgradeNoticeLevel) : text.Get(flow.UpgradeNoticeKey) : "";
             if (bossText != null)
             {
                 var boss = encounterWorld == null ? null : encounterWorld.Boss;
@@ -253,19 +263,20 @@ namespace Survivor.UI
                 bossText.gameObject.SetActive(visible); bossFill.transform.parent.gameObject.SetActive(visible);
                 if (visible)
                 {
-                    bossText.text = text.Get(boss.Definition.nameKey) + "  " + boss.Health.Current + "/" + boss.Health.Maximum;
+                    bossText.text = text.Format("hud.boss", text.Get(boss.Definition.nameKey), boss.Health.Current, boss.Health.Maximum);
                     SetBar(bossFill, (float)boss.Health.Current / boss.Health.Maximum);
                 }
             }
             clock.text = session.State == GameState.IntroCountdown
                 ? text.Get("countdown") + "  " + Mathf.CeilToInt((float)session.IntroRemaining)
-                : session.State == GameState.Pause ? string.Format(text.Get("survival"), (int)session.BattleSeconds / 60, (int)session.BattleSeconds % 60)
-                : string.Format(text.Get("timer"), Mathf.CeilToInt((float)(600 - session.BattleSeconds)) / 60,
+                : session.State == GameState.Pause ? text.Format("survival", (int)session.BattleSeconds / 60, (int)session.BattleSeconds % 60)
+                : text.Format("timer", Mathf.CeilToInt((float)(600 - session.BattleSeconds)) / 60,
                     Mathf.CeilToInt((float)(600 - session.BattleSeconds)) % 60);
             if (status != null && session.Run != null)
             {
                 var run = session.Run;
-                status.text = string.Format(text.Get("hud.stats"), run.CurrentHealth, run.MaximumHealth, run.Kills,
+                if(lowHealthText!=null) lowHealthText.gameObject.SetActive(run.MaximumHealth>0 && run.CurrentHealth<run.MaximumHealth*0.3f);
+                status.text = text.Format("hud.stats", run.CurrentHealth, run.MaximumHealth, run.Kills,
                     run.Attack, run.AttackSpeed, run.MoveSpeed, run.Defense);
                 status.color = run.MaximumHealth > 0 && run.CurrentHealth < run.MaximumHealth * 0.3f
                     ? new Color(1, 0.4f, 0.3f) : ink;
@@ -279,9 +290,9 @@ namespace Survivor.UI
                 }
                 if (progressText != null && flow.Progression != null)
                 {
-                    progressText.text = string.Format(text.Get("hud.progress"), run.Level, run.Experience, flow.Progression.RequiredExperience, run.CollectedCurrency);
+                    progressText.text = text.Format("hud.progress", run.Level, run.Experience, flow.Progression.RequiredExperience, run.CollectedCurrency);
                     SetBar(experienceFill, (float)((double)run.Experience / flow.Progression.RequiredExperience));
-                    buildText.text = DescribeBuild(run.AbilityLevels, true);
+                    if(buildText != null) buildText.text = DescribeBuild(run.AbilityLevels, true);
                 }
             }
         }
@@ -291,7 +302,7 @@ namespace Survivor.UI
             foreach (var item in levels)
             {
                 if (compact && item.Key.StartsWith("stat.")) continue;
-                entries.Add(text.Get("ability." + item.Key) + " Lv" + item.Value);
+                entries.Add(text.Format("ability.level", text.Get("ability." + item.Key), item.Value));
             }
             return string.Join(compact ? "  |  " : "\n", entries);
         }

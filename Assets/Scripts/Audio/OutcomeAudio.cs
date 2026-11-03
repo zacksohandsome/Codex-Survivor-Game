@@ -24,6 +24,7 @@ namespace Survivor.Audio
             var clip = AudioClip.Create(name, samples.Length, 1, sampleRate, false); clip.SetData(samples, 0); return clip;
         }
         public void Play(bool won) { source.PlayOneShot(won ? victory : defeat); }
+        public void SetVolume(float value) { source.volume = Mathf.Clamp01(value); }
         public void Dispose() { Object.Destroy(victory); Object.Destroy(defeat); }
     }
 }

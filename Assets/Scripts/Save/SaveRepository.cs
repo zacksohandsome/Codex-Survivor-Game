@@ -104,7 +104,12 @@ namespace Survivor.Save
                 var envelope = JsonUtility.FromJson<Envelope>(json);
                 if (envelope == null || envelope.format != 1 || string.IsNullOrEmpty(envelope.payload) || envelope.digest != Digest(envelope.payload)) return false;
                 var candidate = JsonUtility.FromJson<SaveData>(envelope.payload);
-                // Version 1 is the first shipped schema. Unknown versions stay untouched; no speculative migration.
+                // Explicit v1 -> v2 migration; the verified source is preserved until an actual transaction commits.
+                if (candidate != null && candidate.version == 1)
+                {
+                    candidate.version = 2; candidate.musicVolume = 0.6f; candidate.sfxVolume = 0.7f;
+                    candidate.displayWidth = 1920; candidate.displayHeight = 1080; candidate.fullscreen = false;
+                }
                 if (!Valid(candidate)) return false;
                 data = candidate; return true;
             }
@@ -116,13 +121,16 @@ namespace Survivor.Save
         }
         public static bool Valid(SaveData data)
         {
-            if (data == null || data.version != 1 || data.currency < 0 || data.totalRuns < 0 || data.victories < 0 || data.victories > data.totalRuns || data.totalKills < 0 ||
+            if (data == null || data.version != 2 || data.currency < 0 || data.totalRuns < 0 || data.victories < 0 || data.victories > data.totalRuns || data.totalKills < 0 ||
                 double.IsNaN(data.totalSurvivalSeconds) || double.IsInfinity(data.totalSurvivalSeconds) || data.totalSurvivalSeconds < 0 ||
-                data.metaUpgradeLevels == null || data.metaUpgradeLevels.Length != 5 || data.settledRunIds == null) return false;
+                data.metaUpgradeLevels == null || data.metaUpgradeLevels.Length != 5 || data.settledRunIds == null ||
+                !ValidVolume(data.musicVolume) || !ValidVolume(data.sfxVolume) || !Survivor.Settings.DisplayPreview.ValidSize(data.displayWidth,data.displayHeight) ||
+                data.language != "" && data.language != "zh-TW" && data.language != "en") return false;
             foreach (int level in data.metaUpgradeLevels) if (level < 0 || level > 5) return false;
             var ids = new System.Collections.Generic.HashSet<string>();
             foreach (string id in data.settledRunIds) if (string.IsNullOrEmpty(id) || !ids.Add(id)) return false;
             return true;
         }
+        private static bool ValidVolume(float value) => !float.IsNaN(value) && !float.IsInfinity(value) && value >= 0 && value <= 1;
     }
 }

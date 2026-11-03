@@ -2,11 +2,11 @@
   "entries": [
     {
       "key": "title",
-      "text": "CODEX / SURVIVOR"
+      "text": "HOLLOW GROVE / SURVIVOR"
     },
     {
       "key": "stage",
-      "text": "M7 / THE HOLLOW WARDEN"
+      "text": "HOLLOW GROVE"
     },
     {
       "key": "menu.note",
@@ -142,11 +142,11 @@
     },
     {
       "key": "settings.note",
-      "text": "Language, audio and display settings arrive in M8.\nThis M1 preview uses English placeholder text."
+      "text": "Language, audio and display settings"
     },
     {
       "key": "stats.note",
-      "text": "Permanent statistics arrive in M4. No run data is saved in M1."
+      "text": "Statistics include settled battle time only."
     },
     {
       "key": "levelup",
@@ -162,7 +162,7 @@
     },
     {
       "key": "result",
-      "text": "RESULT / Settlement and saving arrive in M4"
+      "text": "RUN RESULTS"
     },
     {
       "key": "loading",
@@ -182,7 +182,7 @@
     },
     {
       "key": "defeat.note",
-      "text": "Run ended. Full results and progression arrive in M3 / M4."
+      "text": "This run has ended."
     },
     {
       "key": "ability.bolt",
@@ -374,7 +374,7 @@
     },
     {
       "key": "stats.summary",
-      "text": "Runs: {0} / Wins: {1}\nTotal kills: {2}\nTotal survival: {3}:{4:00}"
+      "text": "Runs: {0} / Wins: {1} / Deaths: {5}\nTotal kills: {2}\nTotal battle time: {3}:{4:00}"
     },
     {
       "key": "save.failed",
@@ -727,6 +727,154 @@
     {
       "key": "encounter.stage.5",
       "text": "Hold on / final two minutes"
+    },
+    {
+      "key": "settings.language",
+      "text": "Interface language"
+    },
+    {
+      "key": "language.zh-TW",
+      "text": "繁體中文"
+    },
+    {
+      "key": "meta.max",
+      "text": "MAX"
+    },
+    {
+      "key": "display.confirm",
+      "text": "Keep these display settings? Reverting in {0} seconds."
+    },
+    {
+      "key": "player.preview",
+      "text": "Starting stats: HP {0} / ATK {1:0.#} / Speed x{2:0.#} / Move {3:0.#} / DEF {4:0.#}"
+    },
+    {
+      "key": "hud.group.skills",
+      "text": "Skills"
+    },
+    {
+      "key": "meta.row",
+      "text": "{0}  {1}/5\nCurrent +{2} -> Next +{3}  {4}"
+    },
+    {
+      "key": "settings.windowed",
+      "text": "Windowed"
+    },
+    {
+      "key": "settings.display",
+      "text": "Display settings"
+    },
+    {
+      "key": "weapon.details",
+      "text": "{0}\nDamage x{1:0.##} / Cooldown {2:0.##}s / Range {3:0.#}\n{4}"
+    },
+    {
+      "key": "ability.effect.count",
+      "text": "{0} x{1}"
+    },
+    {
+      "key": "hud.lowhealth",
+      "text": "LOW HEALTH!"
+    },
+    {
+      "key": "display.unavailable",
+      "text": "This display setting is unavailable."
+    },
+    {
+      "key": "display.preview.note",
+      "text": "Preview first, then confirm to save. Unconfirmed changes revert."
+    },
+    {
+      "key": "hud.group.passives",
+      "text": "Passives"
+    },
+    {
+      "key": "settings.fullscreen",
+      "text": "Fullscreen"
+    },
+    {
+      "key": "ability.tooltip",
+      "text": "{0}  Lv{1}\n{2}"
+    },
+    {
+      "key": "language.en",
+      "text": "English"
+    },
+    {
+      "key": "settings.music",
+      "text": "Music volume"
+    },
+    {
+      "key": "hud.boss",
+      "text": "{0}  {1}/{2}"
+    },
+    {
+      "key": "meta.cost",
+      "text": "{0} coins"
+    },
+    {
+      "key": "hud.group.weapons",
+      "text": "Weapons"
+    },
+    {
+      "key": "hud.empty",
+      "text": "Empty"
+    },
+    {
+      "key": "ability.level",
+      "text": "{0}  Lv{1}"
+    },
+    {
+      "key": "display.restored",
+      "text": "Display settings restored."
+    },
+    {
+      "key": "upgrade.notice",
+      "text": "{0} reached Lv{1}"
+    },
+    {
+      "key": "settings.sfx",
+      "text": "Sound effects volume"
+    },
+    {
+      "key": "effect.storm",
+      "text": "Strike: {0:0.#}% attack every 4 seconds. Ready in {1:0.#}s."
+    },
+    {
+      "key": "effect.trail",
+      "text": "Trail: {0:0.#}% attack / {1:0.#} seconds."
+    },
+    {
+      "key": "effect.sanctuary",
+      "text": "Defense +{0:0.#}; repel every 6s and heal {1} HP."
+    },
+    {
+      "key": "effect.bloom",
+      "text": "Restore {0} HP every {1:0.#} seconds."
+    },
+    {
+      "key": "pause.summary",
+      "text": "Level {0} / Kills {1}"
+    },
+    {
+      "key": "effect.weapon",
+      "text": "Damage {0:0.#} / Cooldown {1:0.##}s / Range {2:0.#}\nProjectile hits {3} / Area radius {4:0.#}"
+    },
+    {
+      "key": "effect.magnet",
+      "text": "Magnet radius {0:0.#} / pull speed {1:0.#}."
+    },
+    {
+      "key": "effect.thorns",
+      "text": "Retaliate for {0:0.#}% attack in radius {1:0.#}."
+    },
+    {
+      "key": "effect.echo",
+      "text": "Chain {0:0.#}% damage / {1} bounces / 1 second cooldown."
+    },
+    {
+      "key": "display.resolution",
+      "text": "{0} × {1}"
     }
   ]
 }

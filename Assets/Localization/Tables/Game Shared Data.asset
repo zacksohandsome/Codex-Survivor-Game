@@ -1,0 +1,904 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Game Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Game
+  m_TableCollectionNameGuidString: b0c89d8602e43f143b44a00ec865a70e
+  m_Entries:
+  - m_Id: 1924689920
+    m_Key: title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2008576000
+    m_Key: stage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770304
+    m_Key: menu.note
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770305
+    m_Key: start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770306
+    m_Key: meta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770307
+    m_Key: settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770308
+    m_Key: stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770309
+    m_Key: quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770310
+    m_Key: back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770311
+    m_Key: select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770312
+    m_Key: select.note
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770313
+    m_Key: selection.empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770314
+    m_Key: enter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770315
+    m_Key: weapon.bolt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770316
+    m_Key: weapon.bolt.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770317
+    m_Key: weapon.orbit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770318
+    m_Key: weapon.orbit.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770319
+    m_Key: weapon.blast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770320
+    m_Key: weapon.blast.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770321
+    m_Key: weapon.homing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770322
+    m_Key: weapon.homing.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770323
+    m_Key: weapon.pulse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770324
+    m_Key: weapon.pulse.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770325
+    m_Key: battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770326
+    m_Key: battle.note
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770327
+    m_Key: countdown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770328
+    m_Key: pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770329
+    m_Key: resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770330
+    m_Key: restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770331
+    m_Key: menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770332
+    m_Key: abandon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770333
+    m_Key: confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770334
+    m_Key: cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770335
+    m_Key: quit.confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770336
+    m_Key: meta.note
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770337
+    m_Key: settings.note
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770338
+    m_Key: stats.note
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770339
+    m_Key: levelup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770340
+    m_Key: victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770341
+    m_Key: defeat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770342
+    m_Key: result
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770343
+    m_Key: loading
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770344
+    m_Key: currency
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770345
+    m_Key: timer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770346
+    m_Key: hud.stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770347
+    m_Key: defeat.note
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770348
+    m_Key: ability.bolt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770349
+    m_Key: upgrade.reward.coins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012770350
+    m_Key: upgrade.stat.health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964608
+    m_Key: upgrade.bolt.damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964609
+    m_Key: upgrade.bloom.interval
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964610
+    m_Key: upgrade.reward.heal.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964611
+    m_Key: upgrade.reward
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964612
+    m_Key: upgrade.reward.coins.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964613
+    m_Key: survival
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964614
+    m_Key: ability.stat.move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964615
+    m_Key: upgrade.bolt.pierce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964616
+    m_Key: upgrade.stat.defense.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964617
+    m_Key: upgrade.bloom.amount.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964618
+    m_Key: upgrade.stat.defense
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964619
+    m_Key: upgrade.bloom.new.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964620
+    m_Key: upgrade.card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964621
+    m_Key: ability.stat.health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964622
+    m_Key: result.note
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964623
+    m_Key: upgrade.bolt.damage.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964624
+    m_Key: upgrade.bloom.amount
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964625
+    m_Key: hud.progress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964626
+    m_Key: upgrade.stat.move.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964627
+    m_Key: upgrade.stat.attack.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964628
+    m_Key: upgrade.bloom.new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964629
+    m_Key: upgrade.stat.health.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964630
+    m_Key: result.summary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964631
+    m_Key: upgrade.stat.attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964632
+    m_Key: ability.bloom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964633
+    m_Key: upgrade.stat.speed.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964634
+    m_Key: upgrade.note
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964635
+    m_Key: upgrade.reward.heal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964636
+    m_Key: upgrade.level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964637
+    m_Key: ability.stat.attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964638
+    m_Key: upgrade.stat.move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964639
+    m_Key: upgrade.stat.speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964640
+    m_Key: ability.stat.speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964641
+    m_Key: ability.stat.defense
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964642
+    m_Key: upgrade.current
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964643
+    m_Key: upgrade.bolt.pierce.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964644
+    m_Key: upgrade.bloom.interval.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964645
+    m_Key: meta.health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964646
+    m_Key: meta.attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964647
+    m_Key: meta.speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964648
+    m_Key: meta.move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964649
+    m_Key: meta.defense
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964650
+    m_Key: meta.refund
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964651
+    m_Key: meta.refund.confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964652
+    m_Key: stats.summary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964653
+    m_Key: save.failed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964654
+    m_Key: save.retry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964655
+    m_Key: save.recovered
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964656
+    m_Key: save.unreadable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964657
+    m_Key: upgrade.bolt.new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964658
+    m_Key: upgrade.bolt.new.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964659
+    m_Key: upgrade.bolt.area
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964660
+    m_Key: upgrade.bolt.area.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964661
+    m_Key: ability.orbit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964662
+    m_Key: upgrade.orbit.new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964663
+    m_Key: upgrade.orbit.new.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964664
+    m_Key: upgrade.orbit.damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964665
+    m_Key: upgrade.orbit.damage.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964666
+    m_Key: upgrade.orbit.pierce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964667
+    m_Key: upgrade.orbit.pierce.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964668
+    m_Key: upgrade.orbit.area
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964669
+    m_Key: upgrade.orbit.area.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964670
+    m_Key: ability.blast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964671
+    m_Key: upgrade.blast.new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964672
+    m_Key: upgrade.blast.new.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964673
+    m_Key: upgrade.blast.damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964674
+    m_Key: upgrade.blast.damage.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964675
+    m_Key: upgrade.blast.pierce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964676
+    m_Key: upgrade.blast.pierce.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964677
+    m_Key: upgrade.blast.area
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964678
+    m_Key: upgrade.blast.area.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964679
+    m_Key: ability.homing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964680
+    m_Key: upgrade.homing.new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964681
+    m_Key: upgrade.homing.new.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964682
+    m_Key: upgrade.homing.damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964683
+    m_Key: upgrade.homing.damage.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964684
+    m_Key: upgrade.homing.pierce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964685
+    m_Key: upgrade.homing.pierce.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964686
+    m_Key: upgrade.homing.area
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964687
+    m_Key: upgrade.homing.area.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964688
+    m_Key: ability.pulse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964689
+    m_Key: upgrade.pulse.new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964690
+    m_Key: upgrade.pulse.new.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964691
+    m_Key: upgrade.pulse.damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964692
+    m_Key: upgrade.pulse.damage.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964693
+    m_Key: upgrade.pulse.pierce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964694
+    m_Key: upgrade.pulse.pierce.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964695
+    m_Key: upgrade.pulse.area
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964696
+    m_Key: upgrade.pulse.area.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964697
+    m_Key: ability.magnet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964698
+    m_Key: upgrade.magnet.new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964699
+    m_Key: upgrade.magnet.new.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964700
+    m_Key: ability.echo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964701
+    m_Key: upgrade.echo.new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964702
+    m_Key: upgrade.echo.new.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964703
+    m_Key: ability.thorns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964704
+    m_Key: upgrade.thorns.new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964705
+    m_Key: upgrade.thorns.new.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964706
+    m_Key: ability.trail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964707
+    m_Key: upgrade.trail.new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964708
+    m_Key: upgrade.trail.new.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964709
+    m_Key: ability.storm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964710
+    m_Key: upgrade.storm.new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964711
+    m_Key: upgrade.storm.new.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964712
+    m_Key: ability.sanctuary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964713
+    m_Key: upgrade.sanctuary.new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964714
+    m_Key: upgrade.sanctuary.new.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964715
+    m_Key: upgrade.storm.damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964716
+    m_Key: upgrade.storm.damage.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964717
+    m_Key: upgrade.echo.damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964718
+    m_Key: upgrade.echo.damage.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964719
+    m_Key: upgrade.trail.damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964720
+    m_Key: upgrade.trail.damage.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964721
+    m_Key: upgrade.magnet.radius
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964722
+    m_Key: upgrade.magnet.radius.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964723
+    m_Key: upgrade.thorns.damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964724
+    m_Key: upgrade.thorns.damage.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964725
+    m_Key: upgrade.sanctuary.defense
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964726
+    m_Key: upgrade.sanctuary.defense.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964727
+    m_Key: upgrade.magnet.speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964728
+    m_Key: upgrade.magnet.speed.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964729
+    m_Key: encounter.stage.3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964730
+    m_Key: enemy.ranged
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964731
+    m_Key: encounter.stage.2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964732
+    m_Key: enemy.bomber
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964733
+    m_Key: enemy.melee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964734
+    m_Key: encounter.stage.4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964735
+    m_Key: encounter.boss.defeated
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964736
+    m_Key: enemy.boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964737
+    m_Key: encounter.boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964738
+    m_Key: encounter.elite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964739
+    m_Key: enemy.elite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964740
+    m_Key: encounter.stage.5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964741
+    m_Key: settings.language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964742
+    m_Key: language.zh-TW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964743
+    m_Key: meta.max
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964744
+    m_Key: display.confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964745
+    m_Key: player.preview
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964746
+    m_Key: hud.group.skills
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964747
+    m_Key: meta.row
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964748
+    m_Key: settings.windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964749
+    m_Key: settings.display
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964750
+    m_Key: weapon.details
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964751
+    m_Key: ability.effect.count
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964752
+    m_Key: hud.lowhealth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964753
+    m_Key: display.unavailable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964754
+    m_Key: display.preview.note
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964755
+    m_Key: hud.group.passives
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964756
+    m_Key: settings.fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964757
+    m_Key: ability.tooltip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964758
+    m_Key: language.en
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964759
+    m_Key: settings.music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964760
+    m_Key: hud.boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964761
+    m_Key: meta.cost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964762
+    m_Key: hud.group.weapons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964763
+    m_Key: hud.empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964764
+    m_Key: ability.level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964765
+    m_Key: display.restored
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964766
+    m_Key: upgrade.notice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964767
+    m_Key: settings.sfx
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964768
+    m_Key: effect.storm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964769
+    m_Key: effect.trail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964770
+    m_Key: effect.sanctuary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964771
+    m_Key: effect.bloom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964772
+    m_Key: pause.summary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964773
+    m_Key: effect.weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964774
+    m_Key: effect.magnet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964775
+    m_Key: effect.thorns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964776
+    m_Key: effect.echo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2016964777
+    m_Key: display.resolution
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 3674971456359891265
+  references:
+    version: 2
+    RefIds:
+    - rid: 3674971456359891265
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1793729628481

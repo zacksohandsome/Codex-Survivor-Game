@@ -13,3 +13,9 @@
 官方必要資源附帶的 EmojiOne 圖像與 Sprite Asset 並未用於介面；附帶歸屬檔僅指向外部條款，未足以確認本次再散布條件。因此已移除 Assets/UI/TextMeshPro/Sprites、Resources/Sprite Assets，並清空 TMP 預設 Sprite 引用、停用 Emoji；不納入提交或交付。
 
 本階段沒有使用 ImageGen、第三方素材下載或 OS 字型複製；無 AI 圖像提示詞。正式內容與中文字型於後續里程碑逐項補錄，不以此表代替最終授權檢查。
+
+## M8 新增
+
+- Noto Sans CJK TC Regular：官方 notofonts/noto-cjk，`Sans/OTF/TraditionalChinese/NotoSansCJKtc-Regular.otf`，SIL OFL 1.1。完整授權與著作權聲明隨附 Assets/Fonts/OFL-NotoSansTC.txt；允許嵌入及商用散布，保留授權。TMP 圖集由本專案生成，未修改字型設計。
+- 能力圖示：內建 ImageGen 生成，來源與完整提示詞見 ART_GENERATION.md、ArtSources/Icons-v1.png。無第三方圖像輸入；未宣稱生成圖像具有排他權。角色與地板原圖已準備，M9 才接入。
+- 字型官方來源：https://github.com/notofonts/noto-cjk/blob/main/Sans/OTF/TraditionalChinese/NotoSansCJKtc-Regular.otf 。
