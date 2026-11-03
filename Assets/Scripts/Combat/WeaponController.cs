@@ -68,7 +68,12 @@ namespace Survivor.Combat
                     }
                 }
             }
-            if (fired) RemainingCooldown = weapon.cooldown / player.AttackSpeed;
+            if (fired)
+            {
+                RemainingCooldown = weapon.cooldown / player.AttackSpeed;
+                player.Motion.Strike(Vector2.right);
+                Survivor.Core.GameFlow.Instance.Audio.PlayCombat("attack",0.1f);
+            }
         }
     }
 }

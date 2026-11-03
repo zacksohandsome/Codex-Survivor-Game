@@ -61,6 +61,7 @@ namespace Survivor.Drop
                 // Keep the entire physical bundle if its currency notification cannot be shown yet.
                 if (currency > 0 && !world.TryShowCurrency(pickup.transform.position, currency)) continue;
                 flow.Session.Run.CollectedCurrency = checked(flow.Session.Run.CollectedCurrency + currency);
+                if(currency>0)flow.Audio.PlayCombat("coin",0.15f);
                 Pool.Return(pickup);
                 flow.Progression.GainExperience(experience);
             }

@@ -12,8 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6aa383e9d40c1d4eabfee6ebc6204c6, type: 3}
   m_Name: Melee
   m_EditorClassIdentifier: Survivor.Runtime::Survivor.Data.EnemyDefinition
+  kind: 0
+  sprite: {fileID: 1263114195, guid: 3f7cbf49745c68843b18151f217dc153, type: 3}
+  nameKey: enemy.melee
   maxHealth: 28
   defense: 0
   moveSpeed: 2.2
   contactDamage: 14
   radius: 0.45
+  color: {r: 1, g: 1, b: 1, a: 1}
+  attackCooldown: 2.2
+  windupSeconds: 0.7
+  attackRange: 10
+  blastRadius: 2.5
+  projectileSpeed: 6
+  projectileLifetime: 6
+  experience: 4
+  currencyValue: 1
+  currencyChance: 0.3

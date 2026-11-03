@@ -29,6 +29,8 @@ namespace Survivor.Enemy
         private uint generation;
         private float warningRemaining, flashRemaining, stuckTimer;
         private Vector2 lastPosition;
+        private Sprite fallbackSprite;
+        public Survivor.Visuals.CharacterMotion Motion { get; private set; }
         public void Initialize(EnemyDefinition definition, Vector2 position, float warningTime, float healthScale = 1, float damageScale = 1, float speedScale = 1)
         {
             Definition = definition; transform.position = position; lastPosition = position;
@@ -36,7 +38,10 @@ namespace Survivor.Enemy
             MoveSpeed = definition.moveSpeed * speedScale; ContactDamage = definition.contactDamage * damageScale;
             hitbox.radius = definition.radius; warningRemaining = warningTime;
             body.enabled = warningTime <= 0; hitbox.enabled = warningTime <= 0; warning.enabled = warningTime > 0;
-            body.transform.localScale = Vector3.one * definition.radius * 2; body.color = definition.color;
+            if(fallbackSprite==null)fallbackSprite=body.sprite;
+            body.sprite=definition.sprite!=null?definition.sprite:fallbackSprite;body.color=definition.color;
+            Motion=GetComponent<Survivor.Visuals.CharacterMotion>()??gameObject.AddComponent<Survivor.Visuals.CharacterMotion>();
+            Motion.Initialize(body,definition.radius*3.2f);
             healthBar.localPosition = Vector3.up * (definition.radius + 0.3f);
             healthBar.localScale = new Vector3(definition.radius * 2, 0.1f, 1);
             AttackCooldownRemaining = definition.attackCooldown;
@@ -53,8 +58,8 @@ namespace Survivor.Enemy
             }
             if (!IsAlive) return;
             flashRemaining = Mathf.Max(0, flashRemaining - delta);
-            body.color = flashRemaining > 0 ? Color.white : Definition.color;
-            if (world != null && TickAttack(delta, player, world)) return;
+            body.color = flashRemaining > 0 ? new Color(1,0.45f,0.45f) : Definition.color;
+            if (world != null && TickAttack(delta, player, world)) { Motion.Tick(delta,Vector2.zero); return; }
             Vector2 position = transform.position, direction = (player - position).normalized;
             if (Kind == EnemyKind.Ranged)
             {
@@ -69,6 +74,7 @@ namespace Survivor.Enemy
                 lastPosition = position; stuckTimer = 0;
             }
             transform.position = Survivor.Player.PlayerActor.ClampPosition(position, config.arenaHalfSize, Definition.radius);
+            Motion.Tick(delta,direction);
         }
         private bool TickAttack(float delta, Vector2 player, BattleWorld world)
         {
@@ -115,6 +121,7 @@ namespace Survivor.Enemy
         }
         private void BeginAttack(EnemyAttack type, Vector2 center, float radius)
         {
+            Motion.Strike(Vector2.right);
             Attack = type; AttackWarningRemaining = Definition.windupSeconds; TelegraphCenter = center; TelegraphRadius = radius;
             warning.enabled = true; warning.transform.position = center; warning.transform.localScale = Vector3.one * radius * 2;
             warning.transform.rotation = Quaternion.identity; warning.color = new Color(1, 0.2f, 0.1f, 0.45f);
@@ -130,10 +137,11 @@ namespace Survivor.Enemy
         {
             if (!IsAlive) return 0;
             int damage = Health.TakeDamage(raw); flashRemaining = flashSeconds; healthBar.gameObject.SetActive(true);
-            healthFill.localScale = new Vector3((float)Health.Current / Health.Maximum, 1, 1); body.color = Color.white; return damage;
+            healthFill.localScale = new Vector3((float)Health.Current / Health.Maximum, 1, 1); body.color = new Color(1,0.45f,0.45f); return damage;
         }
         public override void ResetForRent()
         {
+            Motion?.ResetPose();
             generation++; Health = null; Definition = null; warningRemaining = flashRemaining = stuckTimer = 0; RecoveryCount = 0; body.enabled = false;
             healthBar.gameObject.SetActive(false); healthFill.localScale = Vector3.one;
             warning.enabled = false; warning.transform.localPosition = Vector3.zero; warning.transform.rotation = Quaternion.identity;

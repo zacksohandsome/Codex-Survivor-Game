@@ -40,7 +40,7 @@ namespace Survivor.Core
         private bool focused = true;
         private float originalTimeScale;
         private float outcomeRemaining;
-        private OutcomeAudio outcomeAudio;
+        public AudioDirector Audio { get; private set; }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatic() { Instance = null; }
@@ -54,8 +54,8 @@ namespace Survivor.Core
             Meta = new MetaProgression(new SaveRepository(SaveDirectoryOverride ?? System.IO.Path.Combine(Application.persistentDataPath, "Saves")));
             Settings = new SettingsController(Meta);
             input = new GameInputRouter(inputActions);
-            outcomeAudio = new OutcomeAudio(gameObject);
-            outcomeAudio.SetVolume(Meta.Data.sfxVolume);
+            Audio = gameObject.AddComponent<AudioDirector>();
+            Audio.Initialize(config.audio,Meta.Data.musicVolume,Meta.Data.sfxVolume);
             view = gameObject.AddComponent<FlowView>();
             view.Initialize(this, textTable);
             Session.Changed += OnStateChanged;
@@ -94,13 +94,19 @@ namespace Survivor.Core
         }
         private void OnStateChanged()
         {
+            Audio.ChangeState(Session.State);
+            if(Session.State==GameState.LevelUp)
+            {
+                Audio.PlayUi("levelup");
+                if(BattleWorld.Instance!=null)BattleWorld.Instance.EmitBurst(BattleWorld.Instance.Player.transform.position,new Color(0.3f,1,0.8f),true);
+            }
             input.BlockMovement(); Movement = Vector2.zero;
             Time.timeScale = Session.State == GameState.Battle ? 1 : 0;
             if (Session.State == GameState.Victory || Session.State == GameState.Defeat)
             {
                 if (BattleWorld.Instance != null) BattleWorld.Instance.ClearForEnd();
                 outcomeRemaining = Session.State == GameState.Defeat ? 0.45f : 0;
-                outcomeAudio.Play(Session.State == GameState.Victory);
+                Audio.PlayUi(Session.State == GameState.Victory?"victory":"defeat");
             }
             if (Session.State == GameState.Result)
             {
@@ -162,7 +168,7 @@ namespace Survivor.Core
         public bool SetVolumes(float music,float sfx)
         {
             if(!Meta.SavePreferences(Meta.Data.language,music,sfx,Meta.Data.displayWidth,Meta.Data.displayHeight,Meta.Data.fullscreen)) return false;
-            outcomeAudio.SetVolume(sfx); return true;
+            Audio.SetVolumes(music,sfx); return true;
         }
         public bool PreviewDisplay(int width,int height,bool fullscreen)
         {
@@ -219,7 +225,6 @@ namespace Survivor.Core
             Settings?.Cancel();
             Session.Changed -= OnStateChanged;
             input.Dispose();
-            outcomeAudio.Dispose();
             Time.timeScale = originalTimeScale; Instance = null;
         }
     }

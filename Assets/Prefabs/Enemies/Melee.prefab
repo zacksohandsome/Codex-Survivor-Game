@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 9175650036268262378}
   - component: {fileID: 5349975377496190566}
   - component: {fileID: 6957225980350937443}
+  - component: {fileID: 9131440261252071220}
   m_Layer: 8
   m_Name: Melee
   m_TagString: Untagged
@@ -304,6 +305,18 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &9131440261252071220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5367304895077664461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb491e7c53392d4a83465aef5d3fd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Survivor.Runtime::Survivor.Visuals.CharacterMotion
 --- !u!1 &7188540153199806640
 GameObject:
   m_ObjectHideFlags: 0

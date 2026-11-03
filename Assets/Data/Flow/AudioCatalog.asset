@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d968fe28ca00ec458085289a61c4cac, type: 3}
+  m_Name: AudioCatalog
+  m_EditorClassIdentifier: Survivor.Runtime::Survivor.Data.AudioCatalog
+  menuMusic: {fileID: 8300000, guid: 49fc2f34706968e4c8adeb489f0a7bfe, type: 3}
+  battleMusic: {fileID: 8300000, guid: a5e13a36dff5a744eba1e0937557289c, type: 3}
+  ids:
+  - ui
+  - attack
+  - hurt
+  - death
+  - levelup
+  - spawn
+  - elite
+  - boss
+  - coin
+  - stage
+  - boss.defeated
+  - victory
+  - defeat
+  - skill
+  clips:
+  - {fileID: 8300000, guid: 46bb131ab35bf6e479bf08785d0c7eda, type: 3}
+  - {fileID: 8300000, guid: 5c274c00577987340809ece689ac178f, type: 3}
+  - {fileID: 8300000, guid: 7c258a6f545cbfc4cb2c14a06b7930e5, type: 3}
+  - {fileID: 8300000, guid: ee1e3c471837ae84bbe9972d47e00560, type: 3}
+  - {fileID: 8300000, guid: 4a4243e462863e341a67576b22c23ed7, type: 3}
+  - {fileID: 8300000, guid: 268df0477054f70408970fb042dedf47, type: 3}
+  - {fileID: 8300000, guid: fa823df214c00724a8a562d972ca5c36, type: 3}
+  - {fileID: 8300000, guid: 021e4cbec4acd4e49ac9c01f97ce8017, type: 3}
+  - {fileID: 8300000, guid: 2c835f9005a40db45be83e8aaa2c65a8, type: 3}
+  - {fileID: 8300000, guid: 8fd7a8a11c5ec0d40a8be266a5be4b0c, type: 3}
+  - {fileID: 8300000, guid: a03c2e34e943dec4a8106d790daf391f, type: 3}
+  - {fileID: 8300000, guid: bbb0f7659ad7f1046bb45c78e3ac8eb0, type: 3}
+  - {fileID: 8300000, guid: d46c5428bcb37c140a5a2acd8f1f24b8, type: 3}
+  - {fileID: 8300000, guid: 50a176bab71872f438e8d37863731793, type: 3}

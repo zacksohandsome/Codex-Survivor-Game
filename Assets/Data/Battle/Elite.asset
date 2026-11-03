@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Elite
   m_EditorClassIdentifier: Survivor.Runtime::Survivor.Data.EnemyDefinition
   kind: 3
+  sprite: {fileID: 663631934, guid: 3f7cbf49745c68843b18151f217dc153, type: 3}
   nameKey: enemy.elite
   maxHealth: 500
   defense: 0
   moveSpeed: 2.65
   contactDamage: 24
   radius: 0.7
-  color: {r: 1, g: 0.3, b: 0.75, a: 1}
+  color: {r: 1, g: 1, b: 1, a: 1}
   attackCooldown: 2.2
   windupSeconds: 0.7
   attackRange: 10

@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Bomber
   m_EditorClassIdentifier: Survivor.Runtime::Survivor.Data.EnemyDefinition
   kind: 2
+  sprite: {fileID: 1780742808, guid: 3f7cbf49745c68843b18151f217dc153, type: 3}
   nameKey: enemy.bomber
   maxHealth: 22
   defense: 0
   moveSpeed: 2.7
   contactDamage: 18
   radius: 0.4
-  color: {r: 1, g: 0.65, b: 0.15, a: 1}
+  color: {r: 1, g: 1, b: 1, a: 1}
   attackCooldown: 2.2
   windupSeconds: 1
   attackRange: 2.3

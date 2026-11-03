@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: Survivor.Runtime::Survivor.Data.EnemyDefinition
   kind: 4
+  sprite: {fileID: 1123717452, guid: 3f7cbf49745c68843b18151f217dc153, type: 3}
   nameKey: enemy.boss
   maxHealth: 2600
   defense: 0
   moveSpeed: 1.5
   contactDamage: 30
   radius: 1.1
-  color: {r: 0.55, g: 0.25, b: 0.9, a: 1}
+  color: {r: 1, g: 1, b: 1, a: 1}
   attackCooldown: 3
   windupSeconds: 1
   attackRange: 10

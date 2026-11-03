@@ -22,6 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b0dd79af86da6aa47950ee58f0054020, type: 2}
   - {fileID: 11400000, guid: b188c9d0de627854ab0b8a2fab58ea13, type: 2}
   battle: {fileID: 11400000, guid: d0bb4be98b1657a4fba33b967ed9c55d, type: 2}
+  audio: {fileID: 11400000, guid: d6a379b3403639c449ed39eb2adab1a2, type: 2}
   traditionalText: {fileID: 4900000, guid: b70ce9a76700ac143ac42e548f52e0db, type: 3}
   uiFont: {fileID: 11400000, guid: f9906f79f7b42f1459d6d1c35581805d, type: 2}
   englishStrings: {fileID: 11400000, guid: 447ce8f928c8f0149a4ea1419bac5d05, type: 2}

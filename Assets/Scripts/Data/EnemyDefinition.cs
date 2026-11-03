@@ -7,6 +7,7 @@ namespace Survivor.Data
     public sealed class EnemyDefinition : ScriptableObject
     {
         public EnemyKind kind;
+        public Sprite sprite;
         public string nameKey = "enemy.melee";
         public int maxHealth = 28;
         public float defense = 0, moveSpeed = 2.2f, contactDamage = 14, radius = 0.45f;

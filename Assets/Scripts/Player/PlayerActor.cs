@@ -11,6 +11,8 @@ namespace Survivor.Player
     {
         public SpriteRenderer body;
         public CircleCollider2D hitbox;
+        public Color tint = new Color(0.15f, 0.9f, 0.9f);
+        public Survivor.Visuals.CharacterMotion Motion { get; private set; }
         public Health Health { get; private set; }
         public float Attack { get; private set; }
         public float AttackSpeed { get; private set; }
@@ -22,13 +24,16 @@ namespace Survivor.Player
             Attack = settings.playerAttack; AttackSpeed = Mathf.Clamp(settings.playerAttackSpeed, 0.1f, settings.attackSpeedCap);
             MoveSpeed = Mathf.Clamp(settings.playerMoveSpeed, 0, settings.moveSpeedCap);
             hitbox.radius = settings.playerRadius; transform.position = Vector3.zero;
+            Motion = GetComponent<Survivor.Visuals.CharacterMotion>() ?? gameObject.AddComponent<Survivor.Visuals.CharacterMotion>();
+            Motion.Initialize(body, settings.playerRadius * 3.2f);
         }
         public void Tick(float delta, Vector2 direction)
         {
             Health.Tick(delta);
             transform.position = ClampPosition((Vector2)transform.position + Vector2.ClampMagnitude(direction, 1) * (MoveSpeed * delta), config.arenaHalfSize, config.playerRadius);
             bool blink = Health.InvincibleRemaining > 0 && (int)(Health.InvincibleRemaining / config.blinkInterval) % 2 == 0;
-            body.color = blink ? new Color(1, 1, 1, 0.3f) : new Color(0.15f, 0.9f, 0.9f);
+            body.color = blink ? new Color(1, 0.55f, 0.55f, 0.35f) : tint;
+            Motion.Tick(delta, direction);
         }
         public void ApplyBuild(BuildState build)
         {

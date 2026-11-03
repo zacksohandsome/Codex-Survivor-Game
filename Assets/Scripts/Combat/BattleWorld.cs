@@ -21,6 +21,8 @@ namespace Survivor.Combat
         public PickupActor pickupPrefab;
         public AreaEffectActor areaPrefab;
         public HostileProjectileActor hostileProjectilePrefab;
+        public Survivor.Visuals.BurstActor burstPrefab;
+        public BoundedPool<Survivor.Visuals.BurstActor> Bursts { get; private set; }
         public Camera battleCamera;
         public PlayerActor Player { get; private set; }
         public BoundedPool<EnemyActor> Enemies { get; private set; }
@@ -73,6 +75,7 @@ namespace Survivor.Combat
             DamageNumbers = new BoundedPool<DamageNumber>(config.damageNumberCapacity, () => Instantiate(damageNumberPrefab, transform));
             Pickups = new PickupManager(this, pickupPrefab, config.progression);
             Areas = new BoundedPool<AreaEffectActor>(config.areaCapacity, () => Instantiate(areaPrefab, transform));
+            if(burstPrefab!=null)Bursts=new BoundedPool<Survivor.Visuals.BurstActor>(48,()=>Instantiate(burstPrefab,transform));
             foreach (var weapon in GameFlow.Instance.Config.weapons)
                 if (weapon.id != config.weapon.id) controllers.Add(weapon.id, new WeaponController());
             regenerationRemaining = config.progression.regenInterval;
@@ -109,6 +112,7 @@ namespace Survivor.Combat
             var flow = GameFlow.Instance;
             if (flow == null || flow.IsTransitioning || flow.Session.State != GameState.Battle || delta <= 0) return;
             NoticeRemaining = Mathf.Max(0, NoticeRemaining - delta);
+            if(Bursts!=null)foreach(var burst in Bursts.Items)if(burst.IsRented){burst.Tick(delta);if(burst.Remaining<=0)Bursts.Return(burst);}
             ApplyBuild();
             foreach (var number in DamageNumbers.Items)
             {
@@ -149,7 +153,7 @@ namespace Survivor.Combat
                 if (!enemy.IsAlive || Player.Health.InvincibleRemaining > 0) continue;
                 if (enemy.hitbox.Distance(Player.hitbox).distance <= 0)
                 {
-                    HitPlayer(enemy.ContactDamage);
+                    if(HitPlayer(enemy.ContactDamage)>0)enemy.Motion.Strike((Vector2)Player.transform.position-(Vector2)enemy.transform.position);
                     if (flow.Session.State != GameState.Battle) break;
                 }
             }
@@ -202,10 +206,15 @@ namespace Survivor.Combat
         {
             bool special = definition.kind == EnemyKind.Elite || definition.kind == EnemyKind.Boss;
             var enemy = special ? Specials.Rent() : Enemies.Rent();
-            if (enemy != null) enemy.Initialize(definition, position, warningSeconds,
-                stageScaled ? config.encounters.healthScale[DifficultyStage] : 1,
-                stageScaled ? config.encounters.damageScale[DifficultyStage] : 1,
-                stageScaled ? config.encounters.speedScale[DifficultyStage] : 1);
+            if (enemy != null)
+            {
+                enemy.Initialize(definition, position, warningSeconds,
+                    stageScaled ? config.encounters.healthScale[DifficultyStage] : 1,
+                    stageScaled ? config.encounters.damageScale[DifficultyStage] : 1,
+                    stageScaled ? config.encounters.speedScale[DifficultyStage] : 1);
+                EmitBurst(position,new Color(0.5f,0.8f,1),special);
+                GameFlow.Instance.Audio.PlayCombat("spawn",0.5f);
+            }
             return enemy;
         }
         public ProjectileActor LaunchProjectile(Vector2 position, Vector2 direction, float damage, WeaponDefinition weapon, int extraHits = 0, float orbitAngle = 0)
@@ -229,11 +238,14 @@ namespace Survivor.Combat
             if (!enemy.IsAlive || raw <= 0 || DisplayCapacity <= 0) return;
             Vector2 hitPosition = enemy.transform.position;
             int damage = enemy.TakeDamage(raw, config.hitFlashSeconds);
+            EmitBurst(hitPosition,new Color(1,0.8f,0.4f),false);
             EmitNumber(enemy.transform.position, damage, false);
             if (enemy.Health.Current == 0)
             {
                 var position = enemy.transform.position;
                 var definition = enemy.Definition;
+                EmitBurst(position,definition.kind==EnemyKind.Boss?new Color(0.8f,0.3f,1):new Color(0.9f,0.5f,0.2f),true);
+                GameFlow.Instance.Audio.PlayCombat("death",0.15f);
                 if (enemy.Kind == EnemyKind.Boss) Notify("encounter.boss.defeated");
                 ReturnEnemy(enemy); GameFlow.Instance.Session.Run.Kills++;
                 Pickups.Spawn(position, definition == config.enemy ? config.progression.enemyExperience : definition.experience, 0);
@@ -246,7 +258,7 @@ namespace Survivor.Combat
         public AreaEffectActor EmitArea(Vector2 position, float radius, float damage, float seconds, float delay, bool expanding, Color tint)
         {
             var area = Areas.Rent();
-            if (area != null) area.Fire(position, radius, damage, seconds, delay, expanding, tint);
+            if (area != null) { area.Fire(position, radius, damage, seconds, delay, expanding, tint); EmitBurst(position,tint,true); GameFlow.Instance.Audio.PlayCombat("skill",0.3f); }
             return area;
         }
         public void RecycleProjectile(ProjectileActor projectile)
@@ -257,7 +269,15 @@ namespace Survivor.Combat
         public void ReturnEnemy(EnemyActor enemy)
         { if (enemy.IsSpecial) Specials.Return(enemy); else Enemies.Return(enemy); }
         public bool ChooseBossRanged() => random.Next(2) == 0;
-        public void Notify(string key) { NoticeKey = key; NoticeRemaining = 4; }
+        public void Notify(string key)
+        {
+            NoticeKey = key; NoticeRemaining = 4;
+            GameFlow.Instance.Audio.PlayUi(key=="encounter.elite"?"elite":key=="encounter.boss"?"boss":key=="encounter.boss.defeated"?"boss.defeated":"stage");
+        }
+        public Survivor.Visuals.BurstActor EmitBurst(Vector2 position,Color color,bool strong)
+        {
+            var burst=Bursts?.Rent();if(burst!=null)burst.Fire(position,color,strong);return burst;
+        }
         public HostileProjectileActor FireHostile(Vector2 position, Vector2 direction, float raw, float speed, float lifetime)
         {
             if (GameFlow.Instance.Session.State != GameState.Battle || direction.sqrMagnitude == 0) return null;
@@ -269,6 +289,7 @@ namespace Survivor.Combat
         {
             if (GameFlow.Instance.Session.State != GameState.Battle) return 0;
             int damage = Player.Health.TakeDamage(raw);
+            if(damage>0){GameFlow.Instance.Audio.PlayCombat("hurt",0.1f);EmitBurst(Player.transform.position,new Color(1,0.25f,0.25f),true);}
             if (Player.Health.Current == 0) GameFlow.Instance.Session.Finish(false);
             else if (damage > 0) Passives.OnPlayerHit(this);
             return damage;
@@ -325,12 +346,13 @@ namespace Survivor.Combat
             foreach (var projectile in Projectiles.Items) RecycleProjectile(projectile);
             foreach (var number in DamageNumbers.Items) DamageNumbers.Return(number);
             foreach (var area in Areas.Items) Areas.Return(area);
+            if(Bursts!=null)foreach(var burst in Bursts.Items)Bursts.Return(burst);
             Pickups.Clear(); Player.hitbox.enabled = false;
         }
         public void PresentDefeat(float remaining)
         {
-            Player.body.color = new Color(0.15f, 0.9f, 0.9f, Mathf.Clamp01(remaining / 0.45f));
-            Player.body.transform.localScale = Vector3.one * (0.6f + 0.3f * Mathf.Clamp01(remaining / 0.45f));
+            var tint=Player.tint;tint.a=Mathf.Clamp01(remaining/0.45f);Player.body.color=tint;
+            Player.body.transform.localScale = Player.Motion.BaseScale * (0.6f + 0.3f * Mathf.Clamp01(remaining / 0.45f));
         }
         private void OnDestroy() { if (Instance == this) Instance = null; }
     }

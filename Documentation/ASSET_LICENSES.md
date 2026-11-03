@@ -19,3 +19,9 @@
 - Noto Sans CJK TC Regular：官方 notofonts/noto-cjk，`Sans/OTF/TraditionalChinese/NotoSansCJKtc-Regular.otf`，SIL OFL 1.1。完整授權與著作權聲明隨附 Assets/Fonts/OFL-NotoSansTC.txt；允許嵌入及商用散布，保留授權。TMP 圖集由本專案生成，未修改字型設計。
 - 能力圖示：內建 ImageGen 生成，來源與完整提示詞見 ART_GENERATION.md、ArtSources/Icons-v1.png。無第三方圖像輸入；未宣稱生成圖像具有排他權。角色與地板原圖已準備，M9 才接入。
 - 字型官方來源：https://github.com/notofonts/noto-cjk/blob/main/Sans/OTF/TraditionalChinese/NotoSansCJKtc-Regular.otf 。
+
+## M9 新增
+
+- Characters.png、Floor.png：內建 ImageGen，無外部參考圖；原圖、工具及完整提示詞見 ART_GENERATION.md。由本專案切片／匯入；依生成工具適用條款使用，不宣稱排他著作權。
+- 角色動作、Burst 粒子／材質：本專案程式及既有 Unity URP shader，無外部動畫資源。
+- Audio/Generated 中兩首音樂與 14 種音效：M9AudioBuilder.cs 原創音序／包絡／正弦合成，沒有取樣第三方錄音或旋律；本專案生成並隨專案使用，無額外音源授權依賴。保留合成程式以重製。

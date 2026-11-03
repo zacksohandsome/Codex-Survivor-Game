@@ -99,7 +99,7 @@ namespace Survivor.UI
             image.color = selected ? new Color(0.12f, 0.45f, 0.40f) : new Color(0.10f, 0.16f, 0.24f);
             var button = go.GetComponent<UnityEngine.UI.Button>(); button.targetGraphic = image; button.interactable = enabled;
             button.navigation = new UnityEngine.UI.Navigation { mode = UnityEngine.UI.Navigation.Mode.None };
-            button.onClick.AddListener(() => action());
+            button.onClick.AddListener(() => { flow.Audio.PlayUi("ui"); action(); });
             var caption = new GameObject("Caption", typeof(RectTransform), typeof(TextMeshProUGUI));
             caption.transform.SetParent(go.transform, false); Stretch(caption.GetComponent<RectTransform>(), Vector2.zero, Vector2.one);
             var label = caption.GetComponent<TextMeshProUGUI>(); label.text = text.Get(key); label.fontSize = 28;
@@ -125,7 +125,7 @@ namespace Survivor.UI
             bool battleHud = !flow.IsTransitioning && !HasModal &&
                 (flow.Session.State == GameState.Battle || flow.Session.State == GameState.IntroCountdown);
             content.GetComponent<UnityEngine.UI.VerticalLayoutGroup>().enabled = !battleHud;
-            backgroundImage.color = battleHud ? Color.clear : new Color(0.035f, 0.055f, 0.09f, 0.97f);
+            backgroundImage.color = battleHud ? Color.clear : new Color(0.035f, 0.055f, 0.09f, flow.Session.State==GameState.MainMenu?0.25f:0.97f);
             Stretch(content, battleHud ? new Vector2(0.02f, 0.74f) : new Vector2(0.18f, 0.06f),
                 battleHud ? new Vector2(0.98f, 0.99f) : new Vector2(0.82f, 0.94f));
             content.GetComponent<UnityEngine.UI.VerticalLayoutGroup>().spacing = battleHud ? 3 : 12;

@@ -1,0 +1,293 @@
+{
+  "status": "completed",
+  "duration": 77.64,
+  "summary": {
+    "total": 40,
+    "passed": 40,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "Survivor.Tests.BattleIntegrationTests.FullEnemyDamageDisplayDoesNotProtectPlayerAndProjectilesExpireWithoutLeakingReservations",
+      "Status": "Passed",
+      "Duration": 1.7814692,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.BattleIntegrationTests.KeyboardDiagonalAndOppositeKeysDriveThePlayerCorrectly",
+      "Status": "Passed",
+      "Duration": 1.2723083,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.BattleIntegrationTests.PauseFreezesAllTimersAndSceneUnloadDestroysPools",
+      "Status": "Passed",
+      "Duration": 1.703984,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.BattleIntegrationTests.PlayerMovesNormalizesCrossesEnemiesAndSharesContactInvincibility",
+      "Status": "Passed",
+      "Duration": 1.2403127,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.BattleIntegrationTests.SpawnWarningCapacityEnemyDeathAndOutOfBoundsRecycleResetState",
+      "Status": "Passed",
+      "Duration": 1.207722,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.BattleIntegrationTests.StuckRecoverySeparationDamageDisplayBackpressureAndDeathStopCombat",
+      "Status": "Passed",
+      "Duration": 1.1937312,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.BattleIntegrationTests.SweptProjectileDeduplicatesHitsPiercesAndResetsWhenReused",
+      "Status": "Passed",
+      "Duration": 1.2039454,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.BattleIntegrationTests.WeaponWaitsReadyWithoutTargetsAndLocksDirectionOnNearestTarget",
+      "Status": "Passed",
+      "Duration": 1.1690915,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.ContentIntegrationTests.AllFiveStartingWeaponsCanHitAndKillThroughTheirActualPatterns",
+      "Status": "Passed",
+      "Duration": 5.8402867,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.ContentIntegrationTests.BothSkillsTriggerAndMagnetAndRegenerationRemainActive",
+      "Status": "Passed",
+      "Duration": 1.2434637,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.ContentIntegrationTests.EchoThornsAndTrailHaveDistinctTriggersAndPoolReset",
+      "Status": "Passed",
+      "Duration": 1.2035846,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.ContentIntegrationTests.HomingTurnsWhileStraightProjectileKeepsItsLaunchDirection",
+      "Status": "Passed",
+      "Duration": 1.1811817,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.ContentIntegrationTests.OwnedWeaponsUseIndependentCooldownsAndLevelThreeChangesMechanism",
+      "Status": "Passed",
+      "Duration": 1.1573563,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.EncounterIntegrationTests.BomberTelegraphCanBeDodgedAndSelfDestructionDoesNotAwardPlayerKill",
+      "Status": "Passed",
+      "Duration": 1.147214,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.EncounterIntegrationTests.BossUsesBothTelegraphedAttacksAndDeathAwardsGuaranteedDrops",
+      "Status": "Passed",
+      "Duration": 1.1974704,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.EncounterIntegrationTests.ContactBulletsAndBlastsShareInvulnerabilityAndEnemyBulletsRecycle",
+      "Status": "Passed",
+      "Duration": 1.1955266,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.EncounterIntegrationTests.DifficultySnapshotsAndSpecialSlotsAndD03Restoration",
+      "Status": "Passed",
+      "Duration": 1.1714345,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.EncounterIntegrationTests.LiveBossDoesNotPreventVictoryAndAllHostileStateIsCleared",
+      "Status": "Passed",
+      "Duration": 1.2443133,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.EncounterIntegrationTests.RangedWindupPausesThenFiresAtCurrentPositionAndBulletStaysStraight",
+      "Status": "Passed",
+      "Duration": 1.2040219,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.EnvironmentPlayTests.PlayerLoopAdvancesAndUrp2DCameraRenders",
+      "Status": "Passed",
+      "Duration": 0.0288331,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.FlowIntegrationTests.ButtonsAndRepeatedSceneRoundTripsDoNotLeakOrCarryRunData",
+      "Status": "Passed",
+      "Duration": 4.2659748,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.FlowIntegrationTests.KeyboardPauseReleaseGateAndFocusLossFollowStateRules",
+      "Status": "Passed",
+      "Duration": 1.4610358,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.MetaIntegrationTests.AbandonDoesNotSettleAndRefundRequiresConfirmation",
+      "Status": "Passed",
+      "Duration": 1.8040066,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.MetaIntegrationTests.SettlementPurchaseRestartAndSecondBattleKeepOnlyPermanentProgress",
+      "Status": "Passed",
+      "Duration": 2.998975,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.PresentationIntegrationTests.AudioHasFixedSourcesAndThrottlesRepeatedCombatEventsAndMissingCatalogIsSafe",
+      "Status": "Passed",
+      "Duration": 0.7021004,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.PresentationIntegrationTests.MotionChangesOnlyVisualPoseAndBurstPoolResetsWithoutGrowth",
+      "Status": "Passed",
+      "Duration": 1.2127356,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.PresentationIntegrationTests.MusicLoopsCrossfadesAndPausesWhileUiRemainsUsable",
+      "Status": "Passed",
+      "Duration": 3.3806494,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.ProgressionIntegrationTests.DensePickupCollidersCannotHideAnEnemyFromProjectileSweeps",
+      "Status": "Passed",
+      "Duration": 1.2367492,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.ProgressionIntegrationTests.EnemyDeathDropsValuesMagnetCreditsOnceAndOutOfBoundsDropsNothing",
+      "Status": "Passed",
+      "Duration": 1.2054232,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.ProgressionIntegrationTests.FullPoolAndExpiredDropsMergeWithoutLossOrAutomaticCollection",
+      "Status": "Passed",
+      "Duration": 1.3022891,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.ProgressionIntegrationTests.HeldNumberAndStaleButtonsCannotSelectQueuedUpgradesTwice",
+      "Status": "Passed",
+      "Duration": 1.6392321,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.ProgressionIntegrationTests.LethalContactWinsIfItOccursBeforeTimeAndShowsDelayedDefeatResult",
+      "Status": "Passed",
+      "Duration": 1.7564877,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.ProgressionIntegrationTests.PassiveAndAttributeBonusesApplyWithoutResettingHealthOrInvincibility",
+      "Status": "Passed",
+      "Duration": 1.1877135,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.ProgressionIntegrationTests.PauseUpgradeAndFocusLossFreezeDropsCombatAndSelection",
+      "Status": "Passed",
+      "Duration": 1.3807861,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.ProgressionIntegrationTests.VictoryClearsEverythingAndResultSnapshotSurvivesMenuAndNewRun",
+      "Status": "Passed",
+      "Duration": 2.6061715,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.SettingsIntegrationTests.ActualFifteenSecondTimeoutClosesConfirmationAndRestores",
+      "Status": "Passed",
+      "Duration": 15.8535891,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.SettingsIntegrationTests.BothLocalesRenderMenusAtFourEditorSizesAndBothModes",
+      "Status": "Passed",
+      "Duration": 1.3926666,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.SettingsIntegrationTests.DisplayConfirmPersistsAndCancelRestoresWithoutSaving",
+      "Status": "Passed",
+      "Duration": 1.1357196,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.SettingsIntegrationTests.HudHasSeparateAbilityTypesCurrentTooltipAndLowHealthWarning",
+      "Status": "Passed",
+      "Duration": 1.2132838,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Survivor.Tests.SettingsIntegrationTests.LanguageAndAudioUpdateImmediatelyAndSurviveReload",
+      "Status": "Passed",
+      "Duration": 1.1845452,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

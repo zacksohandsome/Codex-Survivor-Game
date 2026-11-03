@@ -10,6 +10,7 @@ namespace Survivor.Data
         public string battleScene = "Battle";
         public WeaponDefinition[] weapons;
         public BattleConfig battle;
+        public AudioCatalog audio;
         public TextAsset traditionalText;
         public TMPro.TMP_FontAsset uiFont;
         public UnityEngine.Localization.Tables.StringTable englishStrings, traditionalStrings;
