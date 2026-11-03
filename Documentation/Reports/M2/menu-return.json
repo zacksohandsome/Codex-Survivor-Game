@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "return new { state=Survivor.Core.GameFlow.Instance.Session.State.ToString(), battleLoaded=UnityEngine.SceneManagement.SceneManager.GetSceneByName(\"Battle\").isLoaded, world=Survivor.Combat.BattleWorld.Instance==null, flows=UnityEngine.Object.FindObjectsByType<Survivor.Core.GameFlow>(UnityEngine.FindObjectsSortMode.None).Length };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "state": "MainMenu",
+        "battleLoaded": false,
+        "world": true,
+        "flows": 1
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

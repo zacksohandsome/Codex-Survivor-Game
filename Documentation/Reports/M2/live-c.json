@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "return new { state=Survivor.Core.GameFlow.Instance.Session.State.ToString(), hp=Survivor.Combat.BattleWorld.Instance.Player.Health.Current, seconds=Survivor.Core.GameFlow.Instance.Session.BattleSeconds, kills=Survivor.Core.GameFlow.Instance.Session.Run.Kills, numbers=Survivor.Combat.BattleWorld.Instance.DamageNumbers.ActiveCount, labels=Survivor.Combat.BattleWorld.Instance.DamageNumbers.Items.Where(n=>n.IsRented).Select(n=>new { text=n.label.text, enabled=n.label.enabled, bounds=n.label.bounds.size.ToString(), position=n.transform.position.ToString() }).ToArray() };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "state": "Battle",
+        "hp": 100,
+        "seconds": 103.15156850405036,
+        "kills": 68,
+        "numbers": 1,
+        "labels": [
+          {
+            "text": "16",
+            "enabled": true,
+            "bounds": "(0.42, 0.30, 0.00)",
+            "position": "(12.63, 3.49, 0.00)"
+          }
+        ]
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,161 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "test status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 0.49,
+      "summary": {
+        "total": 19,
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "Survivor.Tests.BattleRulesTests.AllDamageSourcesShareOneInvincibilityWindow",
+          "Status": "Passed",
+          "Duration": 0.0172371,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleRulesTests.BattleSceneReferencesItsConfigurationAndAllRepresentativePrefabs",
+          "Status": "Passed",
+          "Duration": 0.0211267,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleRulesTests.DefenseHasDiminishingReductionAndNeverPreventsAllDamage",
+          "Status": "Passed",
+          "Duration": 0.000487,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleRulesTests.EdgeSpawnPrefersOffscreenAndRespectsSafeDistance",
+          "Status": "Passed",
+          "Duration": 0.0029017,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleRulesTests.MovementAndCameraStayInsideTheArenaIncludingBodyRadius",
+          "Status": "Passed",
+          "Duration": 0.0041035,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleRulesTests.SpawnFallbackIsAllowedOnlyWhenNoSafeOffscreenCandidateExists",
+          "Status": "Passed",
+          "Duration": 0.0003682,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EnvironmentTests.EveryQualityLevelUsesUrpWithA2DRenderer",
+          "Status": "Passed",
+          "Duration": 0.0031754,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EnvironmentTests.NewInputSystemAndExistingActionAssetAreUsable",
+          "Status": "Passed",
+          "Duration": 0.0116046,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EnvironmentTests.RequiredEditorAndWindowsTargetAreAvailable",
+          "Status": "Passed",
+          "Duration": 0.0006183,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowDataTests.BuildStartsInMainMenuAndIncludesIndependentBattleScene",
+          "Status": "Passed",
+          "Duration": 0.001259,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowDataTests.CatalogHasFiveDistinctWeaponsAndResolvedTextKeys",
+          "Status": "Passed",
+          "Duration": 0.0026436,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowDataTests.MainMenuSerializesAllRequiredFlowDependencies",
+          "Status": "Passed",
+          "Duration": 0.0022528,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.CountdownCanPauseWithoutConsumingBattleTime",
+          "Status": "Passed",
+          "Duration": 0.0021226,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.FinishUsesFirstOutcomeAndDetachedSnapshot(True)",
+          "Status": "Passed",
+          "Duration": 0.0023696,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.FinishUsesFirstOutcomeAndDetachedSnapshot(False)",
+          "Status": "Passed",
+          "Duration": 0.0002427,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.HeldMovementMustBeReleasedBeforeFreshInputIsAccepted",
+          "Status": "Passed",
+          "Duration": 0.0008825,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.NewRunDoesNotRetainPreviousGrowthOrSelection",
+          "Status": "Passed",
+          "Duration": 0.0006664,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.PauseAndLevelUpFreezeClockAndCannotOverlap",
+          "Status": "Passed",
+          "Duration": 0.0004691,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.SelectionIsRequiredAndDuplicateStartIsRejected",
+          "Status": "Passed",
+          "Duration": 0.0002095,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

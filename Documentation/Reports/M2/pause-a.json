@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var world=Survivor.Combat.BattleWorld.Instance; var number=world.DamageNumbers.Items.FirstOrDefault(n=>n.IsRented && world.battleCamera.WorldToViewportPoint(n.transform.position).y<0.76f && world.battleCamera.WorldToViewportPoint(n.transform.position).y>0.05f); if(number!=null) Survivor.Core.GameFlow.Instance.Session.Pause(); return new { paused=Survivor.Core.GameFlow.Instance.Session.State.ToString(), number=number==null?null:number.label.text, seconds=Survivor.Core.GameFlow.Instance.Session.BattleSeconds };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "paused": "Pause",
+        "number": "16",
+        "seconds": 136.80619071610272
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

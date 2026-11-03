@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var keyboard=(UnityEngine.InputSystem.Keyboard)UnityEngine.InputSystem.InputSystem.devices.First(d=>d.name==\"M2Keyboard\"); UnityEngine.InputSystem.InputSystem.QueueStateEvent(keyboard,new UnityEngine.InputSystem.LowLevel.KeyboardState()); UnityEngine.InputSystem.InputSystem.Update(); return new { position = Survivor.Combat.BattleWorld.Instance.Player.transform.position.ToString(), camera = Survivor.Combat.BattleWorld.Instance.battleCamera.transform.position.ToString(), frame=UnityEngine.Time.frameCount, seconds=Survivor.Core.GameFlow.Instance.Session.BattleSeconds, kills=Survivor.Core.GameFlow.Instance.Session.Run.Kills, hp=Survivor.Combat.BattleWorld.Instance.Player.Health.Current, enemies=Survivor.Combat.BattleWorld.Instance.Enemies.ActiveCount, shots=Survivor.Combat.BattleWorld.Instance.Projectiles.ActiveCount };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "position": "(23.55, 0.00, 0.00)",
+        "camera": "(11.56, 0.00, -10.00)",
+        "frame": 16143,
+        "seconds": 56.79870338179171,
+        "kills": 31,
+        "hp": 100,
+        "enemies": 15,
+        "shots": 1
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

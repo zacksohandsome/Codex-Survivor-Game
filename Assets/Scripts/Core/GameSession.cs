@@ -12,6 +12,12 @@ namespace Survivor.Core
         public int Level { get; set; } = 1;
         public int Kills { get; set; }
         public int CollectedCurrency { get; set; }
+        public int CurrentHealth { get; set; }
+        public int MaximumHealth { get; set; }
+        public float Attack { get; set; }
+        public float AttackSpeed { get; set; }
+        public float MoveSpeed { get; set; }
+        public float Defense { get; set; }
         public Dictionary<string, int> AbilityLevels { get; } = new Dictionary<string, int>();
         public RunContext(string weaponId)
         {

@@ -70,6 +70,7 @@ namespace Survivor.Core
         public bool StartRun()
         {
             if (IsTransitioning || Session.State != GameState.WeaponSelection || Session.SelectedWeaponId == null) return false;
+            if (!System.Array.Exists(config.weapons, w => w.id == Session.SelectedWeaponId && w.combatAvailable)) return false;
             StartCoroutine(LoadBattle()); return true;
         }
         private IEnumerator LoadBattle()

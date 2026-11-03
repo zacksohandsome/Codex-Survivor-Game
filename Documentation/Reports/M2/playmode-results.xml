@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="11" result="Passed" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-03 14:02:02Z" end-time="2026-11-03 14:02:15Z" duration="13.6873182">
+  <test-suite type="TestSuite" id="1022" name="Codex Survivor Game" fullname="Codex Survivor Game" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-11-03 14:02:02Z" end-time="2026-11-03 14:02:15Z" duration="13.687318" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1015" name="Survivor.Environment.PlayMode.dll" fullname="F:/unity project/Codex Survivor Game/Library/ScriptAssemblies/Survivor.Environment.PlayMode.dll" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-11-03 14:02:02Z" end-time="2026-11-03 14:02:15Z" duration="13.675077" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="2628" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1016" name="Survivor" fullname="Survivor" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-11-03 14:02:02Z" end-time="2026-11-03 14:02:15Z" duration="13.658427" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1017" name="Tests" fullname="Survivor.Tests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-11-03 14:02:02Z" end-time="2026-11-03 14:02:15Z" duration="13.653053" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="BattleIntegrationTests" fullname="Survivor.Tests.BattleIntegrationTests" classname="Survivor.Tests.BattleIntegrationTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-11-03 14:02:02Z" end-time="2026-11-03 14:02:11Z" duration="9.123760" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1009" name="FullDamageDisplayDefersHitsAndProjectilesExpireWithoutLeakingReservations" fullname="Survivor.Tests.BattleIntegrationTests.FullDamageDisplayDefersHitsAndProjectilesExpireWithoutLeakingReservations" methodname="FullDamageDisplayDefersHitsAndProjectilesExpireWithoutLeakingReservations" classname="Survivor.Tests.BattleIntegrationTests" runstate="Runnable" seed="1941813920" result="Passed" start-time="2026-11-03 14:02:02Z" end-time="2026-11-03 14:02:03Z" duration="1.457739" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1008" name="KeyboardDiagonalAndOppositeKeysDriveThePlayerCorrectly" fullname="Survivor.Tests.BattleIntegrationTests.KeyboardDiagonalAndOppositeKeysDriveThePlayerCorrectly" methodname="KeyboardDiagonalAndOppositeKeysDriveThePlayerCorrectly" classname="Survivor.Tests.BattleIntegrationTests" runstate="Runnable" seed="1800683608" result="Passed" start-time="2026-11-03 14:02:03Z" end-time="2026-11-03 14:02:04Z" duration="1.132590" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="PauseFreezesAllTimersAndSceneUnloadDestroysPools" fullname="Survivor.Tests.BattleIntegrationTests.PauseFreezesAllTimersAndSceneUnloadDestroysPools" methodname="PauseFreezesAllTimersAndSceneUnloadDestroysPools" classname="Survivor.Tests.BattleIntegrationTests" runstate="Runnable" seed="1536996900" result="Passed" start-time="2026-11-03 14:02:04Z" end-time="2026-11-03 14:02:06Z" duration="1.442762" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1002" name="PlayerMovesNormalizesCrossesEnemiesAndSharesContactInvincibility" fullname="Survivor.Tests.BattleIntegrationTests.PlayerMovesNormalizesCrossesEnemiesAndSharesContactInvincibility" methodname="PlayerMovesNormalizesCrossesEnemiesAndSharesContactInvincibility" classname="Survivor.Tests.BattleIntegrationTests" runstate="Runnable" seed="1396045147" result="Passed" start-time="2026-11-03 14:02:06Z" end-time="2026-11-03 14:02:07Z" duration="0.987495" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="SpawnWarningCapacityEnemyDeathAndOutOfBoundsRecycleResetState" fullname="Survivor.Tests.BattleIntegrationTests.SpawnWarningCapacityEnemyDeathAndOutOfBoundsRecycleResetState" methodname="SpawnWarningCapacityEnemyDeathAndOutOfBoundsRecycleResetState" classname="Survivor.Tests.BattleIntegrationTests" runstate="Runnable" seed="1247146401" result="Passed" start-time="2026-11-03 14:02:07Z" end-time="2026-11-03 14:02:08Z" duration="0.936802" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1007" name="StuckRecoverySeparationDamageDisplayBackpressureAndDeathStopCombat" fullname="Survivor.Tests.BattleIntegrationTests.StuckRecoverySeparationDamageDisplayBackpressureAndDeathStopCombat" methodname="StuckRecoverySeparationDamageDisplayBackpressureAndDeathStopCombat" classname="Survivor.Tests.BattleIntegrationTests" runstate="Runnable" seed="140000883" result="Passed" start-time="2026-11-03 14:02:08Z" end-time="2026-11-03 14:02:09Z" duration="0.942731" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="SweptProjectileDeduplicatesHitsPiercesAndResetsWhenReused" fullname="Survivor.Tests.BattleIntegrationTests.SweptProjectileDeduplicatesHitsPiercesAndResetsWhenReused" methodname="SweptProjectileDeduplicatesHitsPiercesAndResetsWhenReused" classname="Survivor.Tests.BattleIntegrationTests" runstate="Runnable" seed="167358142" result="Passed" start-time="2026-11-03 14:02:09Z" end-time="2026-11-03 14:02:10Z" duration="1.108055" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1003" name="WeaponWaitsReadyWithoutTargetsAndLocksDirectionOnNearestTarget" fullname="Survivor.Tests.BattleIntegrationTests.WeaponWaitsReadyWithoutTargetsAndLocksDirectionOnNearestTarget" methodname="WeaponWaitsReadyWithoutTargetsAndLocksDirectionOnNearestTarget" classname="Survivor.Tests.BattleIntegrationTests" runstate="Runnable" seed="294499995" result="Passed" start-time="2026-11-03 14:02:10Z" end-time="2026-11-03 14:02:11Z" duration="1.088902" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1010" name="EnvironmentPlayTests" fullname="Survivor.Tests.EnvironmentPlayTests" classname="Survivor.Tests.EnvironmentPlayTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-03 14:02:11Z" end-time="2026-11-03 14:02:11Z" duration="0.102183" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1011" name="PlayerLoopAdvancesAndUrp2DCameraRenders" fullname="Survivor.Tests.EnvironmentPlayTests.PlayerLoopAdvancesAndUrp2DCameraRenders" methodname="PlayerLoopAdvancesAndUrp2DCameraRenders" classname="Survivor.Tests.EnvironmentPlayTests" runstate="Runnable" seed="809566404" result="Passed" start-time="2026-11-03 14:02:11Z" end-time="2026-11-03 14:02:11Z" duration="0.094145" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1012" name="FlowIntegrationTests" fullname="Survivor.Tests.FlowIntegrationTests" classname="Survivor.Tests.FlowIntegrationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-03 14:02:11Z" end-time="2026-11-03 14:02:15Z" duration="4.380919" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1013" name="ButtonsAndRepeatedSceneRoundTripsDoNotLeakOrCarryRunData" fullname="Survivor.Tests.FlowIntegrationTests.ButtonsAndRepeatedSceneRoundTripsDoNotLeakOrCarryRunData" methodname="ButtonsAndRepeatedSceneRoundTripsDoNotLeakOrCarryRunData" classname="Survivor.Tests.FlowIntegrationTests" runstate="Runnable" seed="2043047456" result="Passed" start-time="2026-11-03 14:02:11Z" end-time="2026-11-03 14:02:14Z" duration="3.258013" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1014" name="KeyboardPauseReleaseGateAndFocusLossFollowStateRules" fullname="Survivor.Tests.FlowIntegrationTests.KeyboardPauseReleaseGateAndFocusLossFollowStateRules" methodname="KeyboardPauseReleaseGateAndFocusLossFollowStateRules" classname="Survivor.Tests.FlowIntegrationTests" runstate="Runnable" seed="1374964253" result="Passed" start-time="2026-11-03 14:02:14Z" end-time="2026-11-03 14:02:15Z" duration="1.082633" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Codex Survivor Game\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

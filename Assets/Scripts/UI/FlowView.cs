@@ -14,6 +14,8 @@ namespace Survivor.UI
         private FlowText text;
         private RectTransform content;
         private TextMeshProUGUI clock;
+        private TextMeshProUGUI status;
+        private UnityEngine.UI.Image backgroundImage;
         private string page;
         private string confirmationKey;
         private Action confirmation;
@@ -33,6 +35,7 @@ namespace Survivor.UI
             background.transform.SetParent(canvasObject.transform, false);
             Stretch(background.GetComponent<RectTransform>(), Vector2.zero, Vector2.one);
             var image = background.GetComponent<UnityEngine.UI.Image>();
+            backgroundImage = image;
             image.color = new Color(0.035f, 0.055f, 0.09f); image.raycastTarget = false;
             content = new GameObject("Content", typeof(RectTransform), typeof(UnityEngine.UI.VerticalLayoutGroup)).GetComponent<RectTransform>();
             content.SetParent(canvasObject.transform, false);
@@ -62,11 +65,11 @@ namespace Survivor.UI
             label.alignment = TextAlignmentOptions.Center; label.raycastTarget = false;
             return label;
         }
-        private void Button(string key, Action action, bool enabled = true, bool selected = false)
+        private void Button(string key, Action action, bool enabled = true, bool selected = false, float height = 62)
         {
             var go = new GameObject("Button_" + key, typeof(RectTransform), typeof(UnityEngine.UI.Image), typeof(UnityEngine.UI.Button), typeof(UnityEngine.UI.LayoutElement));
             go.transform.SetParent(content, false);
-            go.GetComponent<UnityEngine.UI.LayoutElement>().preferredHeight = 62;
+            go.GetComponent<UnityEngine.UI.LayoutElement>().preferredHeight = height;
             var image = go.GetComponent<UnityEngine.UI.Image>();
             image.color = selected ? new Color(0.12f, 0.45f, 0.40f) : new Color(0.10f, 0.16f, 0.24f);
             var button = go.GetComponent<UnityEngine.UI.Button>(); button.targetGraphic = image; button.interactable = enabled;
@@ -90,7 +93,13 @@ namespace Survivor.UI
             {
                 var child = content.GetChild(i).gameObject; child.SetActive(false); Destroy(child);
             }
-            clock = null;
+            clock = null; status = null;
+            bool battleHud = !flow.IsTransitioning && !HasModal &&
+                (flow.Session.State == GameState.Battle || flow.Session.State == GameState.IntroCountdown);
+            backgroundImage.color = battleHud ? Color.clear : new Color(0.035f, 0.055f, 0.09f, 0.97f);
+            Stretch(content, battleHud ? new Vector2(0.02f, 0.77f) : new Vector2(0.18f, 0.06f),
+                battleHud ? new Vector2(0.98f, 0.99f) : new Vector2(0.82f, 0.94f));
+            content.GetComponent<UnityEngine.UI.VerticalLayoutGroup>().spacing = battleHud ? 6 : 12;
             Label(text.Get("stage"), 20, 32);
             if (flow.IsTransitioning) { Label(text.Get("loading"), 40); return; }
             if (HasModal)
@@ -120,13 +129,13 @@ namespace Survivor.UI
                     { var choice = weapon; Button(weapon.nameKey, () => flow.SelectWeapon(choice.id), true, session.SelectedWeaponId == choice.id); }
                     var selected = Array.Find(flow.Config.weapons, w => w.id == session.SelectedWeaponId);
                     Label(text.Get(selected == null ? "selection.empty" : selected.descriptionKey), 24, 70);
-                    Button("enter", () => flow.StartRun(), selected != null);
+                    Button("enter", () => flow.StartRun(), selected != null && selected.combatAvailable);
                     Button("back", () => session.ReturnToMenu()); break;
                 case GameState.IntroCountdown:
                 case GameState.Battle:
-                    Label(text.Get("battle"), 48, 100); clock = Label("", 44, 100);
-                    Label(text.Get("battle.note"), 28, 160);
-                    Button("pause", () => session.Pause()); RefreshClock(); break;
+                    clock = Label("", 28, 32); status = Label("", 22, 50);
+                    Label(text.Get("battle.note"), 20, 24);
+                    Button("pause", () => session.Pause(), height: 44); RefreshClock(); break;
                 case GameState.Pause:
                     Label(text.Get("pause"), 52, 100); clock = Label("", 32, 70); RefreshClock();
                     Label($"Level {session.Run.Level}  /  Kills {session.Run.Kills}", 26, 60);
@@ -135,7 +144,10 @@ namespace Survivor.UI
                     Button("menu", () => Ask("abandon", () => flow.ReturnToMenu())); break;
                 case GameState.LevelUp: Label(text.Get("levelup"), 36, 160); break;
                 case GameState.Victory: Label(text.Get("victory"), 52, 120); break;
-                case GameState.Defeat: Label(text.Get("defeat"), 52, 120); break;
+                case GameState.Defeat:
+                    Label(text.Get("defeat"), 52, 100); Label(text.Get("defeat.note"), 28, 100);
+                    Button("restart", () => flow.ReturnToMenu(true));
+                    Button("menu", () => flow.ReturnToMenu()); break;
                 case GameState.Result:
                     Label(text.Get("result"), 36, 160); Button("menu", () => flow.ReturnToMenu()); break;
             }
@@ -147,6 +159,14 @@ namespace Survivor.UI
             clock.text = session.State == GameState.IntroCountdown
                 ? text.Get("countdown") + "  " + Mathf.CeilToInt((float)session.IntroRemaining)
                 : string.Format(text.Get("timer"), (int)session.BattleSeconds / 60, (int)session.BattleSeconds % 60);
+            if (status != null && session.Run != null)
+            {
+                var run = session.Run;
+                status.text = string.Format(text.Get("hud.stats"), run.CurrentHealth, run.MaximumHealth, run.Kills,
+                    run.Attack, run.AttackSpeed, run.MoveSpeed, run.Defense);
+                status.color = run.MaximumHealth > 0 && run.CurrentHealth < run.MaximumHealth * 0.3f
+                    ? new Color(1, 0.4f, 0.3f) : ink;
+            }
         }
     }
 }

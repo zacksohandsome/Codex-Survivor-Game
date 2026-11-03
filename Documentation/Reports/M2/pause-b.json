@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var world=Survivor.Combat.BattleWorld.Instance; return new { state=Survivor.Core.GameFlow.Instance.Session.State.ToString(), seconds=Survivor.Core.GameFlow.Instance.Session.BattleSeconds, enemies=world.Enemies.ActiveCount, shots=world.Projectiles.ActiveCount, numbers=world.DamageNumbers.ActiveCount, reserved=world.ReservedNumbers };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "state": "Pause",
+        "seconds": 136.80619071610272,
+        "enemies": 14,
+        "shots": 1,
+        "numbers": 2,
+        "reserved": 1
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

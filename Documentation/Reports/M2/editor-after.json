@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var target=System.IO.Path.GetFullPath(\"Assets/Documentation\"); var expected=System.IO.Path.Combine(System.IO.Path.GetFullPath(UnityEngine.Application.dataPath),\"Documentation\"); if(!string.Equals(target,expected,System.StringComparison.OrdinalIgnoreCase)) throw new System.Exception(\"Unexpected cleanup path\"); if(!UnityEditor.AssetDatabase.DeleteAsset(\"Assets/Documentation\")) throw new System.Exception(\"Capture cleanup failed\"); return new { scene=UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().path, dirty=UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().isDirty, playing=UnityEditor.EditorApplication.isPlaying, timeScale=UnityEngine.Time.timeScale, background=UnityEditor.PlayerSettings.runInBackground };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "scene": "Assets/Scenes/MainMenu.unity",
+        "dirty": false,
+        "playing": false,
+        "timeScale": 1,
+        "background": false
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

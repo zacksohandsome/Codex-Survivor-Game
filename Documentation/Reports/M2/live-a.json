@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "UnityEditor.EditorWindow.GetWindow(System.Type.GetType(\"UnityEditor.GameView,UnityEditor\")).Focus(); var device = UnityEngine.InputSystem.InputSystem.AddDevice<UnityEngine.InputSystem.Keyboard>(\"M2Keyboard\"); UnityEngine.InputSystem.InputSystem.QueueStateEvent(device, new UnityEngine.InputSystem.LowLevel.KeyboardState()); UnityEngine.InputSystem.InputSystem.Update(); return new { position = Survivor.Combat.BattleWorld.Instance.Player.transform.position.ToString(), frame=UnityEngine.Time.frameCount, seconds=Survivor.Core.GameFlow.Instance.Session.BattleSeconds, kills=Survivor.Core.GameFlow.Instance.Session.Run.Kills };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "position": "(0.00, 0.00, 0.00)",
+        "frame": 13322,
+        "seconds": 35.57291508396156,
+        "kills": 22
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

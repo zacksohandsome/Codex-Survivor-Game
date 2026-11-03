@@ -1,46 +1,188 @@
-{"entries":[
-  {"key":"title","text":"CODEX / SURVIVOR"},
-  {"key":"stage","text":"M1  /  FLOW FOUNDATION"},
-  {"key":"menu.note","text":"A fantasy survival game. This milestone previews scene flow.\nMovement, enemies and combat arrive in M2."},
-  {"key":"start","text":"Start game"},
-  {"key":"meta","text":"Meta upgrades"},
-  {"key":"settings","text":"Settings"},
-  {"key":"stats","text":"Statistics"},
-  {"key":"quit","text":"Quit game"},
-  {"key":"back","text":"Back"},
-  {"key":"select","text":"CHOOSE YOUR WEAPON"},
-  {"key":"select.note","text":"Select one weapon to preview the battle scene.\nWeapon attacks and balance are not implemented in M1."},
-  {"key":"selection.empty","text":"No weapon selected"},
-  {"key":"enter","text":"Enter arena"},
-  {"key":"weapon.bolt","text":"Arcane Bolt"},
-  {"key":"weapon.bolt.desc","text":"Straight projectile / nearest target. Planned for M2."},
-  {"key":"weapon.orbit","text":"Guardian Ring"},
-  {"key":"weapon.orbit.desc","text":"Orbiting close-range weapon. Planned for M6."},
-  {"key":"weapon.blast","text":"Ember Burst"},
-  {"key":"weapon.blast.desc","text":"Area explosion. Planned for M6."},
-  {"key":"weapon.homing","text":"Spirit Seeker"},
-  {"key":"weapon.homing.desc","text":"Homing projectile. Planned for M6."},
-  {"key":"weapon.pulse","text":"Runic Pulse"},
-  {"key":"weapon.pulse.desc","text":"Periodic radial attack. Planned for M6."},
-  {"key":"battle","text":"ARENA / FLOW PREVIEW"},
-  {"key":"battle.note","text":"The scene and battle clock are active.\nPlayer movement, attacks and enemies arrive in M2.\nPress ESC to pause."},
-  {"key":"countdown","text":"Prepare"},
-  {"key":"pause","text":"PAUSED"},
-  {"key":"resume","text":"Continue"},
-  {"key":"restart","text":"Choose weapon again"},
-  {"key":"menu","text":"Return to menu"},
-  {"key":"abandon","text":"Abandon this run? Unsettled currency and statistics will not be saved."},
-  {"key":"confirm","text":"Confirm"},
-  {"key":"cancel","text":"Cancel"},
-  {"key":"quit.confirm","text":"Quit the game?"},
-  {"key":"meta.note","text":"Meta upgrades and saving arrive in M4. No purchases are available."},
-  {"key":"settings.note","text":"Language, audio and display settings arrive in M8.\nThis M1 preview uses English placeholder text."},
-  {"key":"stats.note","text":"Permanent statistics arrive in M4. No run data is saved in M1."},
-  {"key":"levelup","text":"LEVEL UP / Selection arrives in M3"},
-  {"key":"victory","text":"VICTORY"},
-  {"key":"defeat","text":"DEFEAT"},
-  {"key":"result","text":"RESULT / Settlement and saving arrive in M4"},
-  {"key":"loading","text":"Loading scene..."},
-  {"key":"currency","text":"Currency: {0}  /  Saving arrives in M4"},
-  {"key":"timer","text":"Survival  {0:00}:{1:00}"}
-]}
+{
+  "entries": [
+    {
+      "key": "title",
+      "text": "CODEX / SURVIVOR"
+    },
+    {
+      "key": "stage",
+      "text": "M2  /  MINIMUM COMBAT"
+    },
+    {
+      "key": "menu.note",
+      "text": "Move, dodge and auto-fire in a closed arena.\nDrops and upgrades arrive in M3."
+    },
+    {
+      "key": "start",
+      "text": "Start game"
+    },
+    {
+      "key": "meta",
+      "text": "Meta upgrades"
+    },
+    {
+      "key": "settings",
+      "text": "Settings"
+    },
+    {
+      "key": "stats",
+      "text": "Statistics"
+    },
+    {
+      "key": "quit",
+      "text": "Quit game"
+    },
+    {
+      "key": "back",
+      "text": "Back"
+    },
+    {
+      "key": "select",
+      "text": "CHOOSE YOUR WEAPON"
+    },
+    {
+      "key": "select.note",
+      "text": "Arcane Bolt is playable in M2. Other weapons are previews for M6."
+    },
+    {
+      "key": "selection.empty",
+      "text": "No weapon selected"
+    },
+    {
+      "key": "enter",
+      "text": "Enter arena"
+    },
+    {
+      "key": "weapon.bolt",
+      "text": "Arcane Bolt"
+    },
+    {
+      "key": "weapon.bolt.desc",
+      "text": "Straight projectile / nearest target. 16 base damage, 0.55s cooldown, range 12."
+    },
+    {
+      "key": "weapon.orbit",
+      "text": "Guardian Ring"
+    },
+    {
+      "key": "weapon.orbit.desc",
+      "text": "Orbiting close-range weapon. Planned for M6."
+    },
+    {
+      "key": "weapon.blast",
+      "text": "Ember Burst"
+    },
+    {
+      "key": "weapon.blast.desc",
+      "text": "Area explosion. Planned for M6."
+    },
+    {
+      "key": "weapon.homing",
+      "text": "Spirit Seeker"
+    },
+    {
+      "key": "weapon.homing.desc",
+      "text": "Homing projectile. Planned for M6."
+    },
+    {
+      "key": "weapon.pulse",
+      "text": "Runic Pulse"
+    },
+    {
+      "key": "weapon.pulse.desc",
+      "text": "Periodic radial attack. Planned for M6."
+    },
+    {
+      "key": "battle",
+      "text": "ARENA"
+    },
+    {
+      "key": "battle.note",
+      "text": "WASD move / auto-fire / ESC pause. Drops and upgrades arrive in M3."
+    },
+    {
+      "key": "countdown",
+      "text": "Prepare"
+    },
+    {
+      "key": "pause",
+      "text": "Pause"
+    },
+    {
+      "key": "resume",
+      "text": "Continue"
+    },
+    {
+      "key": "restart",
+      "text": "Choose weapon again"
+    },
+    {
+      "key": "menu",
+      "text": "Return to menu"
+    },
+    {
+      "key": "abandon",
+      "text": "Abandon this run? Unsettled currency and statistics will not be saved."
+    },
+    {
+      "key": "confirm",
+      "text": "Confirm"
+    },
+    {
+      "key": "cancel",
+      "text": "Cancel"
+    },
+    {
+      "key": "quit.confirm",
+      "text": "Quit the game?"
+    },
+    {
+      "key": "meta.note",
+      "text": "Meta upgrades and saving arrive in M4. No purchases are available."
+    },
+    {
+      "key": "settings.note",
+      "text": "Language, audio and display settings arrive in M8.\nThis M1 preview uses English placeholder text."
+    },
+    {
+      "key": "stats.note",
+      "text": "Permanent statistics arrive in M4. No run data is saved in M1."
+    },
+    {
+      "key": "levelup",
+      "text": "LEVEL UP / Selection arrives in M3"
+    },
+    {
+      "key": "victory",
+      "text": "VICTORY"
+    },
+    {
+      "key": "defeat",
+      "text": "DEFEAT"
+    },
+    {
+      "key": "result",
+      "text": "RESULT / Settlement and saving arrive in M4"
+    },
+    {
+      "key": "loading",
+      "text": "Loading scene..."
+    },
+    {
+      "key": "currency",
+      "text": "Currency: {0}  /  Saving arrives in M4"
+    },
+    {
+      "key": "timer",
+      "text": "Survival  {0:00}:{1:00}"
+    },
+    {
+      "key": "hud.stats",
+      "text": "HP {0}/{1}   Kills {2}\nATK {3:0.#}   Speed x{4:0.#}   Move {5:0.#}   DEF {6:0.#}"
+    },
+    {
+      "key": "defeat.note",
+      "text": "Run ended. Full results and progression arrive in M3 / M4."
+    }
+  ]
+}

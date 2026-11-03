@@ -1,0 +1,33 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var device=UnityEngine.InputSystem.InputSystem.devices.FirstOrDefault(d=>d.name==\"M2Keyboard\"); if(device!=null) UnityEngine.InputSystem.InputSystem.RemoveDevice(device); var world=Survivor.Combat.BattleWorld.Instance; Survivor.Core.GameFlow.Instance.Session.Pause(); return new { seconds=Survivor.Core.GameFlow.Instance.Session.BattleSeconds, hp=world.Player.Health.Current, kills=Survivor.Core.GameFlow.Instance.Session.Run.Kills, enemies=world.Enemies.ActiveCount, projectiles=world.Projectiles.ActiveCount, numbers=world.DamageNumbers.ActiveCount, enemyCapacity=world.Enemies.Items.Length, projectileCapacity=world.Projectiles.Items.Length, numberCapacity=world.DamageNumbers.Items.Length };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "seconds": 150.9928011149168,
+        "hp": 0,
+        "kills": 107,
+        "enemies": 13,
+        "projectiles": 0,
+        "numbers": 2,
+        "enemyCapacity": 64,
+        "projectileCapacity": 96,
+        "numberCapacity": 256
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
