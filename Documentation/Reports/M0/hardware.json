@@ -1,0 +1,17 @@
+{
+  "os": {
+    "Caption": "Microsoft Windows 10 家用版",
+    "Version": "10.0.19045",
+    "OSArchitecture": "64 位元"
+  },
+  "ram": 68642213888,
+  "gpu": {
+    "Name": "NVIDIA GeForce RTX 3090",
+    "DriverVersion": "32.0.16.1047",
+    "CurrentHorizontalResolution": 1920,
+    "CurrentVerticalResolution": 1080
+  },
+  "cpu": {
+    "Name": "Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz"
+  }
+}

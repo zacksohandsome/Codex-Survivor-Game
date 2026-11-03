@@ -1,0 +1,33 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "return new { version = UnityEngine.Application.unityVersion, playing = UnityEditor.EditorApplication.isPlaying, dirty = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().isDirty, scene = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().path, buildTarget = UnityEditor.EditorUserBuildSettings.activeBuildTarget.ToString(), windows = UnityEditor.BuildPipeline.IsBuildTargetSupported(UnityEditor.BuildTargetGroup.Standalone, UnityEditor.BuildTarget.StandaloneWindows64), pipeline = UnityEngine.Rendering.GraphicsSettings.currentRenderPipeline == null ? null : UnityEngine.Rendering.GraphicsSettings.currentRenderPipeline.name, background = UnityEditor.PlayerSettings.runInBackground, fullscreenSwitch = UnityEditor.PlayerSettings.allowFullscreenSwitch };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "version": "6000.3.27f2",
+        "playing": false,
+        "dirty": false,
+        "scene": "Assets/Scenes/SampleScene.unity",
+        "buildTarget": "StandaloneWindows64",
+        "windows": true,
+        "pipeline": "UniversalRP",
+        "background": false,
+        "fullscreenSwitch": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

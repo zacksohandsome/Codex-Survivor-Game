@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "return new { playing = UnityEditor.EditorApplication.isPlaying, scene = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().path, dirty = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().isDirty, background = UnityEditor.PlayerSettings.runInBackground, fullscreenSwitch = UnityEditor.PlayerSettings.allowFullscreenSwitch };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "playing": false,
+        "scene": "Assets/Scenes/SampleScene.unity",
+        "dirty": false,
+        "background": false,
+        "fullscreenSwitch": false
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

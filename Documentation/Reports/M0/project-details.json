@@ -1,0 +1,54 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "return new { quality = UnityEngine.QualitySettings.names, renderer = ((UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset)UnityEngine.Rendering.GraphicsSettings.currentRenderPipeline).scriptableRenderer.GetType().FullName, cameras = UnityEngine.Object.FindObjectsByType<UnityEngine.Camera>(UnityEngine.FindObjectsSortMode.None).Select(c => new { c.name, c.orthographic }).ToArray(), scenes = UnityEditor.EditorBuildSettings.scenes.Select(s => new { s.path, s.enabled }).ToArray(), prefabs = UnityEditor.AssetDatabase.FindAssets(\"t:Prefab\", new [] { \"Assets\" }).Select(UnityEditor.AssetDatabase.GUIDToAssetPath).ToArray(), scripts = UnityEditor.AssetDatabase.FindAssets(\"t:MonoScript\", new [] { \"Assets\" }).Select(UnityEditor.AssetDatabase.GUIDToAssetPath).ToArray(), fullscreen = UnityEditor.PlayerSettings.fullScreenMode.ToString(), width = UnityEditor.PlayerSettings.defaultScreenWidth, height = UnityEditor.PlayerSettings.defaultScreenHeight, resizable = UnityEditor.PlayerSettings.resizableWindow };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "quality": [
+          "Very Low",
+          "Low",
+          "Medium",
+          "High",
+          "Very High",
+          "Ultra"
+        ],
+        "renderer": "UnityEngine.Rendering.Universal.Renderer2D",
+        "cameras": [
+          {
+            "name": "Main Camera",
+            "orthographic": true
+          }
+        ],
+        "scenes": [
+          {
+            "path": "Assets/Scenes/SampleScene.unity",
+            "enabled": true
+          }
+        ],
+        "prefabs": [],
+        "scripts": [
+          "Assets/Game/Tests/EditMode/EnvironmentTests.cs",
+          "Assets/Game/Tests/PlayMode/EnvironmentPlayTests.cs"
+        ],
+        "fullscreen": "FullScreenWindow",
+        "width": 1920,
+        "height": 1080,
+        "resizable": false
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "UnityEditor.PlayerSettings.allowFullscreenSwitch = false; UnityEditor.AssetDatabase.SaveAssets(); return new { background = UnityEditor.PlayerSettings.runInBackground, fullscreenSwitch = UnityEditor.PlayerSettings.allowFullscreenSwitch };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "background": false,
+        "fullscreenSwitch": false
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

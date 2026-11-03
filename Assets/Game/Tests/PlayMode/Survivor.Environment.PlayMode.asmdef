@@ -1,0 +1,5 @@
+{
+  "name": "Survivor.Environment.PlayMode",
+  "references": ["Unity.RenderPipelines.Universal.Runtime"],
+  "optionalUnityReferences": ["TestAssemblies"]
+}

@@ -1,0 +1,62 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "test list",
+    "parameters": {
+      "mode": "all"
+    },
+    "result": {
+      "Mode": "All",
+      "Count": 4,
+      "Tests": [
+        {
+          "FullName": "Survivor.Tests.EnvironmentTests.EveryQualityLevelUsesUrpWithA2DRenderer",
+          "Mode": "EditMode",
+          "Assembly": "Survivor.Environment.EditMode",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "Survivor.Tests.EnvironmentTests.NewInputSystemAndExistingActionAssetAreUsable",
+          "Mode": "EditMode",
+          "Assembly": "Survivor.Environment.EditMode",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "Survivor.Tests.EnvironmentTests.RequiredEditorAndWindowsTargetAreAvailable",
+          "Mode": "EditMode",
+          "Assembly": "Survivor.Environment.EditMode",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "Survivor.Tests.EnvironmentPlayTests.PlayerLoopAdvancesAndUrp2DCameraRenders",
+          "Mode": "PlayMode",
+          "Assembly": "Survivor.Environment.PlayMode",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        }
+      ],
+      "success": true,
+      "result": null,
+      "message": "Found 4 test(s)."
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

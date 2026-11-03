@@ -1,0 +1,12 @@
+ D Assets/Editor.meta
+ D Assets/Editor/HubForceResolve.cs
+ D Assets/Editor/HubForceResolve.cs.meta
+ M Assets/Scenes/SampleScene.unity
+ M Assets/Settings/UniversalRP.asset
+ M ProjectSettings/ShaderGraphSettings.asset
+ M ProjectSettings/URPProjectSettings.asset
+?? Assets/Game.meta
+?? Assets/Game/
+?? Documentation/
+?? ProjectSettings/PackageManagerSettings.asset
+?? ProjectSettings/SceneTemplateSettings.json
