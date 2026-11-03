@@ -1,0 +1,38 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "console status",
+    "parameters": {},
+    "result": {
+      "entries": [],
+      "cursor": 118,
+      "session": "05c1e727ca254ad89f144a740e6f3105",
+      "returned": 0,
+      "dropped": false,
+      "reset": false,
+      "counts": {
+        "error": 5,
+        "warn": 0,
+        "log": 113
+      },
+      "groundTruth": {
+        "sampledUtc": "2026-11-03T14:47:47.4208585Z",
+        "ageMs": 206,
+        "compilationFailed": false,
+        "compiling": false,
+        "consoleErrors": 0,
+        "consoleWarnings": 0,
+        "consoleLogs": 7,
+        "seeded": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -6,7 +6,7 @@
 
 本專案是一款使用 Unity 開發的 2D 俯視角倖存者類型遊戲。
 
-目前進度（2026-11-03）：M0～M2 完成。可選Arcane Bolt進場，以WASD移動、閃避近戰敵人、自動攻擊、受傷／死亡、暫停與返回。Edit19/19、Play11/11通過（含M0/M1回歸）。本次完成M2後停止，M3尚未開始；尚無掉落、升級、正式結算或存檔。詳見[M2報告](Reports/M2/report.md)。
+目前進度（2026-11-03）：M0～M3完成。可移動戰鬥、拾取經驗／貨幣、三選一升級、取得回復被動，並在死亡或600秒後顯示本場結果。Edit32/32、Play19/19通過（含先前回歸）。M4未開始；永久入帳、局外強化與磁碟存檔尚未實作。詳見[M3報告](Reports/M3/report.md)。
 
 在 Unity 開啟 `Assets/Scenes/MainMenu.unity` 後進入 Play Mode 即可操作最小流程。介面目前為英文佔位文字；操作與資料說明見 [DATA_GUIDE](DATA_GUIDE.md)。
 
@@ -87,6 +87,7 @@ Codex 不得自行：
 | [ASSET_LICENSES.md](ASSET_LICENSES.md) | 官方 UI 資源與字型授權紀錄 |
 | [M1 報告](Reports/M1/report.md) | M1 成果、測試、截圖、修正與範圍 |
 | [M2 報告](Reports/M2/report.md) | 最小戰鬥、測試、正常操作、截圖與範圍 |
+| [M3 報告](Reports/M3/report.md) | 掉落、三選一、勝敗與本場結果、測試及截圖 |
 
 ## 5. MVP 定義
 

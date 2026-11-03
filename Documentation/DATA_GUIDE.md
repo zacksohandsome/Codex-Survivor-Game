@@ -1,6 +1,6 @@
 # 資料設定與操作
 
-2026-11-03／M2。M1 初始設定說明保留，M2 操作與數值見末節。
+2026-11-03／M3。M1／M2歷史設定說明保留，現行M3操作與數值見末節。
 
 ## 資產分類
 
@@ -64,3 +64,29 @@ unity command test status --caller plugin --skill unity-cli --format json
 建立工具 `Survivor/Create M2 Assets` 或 `Survivor.Editor.M2ProjectSetup.CreateAssets()` 會建立缺少的 Prefab／資料、綁定 BattleWorld，保存 Battle 並回到 MainMenu；保留既有 Prefab 編輯。場地視覺依本次48×30初值產生，日後調整arenaHalfSize時須同步修改場景地板、格線和邊界；遊戲邊界／生成／相機以 BattleConfig 為準。
 
 最新完整測試為 Edit19、Play11，命令與前節相同。新增 BattleRulesTests、BattleIntegrationTests，覆蓋減傷／無敵、實際鍵盤正反向與斜向、玩家穿越敵人、相機與邊界、最近目標、冷卻／固定方向、掃掠去重／穿透／壽命、預警／生成上限、死亡／出界回收、卡住／推擠、池滿、數字容量預留、暫停與卸載。測試入口的 AutomaticSpawning／AutomaticAttacking 可暫停子系統以取得確定結果；正式遊戲預設都為 true，沒有加入快轉或作弊快捷鍵。
+
+## M3 現行操作與資料
+
+進場後靠近綠色經驗寶石、金色貨幣或紫色混合堆，自動磁吸／拾取。經驗足夠時顯示三張帶佔位圖示、名稱、效果與目前等級的卡片，以滑鼠或1／2／3選擇。未選完不接受ESC暫停；連續升級依序選完才恢復。HUD顯示血條、經驗條、角色等級、XP、貨幣、剩餘時間與代表能力等級；仍為英文佔位介面，完整Tooltip／正式版面／雙語於M8。
+
+| 路徑 | 用途／設定 |
+|---|---|
+| Assets/Data/Progression/ProgressionConfig.asset | 7個成長定義（Bolt、Bloom、五屬性）、兩個特殊獎勵、XP曲線、掉落與磁吸、欄位上限 |
+| Assets/Data/Progression/{bolt,bloom,stat.*}.asset | UpgradeDefinition，穩定id、類型、最高等級、初次取得效果與升級效果；文字鍵集中在FlowText |
+| Assets/Prefabs/Pickups/Pickup.prefab | 固定池共用掉落物，XP／貨幣使用原有方塊／圓形素材，包含trigger collider |
+| Assets/Scripts/Progression | BuildState、UpgradeSelector、RunProgression；只操作本場模型 |
+| Assets/Scripts/Drop | PickupActor、PickupManager；總額保全、磁吸、拾取與清理 |
+| Assets/Scripts/Audio/OutcomeAudio.cs | 執行時產生兩段0.3秒佔位勝敗提示音，流程銷毀時釋放 |
+| Assets/Editor/M3ProjectSetup.cs | 建立缺少的資料／掉落Prefab、綁定Battle、建立Enemy層；不覆蓋非空既有層 |
+
+近戰死亡固定4XP、30%掉1貨幣；需求 `8+4*(level-1)+max(0,level-10)^2`。磁吸半徑3、速度7、拾取半徑0.15，池256。老化30秒合併，最後一堆保留至拾取／結束；沒有自動把遠方掉落算成收入。
+
+Life Bloom初次取得為每6秒回2HP，升級可選回復量+2或間隔減0.5秒。Bolt可升傷害倍率+0.25或穿透+1。五屬性每級最大／當前HP+20、攻擊+2、攻速+0.12、移速+0.5、防禦+3，最高5級。特殊獎勵為5本場貨幣或回25HP。資料欄位category區分武器／被動／技能／屬性；目前只有MVP已實作定義參與抽選，不提供其餘未實作武器或技能。
+
+`acquisition`的id空白代表不提供初次抽選（Bolt在M3固定為初始武器）；Unity可能把空欄位序列化成空物件，程式以CanAcquire檢查有效id。effects中的id在同能力內必須唯一；屬性正常只設一種效果。名稱／描述鍵不得缺漏，不能把本場level或加成寫回SO。
+
+開始M3資料設定可用 `Survivor/Create M3 Assets` 或 `Survivor.Editor.M3ProjectSetup.CreateAssets()`，須先停止Play與保存場景。建立工具會保存Battle並回到MainMenu。Enemy層目前為8，彈體prefab讀取敵人prefab的實際層作查詢遮罩；掉落應留在一般層，不能改成Enemy。
+
+存活600秒或死亡後立即停戰並清除未拾取值。結果有勝敗、時間、擊殺、等級、已拾貨幣、能力列表；死亡先淡出。結果尚不永久保存，退出或返回後不會增加主選單永久貨幣，M4再接存檔與交易。
+
+最新完整測試為Edit32、Play19，包含先前全部回歸。M3新增ProgressionRulesTests與ProgressionIntegrationTests，覆蓋重複效果、欄位／滿級、屬性同輪唯一、特殊獎勵、XP溢出、舊callback／長按、掉落合併與碰撞篩選、數值／回復、焦點／最小化回呼、勝敗順序、清理及跨場快照。600秒勝利用測試入口推進模型驗證；正式UI沒有快轉控制，M5仍需正常10分鐘實玩。

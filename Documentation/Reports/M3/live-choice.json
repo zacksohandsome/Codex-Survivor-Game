@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var keyboard=(UnityEngine.InputSystem.Keyboard)UnityEngine.InputSystem.InputSystem.devices.First(d=>d.name==\"M3Keyboard\"); UnityEngine.InputSystem.InputSystem.QueueStateEvent(keyboard,new UnityEngine.InputSystem.LowLevel.KeyboardState()); var flow=Survivor.Core.GameFlow.Instance; int index=System.Array.FindIndex(flow.Progression.Choices,c=>c.Effect.effect==Survivor.Data.UpgradeEffect.WeaponDamage); if(index<0) index=0; UnityEngine.GameObject.Find(\"Button_upgrade.\"+index).GetComponent<UnityEngine.UI.Button>().onClick.Invoke(); return new { chosen=index, build=flow.Session.Run.AbilityLevels, xp=flow.Session.Run.Experience, coins=flow.Session.Run.CollectedCurrency };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "chosen": 0,
+        "build": {
+          "bolt": 1,
+          "bloom": 2
+        },
+        "xp": 0,
+        "coins": 1
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

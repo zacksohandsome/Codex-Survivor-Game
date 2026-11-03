@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var flow=Survivor.Core.GameFlow.Instance; return new { state=flow.Session.State.ToString(), seconds=flow.Session.BattleSeconds, level=flow.Session.Run.Level, xp=flow.Session.Run.Experience, coins=flow.Session.Run.CollectedCurrency, uncollectedXp=Survivor.Combat.BattleWorld.Instance.Pickups.UncollectedExperience, uncollectedCoins=Survivor.Combat.BattleWorld.Instance.Pickups.UncollectedCurrency };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "state": "Battle",
+        "seconds": 48.92125770752318,
+        "level": 3,
+        "xp": 8,
+        "coins": 1,
+        "uncollectedXp": 96,
+        "uncollectedCoins": 6
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

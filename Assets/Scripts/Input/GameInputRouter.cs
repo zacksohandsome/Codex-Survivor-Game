@@ -17,6 +17,18 @@ namespace Survivor.Input
             actions.Enable();
         }
         public bool PausePressed => pause.WasPressedThisFrame();
+        public int UpgradePressed
+        {
+            get
+            {
+                var keyboard = Keyboard.current;
+                if (keyboard == null) return -1;
+                if (keyboard.digit1Key.wasPressedThisFrame || keyboard.numpad1Key.wasPressedThisFrame) return 0;
+                if (keyboard.digit2Key.wasPressedThisFrame || keyboard.numpad2Key.wasPressedThisFrame) return 1;
+                if (keyboard.digit3Key.wasPressedThisFrame || keyboard.numpad3Key.wasPressedThisFrame) return 2;
+                return -1;
+            }
+        }
         public void BlockMovement() => gate.Block();
         public Vector2 ReadMovement(bool battle)
         {

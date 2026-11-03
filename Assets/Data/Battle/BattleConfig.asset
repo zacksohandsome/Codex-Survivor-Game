@@ -40,3 +40,4 @@ MonoBehaviour:
   damageNumberRiseSpeed: 1
   weapon: {fileID: 11400000, guid: dad629dc03c5e264285c1984f428815b, type: 2}
   enemy: {fileID: 11400000, guid: 834235e5b626b6246a8460a54a0f45a3, type: 2}
+  progression: {fileID: 11400000, guid: 0d16fb11b3b55364e8fdfe2c37a5a710, type: 2}

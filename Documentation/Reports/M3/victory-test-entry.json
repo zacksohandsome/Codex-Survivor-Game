@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var flow=Survivor.Core.GameFlow.Instance; for(int i=0;i<64 && flow.Session.State==Survivor.Core.GameState.LevelUp;i++) flow.ChooseUpgrade(0,flow.Progression.ChoiceRevision); var world=Survivor.Combat.BattleWorld.Instance; double observed=flow.Session.BattleSeconds; long collected=flow.Session.Run.CollectedCurrency, uncollected=world.Pickups.UncollectedCurrency; flow.Session.Tick(600-observed); return new { testEntry=\"Advance GameSession clock to deadline for verification; not a normal ten-minute run\", observedSecondsBefore=observed, collected, uncollected, won=flow.Session.Result.Won, resultCurrency=flow.Session.Result.CollectedCurrency, enemies=world.Enemies.ActiveCount, shots=world.Projectiles.ActiveCount, drops=world.Pickups.Pool.ActiveCount, numbers=world.DamageNumbers.ActiveCount };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "testEntry": "Advance GameSession clock to deadline for verification; not a normal ten-minute run",
+        "observedSecondsBefore": 86.7710887817666,
+        "collected": 1,
+        "uncollected": 15,
+        "won": true,
+        "resultCurrency": 1,
+        "enemies": 0,
+        "shots": 0,
+        "drops": 0,
+        "numbers": 0
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

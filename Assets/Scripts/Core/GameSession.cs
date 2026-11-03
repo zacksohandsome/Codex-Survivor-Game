@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Survivor.Progression;
 
 namespace Survivor.Core
 {
@@ -11,18 +13,20 @@ namespace Survivor.Core
         public string StartingWeaponId { get; }
         public int Level { get; set; } = 1;
         public int Kills { get; set; }
-        public int CollectedCurrency { get; set; }
+        public long CollectedCurrency { get; set; }
         public int CurrentHealth { get; set; }
         public int MaximumHealth { get; set; }
         public float Attack { get; set; }
         public float AttackSpeed { get; set; }
         public float MoveSpeed { get; set; }
         public float Defense { get; set; }
-        public Dictionary<string, int> AbilityLevels { get; } = new Dictionary<string, int>();
+        public long Experience { get; set; }
+        public BuildState Build { get; }
+        public Dictionary<string, int> AbilityLevels => Build.Levels;
         public RunContext(string weaponId)
         {
             StartingWeaponId = weaponId;
-            AbilityLevels.Add(weaponId, 1);
+            Build = new BuildState(weaponId);
         }
     }
 
@@ -35,12 +39,14 @@ namespace Survivor.Core
         public double SurvivalSeconds { get; }
         public int Level { get; }
         public int Kills { get; }
-        public int CollectedCurrency { get; }
+        public long CollectedCurrency { get; }
+        public IReadOnlyDictionary<string, int> AbilityLevels { get; }
         public RunResult(RunContext run, bool won, double seconds)
         {
             RunId = run.Id; WeaponId = run.StartingWeaponId; Won = won;
             SurvivalSeconds = seconds; Level = run.Level; Kills = run.Kills;
             CollectedCurrency = run.CollectedCurrency;
+            AbilityLevels = new ReadOnlyDictionary<string, int>(new Dictionary<string, int>(run.AbilityLevels));
         }
     }
 
@@ -82,7 +88,11 @@ namespace Survivor.Core
                 // Countdown's final frame is not charged to the battle clock.
                 if (IntroRemaining == 0) SetState(GameState.Battle);
             }
-            else if (State == GameState.Battle) BattleSeconds += seconds;
+            else if (State == GameState.Battle)
+            {
+                BattleSeconds = Math.Min(600, BattleSeconds + seconds);
+                if (BattleSeconds >= 600) Finish(true);
+            }
         }
         public bool Pause()
         {
@@ -96,7 +106,7 @@ namespace Survivor.Core
         }
         public bool BeginLevelUp()
         {
-            if (State != GameState.Battle) return false;
+            if (State != GameState.Battle && State != GameState.LevelUp) return false;
             SetState(GameState.LevelUp); return true;
         }
         public bool EndLevelUp()

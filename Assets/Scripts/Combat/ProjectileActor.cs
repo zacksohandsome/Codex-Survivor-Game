@@ -25,6 +25,7 @@ namespace Survivor.Combat
             float step = Mathf.Min(delta, RemainingLife);
             float distance = speed * step;
             var filter = new ContactFilter2D { useTriggers = true };
+            filter.SetLayerMask(world.EnemyLayerMask);
             int count = Physics2D.CircleCast(transform.position, radius, Direction, filter, hits, distance);
             // CircleCast fills hits in distance order. One slot also covers the player's trigger.
             for (int i = 0; i < count && IsRented; i++)

@@ -1,6 +1,7 @@
 using System;
 using Survivor.Core;
 using Survivor.Localization;
+using Survivor.Progression;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -16,6 +17,8 @@ namespace Survivor.UI
         private TextMeshProUGUI clock;
         private TextMeshProUGUI status;
         private UnityEngine.UI.Image backgroundImage;
+        private UnityEngine.UI.Image healthFill, experienceFill;
+        private TextMeshProUGUI progressText, buildText;
         private string page;
         private string confirmationKey;
         private Action confirmation;
@@ -65,6 +68,20 @@ namespace Survivor.UI
             label.alignment = TextAlignmentOptions.Center; label.raycastTarget = false;
             return label;
         }
+        private UnityEngine.UI.Image Bar(string name, Color color)
+        {
+            var go = new GameObject(name, typeof(RectTransform), typeof(UnityEngine.UI.Image), typeof(UnityEngine.UI.LayoutElement));
+            go.transform.SetParent(content, false); go.GetComponent<UnityEngine.UI.LayoutElement>().preferredHeight = 8;
+            go.GetComponent<UnityEngine.UI.Image>().color = new Color(0.12f, 0.16f, 0.20f);
+            go.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
+            var fill = new GameObject("Fill", typeof(RectTransform), typeof(UnityEngine.UI.Image)); fill.transform.SetParent(go.transform, false);
+            Stretch(fill.GetComponent<RectTransform>(), Vector2.zero, Vector2.one);
+            var image = fill.GetComponent<UnityEngine.UI.Image>(); image.color = color; image.raycastTarget = false; return image;
+        }
+        private static void SetBar(UnityEngine.UI.Image fill, float ratio)
+        {
+            var rect = fill.rectTransform; rect.anchorMax = new Vector2(Mathf.Clamp01(ratio), 1); rect.offsetMax = Vector2.zero;
+        }
         private void Button(string key, Action action, bool enabled = true, bool selected = false, float height = 62)
         {
             var go = new GameObject("Button_" + key, typeof(RectTransform), typeof(UnityEngine.UI.Image), typeof(UnityEngine.UI.Button), typeof(UnityEngine.UI.LayoutElement));
@@ -93,14 +110,14 @@ namespace Survivor.UI
             {
                 var child = content.GetChild(i).gameObject; child.SetActive(false); Destroy(child);
             }
-            clock = null; status = null;
+            clock = null; status = null; healthFill = null; experienceFill = null; progressText = null; buildText = null;
             bool battleHud = !flow.IsTransitioning && !HasModal &&
                 (flow.Session.State == GameState.Battle || flow.Session.State == GameState.IntroCountdown);
             backgroundImage.color = battleHud ? Color.clear : new Color(0.035f, 0.055f, 0.09f, 0.97f);
             Stretch(content, battleHud ? new Vector2(0.02f, 0.77f) : new Vector2(0.18f, 0.06f),
                 battleHud ? new Vector2(0.98f, 0.99f) : new Vector2(0.82f, 0.94f));
-            content.GetComponent<UnityEngine.UI.VerticalLayoutGroup>().spacing = battleHud ? 6 : 12;
-            Label(text.Get("stage"), 20, 32);
+            content.GetComponent<UnityEngine.UI.VerticalLayoutGroup>().spacing = battleHud ? 3 : 12;
+            if (!battleHud) Label(text.Get("stage"), 20, 32);
             if (flow.IsTransitioning) { Label(text.Get("loading"), 40); return; }
             if (HasModal)
             {
@@ -134,22 +151,60 @@ namespace Survivor.UI
                 case GameState.IntroCountdown:
                 case GameState.Battle:
                     clock = Label("", 28, 32); status = Label("", 22, 50);
-                    Label(text.Get("battle.note"), 20, 24);
-                    Button("pause", () => session.Pause(), height: 44); RefreshClock(); break;
+                    healthFill = Bar("HealthBar", new Color(0.25f, 0.9f, 0.45f));
+                    progressText = Label("", 22, 24); experienceFill = Bar("ExperienceBar", new Color(0.2f, 0.6f, 1));
+                    buildText = Label("", 20, 24);
+                    Label(text.Get("battle.note"), 18, 20);
+                    Button("pause", () => session.Pause(), height: 36); RefreshClock(); break;
                 case GameState.Pause:
                     Label(text.Get("pause"), 52, 100); clock = Label("", 32, 70); RefreshClock();
                     Label($"Level {session.Run.Level}  /  Kills {session.Run.Kills}", 26, 60);
                     Button("resume", () => flow.Resume());
                     Button("restart", () => Ask("abandon", () => flow.ReturnToMenu(true)));
                     Button("menu", () => Ask("abandon", () => flow.ReturnToMenu())); break;
-                case GameState.LevelUp: Label(text.Get("levelup"), 36, 160); break;
+                case GameState.LevelUp:
+                    Label(text.Get("levelup"), 44, 80);
+                    Label(string.Format(text.Get("upgrade.level"), session.Run.Level), 26, 60);
+                    var progression = flow.Progression;
+                    if (progression != null && progression.Choices != null)
+                    {
+                        int revision = progression.ChoiceRevision;
+                        for (int i = 0; i < progression.Choices.Length; i++)
+                        {
+                            int choice = i; var option = progression.Choices[i];
+                            Button("upgrade.card", () => flow.ChooseUpgrade(choice, revision), height: 120);
+                            var button = content.GetChild(content.childCount - 1);
+                            var label = button.GetComponentInChildren<TextMeshProUGUI>();
+                            label.text = (i + 1) + "  " + text.Get(option.Effect.nameKey) + "\n" + text.Get(option.Effect.descriptionKey) +
+                                "\n" + (option.IsSpecial ? text.Get("upgrade.reward") : string.Format(text.Get("upgrade.current"), option.CurrentLevel));
+                            label.fontSize = 24;
+                            var icon = new GameObject("Icon", typeof(RectTransform), typeof(UnityEngine.UI.Image));
+                            icon.transform.SetParent(button, false);
+                            var iconRect = icon.GetComponent<RectTransform>(); iconRect.anchorMin = iconRect.anchorMax = new Vector2(0, 0.5f);
+                            iconRect.sizeDelta = new Vector2(36, 36); iconRect.anchoredPosition = new Vector2(38, 0);
+                            icon.GetComponent<UnityEngine.UI.Image>().color = option.IsSpecial ? new Color(1, 0.8f, 0.25f) : Color.cyan;
+                            icon.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
+                            label.rectTransform.offsetMin = new Vector2(75, 0);
+                            button.GetComponent<UnityEngine.UI.Image>().color = option.IsSpecial
+                                ? new Color(0.35f, 0.25f, 0.12f) : option.Category == Survivor.Data.UpgradeCategory.Passive
+                                ? new Color(0.15f, 0.32f, 0.20f) : new Color(0.10f, 0.20f, 0.32f);
+                            button.gameObject.name = "Button_upgrade." + i;
+                        }
+                    }
+                    Label(text.Get("upgrade.note"), 24, 60); break;
                 case GameState.Victory: Label(text.Get("victory"), 52, 120); break;
                 case GameState.Defeat:
                     Label(text.Get("defeat"), 52, 100); Label(text.Get("defeat.note"), 28, 100);
                     Button("restart", () => flow.ReturnToMenu(true));
                     Button("menu", () => flow.ReturnToMenu()); break;
                 case GameState.Result:
-                    Label(text.Get("result"), 36, 160); Button("menu", () => flow.ReturnToMenu()); break;
+                    var result = session.Result;
+                    Label(text.Get(result.Won ? "victory" : "defeat"), 52, 90).color = result.Won ? new Color(0.4f, 1, 0.6f) : new Color(1, 0.4f, 0.3f);
+                    Label(string.Format(text.Get("result.summary"), (int)result.SurvivalSeconds / 60, (int)result.SurvivalSeconds % 60,
+                        result.Kills, result.Level, result.CollectedCurrency), 28, 150);
+                    Label(DescribeBuild(result.AbilityLevels), 22, 220);
+                    Label(text.Get("result.note"), 24, 70);
+                    Button("restart", () => flow.ReturnToMenu(true)); Button("menu", () => flow.ReturnToMenu()); break;
             }
         }
         public void RefreshClock()
@@ -158,7 +213,9 @@ namespace Survivor.UI
             var session = flow.Session;
             clock.text = session.State == GameState.IntroCountdown
                 ? text.Get("countdown") + "  " + Mathf.CeilToInt((float)session.IntroRemaining)
-                : string.Format(text.Get("timer"), (int)session.BattleSeconds / 60, (int)session.BattleSeconds % 60);
+                : session.State == GameState.Pause ? string.Format(text.Get("survival"), (int)session.BattleSeconds / 60, (int)session.BattleSeconds % 60)
+                : string.Format(text.Get("timer"), Mathf.CeilToInt((float)(600 - session.BattleSeconds)) / 60,
+                    Mathf.CeilToInt((float)(600 - session.BattleSeconds)) % 60);
             if (status != null && session.Run != null)
             {
                 var run = session.Run;
@@ -166,7 +223,31 @@ namespace Survivor.UI
                     run.Attack, run.AttackSpeed, run.MoveSpeed, run.Defense);
                 status.color = run.MaximumHealth > 0 && run.CurrentHealth < run.MaximumHealth * 0.3f
                     ? new Color(1, 0.4f, 0.3f) : ink;
+                if (healthFill != null)
+                {
+                    SetBar(healthFill, (float)run.CurrentHealth / Mathf.Max(1, run.MaximumHealth));
+                    var world = Survivor.Combat.BattleWorld.Instance;
+                    bool hitFlash = world != null && world.Player.Health.InvincibleRemaining > world.config.invincibleSeconds - world.config.hitFlashSeconds;
+                    healthFill.color = hitFlash ? Color.white : run.CurrentHealth < run.MaximumHealth * 0.3f
+                        ? new Color(1, 0.25f, 0.2f) : new Color(0.25f, 0.9f, 0.45f);
+                }
+                if (progressText != null && flow.Progression != null)
+                {
+                    progressText.text = string.Format(text.Get("hud.progress"), run.Level, run.Experience, flow.Progression.RequiredExperience, run.CollectedCurrency);
+                    SetBar(experienceFill, (float)((double)run.Experience / flow.Progression.RequiredExperience));
+                    buildText.text = DescribeBuild(run.AbilityLevels, true);
+                }
             }
+        }
+        private string DescribeBuild(System.Collections.Generic.IReadOnlyDictionary<string, int> levels, bool compact = false)
+        {
+            var entries = new System.Collections.Generic.List<string>();
+            foreach (var item in levels)
+            {
+                if (compact && item.Key.StartsWith("stat.")) continue;
+                entries.Add(text.Get("ability." + item.Key) + " Lv" + item.Value);
+            }
+            return string.Join(compact ? "  |  " : "\n", entries);
         }
     }
 }

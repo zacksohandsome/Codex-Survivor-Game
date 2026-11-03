@@ -18,5 +18,6 @@ namespace Survivor.Data
         public float hitFlashSeconds = 0.12f, damageNumberSeconds = 0.6f, damageNumberRiseSpeed = 1;
         public WeaponDefinition weapon;
         public EnemyDefinition enemy;
+        public ProgressionConfig progression;
     }
 }

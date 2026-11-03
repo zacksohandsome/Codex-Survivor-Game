@@ -26,7 +26,7 @@ namespace Survivor.Combat
             var target = FindNearest(player.transform.position, world.Enemies.Items, weapon.range);
             if (target == null) return;
             if (world.LaunchProjectile(player.transform.position, (Vector2)(target.transform.position - player.transform.position),
-                player.Attack * weapon.damageMultiplier, weapon) != null)
+                player.Attack * (weapon.damageMultiplier + world.CurrentBuild.WeaponDamage), weapon, world.CurrentBuild.Pierce) != null)
                 RemainingCooldown = weapon.cooldown / player.AttackSpeed;
         }
     }

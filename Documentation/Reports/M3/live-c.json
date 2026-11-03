@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var keyboard=(UnityEngine.InputSystem.Keyboard)UnityEngine.InputSystem.InputSystem.devices.First(d=>d.name==\"M3Keyboard\"); UnityEngine.InputSystem.InputSystem.QueueStateEvent(keyboard,new UnityEngine.InputSystem.LowLevel.KeyboardState()); UnityEngine.InputSystem.InputSystem.Update(); return new { state=Survivor.Core.GameFlow.Instance.Session.State.ToString(), level=Survivor.Core.GameFlow.Instance.Session.Run.Level, bloom=Survivor.Core.GameFlow.Instance.Session.Run.Build.Level(\"bloom\"), regen=Survivor.Core.GameFlow.Instance.Session.Run.Build.RegenAmount, seconds=Survivor.Core.GameFlow.Instance.Session.BattleSeconds };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "state": "LevelUp",
+        "level": 2,
+        "bloom": 0,
+        "regen": 0,
+        "seconds": 44.938041001558304
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

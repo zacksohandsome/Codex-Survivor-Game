@@ -1,5 +1,6 @@
 using Survivor.Combat;
 using Survivor.Data;
+using Survivor.Progression;
 using UnityEngine;
 
 namespace Survivor.Player
@@ -26,6 +27,14 @@ namespace Survivor.Player
             transform.position = ClampPosition((Vector2)transform.position + Vector2.ClampMagnitude(direction, 1) * (MoveSpeed * delta), config.arenaHalfSize, config.playerRadius);
             bool blink = Health.InvincibleRemaining > 0 && (int)(Health.InvincibleRemaining / config.blinkInterval) % 2 == 0;
             body.color = blink ? new Color(1, 1, 1, 0.3f) : new Color(0.15f, 0.9f, 0.9f);
+        }
+        public void ApplyBuild(BuildState build)
+        {
+            Health.IncreaseMaximum(config.playerHealth + build.HealthBonus - Health.Maximum);
+            Health.Defense = config.playerDefense + build.DefenseBonus;
+            Attack = config.playerAttack + build.AttackBonus;
+            AttackSpeed = Mathf.Clamp(config.playerAttackSpeed + build.AttackSpeedBonus, 0.1f, config.attackSpeedCap);
+            MoveSpeed = Mathf.Clamp(config.playerMoveSpeed + build.MoveSpeedBonus, 0, config.moveSpeedCap);
         }
         public static Vector2 ClampPosition(Vector2 value, Vector2 half, float radius)
             => new Vector2(Mathf.Clamp(value.x, -half.x + radius, half.x - radius), Mathf.Clamp(value.y, -half.y + radius, half.y - radius));

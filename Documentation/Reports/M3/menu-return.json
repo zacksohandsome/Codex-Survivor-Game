@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "return new { state=Survivor.Core.GameFlow.Instance.Session.State.ToString(), battleLoaded=UnityEngine.SceneManagement.SceneManager.GetSceneByName(\"Battle\").isLoaded, snapshotCurrency=Survivor.Core.GameFlow.Instance.Session.Result.CollectedCurrency, permanentCurrency=Survivor.Core.GameFlow.Instance.PermanentData.currency, worldGone=Survivor.Combat.BattleWorld.Instance==null };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "state": "MainMenu",
+        "battleLoaded": false,
+        "snapshotCurrency": 1,
+        "permanentCurrency": 0,
+        "worldGone": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

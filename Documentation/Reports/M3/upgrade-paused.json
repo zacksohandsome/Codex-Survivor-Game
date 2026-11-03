@@ -1,0 +1,36 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "return new { state=Survivor.Core.GameFlow.Instance.Session.State.ToString(), seconds=Survivor.Core.GameFlow.Instance.Session.BattleSeconds, dropAge=Survivor.Combat.BattleWorld.Instance.Pickups.Pool.Items.Where(p=>p.IsRented).Select(p=>p.Age).Take(3).ToArray(), choices=Survivor.Core.GameFlow.Instance.Progression.Choices.Select(c=>c.Effect.id).ToArray() };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "state": "LevelUp",
+        "seconds": 44.938041001558304,
+        "dropAge": [
+          5.097199,
+          3.87681913,
+          2.56221652
+        ],
+        "choices": [
+          "bloom.new",
+          "bolt.damage",
+          "stat.speed"
+        ]
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

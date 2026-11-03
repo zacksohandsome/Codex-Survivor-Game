@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "return new { state=Survivor.Core.GameFlow.Instance.Session.State.ToString(), level=Survivor.Core.GameFlow.Instance.Session.Run.Level, bloom=Survivor.Core.GameFlow.Instance.Session.Run.Build.Level(\"bloom\"), regen=Survivor.Core.GameFlow.Instance.Session.Run.Build.RegenAmount, focused=UnityEngine.Application.isFocused };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "state": "LevelUp",
+        "level": 3,
+        "bloom": 1,
+        "regen": 2,
+        "focused": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

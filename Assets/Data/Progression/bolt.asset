@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9eca0859ad9e4a4daf965bdda5d3fcf, type: 3}
+  m_Name: bolt
+  m_EditorClassIdentifier: Survivor.Runtime::Survivor.Data.UpgradeDefinition
+  id: bolt
+  category: 0
+  maxLevel: 5
+  acquisition:
+    id: 
+    nameKey: 
+    descriptionKey: 
+    effect: 0
+    amount: 0
+  effects:
+  - id: bolt.damage
+    nameKey: upgrade.bolt.damage
+    descriptionKey: upgrade.bolt.damage.desc
+    effect: 0
+    amount: 0.25
+  - id: bolt.pierce
+    nameKey: upgrade.bolt.pierce
+    descriptionKey: upgrade.bolt.pierce.desc
+    effect: 1
+    amount: 1

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="32" result="Passed" total="32" passed="32" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.6029167">
+  <test-suite type="TestSuite" id="1051" name="Codex Survivor Game" fullname="Codex Survivor Game" runstate="Runnable" testcasecount="32" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.602917" total="32" passed="32" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1040" name="Survivor.Environment.EditMode.dll" fullname="F:/unity project/Codex Survivor Game/Library/ScriptAssemblies/Survivor.Environment.EditMode.dll" runstate="Runnable" testcasecount="32" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.503140" total="32" passed="32" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="2628" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1041" name="Survivor" fullname="Survivor" runstate="Runnable" testcasecount="32" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.500207" total="32" passed="32" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1042" name="Tests" fullname="Survivor.Tests" runstate="Runnable" testcasecount="32" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.400145" total="32" passed="32" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="BattleRulesTests" fullname="Survivor.Tests.BattleRulesTests" classname="Survivor.Tests.BattleRulesTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.151075" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1003" name="AllDamageSourcesShareOneInvincibilityWindow" fullname="Survivor.Tests.BattleRulesTests.AllDamageSourcesShareOneInvincibilityWindow" methodname="AllDamageSourcesShareOneInvincibilityWindow" classname="Survivor.Tests.BattleRulesTests" runstate="Runnable" seed="1666968857" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.017680" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1007" name="BattleSceneReferencesItsConfigurationAndAllRepresentativePrefabs" fullname="Survivor.Tests.BattleRulesTests.BattleSceneReferencesItsConfigurationAndAllRepresentativePrefabs" methodname="BattleSceneReferencesItsConfigurationAndAllRepresentativePrefabs" classname="Survivor.Tests.BattleRulesTests" runstate="Runnable" seed="2118329595" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.018060" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1002" name="DefenseHasDiminishingReductionAndNeverPreventsAllDamage" fullname="Survivor.Tests.BattleRulesTests.DefenseHasDiminishingReductionAndNeverPreventsAllDamage" methodname="DefenseHasDiminishingReductionAndNeverPreventsAllDamage" classname="Survivor.Tests.BattleRulesTests" runstate="Runnable" seed="757444886" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000385" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="EdgeSpawnPrefersOffscreenAndRespectsSafeDistance" fullname="Survivor.Tests.BattleRulesTests.EdgeSpawnPrefersOffscreenAndRespectsSafeDistance" methodname="EdgeSpawnPrefersOffscreenAndRespectsSafeDistance" classname="Survivor.Tests.BattleRulesTests" runstate="Runnable" seed="56595661" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.001637" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="MovementAndCameraStayInsideTheArenaIncludingBodyRadius" fullname="Survivor.Tests.BattleRulesTests.MovementAndCameraStayInsideTheArenaIncludingBodyRadius" methodname="MovementAndCameraStayInsideTheArenaIncludingBodyRadius" classname="Survivor.Tests.BattleRulesTests" runstate="Runnable" seed="2135431355" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.002516" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="SpawnFallbackIsAllowedOnlyWhenNoSafeOffscreenCandidateExists" fullname="Survivor.Tests.BattleRulesTests.SpawnFallbackIsAllowedOnlyWhenNoSafeOffscreenCandidateExists" methodname="SpawnFallbackIsAllowedOnlyWhenNoSafeOffscreenCandidateExists" classname="Survivor.Tests.BattleRulesTests" runstate="Runnable" seed="1140792668" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000283" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1008" name="EnvironmentTests" fullname="Survivor.Tests.EnvironmentTests" classname="Survivor.Tests.EnvironmentTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.017605" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1010" name="EveryQualityLevelUsesUrpWithA2DRenderer" fullname="Survivor.Tests.EnvironmentTests.EveryQualityLevelUsesUrpWithA2DRenderer" methodname="EveryQualityLevelUsesUrpWithA2DRenderer" classname="Survivor.Tests.EnvironmentTests" runstate="Runnable" seed="409232832" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.003571" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1011" name="NewInputSystemAndExistingActionAssetAreUsable" fullname="Survivor.Tests.EnvironmentTests.NewInputSystemAndExistingActionAssetAreUsable" methodname="NewInputSystemAndExistingActionAssetAreUsable" classname="Survivor.Tests.EnvironmentTests" runstate="Runnable" seed="1761679521" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.011791" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1009" name="RequiredEditorAndWindowsTargetAreAvailable" fullname="Survivor.Tests.EnvironmentTests.RequiredEditorAndWindowsTargetAreAvailable" methodname="RequiredEditorAndWindowsTargetAreAvailable" classname="Survivor.Tests.EnvironmentTests" runstate="Runnable" seed="1325137914" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000582" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1012" name="FlowDataTests" fullname="Survivor.Tests.FlowDataTests" classname="Survivor.Tests.FlowDataTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.009546" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1014" name="BuildStartsInMainMenuAndIncludesIndependentBattleScene" fullname="Survivor.Tests.FlowDataTests.BuildStartsInMainMenuAndIncludesIndependentBattleScene" methodname="BuildStartsInMainMenuAndIncludesIndependentBattleScene" classname="Survivor.Tests.FlowDataTests" runstate="Runnable" seed="629932254" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.001832" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1013" name="CatalogHasFiveDistinctWeaponsAndResolvedTextKeys" fullname="Survivor.Tests.FlowDataTests.CatalogHasFiveDistinctWeaponsAndResolvedTextKeys" methodname="CatalogHasFiveDistinctWeaponsAndResolvedTextKeys" classname="Survivor.Tests.FlowDataTests" runstate="Runnable" seed="754712334" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.003387" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1015" name="MainMenuSerializesAllRequiredFlowDependencies" fullname="Survivor.Tests.FlowDataTests.MainMenuSerializesAllRequiredFlowDependencies" methodname="MainMenuSerializesAllRequiredFlowDependencies" classname="Survivor.Tests.FlowDataTests" runstate="Runnable" seed="806925347" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.002981" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1016" name="FlowRulesTests" fullname="Survivor.Tests.FlowRulesTests" classname="Survivor.Tests.FlowRulesTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.105681" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1019" name="CountdownCanPauseWithoutConsumingBattleTime" fullname="Survivor.Tests.FlowRulesTests.CountdownCanPauseWithoutConsumingBattleTime" methodname="CountdownCanPauseWithoutConsumingBattleTime" classname="Survivor.Tests.FlowRulesTests" runstate="Runnable" seed="1373122100" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.001988" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1022" name="FinishUsesFirstOutcomeAndDetachedSnapshot" fullname="Survivor.Tests.FlowRulesTests.FinishUsesFirstOutcomeAndDetachedSnapshot" classname="Survivor.Tests.FlowRulesTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.100385" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1020" name="FinishUsesFirstOutcomeAndDetachedSnapshot(True)" fullname="Survivor.Tests.FlowRulesTests.FinishUsesFirstOutcomeAndDetachedSnapshot(True)" methodname="FinishUsesFirstOutcomeAndDetachedSnapshot" classname="Survivor.Tests.FlowRulesTests" runstate="Runnable" seed="169158794" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.001835" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1021" name="FinishUsesFirstOutcomeAndDetachedSnapshot(False)" fullname="Survivor.Tests.FlowRulesTests.FinishUsesFirstOutcomeAndDetachedSnapshot(False)" methodname="FinishUsesFirstOutcomeAndDetachedSnapshot" classname="Survivor.Tests.FlowRulesTests" runstate="Runnable" seed="1503678774" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000067" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1024" name="HeldMovementMustBeReleasedBeforeFreshInputIsAccepted" fullname="Survivor.Tests.FlowRulesTests.HeldMovementMustBeReleasedBeforeFreshInputIsAccepted" methodname="HeldMovementMustBeReleasedBeforeFreshInputIsAccepted" classname="Survivor.Tests.FlowRulesTests" runstate="Runnable" seed="1974377871" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000482" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1023" name="NewRunDoesNotRetainPreviousGrowthOrSelection" fullname="Survivor.Tests.FlowRulesTests.NewRunDoesNotRetainPreviousGrowthOrSelection" methodname="NewRunDoesNotRetainPreviousGrowthOrSelection" classname="Survivor.Tests.FlowRulesTests" runstate="Runnable" seed="668146122" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000446" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1018" name="PauseAndLevelUpFreezeClockAndCannotOverlap" fullname="Survivor.Tests.FlowRulesTests.PauseAndLevelUpFreezeClockAndCannotOverlap" methodname="PauseAndLevelUpFreezeClockAndCannotOverlap" classname="Survivor.Tests.FlowRulesTests" runstate="Runnable" seed="1322035957" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000395" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1017" name="SelectionIsRequiredAndDuplicateStartIsRejected" fullname="Survivor.Tests.FlowRulesTests.SelectionIsRequiredAndDuplicateStartIsRejected" methodname="SelectionIsRequiredAndDuplicateStartIsRejected" classname="Survivor.Tests.FlowRulesTests" runstate="Runnable" seed="347543481" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000194" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1025" name="ProgressionRulesTests" fullname="Survivor.Tests.ProgressionRulesTests" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.113978" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1039" name="EachAbilityCategoryHonorsItsOwnSlotLimit" fullname="Survivor.Tests.ProgressionRulesTests.EachAbilityCategoryHonorsItsOwnSlotLimit" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.103423" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1036" name="EachAbilityCategoryHonorsItsOwnSlotLimit(Weapon)" fullname="Survivor.Tests.ProgressionRulesTests.EachAbilityCategoryHonorsItsOwnSlotLimit(Weapon)" methodname="EachAbilityCategoryHonorsItsOwnSlotLimit" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" seed="1450441190" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.003415" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1037" name="EachAbilityCategoryHonorsItsOwnSlotLimit(Passive)" fullname="Survivor.Tests.ProgressionRulesTests.EachAbilityCategoryHonorsItsOwnSlotLimit(Passive)" methodname="EachAbilityCategoryHonorsItsOwnSlotLimit" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" seed="2069070405" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000375" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1038" name="EachAbilityCategoryHonorsItsOwnSlotLimit(Skill)" fullname="Survivor.Tests.ProgressionRulesTests.EachAbilityCategoryHonorsItsOwnSlotLimit(Skill)" methodname="EachAbilityCategoryHonorsItsOwnSlotLimit" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" seed="878384283" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000251" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1034" name="EmptyInlineAcquisitionIsNeverOfferedAsANewAbility" fullname="Survivor.Tests.ProgressionRulesTests.EmptyInlineAcquisitionIsNeverOfferedAsANewAbility" methodname="EmptyInlineAcquisitionIsNeverOfferedAsANewAbility" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" seed="1921852158" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000886" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1028" name="FullSlotsExcludeNewAbilitiesAndAttributesDoNotConsumePassiveSlots" fullname="Survivor.Tests.ProgressionRulesTests.FullSlotsExcludeNewAbilitiesAndAttributesDoNotConsumePassiveSlots" methodname="FullSlotsExcludeNewAbilitiesAndAttributesDoNotConsumePassiveSlots" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" seed="1297493203" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000627" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1029" name="MaxedAbilitiesAndAttributesYieldThreeRepeatableSpecialRewards" fullname="Survivor.Tests.ProgressionRulesTests.MaxedAbilitiesAndAttributesYieldThreeRepeatableSpecialRewards" methodname="MaxedAbilitiesAndAttributesYieldThreeRepeatableSpecialRewards" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" seed="1587277296" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000927" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1026" name="NewAbilityIsPrioritizedAndIdenticalEffectsAreUniquePerRound" fullname="Survivor.Tests.ProgressionRulesTests.NewAbilityIsPrioritizedAndIdenticalEffectsAreUniquePerRound" methodname="NewAbilityIsPrioritizedAndIdenticalEffectsAreUniquePerRound" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" seed="2065191210" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000493" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1035" name="OneAttributeCannotAppearTwiceEvenWithMultipleConfiguredEffects" fullname="Survivor.Tests.ProgressionRulesTests.OneAttributeCannotAppearTwiceEvenWithMultipleConfiguredEffects" methodname="OneAttributeCannotAppearTwiceEvenWithMultipleConfiguredEffects" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" seed="2069285210" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000887" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1030" name="OverflowCreatesSequentialChoicesAndRejectsOldScreenCallbacks" fullname="Survivor.Tests.ProgressionRulesTests.OverflowCreatesSequentialChoicesAndRejectsOldScreenCallbacks" methodname="OverflowCreatesSequentialChoicesAndRejectsOldScreenCallbacks" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" seed="522405604" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.001074" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1033" name="ProgressionDataHasResolvedKeysAndIncreasingExperienceRequirements" fullname="Survivor.Tests.ProgressionRulesTests.ProgressionDataHasResolvedKeysAndIncreasingExperienceRequirements" methodname="ProgressionDataHasResolvedKeysAndIncreasingExperienceRequirements" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" seed="550471383" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.002080" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1032" name="ResultCopiesAbilitiesAndOnlyCollectedCurrency" fullname="Survivor.Tests.ProgressionRulesTests.ResultCopiesAbilitiesAndOnlyCollectedCurrency" methodname="ResultCopiesAbilitiesAndOnlyCollectedCurrency" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" seed="685849026" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000350" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1027" name="SameEffectCanRepeatAcrossRoundsUntilTheAbilityIsMaxed" fullname="Survivor.Tests.ProgressionRulesTests.SameEffectCanRepeatAcrossRoundsUntilTheAbilityIsMaxed" methodname="SameEffectCanRepeatAcrossRoundsUntilTheAbilityIsMaxed" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" seed="1118657341" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000678" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1031" name="TimeAndDeathAreResolvedByTheFirstActualFinishEvent" fullname="Survivor.Tests.ProgressionRulesTests.TimeAndDeathAreResolvedByTheFirstActualFinishEvent" methodname="TimeAndDeathAreResolvedByTheFirstActualFinishEvent" classname="Survivor.Tests.ProgressionRulesTests" runstate="Runnable" seed="322181397" result="Passed" start-time="2026-11-03 14:45:30Z" end-time="2026-11-03 14:45:30Z" duration="0.000359" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Codex Survivor Game\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

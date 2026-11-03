@@ -3,6 +3,8 @@ using Survivor.Data;
 using Survivor.Enemy;
 using Survivor.Player;
 using Survivor.Pooling;
+using Survivor.Drop;
+using Survivor.Progression;
 using UnityEngine;
 
 namespace Survivor.Combat
@@ -16,18 +18,24 @@ namespace Survivor.Combat
         public EnemyActor enemyPrefab;
         public ProjectileActor projectilePrefab;
         public DamageNumber damageNumberPrefab;
+        public PickupActor pickupPrefab;
         public Camera battleCamera;
         public PlayerActor Player { get; private set; }
         public BoundedPool<EnemyActor> Enemies { get; private set; }
         public BoundedPool<ProjectileActor> Projectiles { get; private set; }
         public BoundedPool<DamageNumber> DamageNumbers { get; private set; }
         public WeaponController Weapon { get; } = new WeaponController();
+        public PickupManager Pickups { get; private set; }
+        public BuildState CurrentBuild => GameFlow.Instance.Session.Run.Build;
+        public int EnemyLayerMask => 1 << enemyPrefab.gameObject.layer;
         public int ReservedNumbers { get; private set; }
         public int DisplayCapacity => config.damageNumberCapacity - DamageNumbers.ActiveCount - ReservedNumbers;
         public bool AutomaticSpawning { get; set; } = true;
         public bool AutomaticAttacking { get; set; } = true;
         private float spawnRemaining;
         private System.Random random;
+        private float regenerationRemaining;
+        private int buildRevision = -1;
         private void Awake()
         {
             Instance = this; random = new System.Random(config.randomSeed);
@@ -35,12 +43,15 @@ namespace Survivor.Combat
             Enemies = new BoundedPool<EnemyActor>(config.enemyCapacity, () => Instantiate(enemyPrefab, transform));
             Projectiles = new BoundedPool<ProjectileActor>(config.projectileCapacity, () => Instantiate(projectilePrefab, transform));
             DamageNumbers = new BoundedPool<DamageNumber>(config.damageNumberCapacity, () => Instantiate(damageNumberPrefab, transform));
+            Pickups = new PickupManager(this, pickupPrefab, config.progression);
+            regenerationRemaining = config.progression.regenInterval;
             UpdateCamera();
         }
         private void Update()
         {
             var flow = GameFlow.Instance;
             if (flow == null || flow.IsTransitioning || flow.Session.Run == null) return;
+            ApplyBuild();
             SyncHud(flow.Session.Run);
             if (flow.Session.State == GameState.Battle) Tick(Time.deltaTime, flow.Movement);
         }
@@ -66,6 +77,7 @@ namespace Survivor.Combat
         {
             var flow = GameFlow.Instance;
             if (flow == null || flow.IsTransitioning || flow.Session.State != GameState.Battle || delta <= 0) return;
+            ApplyBuild();
             foreach (var number in DamageNumbers.Items)
             {
                 if (!number.IsRented) continue;
@@ -93,6 +105,13 @@ namespace Survivor.Combat
                     if (damage > 0) EmitNumber(Player.transform.position, damage, true);
                     if (Player.Health.Current == 0) { flow.Session.Finish(false); break; }
                 }
+            }
+            if (flow.Session.State == GameState.Battle) Pickups.Tick(delta);
+            if (flow.Session.State == GameState.Battle && CurrentBuild.RegenAmount > 0)
+            {
+                regenerationRemaining -= delta;
+                float interval = Mathf.Max(1, config.progression.regenInterval - CurrentBuild.RegenIntervalReduction);
+                while (regenerationRemaining <= 0) { Player.Health.Heal(CurrentBuild.RegenAmount); regenerationRemaining += interval; }
             }
             if (flow.Session.State == GameState.Battle && AutomaticSpawning)
             {
@@ -133,13 +152,14 @@ namespace Survivor.Combat
             if (enemy != null) enemy.Initialize(config.enemy, position, warningSeconds);
             return enemy;
         }
-        public ProjectileActor LaunchProjectile(Vector2 position, Vector2 direction, float damage, WeaponDefinition weapon)
+        public ProjectileActor LaunchProjectile(Vector2 position, Vector2 direction, float damage, WeaponDefinition weapon, int extraHits = 0)
         {
-            if (direction.sqrMagnitude == 0 || DisplayCapacity < weapon.maxHits) return null;
+            int maxHits = weapon.maxHits + extraHits;
+            if (direction.sqrMagnitude == 0 || DisplayCapacity < maxHits) return null;
             var projectile = Projectiles.Rent();
             if (projectile == null) return null;
-            ReservedNumbers += weapon.maxHits;
-            projectile.Fire(position, direction, damage, weapon.projectileSpeed, weapon.projectileLifetime, weapon.maxHits, config.enemyCapacity);
+            ReservedNumbers += maxHits;
+            projectile.Fire(position, direction, damage, weapon.projectileSpeed, weapon.projectileLifetime, maxHits, config.enemyCapacity);
             return projectile;
         }
         public void ApplyProjectileHit(ProjectileActor projectile, EnemyActor enemy, float raw)
@@ -149,8 +169,10 @@ namespace Survivor.Combat
             EmitNumber(enemy.transform.position, damage, false);
             if (enemy.Health.Current == 0)
             {
-                // Stop behavior before counting the kill. Drops are introduced in M3.
+                var position = enemy.transform.position;
                 Enemies.Return(enemy); GameFlow.Instance.Session.Run.Kills++;
+                Pickups.Spawn(position, config.progression.enemyExperience, 0);
+                if (random.NextDouble() < config.progression.currencyChance) Pickups.Spawn(position, 0, config.progression.currencyValue);
             }
         }
         public void RecycleProjectile(ProjectileActor projectile)
@@ -168,6 +190,31 @@ namespace Survivor.Combat
         {
             run.CurrentHealth = Player.Health.Current; run.MaximumHealth = Player.Health.Maximum;
             run.Attack = Player.Attack; run.AttackSpeed = Player.AttackSpeed; run.MoveSpeed = Player.MoveSpeed; run.Defense = Player.Health.Defense;
+        }
+        public void ApplyBuild()
+        {
+            if (buildRevision == CurrentBuild.Revision) return;
+            Player.ApplyBuild(CurrentBuild); buildRevision = CurrentBuild.Revision;
+            regenerationRemaining = Mathf.Min(regenerationRemaining, Mathf.Max(1, config.progression.regenInterval - CurrentBuild.RegenIntervalReduction));
+            SyncHud(GameFlow.Instance.Session.Run);
+        }
+        public bool TryShowCurrency(Vector2 position, long amount)
+        {
+            if (DisplayCapacity <= 0) return false;
+            var number = DamageNumbers.Rent();
+            number.ShowCurrency(position, amount, config.damageNumberSeconds); return true;
+        }
+        public void ClearForEnd()
+        {
+            foreach (var enemy in Enemies.Items) Enemies.Return(enemy);
+            foreach (var projectile in Projectiles.Items) RecycleProjectile(projectile);
+            foreach (var number in DamageNumbers.Items) DamageNumbers.Return(number);
+            Pickups.Clear(); Player.hitbox.enabled = false;
+        }
+        public void PresentDefeat(float remaining)
+        {
+            Player.body.color = new Color(0.15f, 0.9f, 0.9f, Mathf.Clamp01(remaining / 0.45f));
+            Player.body.transform.localScale = Vector3.one * (0.6f + 0.3f * Mathf.Clamp01(remaining / 0.45f));
         }
         private void OnDestroy() { if (Instance == this) Instance = null; }
     }

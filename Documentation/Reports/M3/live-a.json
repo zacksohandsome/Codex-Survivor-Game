@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "UnityEditor.EditorWindow.GetWindow(System.Type.GetType(\"UnityEditor.GameView,UnityEditor\")).Focus(); var keyboard=UnityEngine.InputSystem.InputSystem.AddDevice<UnityEngine.InputSystem.Keyboard>(\"M3Keyboard\"); UnityEngine.InputSystem.InputSystem.QueueStateEvent(keyboard,new UnityEngine.InputSystem.LowLevel.KeyboardState()); UnityEngine.InputSystem.InputSystem.Update(); return new { state=Survivor.Core.GameFlow.Instance.Session.State.ToString(), seconds=Survivor.Core.GameFlow.Instance.Session.BattleSeconds, pickups=Survivor.Combat.BattleWorld.Instance.Pickups.Pool.ActiveCount, xp=Survivor.Combat.BattleWorld.Instance.Pickups.UncollectedExperience };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "state": "Battle",
+        "seconds": 9.506150000728667,
+        "pickups": 1,
+        "xp": 4
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83be6579735c86345850850c20ea18d0, type: 3}
+  m_Name: ProgressionConfig
+  m_EditorClassIdentifier: Survivor.Runtime::Survivor.Data.ProgressionConfig
+  abilities:
+  - {fileID: 11400000, guid: f22086d2467492d42837bb0af41bde7a, type: 2}
+  - {fileID: 11400000, guid: ea529e24b405acd47ba48354d2196800, type: 2}
+  - {fileID: 11400000, guid: 5f314504fccdd2d42ad7b1b145366570, type: 2}
+  - {fileID: 11400000, guid: 544287c94c2605b4d852e114c5c7ac26, type: 2}
+  - {fileID: 11400000, guid: 524d25555b59fd14293d14ef92513727, type: 2}
+  - {fileID: 11400000, guid: 189785269fc55b74a8255d67f8669084, type: 2}
+  - {fileID: 11400000, guid: f0fe7ad686e091648bf13ca74ccc5d81, type: 2}
+  specialRewards:
+  - id: reward.coins
+    nameKey: upgrade.reward.coins
+    descriptionKey: upgrade.reward.coins.desc
+    effect: 9
+    amount: 5
+  - id: reward.heal
+    nameKey: upgrade.reward.heal
+    descriptionKey: upgrade.reward.heal.desc
+    effect: 10
+    amount: 25
+  dropCapacity: 256
+  enemyExperience: 4
+  currencyChance: 0.3
+  currencyValue: 1
+  magnetRadius: 3
+  magnetSpeed: 7
+  pickupRadius: 0.15
+  mergeAfterSeconds: 30
+  regenInterval: 6
+  startingXp: 8
+  xpLinear: 4
+  xpLateLevel: 10
+  weaponSlots: 3
+  passiveSlots: 5
+  skillSlots: 2

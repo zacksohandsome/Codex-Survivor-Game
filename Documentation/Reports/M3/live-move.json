@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var world=Survivor.Combat.BattleWorld.Instance; var target=world.Pickups.Pool.Items.Where(p=>p.IsRented).OrderBy(p=>((UnityEngine.Vector2)(p.transform.position-world.Player.transform.position)).sqrMagnitude).FirstOrDefault(); var keys=new System.Collections.Generic.List<UnityEngine.InputSystem.Key>(); if(target!=null) { var delta=target.transform.position-world.Player.transform.position; if(UnityEngine.Mathf.Abs(delta.x)>0.5f) keys.Add(delta.x>0?UnityEngine.InputSystem.Key.D:UnityEngine.InputSystem.Key.A); if(UnityEngine.Mathf.Abs(delta.y)>0.5f) keys.Add(delta.y>0?UnityEngine.InputSystem.Key.W:UnityEngine.InputSystem.Key.S); } var keyboard=(UnityEngine.InputSystem.Keyboard)UnityEngine.InputSystem.InputSystem.devices.First(d=>d.name==\"M3Keyboard\"); UnityEngine.InputSystem.InputSystem.QueueStateEvent(keyboard,new UnityEngine.InputSystem.LowLevel.KeyboardState(keys.ToArray())); UnityEngine.InputSystem.InputSystem.Update(); return new { target=target==null?null:target.transform.position.ToString(), movement=keys.Select(k=>k.ToString()).ToArray(), drops=world.Pickups.Pool.ActiveCount, xp=Survivor.Core.GameFlow.Instance.Session.Run.Experience };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "target": "(6.65, 4.01, 0.00)",
+        "movement": [
+          "D",
+          "W"
+        ],
+        "drops": 29,
+        "xp": 0
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

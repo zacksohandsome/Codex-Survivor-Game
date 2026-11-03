@@ -6,11 +6,11 @@
     },
     {
       "key": "stage",
-      "text": "M2  /  MINIMUM COMBAT"
+      "text": "M3 / GROWTH AND SURVIVAL"
     },
     {
       "key": "menu.note",
-      "text": "Move, dodge and auto-fire in a closed arena.\nDrops and upgrades arrive in M3."
+      "text": "Survive for 10 minutes. Collect gems, choose upgrades and build your run."
     },
     {
       "key": "start",
@@ -98,7 +98,7 @@
     },
     {
       "key": "battle.note",
-      "text": "WASD move / auto-fire / ESC pause. Drops and upgrades arrive in M3."
+      "text": "WASD move / auto-fire / ESC pause"
     },
     {
       "key": "countdown",
@@ -150,7 +150,7 @@
     },
     {
       "key": "levelup",
-      "text": "LEVEL UP / Selection arrives in M3"
+      "text": "CHOOSE AN UPGRADE"
     },
     {
       "key": "victory",
@@ -174,7 +174,7 @@
     },
     {
       "key": "timer",
-      "text": "Survival  {0:00}:{1:00}"
+      "text": "Remaining {0:00}:{1:00}"
     },
     {
       "key": "hud.stats",
@@ -183,6 +183,166 @@
     {
       "key": "defeat.note",
       "text": "Run ended. Full results and progression arrive in M3 / M4."
+    },
+    {
+      "key": "ability.bolt",
+      "text": "Arcane Bolt"
+    },
+    {
+      "key": "upgrade.reward.coins",
+      "text": "Coin Cache"
+    },
+    {
+      "key": "upgrade.stat.health",
+      "text": "Vitality"
+    },
+    {
+      "key": "upgrade.bolt.damage",
+      "text": "Arcane Power"
+    },
+    {
+      "key": "upgrade.bloom.interval",
+      "text": "Bloom Rhythm"
+    },
+    {
+      "key": "upgrade.reward.heal.desc",
+      "text": "Restore 25 HP immediately."
+    },
+    {
+      "key": "upgrade.reward",
+      "text": "Immediate reward"
+    },
+    {
+      "key": "upgrade.reward.coins.desc",
+      "text": "Gain 5 run currency immediately."
+    },
+    {
+      "key": "survival",
+      "text": "Survived {0:00}:{1:00}"
+    },
+    {
+      "key": "ability.stat.move",
+      "text": "Swiftness"
+    },
+    {
+      "key": "upgrade.bolt.pierce",
+      "text": "Piercing Bolt"
+    },
+    {
+      "key": "upgrade.stat.defense.desc",
+      "text": "Defense +3."
+    },
+    {
+      "key": "upgrade.bloom.amount.desc",
+      "text": "Periodic healing +2 HP."
+    },
+    {
+      "key": "upgrade.stat.defense",
+      "text": "Armor"
+    },
+    {
+      "key": "upgrade.bloom.new.desc",
+      "text": "Restore 2 HP every 6 seconds."
+    },
+    {
+      "key": "upgrade.card",
+      "text": "Upgrade"
+    },
+    {
+      "key": "ability.stat.health",
+      "text": "Vitality"
+    },
+    {
+      "key": "result.note",
+      "text": "Run results only. Permanent currency and saving arrive in M4."
+    },
+    {
+      "key": "upgrade.bolt.damage.desc",
+      "text": "Bolt damage multiplier +0.25."
+    },
+    {
+      "key": "upgrade.bloom.amount",
+      "text": "Bloom Strength"
+    },
+    {
+      "key": "hud.progress",
+      "text": "Level {0}   XP {1}/{2}   Coins {3}"
+    },
+    {
+      "key": "upgrade.stat.move.desc",
+      "text": "Movement speed +0.5."
+    },
+    {
+      "key": "upgrade.stat.attack.desc",
+      "text": "Attack +2."
+    },
+    {
+      "key": "upgrade.bloom.new",
+      "text": "NEW: Life Bloom"
+    },
+    {
+      "key": "upgrade.stat.health.desc",
+      "text": "Maximum and current health +20."
+    },
+    {
+      "key": "result.summary",
+      "text": "Survived {0:00}:{1:00}\nKills {2}    Level {3}\nCollected currency {4}"
+    },
+    {
+      "key": "upgrade.stat.attack",
+      "text": "Power"
+    },
+    {
+      "key": "ability.bloom",
+      "text": "Life Bloom"
+    },
+    {
+      "key": "upgrade.stat.speed.desc",
+      "text": "Attack speed +0.12."
+    },
+    {
+      "key": "upgrade.note",
+      "text": "Click a card or press 1 / 2 / 3. Battle is fully paused."
+    },
+    {
+      "key": "upgrade.reward.heal",
+      "text": "Restoration"
+    },
+    {
+      "key": "upgrade.level",
+      "text": "Level {0} reached"
+    },
+    {
+      "key": "ability.stat.attack",
+      "text": "Power"
+    },
+    {
+      "key": "upgrade.stat.move",
+      "text": "Swiftness"
+    },
+    {
+      "key": "upgrade.stat.speed",
+      "text": "Haste"
+    },
+    {
+      "key": "ability.stat.speed",
+      "text": "Haste"
+    },
+    {
+      "key": "ability.stat.defense",
+      "text": "Armor"
+    },
+    {
+      "key": "upgrade.current",
+      "text": "Current ability level: {0}"
+    },
+    {
+      "key": "upgrade.bolt.pierce.desc",
+      "text": "Bolts hit one additional enemy."
+    },
+    {
+      "key": "upgrade.bloom.interval.desc",
+      "text": "Healing interval reduced by 0.5 seconds."
     }
   ]
 }
