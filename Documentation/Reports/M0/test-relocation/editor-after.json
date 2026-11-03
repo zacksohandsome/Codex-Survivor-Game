@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "return new { scene = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().path, dirty = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().isDirty, playing = UnityEditor.EditorApplication.isPlaying, scripts = UnityEditor.AssetDatabase.FindAssets(\"t:MonoScript\", new [] { \"Assets/Tests\" }).Select(UnityEditor.AssetDatabase.GUIDToAssetPath).ToArray() };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "scene": "Assets/Scenes/SampleScene.unity",
+        "dirty": false,
+        "playing": false,
+        "scripts": [
+          "Assets/Tests/EditMode/EnvironmentTests.cs",
+          "Assets/Tests/PlayMode/EnvironmentPlayTests.cs"
+        ]
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

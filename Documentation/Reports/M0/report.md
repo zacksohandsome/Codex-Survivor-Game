@@ -2,6 +2,8 @@
 
 日期：2026-11-03（Asia/Taipei）。狀態：驗證通過；開發提交見 Git 紀錄（提交訊息 `Complete M0 environment verification`）。本次依使用者指示停在 M0。
 
+後續分類修正：依使用者要求，測試已從原 `Assets/Game/Tests` 移至 `Assets/Tests`，詳見 [移動驗證紀錄](test-relocation/report.md)。本報告以下保留首次 M0 執行時的路徑與原始證據。
+
 ## 完成內容
 
 - 連線既有 Unity 6000.3.27f2，確認 Windows x64 目標及平台支援。

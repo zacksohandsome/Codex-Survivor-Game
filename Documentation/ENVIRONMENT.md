@@ -2,6 +2,8 @@
 
 驗證日期：2026-11-03（Asia/Taipei）。範圍僅 M0，未開始 M1 或遊戲實作。
 
+目前測試位置：`Assets/Tests/EditMode/`、`Assets/Tests/PlayMode/`。依 TECHNICAL_SPEC §3 與使用者要求，從原 Game 目錄移至獨立 Tests 分類；所有測試內容、組件名稱與 GUID 保留。[移動驗證紀錄](Reports/M0/test-relocation/report.md)。
+
 ## Editor 與專案
 
 | 項目 | 實際結果 |

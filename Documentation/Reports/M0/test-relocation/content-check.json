@@ -1,0 +1,62 @@
+[
+  {
+    "path": "Assets/Tests/EditMode.meta",
+    "original": "Assets/Game/Tests/EditMode.meta",
+    "unchanged": true,
+    "blob": "2f12393f1518a1897ab5694847d790f31b017e13"
+  },
+  {
+    "path": "Assets/Tests/PlayMode.meta",
+    "original": "Assets/Game/Tests/PlayMode.meta",
+    "unchanged": true,
+    "blob": "bb2d5247ed479bb4826f9a47b8aa47a286e8e159"
+  },
+  {
+    "path": "Assets/Tests/EditMode/EnvironmentTests.cs",
+    "original": "Assets/Game/Tests/EditMode/EnvironmentTests.cs",
+    "unchanged": true,
+    "blob": "a4f5d61252affbf7efafd074338f15bbea4b80f7"
+  },
+  {
+    "path": "Assets/Tests/EditMode/EnvironmentTests.cs.meta",
+    "original": "Assets/Game/Tests/EditMode/EnvironmentTests.cs.meta",
+    "unchanged": true,
+    "blob": "934d883ac396723409dad720d25012c8b574b311"
+  },
+  {
+    "path": "Assets/Tests/EditMode/Survivor.Environment.EditMode.asmdef",
+    "original": "Assets/Game/Tests/EditMode/Survivor.Environment.EditMode.asmdef",
+    "unchanged": true,
+    "blob": "1686decfa52a0dd7948f5b4404c800480b52ad51"
+  },
+  {
+    "path": "Assets/Tests/EditMode/Survivor.Environment.EditMode.asmdef.meta",
+    "original": "Assets/Game/Tests/EditMode/Survivor.Environment.EditMode.asmdef.meta",
+    "unchanged": true,
+    "blob": "0b4d5bfbad21f8230d6ea18932976ee7b9a5363e"
+  },
+  {
+    "path": "Assets/Tests/PlayMode/EnvironmentPlayTests.cs",
+    "original": "Assets/Game/Tests/PlayMode/EnvironmentPlayTests.cs",
+    "unchanged": true,
+    "blob": "1e75272083f32be171983800e3493be6ab1e3bda"
+  },
+  {
+    "path": "Assets/Tests/PlayMode/EnvironmentPlayTests.cs.meta",
+    "original": "Assets/Game/Tests/PlayMode/EnvironmentPlayTests.cs.meta",
+    "unchanged": true,
+    "blob": "8711e800353bd326bc11f6281b6c5563c121f79b"
+  },
+  {
+    "path": "Assets/Tests/PlayMode/Survivor.Environment.PlayMode.asmdef",
+    "original": "Assets/Game/Tests/PlayMode/Survivor.Environment.PlayMode.asmdef",
+    "unchanged": true,
+    "blob": "6d962b6bbde3d8f8217dfd8e5c5f782db845556b"
+  },
+  {
+    "path": "Assets/Tests/PlayMode/Survivor.Environment.PlayMode.asmdef.meta",
+    "original": "Assets/Game/Tests/PlayMode/Survivor.Environment.PlayMode.asmdef.meta",
+    "unchanged": true,
+    "blob": "3f0b4b1212069f2e83ba67d5e57a9dba9a9e52fb"
+  }
+]

@@ -8,6 +8,7 @@
 | M0-04 | 2026-11-03／M0 | 只建立驗證環境所需的兩個測試組件，不建立遊戲骨架。Renderer2D 在 URP 17 為 internal，改檢查 renderer 具體型別名稱 | Edit 3/3、Play 1/1；不更改 URP 套件 |
 | M0-05 | 2026-11-03／M0 | 錄影選用後續可安裝的官方 Unity Recorder；現有工具只有截圖，M0 不聲稱錄影已通過 | M5 前需選版、試錄與驗證輸出；目前無第三方工具授權需求 |
 | M0-06 | 2026-11-03／M0 | 使用者要求本次只執行 M0，完成後停止；不自動開始 M1 | M1～M11 保持未開始 |
+| M0-07 | 2026-11-03／M0 修正 | 依使用者要求按 TECHNICAL_SPEC §3 分類，測試移至 Assets/Tests；未來資產直接依 Scripts、Scenes、Prefabs、Data、Art 等類型置於 Assets 下，Documentation 保留根目錄 | 透過 AssetDatabase.MoveAsset 保留 .meta 與 GUID，移除空 Game 資料夾；同步修正計畫，原始 M0 快照維持歷史路徑 |
 
 原計畫 D01（升級重複效果）、D02（MVP 建置次序）、D03（精英生成倍率）維持原狀；本次沒有替使用者確認核心規則。
 

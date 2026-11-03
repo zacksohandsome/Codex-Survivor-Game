@@ -1,7 +1,7 @@
 # 開發執行計畫
 
 建立日期：2026-11-03（Asia/Taipei）  
-版本：1.1；狀態：M0 環境驗證完成；依使用者指示本次停在 M0，尚未開始遊戲實作。
+版本：1.2；狀態：M0 環境驗證完成；依使用者指示本次停在 M0，尚未開始遊戲實作。
 
 ## 1. 目標與依據
 
@@ -58,23 +58,25 @@ M0 必須記錄套件實際版本、必要 Player Settings（含 Windows x64、A
 
 以下為預定路徑，M0 依現有資產調整並記錄原因；不預先建立空實作。Unity 資產與對應 .meta 一併追蹤。
 
+依 TECHNICAL_SPEC §3 與使用者分類要求，各資產類型直接置於 Assets 下；Tests 獨立於 Scripts，文件保留根目錄 Documentation。既有 Settings 保留，不預先建立其他空資料夾。
+
 | 路徑 | 預計用途／主要檔案 | 首次階段 |
 |---|---|---|
-| Assets/Game/Scenes/ | MainMenu.unity（含局外強化）、Battle.unity | M1 |
-| Assets/Game/Scripts/Core/ | GameFlow、BattleClock、RunContext、RunResult | M1 |
-| Assets/Game/Scripts/Input/ | 輸入路由與按鍵重新啟用規則；GameInput.inputactions 放於 Assets/Game/Input/ | M1 |
-| Assets/Game/Scripts/Data/ | WeaponDefinition、PassiveDefinition、SkillDefinition、EnemyDefinition、BalanceConfig | M1 起分批 |
-| Assets/Game/Scripts/Player/、Combat/、Enemy/ | 移動、屬性、Health、DamageCalculator、WeaponController、Projectile、EnemySpawner | M2 |
-| Assets/Game/Scripts/Pooling/ | 場景範圍的有界物件池與完整重置 | M2 |
-| Assets/Game/Scripts/Drop/、Progression/ | Pickup、Experience、UpgradeSelector、BuildState | M3 |
-| Assets/Game/Scripts/Save/、Meta/ | SaveData、SaveRepository、版本遷移、MetaUpgradeService、永久統計 | M4 |
-| Assets/Game/Scripts/UI/、Audio/、Localization/ | 畫面與提示、音訊管理、多語系查詢與即時更新 | M1 最小流程，M8～M9 補齊 |
-| Assets/Game/Data/ | 武器、被動、技能、敵人、生成、經驗、經濟等 ScriptableObject 資產 | M2～M7 |
-| Assets/Game/Prefabs/ | Player、Enemies、Projectiles、Pickups、UI、VFX | M2 起 |
-| Assets/Game/Art/、Animations/、Audio/、Fonts/、Materials/、VFX/ | 正式視聽資產及中文／英文字型 | M9；字型驗證於 M8 |
-| Assets/Game/Localization/ | 集中管理的 zh-TW／en 資料表；M1 起使用文字鍵 | M1、M8 |
-| Assets/Game/Tests/EditMode/、PlayMode/ | 規則測試、狀態／場景／存檔整合測試；必要 asmdef | M1 起 |
-| Assets/Game/Editor/ | 可重複執行的場景／資料檢查與建置入口（必要時） | M1 起 |
+| Assets/Scenes/ | MainMenu.unity（含局外強化）、Battle.unity | M1 |
+| Assets/Scripts/Core/ | GameFlow、BattleClock、RunContext、RunResult | M1 |
+| Assets/Scripts/Input/ | 輸入路由與按鍵重新啟用規則；GameInput.inputactions 放於 Assets/Input/ | M1 |
+| Assets/Scripts/Data/ | WeaponDefinition、PassiveDefinition、SkillDefinition、EnemyDefinition、BalanceConfig | M1 起分批 |
+| Assets/Scripts/Player/、Combat/、Enemy/ | 移動、屬性、Health、DamageCalculator、WeaponController、Projectile、EnemySpawner | M2 |
+| Assets/Scripts/Pooling/ | 場景範圍的有界物件池與完整重置 | M2 |
+| Assets/Scripts/Drop/、Progression/ | Pickup、Experience、UpgradeSelector、BuildState | M3 |
+| Assets/Scripts/Save/、Meta/ | SaveData、SaveRepository、版本遷移、MetaUpgradeService、永久統計 | M4 |
+| Assets/Scripts/UI/、Audio/、Localization/ | 畫面與提示、音訊管理、多語系查詢與即時更新 | M1 最小流程，M8～M9 補齊 |
+| Assets/Data/ | 武器、被動、技能、敵人、生成、經驗、經濟等 ScriptableObject 資產 | M2～M7 |
+| Assets/Prefabs/ | Player、Enemies、Projectiles、Pickups、UI、VFX | M2 起 |
+| Assets/Art/、Animations/、Audio/、Fonts/、Materials/、VFX/ | 正式視聽資產及中文／英文字型 | M9；字型驗證於 M8 |
+| Assets/Localization/ | 集中管理的 zh-TW／en 資料表；M1 起使用文字鍵 | M1、M8 |
+| Assets/Tests/EditMode/、PlayMode/ | 規則測試、狀態／場景／存檔整合測試；必要 asmdef | M1 起 |
+| Assets/Editor/ | 可重複執行的場景／資料檢查與建置入口（必要時） | M1 起 |
 | ProjectSettings/、Packages/ | 場景清單、輸入、URP、Player Settings；必要官方套件清單與鎖定檔 | M0 起按需 |
 | Builds/Windows/ | 完整可執行套件，保留版本資訊；不加入 Git | M5、M11 |
 
@@ -143,3 +145,4 @@ M0 必須記錄套件實際版本、必要 Player Settings（含 Windows x64、A
 |---|---|---|---|
 | 2026-11-03 | 1.0 | 根據六份規格與專案靜態檢查建立計畫；登錄 D01～D03 | 建立 M0～M11 順序、MVP 確認門檻及驗收證據要求 |
 | 2026-11-03 | 1.1 | M0 實測完成，Edit 3/3、Play 1/1；補齊 ENVIRONMENT 與報告。依使用者要求僅執行 M0；尚無遊戲實作速度資料，階段工時補估延至 M1 首個可驗證功能後 | M1 未開始；錄影於 M5 前以官方 Recorder 試錄，未改驗收門檻或核心規則 |
+| 2026-11-03 | 1.2 | 依使用者要求與 TECHNICAL_SPEC §3 修正資產分類：測試移至 Assets/Tests，規劃路徑統一改為 Assets 下各資產類型 | 保留 GUID、組件與測試內容；僅修正 M0 組織方式，未開始 M1 |
