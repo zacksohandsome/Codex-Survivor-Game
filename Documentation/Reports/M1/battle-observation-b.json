@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "return new { state = Survivor.Core.GameFlow.Instance.Session.State.ToString(), seconds = Survivor.Core.GameFlow.Instance.Session.BattleSeconds, frame = UnityEngine.Time.frameCount };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "state": "Battle",
+        "seconds": 34.02373559959233,
+        "frame": 53920
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

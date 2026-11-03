@@ -1,0 +1,311 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "console get",
+    "parameters": {
+      "since": "35"
+    },
+    "result": {
+      "entries": [
+        {
+          "seq": 36,
+          "timestampUtc": "2026-11-03T12:59:03.7511935Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.",
+          "stackTrace": "UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 37,
+          "timestampUtc": "2026-11-03T12:59:03.9835565Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run started: 12 test(s)",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunStarted (UnityEditor.TestTools.TestRunner.Api.ITestAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:54)\nUnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 38,
+          "timestampUtc": "2026-11-03T12:59:04.6498326Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Codex Survivor Game\\TestResults.xml",
+          "stackTrace": "",
+          "seeded": false
+        },
+        {
+          "seq": 39,
+          "timestampUtc": "2026-11-03T12:59:04.6950226Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run finished: 12 total, 12 passed, 0 failed",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunFinished (UnityEditor.TestTools.TestRunner.Api.ITestResultAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:106)\nUnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 40,
+          "timestampUtc": "2026-11-03T12:59:04.8268905Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.",
+          "stackTrace": "UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 41,
+          "timestampUtc": "2026-11-03T12:59:21.837875Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.",
+          "stackTrace": "UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 42,
+          "timestampUtc": "2026-11-03T12:59:23.4215249Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[PipelineTestRunner] Reattaching result collector after domain reload",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.PipelineTestRunner:CheckForPendingTests () (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/PipelineTestRunner.cs:508)\nUnity.Pipeline.Editor.Testing.PipelineTestReloader:ResumePendingTests () (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/PipelineTestReloader.cs:60)\nUnity.Pipeline.Editor.Testing.PipelineTestReloader:CheckForPendingTests () (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/PipelineTestReloader.cs:34)\nUnityEditor.EditorApplication:Internal_CallDelayFunctions ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 43,
+          "timestampUtc": "2026-11-03T12:59:23.477013Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run started: 3 test(s)",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunStarted (UnityEditor.TestTools.TestRunner.Api.ITestAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:54)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n",
+          "seeded": false
+        },
+        {
+          "seq": 44,
+          "timestampUtc": "2026-11-03T12:59:23.477013Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run started: 3 test(s)",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunStarted (UnityEditor.TestTools.TestRunner.Api.ITestAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:54)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n",
+          "seeded": false
+        },
+        {
+          "seq": 45,
+          "timestampUtc": "2026-11-03T12:59:23.4776982Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run started: 3 test(s)",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunStarted (UnityEditor.TestTools.TestRunner.Api.ITestAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:54)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n",
+          "seeded": false
+        },
+        {
+          "seq": 46,
+          "timestampUtc": "2026-11-03T12:59:25.0348716Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Codex Survivor Game\\TestResults.xml",
+          "stackTrace": "",
+          "seeded": false
+        },
+        {
+          "seq": 47,
+          "timestampUtc": "2026-11-03T12:59:25.0483089Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Ignoring duplicate RunFinished (already completed)",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunFinished (UnityEditor.TestTools.TestRunner.Api.ITestResultAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:89)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n",
+          "seeded": false
+        },
+        {
+          "seq": 48,
+          "timestampUtc": "2026-11-03T12:59:25.0483089Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run finished: 3 total, 1 passed, 2 failed",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunFinished (UnityEditor.TestTools.TestRunner.Api.ITestResultAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:106)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n",
+          "seeded": false
+        },
+        {
+          "seq": 49,
+          "timestampUtc": "2026-11-03T12:59:25.0503636Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run finished: 3 total, 1 passed, 2 failed",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunFinished (UnityEditor.TestTools.TestRunner.Api.ITestResultAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:106)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n",
+          "seeded": false
+        },
+        {
+          "seq": 50,
+          "timestampUtc": "2026-11-03T12:59:25.7212701Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.",
+          "stackTrace": "UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 51,
+          "timestampUtc": "2026-11-03T13:01:02.9069455Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.",
+          "stackTrace": "UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 52,
+          "timestampUtc": "2026-11-03T13:01:03.1368641Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run started: 13 test(s)",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunStarted (UnityEditor.TestTools.TestRunner.Api.ITestAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:54)\nUnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 53,
+          "timestampUtc": "2026-11-03T13:01:03.815138Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Codex Survivor Game\\TestResults.xml",
+          "stackTrace": "",
+          "seeded": false
+        },
+        {
+          "seq": 54,
+          "timestampUtc": "2026-11-03T13:01:03.8558968Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run finished: 13 total, 13 passed, 0 failed",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunFinished (UnityEditor.TestTools.TestRunner.Api.ITestResultAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:106)\nUnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 55,
+          "timestampUtc": "2026-11-03T13:01:03.9893119Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.",
+          "stackTrace": "UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 56,
+          "timestampUtc": "2026-11-03T13:01:40.9033896Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.",
+          "stackTrace": "UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 57,
+          "timestampUtc": "2026-11-03T13:01:42.5724329Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[PipelineTestRunner] Reattaching result collector after domain reload",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.PipelineTestRunner:CheckForPendingTests () (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/PipelineTestRunner.cs:508)\nUnity.Pipeline.Editor.Testing.PipelineTestReloader:ResumePendingTests () (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/PipelineTestReloader.cs:60)\nUnity.Pipeline.Editor.Testing.PipelineTestReloader:CheckForPendingTests () (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/PipelineTestReloader.cs:34)\nUnityEditor.EditorApplication:Internal_CallDelayFunctions ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 58,
+          "timestampUtc": "2026-11-03T13:01:42.6228604Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run started: 3 test(s)",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunStarted (UnityEditor.TestTools.TestRunner.Api.ITestAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:54)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n",
+          "seeded": false
+        },
+        {
+          "seq": 59,
+          "timestampUtc": "2026-11-03T13:01:42.6238578Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run started: 3 test(s)",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunStarted (UnityEditor.TestTools.TestRunner.Api.ITestAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:54)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n",
+          "seeded": false
+        },
+        {
+          "seq": 60,
+          "timestampUtc": "2026-11-03T13:01:42.6238578Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run started: 3 test(s)",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunStarted (UnityEditor.TestTools.TestRunner.Api.ITestAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:54)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n",
+          "seeded": false
+        },
+        {
+          "seq": 61,
+          "timestampUtc": "2026-11-03T13:01:48.4639027Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Codex Survivor Game\\TestResults.xml",
+          "stackTrace": "",
+          "seeded": false
+        },
+        {
+          "seq": 62,
+          "timestampUtc": "2026-11-03T13:01:48.4772136Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Ignoring duplicate RunFinished (already completed)",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunFinished (UnityEditor.TestTools.TestRunner.Api.ITestResultAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:89)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n",
+          "seeded": false
+        },
+        {
+          "seq": 63,
+          "timestampUtc": "2026-11-03T13:01:48.4781616Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run finished: 3 total, 3 passed, 0 failed",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunFinished (UnityEditor.TestTools.TestRunner.Api.ITestResultAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:106)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n",
+          "seeded": false
+        },
+        {
+          "seq": 64,
+          "timestampUtc": "2026-11-03T13:01:48.479124Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "[TestResultCollector] Run finished: 3 total, 3 passed, 0 failed",
+          "stackTrace": "UnityEngine.Debug:Log (object)\nUnity.Pipeline.Editor.Testing.TestResultCollector:RunFinished (UnityEditor.TestTools.TestRunner.Api.ITestResultAdaptor) (at ./Library/PackageCache/com.unity.pipeline@363b8bb9e91d/Editor/Testing/TestResultCollector.cs:106)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n",
+          "seeded": false
+        },
+        {
+          "seq": 65,
+          "timestampUtc": "2026-11-03T13:01:49.2720153Z",
+          "level": "log",
+          "logType": "Log",
+          "message": "Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.",
+          "stackTrace": "UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\n",
+          "seeded": false
+        }
+      ],
+      "cursor": 65,
+      "session": "05c1e727ca254ad89f144a740e6f3105",
+      "returned": 30,
+      "dropped": false,
+      "reset": false,
+      "counts": {
+        "error": 5,
+        "warn": 0,
+        "log": 60
+      },
+      "groundTruth": {
+        "sampledUtc": "2026-11-03T13:09:40.8371013Z",
+        "ageMs": 161,
+        "compilationFailed": false,
+        "compiling": false,
+        "consoleErrors": 0,
+        "consoleWarnings": 0,
+        "consoleLogs": 0,
+        "seeded": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

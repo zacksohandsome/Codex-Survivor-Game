@@ -6,7 +6,9 @@
 
 本專案是一款使用 Unity 開發的 2D 俯視角倖存者類型遊戲。
 
-目前進度（2026-11-03）：M0 環境驗證完成，Edit Mode 3/3、Play Mode 1/1 通過；依使用者指示停在 M0。尚未開始 M1 或遊戲功能實作。詳見 [M0 報告](Reports/M0/report.md)。
+目前進度（2026-11-03）：M0、M1 完成；主選單／武器選擇／倒數／戰鬥預覽／暫停／返回流程可操作。Edit Mode 13/13、Play Mode 3/3 通過（含 M0 回歸）。依本次授權完成 M1 後停止，M2 尚未開始；目前沒有玩家移動、戰鬥或存檔。詳見 [M1 報告](Reports/M1/report.md)。
+
+在 Unity 開啟 `Assets/Scenes/MainMenu.unity` 後進入 Play Mode 即可操作最小流程。介面目前為英文佔位文字；操作與資料說明見 [DATA_GUIDE](DATA_GUIDE.md)。
 
 本專案同時是一項 Codex 自主開發能力測試，目標是讓 Codex 在使用本機 IDE、終端機與 Unity Editor 的情況下，盡可能獨立完成遊戲開發。
 
@@ -80,6 +82,10 @@ Codex 不得自行：
 | [KNOWN_ISSUES.md](KNOWN_ISSUES.md) | 已知問題、影響與處理狀態 |
 | [HUMAN_INTERVENTIONS.md](HUMAN_INTERVENTIONS.md) | 授權、人工介入與環境限制紀錄 |
 | [M0 報告](Reports/M0/report.md) | M0 驗收結果與原始證據 |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | 狀態、場景生命週期、輸入與資料流 |
+| [DATA_GUIDE.md](DATA_GUIDE.md) | 資產分類、設定、建立工具與測試操作 |
+| [ASSET_LICENSES.md](ASSET_LICENSES.md) | 官方 UI 資源與字型授權紀錄 |
+| [M1 報告](Reports/M1/report.md) | M1 成果、測試、截圖、修正與範圍 |
 
 ## 5. MVP 定義
 

@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var go = UnityEngine.GameObject.Find(\"Button_weapon.bolt\"); UnityEngine.Canvas.ForceUpdateCanvases(); var rect = go.GetComponent<UnityEngine.RectTransform>(); var p = new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current) { position = UnityEngine.RectTransformUtility.WorldToScreenPoint(null, rect.TransformPoint(rect.rect.center)) }; var hits = new System.Collections.Generic.List<UnityEngine.EventSystems.RaycastResult>(); UnityEngine.EventSystems.EventSystem.current.RaycastAll(p, hits); if (hits.Count == 0 || hits[0].gameObject != go) throw new System.Exception(\"UI raycast missed\"); UnityEngine.EventSystems.ExecuteEvents.Execute(go, p, UnityEngine.EventSystems.ExecuteEvents.pointerClickHandler); return new { state = Survivor.Core.GameFlow.Instance.Session.State.ToString(), selected = Survivor.Core.GameFlow.Instance.Session.SelectedWeaponId, hitCount = hits.Count };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "state": "WeaponSelection",
+        "selected": "bolt",
+        "hitCount": 1
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

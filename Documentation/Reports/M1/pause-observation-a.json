@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var go = UnityEngine.GameObject.Find(\"Button_pause\"); UnityEngine.EventSystems.ExecuteEvents.Execute(go, new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current), UnityEngine.EventSystems.ExecuteEvents.pointerClickHandler); return new { state = Survivor.Core.GameFlow.Instance.Session.State.ToString(), seconds = Survivor.Core.GameFlow.Instance.Session.BattleSeconds };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "state": "Pause",
+        "seconds": 35.78439899464138
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,119 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "test status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 0.48,
+      "summary": {
+        "total": 13,
+        "passed": 13,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "Survivor.Tests.EnvironmentTests.EveryQualityLevelUsesUrpWithA2DRenderer",
+          "Status": "Passed",
+          "Duration": 0.0256894,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EnvironmentTests.NewInputSystemAndExistingActionAssetAreUsable",
+          "Status": "Passed",
+          "Duration": 0.0182529,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EnvironmentTests.RequiredEditorAndWindowsTargetAreAvailable",
+          "Status": "Passed",
+          "Duration": 0.0020625,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowDataTests.BuildStartsInMainMenuAndIncludesIndependentBattleScene",
+          "Status": "Passed",
+          "Duration": 0.0010651,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowDataTests.CatalogHasFiveDistinctWeaponsAndResolvedTextKeys",
+          "Status": "Passed",
+          "Duration": 0.0022547,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowDataTests.MainMenuSerializesAllRequiredFlowDependencies",
+          "Status": "Passed",
+          "Duration": 0.0022893,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.CountdownCanPauseWithoutConsumingBattleTime",
+          "Status": "Passed",
+          "Duration": 0.0020933,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.FinishUsesFirstOutcomeAndDetachedSnapshot(True)",
+          "Status": "Passed",
+          "Duration": 0.0016635,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.FinishUsesFirstOutcomeAndDetachedSnapshot(False)",
+          "Status": "Passed",
+          "Duration": 0.000138,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.HeldMovementMustBeReleasedBeforeFreshInputIsAccepted",
+          "Status": "Passed",
+          "Duration": 0.0029942,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.NewRunDoesNotRetainPreviousGrowthOrSelection",
+          "Status": "Passed",
+          "Duration": 0.0007438,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.PauseAndLevelUpFreezeClockAndCannotOverlap",
+          "Status": "Passed",
+          "Duration": 0.0004881,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.SelectionIsRequiredAndDuplicateStartIsRejected",
+          "Status": "Passed",
+          "Duration": 0.0003482,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

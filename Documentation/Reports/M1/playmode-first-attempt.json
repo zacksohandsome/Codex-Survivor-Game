@@ -1,0 +1,49 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "test status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 1.55,
+      "summary": {
+        "total": 3,
+        "passed": 1,
+        "failed": 2,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "Survivor.Tests.EnvironmentPlayTests.PlayerLoopAdvancesAndUrp2DCameraRenders",
+          "Status": "Passed",
+          "Duration": 0.0582618,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowIntegrationTests.ButtonsAndRepeatedSceneRoundTripsDoNotLeakOrCarryRunData",
+          "Status": "Failed",
+          "Duration": 0.8423808,
+          "Message": "System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "  at Survivor.UI.FlowView.Render () [0x00309] in F:\\unity project\\Codex Survivor Game\\Assets\\Scripts\\UI\\FlowView.cs:119 \r\n  at Survivor.Core.GameFlow.OnStateChanged () [0x0002e] in F:\\unity project\\Codex Survivor Game\\Assets\\Scripts\\Core\\GameFlow.cs:62 \r\n  at Survivor.Core.GameSession.SetState (Survivor.Core.GameState state) [0x00007] in F:\\unity project\\Codex Survivor Game\\Assets\\Scripts\\Core\\GameSession.cs:118 \r\n  at Survivor.Core.GameSession.OpenWeaponSelection () [0x00011] in F:\\unity project\\Codex Survivor Game\\Assets\\Scripts\\Core\\GameSession.cs:56 \r\n  at Survivor.Core.GameFlow.OpenWeaponSelection () [0x00000] in F:\\unity project\\Codex Survivor Game\\Assets\\Scripts\\Core\\GameFlow.cs:64 \r\n  at Survivor.UI.FlowView+<>c__DisplayClass16_0.<Render>b__3 () [0x0000c] in F:\\unity project\\Codex Survivor Game\\Assets\\Scripts\\UI\\FlowView.cs:113 \r\n  at Survivor.UI.FlowView+<>c__DisplayClass13_0.<Button>b__0 () [0x00000] in F:\\unity project\\Codex Survivor Game\\Assets\\Scripts\\UI\\FlowView.cs:74 \r\n  at UnityEngine.Events.InvokableCall.Invoke () [0x00010] in <1da36a9af21a4683ad40e96b14222e63>:0 \r\n  at UnityEngine.Events.UnityEvent.Invoke () [0x00022] in <1da36a9af21a4683ad40e96b14222e63>:0 \r\n  at Survivor.Tests.FlowIntegrationTests+<ButtonsAndRepeatedSceneRoundTripsDoNotLeakOrCarryRunData>d__6.MoveNext () [0x00061] in F:\\unity project\\Codex Survivor Game\\Assets\\Tests\\PlayMode\\FlowIntegrationTests.cs:49 \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44 "
+        },
+        {
+          "FullName": "Survivor.Tests.FlowIntegrationTests.KeyboardPauseReleaseGateAndFocusLossFollowStateRules",
+          "Status": "Failed",
+          "Duration": 0.5323122,
+          "Message": "System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "  at Survivor.UI.FlowView.Render () [0x00309] in F:\\unity project\\Codex Survivor Game\\Assets\\Scripts\\UI\\FlowView.cs:119 \r\n  at Survivor.Core.GameFlow.OnStateChanged () [0x0002e] in F:\\unity project\\Codex Survivor Game\\Assets\\Scripts\\Core\\GameFlow.cs:62 \r\n  at Survivor.Core.GameSession.SetState (Survivor.Core.GameState state) [0x00007] in F:\\unity project\\Codex Survivor Game\\Assets\\Scripts\\Core\\GameSession.cs:118 \r\n  at Survivor.Core.GameSession.OpenWeaponSelection () [0x00011] in F:\\unity project\\Codex Survivor Game\\Assets\\Scripts\\Core\\GameSession.cs:56 \r\n  at Survivor.Core.GameFlow.OpenWeaponSelection () [0x00000] in F:\\unity project\\Codex Survivor Game\\Assets\\Scripts\\Core\\GameFlow.cs:64 \r\n  at Survivor.Tests.FlowIntegrationTests+<KeyboardPauseReleaseGateAndFocusLossFollowStateRules>d__7.MoveNext () [0x00060] in F:\\unity project\\Codex Survivor Game\\Assets\\Tests\\PlayMode\\FlowIntegrationTests.cs:77 \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44 "
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

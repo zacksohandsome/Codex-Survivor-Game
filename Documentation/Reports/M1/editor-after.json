@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "if (System.IO.Path.GetFullPath(\"Assets/Documentation\").StartsWith(UnityEngine.Application.dataPath + System.IO.Path.DirectorySeparatorChar)) UnityEditor.AssetDatabase.DeleteAsset(\"Assets/Documentation\"); UnityEditor.AssetDatabase.Refresh(); return new { scene = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().path, dirty = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().isDirty, playing = UnityEditor.EditorApplication.isPlaying, timeScale = UnityEngine.Time.timeScale, background = UnityEditor.PlayerSettings.runInBackground, fullscreenSwitch = UnityEditor.PlayerSettings.allowFullscreenSwitch };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "scene": "Assets/Scenes/MainMenu.unity",
+        "dirty": false,
+        "playing": false,
+        "timeScale": 1,
+        "background": false,
+        "fullscreenSwitch": false
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
