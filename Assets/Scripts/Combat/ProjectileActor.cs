@@ -35,7 +35,7 @@ namespace Survivor.Combat
             Vector2 origin = transform.position, end;
             if (pattern == WeaponPattern.Homing)
             {
-                var target = world.Weapon.FindNearest(origin, world.Enemies.Items, 20);
+                var target = world.Weapon.FindNearest(origin, world.Combatants, 20);
                 if (target != null) Direction = ((Vector2)target.transform.position - origin).normalized;
             }
             if (pattern == WeaponPattern.Orbit)

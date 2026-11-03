@@ -35,7 +35,7 @@ namespace Survivor.Combat
                 stormRemaining = Mathf.Max(0, stormRemaining - delta);
                 if (stormRemaining == 0)
                 {
-                    var target = world.Weapon.FindNearest(player, world.Enemies.Items, 12);
+                    var target = world.Weapon.FindNearest(player, world.Combatants, 12);
                     if (target != null && world.EmitArea(target.transform.position, 2.5f, world.Player.Attack * build.StormDamage, 0.2f, 0.2f, false, new Color(0.7f, 0.5f, 1)) != null)
                     {
                         if (build.Level("storm") >= 3) world.EmitArea(target.transform.position, 3, world.Player.Attack * build.StormDamage * 0.5f, 0.2f, 0.65f, false, new Color(0.7f, 0.5f, 1));
@@ -48,7 +48,7 @@ namespace Survivor.Combat
                 sanctuaryRemaining -= delta;
                 if (sanctuaryRemaining <= 0)
                 {
-                    foreach (var enemy in world.Enemies.Items)
+                    foreach (var enemy in world.Combatants)
                     {
                         if (!enemy.IsAlive) continue;
                         Vector2 away = (Vector2)enemy.transform.position - player;
@@ -71,7 +71,7 @@ namespace Survivor.Combat
             for (int i = 0; i < maximum; i++)
             {
                 EnemyActor nearest = null; float best = 9;
-                foreach (var enemy in world.Enemies.Items)
+                foreach (var enemy in world.Combatants)
                 {
                     if (!enemy.IsAlive || enemy == struck) continue;
                     float distance = ((Vector2)enemy.transform.position - position).sqrMagnitude;

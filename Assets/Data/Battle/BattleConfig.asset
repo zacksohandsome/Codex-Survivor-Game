@@ -27,6 +27,7 @@ MonoBehaviour:
   enemyCapacity: 64
   projectileCapacity: 96
   damageNumberCapacity: 256
+  areaCapacity: 32
   spawnInterval: 1.25
   spawnWarningSeconds: 0.75
   minSpawnDistance: 8
@@ -41,3 +42,4 @@ MonoBehaviour:
   weapon: {fileID: 11400000, guid: dad629dc03c5e264285c1984f428815b, type: 2}
   enemy: {fileID: 11400000, guid: 834235e5b626b6246a8460a54a0f45a3, type: 2}
   progression: {fileID: 11400000, guid: 0d16fb11b3b55364e8fdfe2c37a5a710, type: 2}
+  encounters: {fileID: 11400000, guid: c2ed73b549f47a54088c6c3a33c49907, type: 2}

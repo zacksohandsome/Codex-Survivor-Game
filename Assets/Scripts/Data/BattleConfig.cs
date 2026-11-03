@@ -20,5 +20,6 @@ namespace Survivor.Data
         public WeaponDefinition weapon;
         public EnemyDefinition enemy;
         public ProgressionConfig progression;
+        public EncounterConfig encounters;
     }
 }

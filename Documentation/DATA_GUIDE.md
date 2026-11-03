@@ -96,3 +96,6 @@ Life Bloom初次取得為每6秒回2HP，升級可選回復量+2或間隔減0.5�
 
 ## M6 內容資料
 ProgressionConfig現含5武器、5被動、2技能、5屬性，共17定義；三個武器格、五被動格及兩技能格。新武器可被抽為取得選項，持有後抽效果；等級3機制由實際能力等級決定。數值與疊加見CONTENT_MATRIX.md；Survivor/Create M6 Assets可重跑資產設定工具。
+
+## M7 遭遇設定
+Assets/Data/Battle/EncounterConfig.asset控制五段血量／攻擊／移速、生成間隔與敵人比例；四份EnemyDefinition定義射手、自爆、精英與Boss。Melee沿用原數據及ProgressionConfig掉落，以保留舊回歸。特殊保證掉落；出界或自爆不計玩家擊殺。

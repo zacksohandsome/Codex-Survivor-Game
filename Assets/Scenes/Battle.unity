@@ -3794,6 +3794,7 @@ MonoBehaviour:
   damageNumberPrefab: {fileID: 1395189428517262377, guid: b7675198ecabef94c8d4c51adb791c2d, type: 3}
   pickupPrefab: {fileID: 3269011014560173128, guid: f04a17eb966c4e94992fd2500b623473, type: 3}
   areaPrefab: {fileID: 4967504255407220752, guid: bc1e5290a4a9ede419deb1e05f16b217, type: 3}
+  hostileProjectilePrefab: {fileID: 1734563129613295307, guid: 78eca6daa8feca44db99664ae3bc32cf, type: 3}
   battleCamera: {fileID: 997517991}
 --- !u!1 &1963500606
 GameObject:

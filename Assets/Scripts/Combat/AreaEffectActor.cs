@@ -26,7 +26,7 @@ namespace Survivor.Combat
             float reach = expanding ? Mathf.Lerp(0.2f, radius, progress) : radius;
             transform.localScale = Vector3.one * reach * 2;
             body.color = new Color(color.r, color.g, color.b, 0.12f + 0.22f * (remaining / duration));
-            foreach (var enemy in world.Enemies.Items)
+            foreach (var enemy in world.Combatants)
             {
                 if (damage <= 0) break;
                 if (!enemy.IsAlive || hit.Contains(enemy.Token) || world.DisplayCapacity <= 0) continue;

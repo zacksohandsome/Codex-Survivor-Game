@@ -6,7 +6,7 @@
     },
     {
       "key": "stage",
-      "text": "M6 / BUILD YOUR SURVIVAL"
+      "text": "M7 / THE HOLLOW WARDEN"
     },
     {
       "key": "menu.note",
@@ -679,6 +679,54 @@
     {
       "key": "upgrade.magnet.speed.desc",
       "text": "Add 1 to attraction speed. Stacks."
+    },
+    {
+      "key": "encounter.stage.3",
+      "text": "Ember imps join the hunt"
+    },
+    {
+      "key": "enemy.ranged",
+      "text": "Hex Archer"
+    },
+    {
+      "key": "encounter.stage.2",
+      "text": "The horde grows / archers approach"
+    },
+    {
+      "key": "enemy.bomber",
+      "text": "Ember Imp"
+    },
+    {
+      "key": "enemy.melee",
+      "text": "Redcap"
+    },
+    {
+      "key": "encounter.stage.4",
+      "text": "The final onslaught draws near"
+    },
+    {
+      "key": "encounter.boss.defeated",
+      "text": "The Hollow Warden has fallen!"
+    },
+    {
+      "key": "enemy.boss",
+      "text": "The Hollow Warden"
+    },
+    {
+      "key": "encounter.boss",
+      "text": "THE HOLLOW WARDEN"
+    },
+    {
+      "key": "encounter.elite",
+      "text": "An elite champion has arrived!"
+    },
+    {
+      "key": "enemy.elite",
+      "text": "Briar Champion"
+    },
+    {
+      "key": "encounter.stage.5",
+      "text": "Hold on / final two minutes"
     }
   ]
 }

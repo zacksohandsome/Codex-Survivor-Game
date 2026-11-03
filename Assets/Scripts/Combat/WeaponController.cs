@@ -48,7 +48,7 @@ namespace Survivor.Combat
             }
             else
             {
-                var target = FindNearest(origin, world.Enemies.Items, weapon.range);
+                var target = FindNearest(origin, world.Combatants, weapon.range);
                 if (target == null) return;
                 Vector2 targetPosition = target.transform.position;
                 if (weapon.pattern == WeaponPattern.Blast)

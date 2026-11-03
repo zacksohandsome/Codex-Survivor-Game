@@ -1,0 +1,448 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "test status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 0.87,
+      "summary": {
+        "total": 60,
+        "passed": 60,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "Survivor.Tests.BattleRulesTests.AllDamageSourcesShareOneInvincibilityWindow",
+          "Status": "Passed",
+          "Duration": 0.0165134,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleRulesTests.BattleSceneReferencesItsConfigurationAndAllRepresentativePrefabs",
+          "Status": "Passed",
+          "Duration": 0.0219739,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleRulesTests.DefenseHasDiminishingReductionAndNeverPreventsAllDamage",
+          "Status": "Passed",
+          "Duration": 0.0002293,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleRulesTests.EdgeSpawnPrefersOffscreenAndRespectsSafeDistance",
+          "Status": "Passed",
+          "Duration": 0.0013477,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleRulesTests.MovementAndCameraStayInsideTheArenaIncludingBodyRadius",
+          "Status": "Passed",
+          "Duration": 0.0023482,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleRulesTests.SpawnFallbackIsAllowedOnlyWhenNoSafeOffscreenCandidateExists",
+          "Status": "Passed",
+          "Duration": 0.0002912,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ContentRulesTests.EveryAcquisitionHasAnEffectAndAllMaxedContentYieldsOnlyRewards",
+          "Status": "Passed",
+          "Duration": 0.0023696,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ContentRulesTests.FullCatalogHasFiveWeaponsFivePassivesTwoSkillsAndFiveAttributes",
+          "Status": "Passed",
+          "Duration": 0.0049195,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ContentRulesTests.ThreeWeaponsExcludeAcquisitionsWhileBothSkillsCanCoexist",
+          "Status": "Passed",
+          "Duration": 0.0042506,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ContentRulesTests.WeaponEffectsDoNotLeakBetweenOwnedWeapons",
+          "Status": "Passed",
+          "Duration": 0.0013874,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EncounterRulesTests.EitherSpecialSuppressesOrdinarySpawnsWithoutMultiplication(False,False,1)",
+          "Status": "Passed",
+          "Duration": 0.0005953,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EncounterRulesTests.EitherSpecialSuppressesOrdinarySpawnsWithoutMultiplication(True,False,0.6f)",
+          "Status": "Passed",
+          "Duration": 9.32E-05,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EncounterRulesTests.EitherSpecialSuppressesOrdinarySpawnsWithoutMultiplication(False,True,0.6f)",
+          "Status": "Passed",
+          "Duration": 5.86E-05,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EncounterRulesTests.EitherSpecialSuppressesOrdinarySpawnsWithoutMultiplication(True,True,0.6f)",
+          "Status": "Passed",
+          "Duration": 5.79E-05,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EncounterRulesTests.SpecialEventsStayPendingUntilSuccessfulSpawnAndOnlyOccurOnce",
+          "Status": "Passed",
+          "Duration": 0.0003726,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EncounterRulesTests.StageChangesAtTwoMinuteBoundaries(0,0)",
+          "Status": "Passed",
+          "Duration": 0.0004432,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EncounterRulesTests.StageChangesAtTwoMinuteBoundaries(119.99d,0)",
+          "Status": "Passed",
+          "Duration": 6.94E-05,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EncounterRulesTests.StageChangesAtTwoMinuteBoundaries(120,1)",
+          "Status": "Passed",
+          "Duration": 5.97E-05,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EncounterRulesTests.StageChangesAtTwoMinuteBoundaries(240,2)",
+          "Status": "Passed",
+          "Duration": 5.9E-05,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EncounterRulesTests.StageChangesAtTwoMinuteBoundaries(360,3)",
+          "Status": "Passed",
+          "Duration": 5.66E-05,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EncounterRulesTests.StageChangesAtTwoMinuteBoundaries(480,4)",
+          "Status": "Passed",
+          "Duration": 5.75E-05,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EncounterRulesTests.StageChangesAtTwoMinuteBoundaries(600,4)",
+          "Status": "Passed",
+          "Duration": 5.76E-05,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EnvironmentTests.EveryQualityLevelUsesUrpWithA2DRenderer",
+          "Status": "Passed",
+          "Duration": 0.0042513,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EnvironmentTests.NewInputSystemAndExistingActionAssetAreUsable",
+          "Status": "Passed",
+          "Duration": 0.0131183,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EnvironmentTests.RequiredEditorAndWindowsTargetAreAvailable",
+          "Status": "Passed",
+          "Duration": 0.0007657,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowDataTests.BuildStartsInMainMenuAndIncludesIndependentBattleScene",
+          "Status": "Passed",
+          "Duration": 0.0012908,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowDataTests.CatalogHasFiveDistinctWeaponsAndResolvedTextKeys",
+          "Status": "Passed",
+          "Duration": 0.0017827,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowDataTests.MainMenuSerializesAllRequiredFlowDependencies",
+          "Status": "Passed",
+          "Duration": 0.0014854,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.CountdownCanPauseWithoutConsumingBattleTime",
+          "Status": "Passed",
+          "Duration": 0.001459,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.FinishUsesFirstOutcomeAndDetachedSnapshot(True)",
+          "Status": "Passed",
+          "Duration": 0.0020555,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.FinishUsesFirstOutcomeAndDetachedSnapshot(False)",
+          "Status": "Passed",
+          "Duration": 9.04E-05,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.HeldMovementMustBeReleasedBeforeFreshInputIsAccepted",
+          "Status": "Passed",
+          "Duration": 0.0005333,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.NewRunDoesNotRetainPreviousGrowthOrSelection",
+          "Status": "Passed",
+          "Duration": 0.0004872,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.PauseAndLevelUpFreezeClockAndCannotOverlap",
+          "Status": "Passed",
+          "Duration": 0.0003394,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowRulesTests.SelectionIsRequiredAndDuplicateStartIsRejected",
+          "Status": "Passed",
+          "Duration": 0.0001968,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionRulesTests.EachAbilityCategoryHonorsItsOwnSlotLimit(Weapon)",
+          "Status": "Passed",
+          "Duration": 0.0017959,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionRulesTests.EachAbilityCategoryHonorsItsOwnSlotLimit(Passive)",
+          "Status": "Passed",
+          "Duration": 0.0001722,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionRulesTests.EachAbilityCategoryHonorsItsOwnSlotLimit(Skill)",
+          "Status": "Passed",
+          "Duration": 0.000148,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionRulesTests.EmptyInlineAcquisitionIsNeverOfferedAsANewAbility",
+          "Status": "Passed",
+          "Duration": 0.000655,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionRulesTests.FullSlotsExcludeNewAbilitiesAndAttributesDoNotConsumePassiveSlots",
+          "Status": "Passed",
+          "Duration": 0.0006458,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionRulesTests.MaxedAbilitiesAndAttributesYieldThreeRepeatableSpecialRewards",
+          "Status": "Passed",
+          "Duration": 0.0007207,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionRulesTests.NewAbilityIsPrioritizedAndIdenticalEffectsAreUniquePerRound",
+          "Status": "Passed",
+          "Duration": 0.0004373,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionRulesTests.OneAttributeCannotAppearTwiceEvenWithMultipleConfiguredEffects",
+          "Status": "Passed",
+          "Duration": 0.000886,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionRulesTests.OverflowCreatesSequentialChoicesAndRejectsOldScreenCallbacks",
+          "Status": "Passed",
+          "Duration": 0.001315,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionRulesTests.ProgressionDataHasResolvedKeysAndIncreasingExperienceRequirements",
+          "Status": "Passed",
+          "Duration": 0.0026135,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionRulesTests.ResultCopiesAbilitiesAndOnlyCollectedCurrency",
+          "Status": "Passed",
+          "Duration": 0.0005405,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionRulesTests.SameEffectCanRepeatAcrossRoundsUntilTheAbilityIsMaxed",
+          "Status": "Passed",
+          "Duration": 0.0008232,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionRulesTests.TimeAndDeathAreResolvedByTheFirstActualFinishEvent",
+          "Status": "Passed",
+          "Duration": 0.0003012,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.SaveTransactionTests.ActualFilesystemRoundTripAndAtomicReplacement",
+          "Status": "Passed",
+          "Duration": 0.0256529,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.SaveTransactionTests.AllCorruptOrFutureVersionPreservesOriginalAndDisablesWrites",
+          "Status": "Passed",
+          "Duration": 0.0007034,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.SaveTransactionTests.FailedPurchaseChangesNeitherBalanceNorLevelNorPrimary(\"write\")",
+          "Status": "Passed",
+          "Duration": 0.0014692,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.SaveTransactionTests.FailedPurchaseChangesNeitherBalanceNorLevelNorPrimary(\"copy\")",
+          "Status": "Passed",
+          "Duration": 0.000554,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.SaveTransactionTests.FailedPurchaseChangesNeitherBalanceNorLevelNorPrimary(\"replace\")",
+          "Status": "Passed",
+          "Duration": 0.0008115,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.SaveTransactionTests.FailedSettlementCanRetryWithoutDoubleCredit",
+          "Status": "Passed",
+          "Duration": 0.0016787,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.SaveTransactionTests.KeepsThreeRecentValidBackupsAndRecoversPastDamagedBackups",
+          "Status": "Passed",
+          "Duration": 0.0030788,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.SaveTransactionTests.MaxInsufficientFundsAndFullRefundUseOriginalPrices",
+          "Status": "Passed",
+          "Duration": 0.0015627,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.SaveTransactionTests.MissingFileDefaultsAndRoundTripsAllPermanentFields",
+          "Status": "Passed",
+          "Duration": 0.0005353,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.SaveTransactionTests.MissingPrimaryRecoversBackupInsteadOfResettingProgress",
+          "Status": "Passed",
+          "Duration": 0.0004364,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.SaveTransactionTests.SettlementIsIdempotentAcrossReloadAndOlderResultReplay",
+          "Status": "Passed",
+          "Duration": 0.0007454,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.SaveTransactionTests.TamperAndInvalidNumbersAreRejected",
+          "Status": "Passed",
+          "Duration": 0.0005434,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

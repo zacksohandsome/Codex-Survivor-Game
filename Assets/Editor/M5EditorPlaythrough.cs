@@ -53,24 +53,27 @@ namespace Survivor.Editor
         private readonly Vector2[] route = { new Vector2(15, 8), new Vector2(-15, 8), new Vector2(-15, -8), new Vector2(15, -8) };
         public string Status => evidence.status;
         public static string ActiveStatus => active == null ? "idle" : active.Status;
-        private const string EvidencePath = "Documentation/Reports/M5/playthrough.json";
+        private string reportDirectory = "Documentation/Reports/M5", recordingDirectory = "Recordings/M5";
+        private string EvidencePath => Path.Combine(reportDirectory, "playthrough.json");
 
         public static void Begin()
+            => BeginForMilestone("Documentation/Reports/M5", "Recordings/M5");
+        public static void BeginForMilestone(string reports, string recordings)
         {
             if (!EditorApplication.isPlaying || active != null) throw new InvalidOperationException("Start exactly one driver in Play Mode.");
-            active = CreateInstance<M5EditorPlaythrough>(); active.routine = active.Start();
+            active = CreateInstance<M5EditorPlaythrough>(); active.reportDirectory = reports; active.recordingDirectory = recordings; active.routine = active.Start();
             EditorApplication.update += active.Update;
         }
         private IEnumerator Start()
         {
             keyboard = InputSystem.AddDevice<Keyboard>();
-            Directory.CreateDirectory("Documentation/Reports/M5"); Directory.CreateDirectory("Recordings/M5");
+            Directory.CreateDirectory(reportDirectory); Directory.CreateDirectory(recordingDirectory);
             controllerSettings = ScriptableObject.CreateInstance<RecorderControllerSettings>();
             movie = ScriptableObject.CreateInstance<MovieRecorderSettings>(); movie.name = "M5 Normal Speed Editor"; movie.Enabled = true;
             movie.EncoderSettings = new CoreEncoderSettings { EncodingQuality = CoreEncoderSettings.VideoEncodingQuality.Low, Codec = CoreEncoderSettings.OutputCodec.MP4 };
             movie.ImageInputSettings = new GameViewInputSettings { OutputWidth = 1280, OutputHeight = 720 };
             movie.CaptureAudio = false; movie.CaptureAlpha = false;
-            movie.OutputFile = Path.GetFullPath("Recordings/M5/mvp-editor");
+            movie.OutputFile = Path.GetFullPath(Path.Combine(recordingDirectory, "mvp-editor"));
             controllerSettings.AddRecorderSettings(movie); controllerSettings.SetRecordModeToManual();
             controllerSettings.FrameRate = 30; controllerSettings.FrameRatePlayback = FrameRatePlayback.Variable; controllerSettings.CapFrameRate = false;
             recorder = new RecorderController(controllerSettings); recorder.PrepareRecording();
@@ -119,14 +122,14 @@ namespace Survivor.Editor
                 var result = flow.Session.Result; evidence.won = result.Won;
                 evidence.battleSeconds = result.SurvivalSeconds; evidence.kills = result.Kills;
                 evidence.level = result.Level; evidence.currency = result.CollectedCurrency; evidence.realSeconds = real;
-                ScreenCapture.CaptureScreenshot("Documentation/Reports/M5/victory.png");
+                ScreenCapture.CaptureScreenshot(Path.Combine(reportDirectory, "victory.png"));
                 if (!result.Won) { Finish("victory_attempt_died"); return; }
                 phase = 1; routine = PurchaseReloadAndDie(); Queue(); return;
             }
             if (phase == 2 && flow.Session.State == GameState.Result)
             {
                 evidence.deathVerified = !flow.Session.Result.Won;
-                ScreenCapture.CaptureScreenshot("Documentation/Reports/M5/defeat.png");
+                ScreenCapture.CaptureScreenshot(Path.Combine(reportDirectory, "defeat.png"));
                 Finish(evidence.deathVerified && evidence.reloadVerified && evidence.purchased ? "passed" : "verification_failed"); return;
             }
             choiceRemaining -= Time.unscaledDeltaTime;
@@ -173,6 +176,21 @@ namespace Survivor.Editor
                 Vector2 away = player - (Vector2)enemy.transform.position; float distance = away.magnitude;
                 if (distance < 3.5f && distance > 0.01f) direction += away.normalized * ((3.5f - distance) * 1.8f);
             }
+            if (phase == 0)
+            {
+                foreach (var shot in world.HostileProjectiles.Items)
+                {
+                    if (!shot.IsRented) continue;
+                    Vector2 away = player - (Vector2)shot.transform.position;
+                    if (away.sqrMagnitude < 9 && away.sqrMagnitude > 0.001f) direction += away.normalized * 2;
+                }
+                foreach (var enemy in world.Combatants)
+                {
+                    if (!enemy.IsAlive || enemy.AttackWarningRemaining <= 0 || enemy.TelegraphRadius <= 0) continue;
+                    Vector2 away = player - enemy.TelegraphCenter;
+                    if (away.magnitude < enemy.TelegraphRadius + 1 && away.sqrMagnitude > 0.001f) direction += away.normalized * 4;
+                }
+            }
             var keys = new List<Key>(2);
             if (direction.x > 0.2f) keys.Add(Key.D); else if (direction.x < -0.2f) keys.Add(Key.A);
             if (direction.y > 0.2f) keys.Add(Key.W); else if (direction.y < -0.2f) keys.Add(Key.S);
@@ -185,7 +203,7 @@ namespace Survivor.Editor
             yield return null; Click("meta"); yield return null; Click("meta.health"); yield return null;
             evidence.purchased = flow.PermanentData.metaUpgradeLevels[0] == 1;
             long currency = flow.PermanentData.currency, runs = flow.PermanentData.totalRuns;
-            ScreenCapture.CaptureScreenshot("Documentation/Reports/M5/meta-purchased.png");
+            ScreenCapture.CaptureScreenshot(Path.Combine(reportDirectory, "meta-purchased.png"));
             yield return new WaitForSecondsRealtime(2);
             Destroy(flow.gameObject); yield return null;
             yield return SceneManager.LoadSceneAsync("MainMenu"); yield return null;

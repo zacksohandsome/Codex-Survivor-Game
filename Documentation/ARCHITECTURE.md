@@ -88,3 +88,6 @@ SaveRepository 負責版本／摘要驗證、暫存原子替換、三份備份�
 
 ## M6 完整構築
 BattleWorld依BuildState持有內容驅動各武器獨立WeaponController；ProjectileActor區分直線／追蹤／環繞，AreaEffectActor使用有界池處理爆炸／擴張／持續傷害區。PassiveController負責五被動與兩技能的事件和獨立計時，僅在Battle執行。DealEnemyDamage集中傷害、擊殺、掉落與連鎖入口，勝敗清理所有池。武器傷害／穿透／範圍依能力ID分別保存，不跨武器套用。
+
+## M7 遭遇與敵方攻擊
+EncounterTimeline只標記成功生成的180／420秒事件；EnemyActor保存階段快照與預警狀態；普通池64與特殊池2透過Combatants供所有玩家武器查找。HostileProjectileActor池128以獨立Player圖層做CircleCast，World.HitPlayer統一防禦與無敵。玩家移動後先同步Collider才判定爆炸，勝敗清除敵方彈體／特殊／預警。D03倍率由場上特殊狀態推導，不保存過期旗標。

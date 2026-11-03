@@ -20,6 +20,8 @@ namespace Survivor.UI
         private UnityEngine.UI.Image backgroundImage;
         private UnityEngine.UI.Image healthFill, experienceFill;
         private TextMeshProUGUI progressText, buildText;
+        private TextMeshProUGUI bossText, encounterText;
+        private UnityEngine.UI.Image bossFill;
         private string page;
         private string confirmationKey;
         private Action confirmation;
@@ -112,6 +114,7 @@ namespace Survivor.UI
                 var child = content.GetChild(i).gameObject; child.SetActive(false); Destroy(child);
             }
             clock = null; status = null; healthFill = null; experienceFill = null; progressText = null; buildText = null;
+            bossText = encounterText = null; bossFill = null;
             bool battleHud = !flow.IsTransitioning && !HasModal &&
                 (flow.Session.State == GameState.Battle || flow.Session.State == GameState.IntroCountdown);
             backgroundImage.color = battleHud ? Color.clear : new Color(0.035f, 0.055f, 0.09f, 0.97f);
@@ -180,6 +183,8 @@ namespace Survivor.UI
                     healthFill = Bar("HealthBar", new Color(0.25f, 0.9f, 0.45f));
                     progressText = Label("", 22, 24); experienceFill = Bar("ExperienceBar", new Color(0.2f, 0.6f, 1));
                     buildText = Label("", 20, 48);
+                    encounterText = Label("", 22, 24);
+                    bossText = Label("", 22, 24); bossFill = Bar("BossHealth", new Color(0.85f, 0.3f, 0.9f));
                     Label(text.Get("battle.note"), 18, 20);
                     Button("pause", () => session.Pause(), height: 36); RefreshClock(); break;
                 case GameState.Pause:
@@ -239,6 +244,19 @@ namespace Survivor.UI
         {
             if (clock == null) return;
             var session = flow.Session;
+            var encounterWorld = Survivor.Combat.BattleWorld.Instance;
+            if (encounterText != null) encounterText.text = encounterWorld != null && encounterWorld.NoticeRemaining > 0 ? text.Get(encounterWorld.NoticeKey) : "";
+            if (bossText != null)
+            {
+                var boss = encounterWorld == null ? null : encounterWorld.Boss;
+                bool visible = boss != null;
+                bossText.gameObject.SetActive(visible); bossFill.transform.parent.gameObject.SetActive(visible);
+                if (visible)
+                {
+                    bossText.text = text.Get(boss.Definition.nameKey) + "  " + boss.Health.Current + "/" + boss.Health.Maximum;
+                    SetBar(bossFill, (float)boss.Health.Current / boss.Health.Maximum);
+                }
+            }
             clock.text = session.State == GameState.IntroCountdown
                 ? text.Get("countdown") + "  " + Mathf.CeilToInt((float)session.IntroRemaining)
                 : session.State == GameState.Pause ? string.Format(text.Get("survival"), (int)session.BattleSeconds / 60, (int)session.BattleSeconds % 60)

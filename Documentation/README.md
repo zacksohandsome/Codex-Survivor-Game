@@ -125,3 +125,5 @@ MVP 可以使用幾何圖形、色塊與佔位音效，並只需少量代表性�
 - [M5 報告](Reports/M5/report.md)：正常時間完整 Editor MVP 實玩與錄影；[Editor 操作說明](EDITOR_PLAY_GUIDE.md)。
 
 - [M6 報告](Reports/M6/report.md)：五武器、五被動、兩技能與測試；[完整內容矩陣](CONTENT_MATRIX.md)。目前完成至M6，M7待D03確認。
+
+- [M7 報告](Reports/M7/report.md)：三種普通敵人、精英、Boss、五段難度與完整實玩。

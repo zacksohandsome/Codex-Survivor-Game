@@ -184,7 +184,7 @@ namespace Survivor.Tests
             Assert.That(world.Player.transform.position, Is.EqualTo(previous));
         }
         [UnityTest]
-        public IEnumerator FullDamageDisplayDefersHitsAndProjectilesExpireWithoutLeakingReservations()
+        public IEnumerator FullEnemyDamageDisplayDoesNotProtectPlayerAndProjectilesExpireWithoutLeakingReservations()
         {
             world.SpawnEnemy(Vector2.zero, 0);
             for (int i = 0; i < config.damageNumberCapacity; i++)
@@ -192,11 +192,11 @@ namespace Survivor.Tests
             Assert.That(world.DisplayCapacity, Is.Zero);
             Assert.That(world.LaunchProjectile(Vector2.zero, Vector2.up, 5, config.weapon), Is.Null);
             world.Tick(0.1f, Vector2.zero);
-            Assert.That(world.Player.Health.Current, Is.EqualTo(100));
+            Assert.That(world.Player.Health.Current, Is.EqualTo(87));
             world.DamageNumbers.Return(world.DamageNumbers.Items[0]);
             world.Tick(0.1f, Vector2.zero);
             Assert.That(world.Player.Health.Current, Is.EqualTo(87));
-            Assert.That(world.DamageNumbers.ActiveCount, Is.EqualTo(256));
+            Assert.That(world.DamageNumbers.ActiveCount, Is.EqualTo(255));
             foreach (var number in world.DamageNumbers.Items) world.DamageNumbers.Return(number);
             var projectile = world.LaunchProjectile(Vector2.right * 10, Vector2.up, 5, config.weapon);
             world.Tick(3, Vector2.zero);
