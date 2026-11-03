@@ -16,9 +16,9 @@ MonoBehaviour:
   category: 0
   maxLevel: 5
   acquisition:
-    id: 
-    nameKey: 
-    descriptionKey: 
+    id: bolt.new
+    nameKey: upgrade.bolt.new
+    descriptionKey: upgrade.bolt.new.desc
     effect: 0
     amount: 0
   effects:

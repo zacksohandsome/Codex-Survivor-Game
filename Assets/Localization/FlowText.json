@@ -6,7 +6,7 @@
     },
     {
       "key": "stage",
-      "text": "M5 / EDITOR MVP VALIDATED"
+      "text": "M6 / BUILD YOUR SURVIVAL"
     },
     {
       "key": "menu.note",
@@ -42,7 +42,7 @@
     },
     {
       "key": "select.note",
-      "text": "Arcane Bolt is playable in M2. Other weapons are previews for M6."
+      "text": "Choose any starting weapon. Hold up to three weapons during a run."
     },
     {
       "key": "selection.empty",
@@ -58,39 +58,39 @@
     },
     {
       "key": "weapon.bolt.desc",
-      "text": "Straight projectile / nearest target. 16 base damage, 0.55s cooldown, range 12."
+      "text": "Arcane Bolt: nearest target, straight shots. Level 3 adds a second angled bolt."
     },
     {
       "key": "weapon.orbit",
-      "text": "Guardian Ring"
+      "text": "Orbit Lanterns"
     },
     {
       "key": "weapon.orbit.desc",
-      "text": "Orbiting close-range weapon. Planned for M6."
+      "text": "Orbit Lanterns: orbiting projectiles protect close range. Level 3 adds a third lantern."
     },
     {
       "key": "weapon.blast",
-      "text": "Ember Burst"
+      "text": "Ember Blast"
     },
     {
       "key": "weapon.blast.desc",
-      "text": "Area explosion. Planned for M6."
+      "text": "Ember Blast: delayed explosion at a target position. Level 3 adds an aftershock."
     },
     {
       "key": "weapon.homing",
-      "text": "Spirit Seeker"
+      "text": "Seeking Wisp"
     },
     {
       "key": "weapon.homing.desc",
-      "text": "Homing projectile. Planned for M6."
+      "text": "Seeking Wisp: missiles steer toward enemies. Level 3 pierces and retargets."
     },
     {
       "key": "weapon.pulse",
-      "text": "Runic Pulse"
+      "text": "Frost Pulse"
     },
     {
       "key": "weapon.pulse.desc",
-      "text": "Periodic radial attack. Planned for M6."
+      "text": "Frost Pulse: expanding waves strike nearby enemies. Level 3 adds a second wave."
     },
     {
       "key": "battle",
@@ -138,7 +138,7 @@
     },
     {
       "key": "meta.note",
-      "text": "Meta upgrades and saving arrive in M4. No purchases are available."
+      "text": "Spend earned coins on permanent upgrades."
     },
     {
       "key": "settings.note",
@@ -198,7 +198,7 @@
     },
     {
       "key": "upgrade.bolt.damage",
-      "text": "Arcane Power"
+      "text": "Arcane Bolt / power"
     },
     {
       "key": "upgrade.bloom.interval",
@@ -226,7 +226,7 @@
     },
     {
       "key": "upgrade.bolt.pierce",
-      "text": "Piercing Bolt"
+      "text": "Arcane Bolt / pierce"
     },
     {
       "key": "upgrade.stat.defense.desc",
@@ -242,7 +242,7 @@
     },
     {
       "key": "upgrade.bloom.new.desc",
-      "text": "Restore 2 HP every 6 seconds."
+      "text": "Restore 2 HP every 6 seconds. Does not exceed maximum health."
     },
     {
       "key": "upgrade.card",
@@ -258,7 +258,7 @@
     },
     {
       "key": "upgrade.bolt.damage.desc",
-      "text": "Bolt damage multiplier +0.25."
+      "text": "Add 25% of attack to this weapon damage multiplier. Stacks each time selected."
     },
     {
       "key": "upgrade.bloom.amount",
@@ -278,7 +278,7 @@
     },
     {
       "key": "upgrade.bloom.new",
-      "text": "NEW: Life Bloom"
+      "text": "Acquire Vital Bloom"
     },
     {
       "key": "upgrade.stat.health.desc",
@@ -294,7 +294,7 @@
     },
     {
       "key": "ability.bloom",
-      "text": "Life Bloom"
+      "text": "Vital Bloom"
     },
     {
       "key": "upgrade.stat.speed.desc",
@@ -338,7 +338,7 @@
     },
     {
       "key": "upgrade.bolt.pierce.desc",
-      "text": "Bolts hit one additional enemy."
+      "text": "This weapon can hit one more distinct enemy per projectile. Stacks."
     },
     {
       "key": "upgrade.bloom.interval.desc",
@@ -391,6 +391,294 @@
     {
       "key": "save.unreadable",
       "text": "Save unavailable or unsupported. Originals preserved; saving is disabled. Check the local save folder."
+    },
+    {
+      "key": "upgrade.bolt.new",
+      "text": "Acquire Arcane Bolt"
+    },
+    {
+      "key": "upgrade.bolt.new.desc",
+      "text": "Acquire a straight auto-firing weapon. Level 3 fires a second angled bolt."
+    },
+    {
+      "key": "upgrade.bolt.area",
+      "text": "Arcane Bolt / area"
+    },
+    {
+      "key": "upgrade.bolt.area.desc",
+      "text": "Increase this weapon area radius by 0.4. Stacks."
+    },
+    {
+      "key": "ability.orbit",
+      "text": "Orbit Lanterns"
+    },
+    {
+      "key": "upgrade.orbit.new",
+      "text": "Acquire Orbit Lanterns"
+    },
+    {
+      "key": "upgrade.orbit.new.desc",
+      "text": "Acquire two orbiting lanterns. Level 3 creates three lanterns."
+    },
+    {
+      "key": "upgrade.orbit.damage",
+      "text": "Orbit Lanterns / power"
+    },
+    {
+      "key": "upgrade.orbit.damage.desc",
+      "text": "Add 25% of attack to this weapon damage multiplier. Stacks each time selected."
+    },
+    {
+      "key": "upgrade.orbit.pierce",
+      "text": "Orbit Lanterns / pierce"
+    },
+    {
+      "key": "upgrade.orbit.pierce.desc",
+      "text": "This weapon can hit one more distinct enemy per projectile. Stacks."
+    },
+    {
+      "key": "upgrade.orbit.area",
+      "text": "Orbit Lanterns / area"
+    },
+    {
+      "key": "upgrade.orbit.area.desc",
+      "text": "Increase this weapon area radius by 0.4. Stacks."
+    },
+    {
+      "key": "ability.blast",
+      "text": "Ember Blast"
+    },
+    {
+      "key": "upgrade.blast.new",
+      "text": "Acquire Ember Blast"
+    },
+    {
+      "key": "upgrade.blast.new.desc",
+      "text": "Acquire a targeted delayed blast. Level 3 creates an aftershock."
+    },
+    {
+      "key": "upgrade.blast.damage",
+      "text": "Ember Blast / power"
+    },
+    {
+      "key": "upgrade.blast.damage.desc",
+      "text": "Add 25% of attack to this weapon damage multiplier. Stacks each time selected."
+    },
+    {
+      "key": "upgrade.blast.pierce",
+      "text": "Ember Blast / pierce"
+    },
+    {
+      "key": "upgrade.blast.pierce.desc",
+      "text": "This weapon can hit one more distinct enemy per projectile. Stacks."
+    },
+    {
+      "key": "upgrade.blast.area",
+      "text": "Ember Blast / area"
+    },
+    {
+      "key": "upgrade.blast.area.desc",
+      "text": "Increase this weapon area radius by 0.4. Stacks."
+    },
+    {
+      "key": "ability.homing",
+      "text": "Seeking Wisp"
+    },
+    {
+      "key": "upgrade.homing.new",
+      "text": "Acquire Seeking Wisp"
+    },
+    {
+      "key": "upgrade.homing.new.desc",
+      "text": "Acquire steering missiles. Level 3 adds piercing and retargeting."
+    },
+    {
+      "key": "upgrade.homing.damage",
+      "text": "Seeking Wisp / power"
+    },
+    {
+      "key": "upgrade.homing.damage.desc",
+      "text": "Add 25% of attack to this weapon damage multiplier. Stacks each time selected."
+    },
+    {
+      "key": "upgrade.homing.pierce",
+      "text": "Seeking Wisp / pierce"
+    },
+    {
+      "key": "upgrade.homing.pierce.desc",
+      "text": "This weapon can hit one more distinct enemy per projectile. Stacks."
+    },
+    {
+      "key": "upgrade.homing.area",
+      "text": "Seeking Wisp / area"
+    },
+    {
+      "key": "upgrade.homing.area.desc",
+      "text": "Increase this weapon area radius by 0.4. Stacks."
+    },
+    {
+      "key": "ability.pulse",
+      "text": "Frost Pulse"
+    },
+    {
+      "key": "upgrade.pulse.new",
+      "text": "Acquire Frost Pulse"
+    },
+    {
+      "key": "upgrade.pulse.new.desc",
+      "text": "Acquire an expanding close-range wave. Level 3 adds a second wave."
+    },
+    {
+      "key": "upgrade.pulse.damage",
+      "text": "Frost Pulse / power"
+    },
+    {
+      "key": "upgrade.pulse.damage.desc",
+      "text": "Add 25% of attack to this weapon damage multiplier. Stacks each time selected."
+    },
+    {
+      "key": "upgrade.pulse.pierce",
+      "text": "Frost Pulse / pierce"
+    },
+    {
+      "key": "upgrade.pulse.pierce.desc",
+      "text": "This weapon can hit one more distinct enemy per projectile. Stacks."
+    },
+    {
+      "key": "upgrade.pulse.area",
+      "text": "Frost Pulse / area"
+    },
+    {
+      "key": "upgrade.pulse.area.desc",
+      "text": "Increase this weapon area radius by 0.4. Stacks."
+    },
+    {
+      "key": "ability.magnet",
+      "text": "Lodestone"
+    },
+    {
+      "key": "upgrade.magnet.new",
+      "text": "Acquire Lodestone"
+    },
+    {
+      "key": "upgrade.magnet.new.desc",
+      "text": "Increase the shared gem/coin magnet radius by 0.5. Level 3 doubles the radius briefly every 10 seconds."
+    },
+    {
+      "key": "ability.echo",
+      "text": "Arc Echo"
+    },
+    {
+      "key": "upgrade.echo.new",
+      "text": "Acquire Arc Echo"
+    },
+    {
+      "key": "upgrade.echo.new.desc",
+      "text": "Weapon and area hits chain 25% damage to a nearby enemy, once per second. Level 3 allows a second bounce."
+    },
+    {
+      "key": "ability.thorns",
+      "text": "Briar Mantle"
+    },
+    {
+      "key": "upgrade.thorns.new",
+      "text": "Acquire Briar Mantle"
+    },
+    {
+      "key": "upgrade.thorns.new.desc",
+      "text": "After taking damage, retaliate in a radius of 2.5 for 120% attack. Level 3 increases the radius to 4."
+    },
+    {
+      "key": "ability.trail",
+      "text": "Verdant Trail"
+    },
+    {
+      "key": "upgrade.trail.new",
+      "text": "Acquire Verdant Trail"
+    },
+    {
+      "key": "upgrade.trail.new.desc",
+      "text": "While moving, leave a damaging trail each second for 50% attack. Level 3 trails last 2 seconds."
+    },
+    {
+      "key": "ability.storm",
+      "text": "Starfall"
+    },
+    {
+      "key": "upgrade.storm.new",
+      "text": "Acquire Starfall"
+    },
+    {
+      "key": "upgrade.storm.new.desc",
+      "text": "Automatic targeted area strike: 200% attack every 4 seconds. Level 3 adds a second strike."
+    },
+    {
+      "key": "ability.sanctuary",
+      "text": "Sanctuary"
+    },
+    {
+      "key": "upgrade.sanctuary.new",
+      "text": "Acquire Sanctuary"
+    },
+    {
+      "key": "upgrade.sanctuary.new.desc",
+      "text": "Gain 4 defense and repel nearby enemies every 6 seconds. Level 3 also heals 3 HP per pulse. No shield."
+    },
+    {
+      "key": "upgrade.storm.damage",
+      "text": "Starfall / power"
+    },
+    {
+      "key": "upgrade.storm.damage.desc",
+      "text": "Add 40% of attack to strike damage. Stacks."
+    },
+    {
+      "key": "upgrade.echo.damage",
+      "text": "Arc Echo / power"
+    },
+    {
+      "key": "upgrade.echo.damage.desc",
+      "text": "Add 15% to chained damage. Stacks."
+    },
+    {
+      "key": "upgrade.trail.damage",
+      "text": "Verdant Trail / power"
+    },
+    {
+      "key": "upgrade.trail.damage.desc",
+      "text": "Add 20% of attack to trail damage. Stacks."
+    },
+    {
+      "key": "upgrade.magnet.radius",
+      "text": "Lodestone / reach"
+    },
+    {
+      "key": "upgrade.magnet.radius.desc",
+      "text": "Add 0.5 to the shared gem/coin attraction radius. Stacks."
+    },
+    {
+      "key": "upgrade.thorns.damage",
+      "text": "Briar Mantle / power"
+    },
+    {
+      "key": "upgrade.thorns.damage.desc",
+      "text": "Add 30% of attack to retaliation damage. Stacks."
+    },
+    {
+      "key": "upgrade.sanctuary.defense",
+      "text": "Sanctuary / defense"
+    },
+    {
+      "key": "upgrade.sanctuary.defense.desc",
+      "text": "Add 2 defense. Stacks with attributes and permanent upgrades."
+    },
+    {
+      "key": "upgrade.magnet.speed",
+      "text": "Lodestone / pull"
+    },
+    {
+      "key": "upgrade.magnet.speed.desc",
+      "text": "Add 1 to attraction speed. Stacks."
     }
   ]
 }

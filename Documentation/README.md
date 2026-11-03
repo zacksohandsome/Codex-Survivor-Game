@@ -123,3 +123,5 @@ MVP 可以使用幾何圖形、色塊與佔位音效，並只需少量代表性�
 - [M4 報告](Reports/M4/report.md)：永久強化、可靠存檔、Editor 讀檔與交易測試。
 
 - [M5 報告](Reports/M5/report.md)：正常時間完整 Editor MVP 實玩與錄影；[Editor 操作說明](EDITOR_PLAY_GUIDE.md)。
+
+- [M6 報告](Reports/M6/report.md)：五武器、五被動、兩技能與測試；[完整內容矩陣](CONTENT_MATRIX.md)。目前完成至M6，M7待D03確認。

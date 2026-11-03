@@ -17,3 +17,11 @@ MonoBehaviour:
   descriptionKey: weapon.orbit.desc
   pattern: 1
   maxLevel: 5
+  combatAvailable: 1
+  damageMultiplier: 1.2
+  cooldown: 1.6
+  range: 3
+  projectileSpeed: 14
+  projectileLifetime: 1.6
+  maxHits: 3
+  areaRadius: 2.4

@@ -19,12 +19,17 @@ namespace Survivor.Combat
         public ProjectileActor projectilePrefab;
         public DamageNumber damageNumberPrefab;
         public PickupActor pickupPrefab;
+        public AreaEffectActor areaPrefab;
         public Camera battleCamera;
         public PlayerActor Player { get; private set; }
         public BoundedPool<EnemyActor> Enemies { get; private set; }
         public BoundedPool<ProjectileActor> Projectiles { get; private set; }
         public BoundedPool<DamageNumber> DamageNumbers { get; private set; }
+        public BoundedPool<AreaEffectActor> Areas { get; private set; }
         public WeaponController Weapon { get; } = new WeaponController();
+        public PassiveController Passives { get; } = new PassiveController();
+        private readonly System.Collections.Generic.Dictionary<string, WeaponController> controllers = new System.Collections.Generic.Dictionary<string, WeaponController>();
+        public WeaponController ControllerFor(string id) => id == config.weapon.id ? Weapon : controllers[id];
         public PickupManager Pickups { get; private set; }
         public BuildState CurrentBuild => GameFlow.Instance.Session.Run.Build;
         public int EnemyLayerMask => 1 << enemyPrefab.gameObject.layer;
@@ -44,6 +49,9 @@ namespace Survivor.Combat
             Projectiles = new BoundedPool<ProjectileActor>(config.projectileCapacity, () => Instantiate(projectilePrefab, transform));
             DamageNumbers = new BoundedPool<DamageNumber>(config.damageNumberCapacity, () => Instantiate(damageNumberPrefab, transform));
             Pickups = new PickupManager(this, pickupPrefab, config.progression);
+            Areas = new BoundedPool<AreaEffectActor>(config.areaCapacity, () => Instantiate(areaPrefab, transform));
+            foreach (var weapon in GameFlow.Instance.Config.weapons)
+                if (weapon.id != config.weapon.id) controllers.Add(weapon.id, new WeaponController());
             regenerationRemaining = config.progression.regenInterval;
             UpdateCamera();
         }
@@ -94,8 +102,15 @@ namespace Survivor.Combat
             }
             SeparateEnemies(delta);
             Physics2D.SyncTransforms();
-            if (AutomaticAttacking) Weapon.Tick(delta, this, config.weapon);
+            if (AutomaticAttacking)
+            {
+                if (CurrentBuild.Level(config.weapon.id) > 0) Weapon.Tick(delta, this, config.weapon);
+                foreach (var weapon in flow.Config.weapons)
+                    if (weapon.id != config.weapon.id && CurrentBuild.Level(weapon.id) > 0) controllers[weapon.id].Tick(delta, this, weapon);
+            }
+            Passives.Tick(delta, this);
             foreach (var projectile in Projectiles.Items) if (projectile.IsRented) projectile.Tick(delta, this);
+            foreach (var area in Areas.Items) if (area.IsRented) area.Tick(delta, this);
             foreach (var enemy in Enemies.Items)
             {
                 if (!enemy.IsAlive || Player.Health.InvincibleRemaining > 0 || DisplayCapacity <= 0) continue;
@@ -104,6 +119,7 @@ namespace Survivor.Combat
                     int damage = Player.Health.TakeDamage(config.enemy.contactDamage);
                     if (damage > 0) EmitNumber(Player.transform.position, damage, true);
                     if (Player.Health.Current == 0) { flow.Session.Finish(false); break; }
+                    if (damage > 0) Passives.OnPlayerHit(this);
                 }
             }
             if (flow.Session.State == GameState.Battle) Pickups.Tick(delta);
@@ -152,7 +168,7 @@ namespace Survivor.Combat
             if (enemy != null) enemy.Initialize(config.enemy, position, warningSeconds);
             return enemy;
         }
-        public ProjectileActor LaunchProjectile(Vector2 position, Vector2 direction, float damage, WeaponDefinition weapon, int extraHits = 0)
+        public ProjectileActor LaunchProjectile(Vector2 position, Vector2 direction, float damage, WeaponDefinition weapon, int extraHits = 0, float orbitAngle = 0)
         {
             int maxHits = weapon.maxHits + extraHits;
             if (direction.sqrMagnitude == 0 || DisplayCapacity < maxHits) return null;
@@ -160,11 +176,18 @@ namespace Survivor.Combat
             if (projectile == null) return null;
             ReservedNumbers += maxHits;
             projectile.Fire(position, direction, damage, weapon.projectileSpeed, weapon.projectileLifetime, maxHits, config.enemyCapacity);
+            projectile.ConfigurePattern(weapon.pattern, orbitAngle, weapon.areaRadius + CurrentBuild.AreaFor(weapon.id));
             return projectile;
         }
         public void ApplyProjectileHit(ProjectileActor projectile, EnemyActor enemy, float raw)
         {
             ReservedNumbers--;
+            DealEnemyDamage(enemy, raw);
+        }
+        public void DealEnemyDamage(EnemyActor enemy, float raw, bool triggerEcho = true)
+        {
+            if (!enemy.IsAlive || raw <= 0 || DisplayCapacity <= 0) return;
+            Vector2 hitPosition = enemy.transform.position;
             int damage = enemy.TakeDamage(raw, config.hitFlashSeconds);
             EmitNumber(enemy.transform.position, damage, false);
             if (enemy.Health.Current == 0)
@@ -174,6 +197,13 @@ namespace Survivor.Combat
                 Pickups.Spawn(position, config.progression.enemyExperience, 0);
                 if (random.NextDouble() < config.progression.currencyChance) Pickups.Spawn(position, 0, config.progression.currencyValue);
             }
+            if (triggerEcho) Passives.OnHit(this, enemy, hitPosition, raw);
+        }
+        public AreaEffectActor EmitArea(Vector2 position, float radius, float damage, float seconds, float delay, bool expanding, Color tint)
+        {
+            var area = Areas.Rent();
+            if (area != null) area.Fire(position, radius, damage, seconds, delay, expanding, tint);
+            return area;
         }
         public void RecycleProjectile(ProjectileActor projectile)
         {
@@ -209,6 +239,7 @@ namespace Survivor.Combat
             foreach (var enemy in Enemies.Items) Enemies.Return(enemy);
             foreach (var projectile in Projectiles.Items) RecycleProjectile(projectile);
             foreach (var number in DamageNumbers.Items) DamageNumbers.Return(number);
+            foreach (var area in Areas.Items) Areas.Return(area);
             Pickups.Clear(); Player.hitbox.enabled = false;
         }
         public void PresentDefeat(float remaining)

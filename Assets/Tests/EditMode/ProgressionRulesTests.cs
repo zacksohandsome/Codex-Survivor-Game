@@ -21,7 +21,7 @@ namespace Survivor.Tests
         {
             var build = new BuildState("bolt");
             var choices = new UpgradeSelector(1).Draw(build, Config);
-            Assert.That(choices[0].AbilityId, Is.EqualTo("bloom"));
+            Assert.That(choices.All(c => c.CurrentLevel == 0 && c.Category != UpgradeCategory.Attribute && !c.IsSpecial), Is.True);
             Assert.That(choices.Select(c => c.AbilityId + "/" + c.Effect.id).Distinct().Count(), Is.EqualTo(3));
         }
         [Test]
@@ -49,12 +49,12 @@ namespace Survivor.Tests
             var config = Object.Instantiate(Config);
             try
             {
-                var build = new BuildState("bolt"); config.passiveSlots = 0;
+                var build = new BuildState("bolt"); config.passiveSlots = 0; config.weaponSlots = 1; config.skillSlots = 0;
                 build.Levels["stat.health"] = 3;
                 var options = new UpgradeSelector(3).Draw(build, config);
-                Assert.That(options.Any(c => c.AbilityId == "bloom"), Is.False);
+                Assert.That(options.Any(c => c.Category == UpgradeCategory.Passive), Is.False);
                 config.passiveSlots = 1;
-                Assert.That(new UpgradeSelector(3).Draw(build, config)[0].AbilityId, Is.EqualTo("bloom"));
+                Assert.That(new UpgradeSelector(3).Draw(build, config)[0].Category, Is.EqualTo(UpgradeCategory.Passive));
             }
             finally { Object.DestroyImmediate(config); }
         }
@@ -114,13 +114,15 @@ namespace Survivor.Tests
         public void EmptyInlineAcquisitionIsNeverOfferedAsANewAbility()
         {
             var config = Object.Instantiate(Config);
+            var weapon = Object.Instantiate(config.abilities.First(a => a.id == "bolt"));
             try
             {
-                config.abilities = new[] { config.abilities.First(a => a.id == "bolt") };
+                weapon.acquisition = new UpgradeEffectDefinition();
+                config.abilities = new[] { weapon };
                 Assert.That(config.abilities[0].CanAcquire, Is.False);
                 Assert.That(new UpgradeSelector(1).Draw(new BuildState("other"), config).All(c => c.IsSpecial), Is.True);
             }
-            finally { Object.DestroyImmediate(config); }
+            finally { Object.DestroyImmediate(weapon); Object.DestroyImmediate(config); }
         }
         [Test]
         public void OneAttributeCannotAppearTwiceEvenWithMultipleConfiguredEffects()

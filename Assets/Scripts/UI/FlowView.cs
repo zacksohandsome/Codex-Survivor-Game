@@ -115,7 +115,7 @@ namespace Survivor.UI
             bool battleHud = !flow.IsTransitioning && !HasModal &&
                 (flow.Session.State == GameState.Battle || flow.Session.State == GameState.IntroCountdown);
             backgroundImage.color = battleHud ? Color.clear : new Color(0.035f, 0.055f, 0.09f, 0.97f);
-            Stretch(content, battleHud ? new Vector2(0.02f, 0.77f) : new Vector2(0.18f, 0.06f),
+            Stretch(content, battleHud ? new Vector2(0.02f, 0.74f) : new Vector2(0.18f, 0.06f),
                 battleHud ? new Vector2(0.98f, 0.99f) : new Vector2(0.82f, 0.94f));
             content.GetComponent<UnityEngine.UI.VerticalLayoutGroup>().spacing = battleHud ? 3 : 12;
             if (!battleHud) Label(text.Get("stage"), 20, 32);
@@ -179,7 +179,7 @@ namespace Survivor.UI
                     clock = Label("", 28, 32); status = Label("", 22, 50);
                     healthFill = Bar("HealthBar", new Color(0.25f, 0.9f, 0.45f));
                     progressText = Label("", 22, 24); experienceFill = Bar("ExperienceBar", new Color(0.2f, 0.6f, 1));
-                    buildText = Label("", 20, 24);
+                    buildText = Label("", 20, 48);
                     Label(text.Get("battle.note"), 18, 20);
                     Button("pause", () => session.Pause(), height: 36); RefreshClock(); break;
                 case GameState.Pause:
@@ -228,7 +228,7 @@ namespace Survivor.UI
                     Label(text.Get(result.Won ? "victory" : "defeat"), 52, 90).color = result.Won ? new Color(0.4f, 1, 0.6f) : new Color(1, 0.4f, 0.3f);
                     Label(string.Format(text.Get("result.summary"), (int)result.SurvivalSeconds / 60, (int)result.SurvivalSeconds % 60,
                         result.Kills, result.Level, result.CollectedCurrency), 28, 150);
-                    Label(DescribeBuild(result.AbilityLevels), 22, 220);
+                    Label(DescribeBuild(result.AbilityLevels), 20, 360);
                     Label(text.Get(flow.SettlementPending ? "save.failed" : "result.note"), 24, 70);
                     if (flow.SettlementPending) Button("save.retry", () => flow.RetrySettlement());
                     Button("restart", () => flow.ReturnToMenu(true), !flow.SettlementPending);

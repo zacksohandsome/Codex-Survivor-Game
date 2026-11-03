@@ -24,3 +24,4 @@ MonoBehaviour:
   projectileSpeed: 14
   projectileLifetime: 2.5
   maxHits: 1
+  areaRadius: 2.4

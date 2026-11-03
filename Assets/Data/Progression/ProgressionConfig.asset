@@ -14,7 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Survivor.Runtime::Survivor.Data.ProgressionConfig
   abilities:
   - {fileID: 11400000, guid: f22086d2467492d42837bb0af41bde7a, type: 2}
+  - {fileID: 11400000, guid: 0a619070f06315d44a7a8bae49809e8a, type: 2}
+  - {fileID: 11400000, guid: abfd326cd704c4e46ab655b3d65457e8, type: 2}
+  - {fileID: 11400000, guid: 091e2ed334515644cac0766a6f852c75, type: 2}
+  - {fileID: 11400000, guid: a4bd850057439d745995784e39a3a60d, type: 2}
   - {fileID: 11400000, guid: ea529e24b405acd47ba48354d2196800, type: 2}
+  - {fileID: 11400000, guid: cab78457c526d6546bf19b930d046750, type: 2}
+  - {fileID: 11400000, guid: 66ff5f355d4c23b4dade9d75568605b4, type: 2}
+  - {fileID: 11400000, guid: cf4b2103a98f55a4387f9e7d960c9cbe, type: 2}
+  - {fileID: 11400000, guid: 1a72000fc1c26264aa0a53669ea01982, type: 2}
+  - {fileID: 11400000, guid: 6e0d076f09adba84d9a949bbfc9a3364, type: 2}
+  - {fileID: 11400000, guid: 3ee09007c89ac494c91d3f6408051cf6, type: 2}
   - {fileID: 11400000, guid: 5f314504fccdd2d42ad7b1b145366570, type: 2}
   - {fileID: 11400000, guid: 544287c94c2605b4d852e114c5c7ac26, type: 2}
   - {fileID: 11400000, guid: 524d25555b59fd14293d14ef92513727, type: 2}

@@ -42,7 +42,8 @@ namespace Survivor.Drop
             foreach (var pickup in Pool.Items)
             {
                 if (!pickup.IsRented) continue;
-                pickup.Tick(delta, world.Player.transform.position, config.magnetRadius, config.magnetSpeed);
+                float magnet = (config.magnetRadius + world.CurrentBuild.MagnetRadiusBonus) * (world.Passives.MagnetBurst ? 2 : 1);
+                pickup.Tick(delta, world.Player.transform.position, magnet, config.magnetSpeed + world.CurrentBuild.MagnetSpeedBonus);
                 if (pickup.Age >= config.mergeAfterSeconds)
                 {
                     var target = Nearest(pickup.transform.position, pickup);

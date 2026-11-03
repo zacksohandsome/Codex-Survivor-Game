@@ -34,7 +34,7 @@ namespace Survivor.Player
         {
             var levels = GameFlow.Instance.PermanentData.metaUpgradeLevels;
             Health.IncreaseMaximum(config.playerHealth + build.HealthBonus + (int)(levels[0] * MetaProgression.Bonuses[0]) - Health.Maximum);
-            Health.Defense = config.playerDefense + build.DefenseBonus + levels[4] * MetaProgression.Bonuses[4];
+            Health.Defense = config.playerDefense + build.DefenseBonus + build.SanctuaryDefense + levels[4] * MetaProgression.Bonuses[4];
             Attack = config.playerAttack + build.AttackBonus + levels[1] * MetaProgression.Bonuses[1];
             AttackSpeed = Mathf.Clamp(config.playerAttackSpeed + build.AttackSpeedBonus + levels[2] * MetaProgression.Bonuses[2], 0.1f, config.attackSpeedCap);
             MoveSpeed = Mathf.Clamp(config.playerMoveSpeed + build.MoveSpeedBonus + levels[3] * MetaProgression.Bonuses[3], 0, config.moveSpeedCap);

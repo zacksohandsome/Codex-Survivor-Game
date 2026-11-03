@@ -12,6 +12,7 @@ namespace Survivor.Data
         public float moveSpeedCap = 10, attackSpeedCap = 5;
         public float playerRadius = 0.45f, invincibleSeconds = 1, blinkInterval = 0.1f;
         public int enemyCapacity = 64, projectileCapacity = 96, damageNumberCapacity = 256;
+        public int areaCapacity = 32;
         public float spawnInterval = 1.25f, spawnWarningSeconds = 0.75f, minSpawnDistance = 8;
         public int spawnCandidates = 64, randomSeed = 7303;
         public float separationSpeed = 2.5f, stuckInterval = 1, stuckDistance = 0.05f;

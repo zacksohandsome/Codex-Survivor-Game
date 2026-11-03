@@ -17,3 +17,11 @@ MonoBehaviour:
   descriptionKey: weapon.blast.desc
   pattern: 2
   maxLevel: 5
+  combatAvailable: 1
+  damageMultiplier: 2.2
+  cooldown: 1.8
+  range: 10
+  projectileSpeed: 14
+  projectileLifetime: 2.5
+  maxHits: 1
+  areaRadius: 2.2

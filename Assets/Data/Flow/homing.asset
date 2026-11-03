@@ -17,3 +17,11 @@ MonoBehaviour:
   descriptionKey: weapon.homing.desc
   pattern: 3
   maxLevel: 5
+  combatAvailable: 1
+  damageMultiplier: 1.4
+  cooldown: 0.9
+  range: 14
+  projectileSpeed: 9
+  projectileLifetime: 3
+  maxHits: 1
+  areaRadius: 2.4

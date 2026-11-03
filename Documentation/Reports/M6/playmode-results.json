@@ -1,0 +1,210 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "test status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 36.2,
+      "summary": {
+        "total": 26,
+        "passed": 26,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "Survivor.Tests.BattleIntegrationTests.FullDamageDisplayDefersHitsAndProjectilesExpireWithoutLeakingReservations",
+          "Status": "Passed",
+          "Duration": 1.4321282,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleIntegrationTests.KeyboardDiagonalAndOppositeKeysDriveThePlayerCorrectly",
+          "Status": "Passed",
+          "Duration": 1.0634795,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleIntegrationTests.PauseFreezesAllTimersAndSceneUnloadDestroysPools",
+          "Status": "Passed",
+          "Duration": 1.4289136,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleIntegrationTests.PlayerMovesNormalizesCrossesEnemiesAndSharesContactInvincibility",
+          "Status": "Passed",
+          "Duration": 0.9619345,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleIntegrationTests.SpawnWarningCapacityEnemyDeathAndOutOfBoundsRecycleResetState",
+          "Status": "Passed",
+          "Duration": 0.9762746,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleIntegrationTests.StuckRecoverySeparationDamageDisplayBackpressureAndDeathStopCombat",
+          "Status": "Passed",
+          "Duration": 1.0662554,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleIntegrationTests.SweptProjectileDeduplicatesHitsPiercesAndResetsWhenReused",
+          "Status": "Passed",
+          "Duration": 0.9998745,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.BattleIntegrationTests.WeaponWaitsReadyWithoutTargetsAndLocksDirectionOnNearestTarget",
+          "Status": "Passed",
+          "Duration": 1.0074561,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ContentIntegrationTests.AllFiveStartingWeaponsCanHitAndKillThroughTheirActualPatterns",
+          "Status": "Passed",
+          "Duration": 4.6736506,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ContentIntegrationTests.BothSkillsTriggerAndMagnetAndRegenerationRemainActive",
+          "Status": "Passed",
+          "Duration": 1.0708029,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ContentIntegrationTests.EchoThornsAndTrailHaveDistinctTriggersAndPoolReset",
+          "Status": "Passed",
+          "Duration": 1.0493518,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ContentIntegrationTests.HomingTurnsWhileStraightProjectileKeepsItsLaunchDirection",
+          "Status": "Passed",
+          "Duration": 1.0047294,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ContentIntegrationTests.OwnedWeaponsUseIndependentCooldownsAndLevelThreeChangesMechanism",
+          "Status": "Passed",
+          "Duration": 0.9983029,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.EnvironmentPlayTests.PlayerLoopAdvancesAndUrp2DCameraRenders",
+          "Status": "Passed",
+          "Duration": 0.0601307,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowIntegrationTests.ButtonsAndRepeatedSceneRoundTripsDoNotLeakOrCarryRunData",
+          "Status": "Passed",
+          "Duration": 3.3311105,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.FlowIntegrationTests.KeyboardPauseReleaseGateAndFocusLossFollowStateRules",
+          "Status": "Passed",
+          "Duration": 1.1560406,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.MetaIntegrationTests.AbandonDoesNotSettleAndRefundRequiresConfirmation",
+          "Status": "Passed",
+          "Duration": 1.4458819,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.MetaIntegrationTests.SettlementPurchaseRestartAndSecondBattleKeepOnlyPermanentProgress",
+          "Status": "Passed",
+          "Duration": 2.4768283,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionIntegrationTests.DensePickupCollidersCannotHideAnEnemyFromProjectileSweeps",
+          "Status": "Passed",
+          "Duration": 1.0329471,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionIntegrationTests.EnemyDeathDropsValuesMagnetCreditsOnceAndOutOfBoundsDropsNothing",
+          "Status": "Passed",
+          "Duration": 0.9842557,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionIntegrationTests.FullPoolAndExpiredDropsMergeWithoutLossOrAutomaticCollection",
+          "Status": "Passed",
+          "Duration": 1.0008414,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionIntegrationTests.HeldNumberAndStaleButtonsCannotSelectQueuedUpgradesTwice",
+          "Status": "Passed",
+          "Duration": 1.1909124,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionIntegrationTests.LethalContactWinsIfItOccursBeforeTimeAndShowsDelayedDefeatResult",
+          "Status": "Passed",
+          "Duration": 1.5644396,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionIntegrationTests.PassiveAndAttributeBonusesApplyWithoutResettingHealthOrInvincibility",
+          "Status": "Passed",
+          "Duration": 0.9477499,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionIntegrationTests.PauseUpgradeAndFocusLossFreezeDropsCombatAndSelection",
+          "Status": "Passed",
+          "Duration": 1.0243001,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Survivor.Tests.ProgressionIntegrationTests.VictoryClearsEverythingAndResultSnapshotSurvivesMenuAndNewRun",
+          "Status": "Passed",
+          "Duration": 2.1217199,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\unity project\\Codex Survivor Game"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

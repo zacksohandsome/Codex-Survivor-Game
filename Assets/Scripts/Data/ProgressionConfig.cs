@@ -4,7 +4,8 @@ using UnityEngine;
 namespace Survivor.Data
 {
     public enum UpgradeCategory { Weapon, Passive, Skill, Attribute }
-    public enum UpgradeEffect { WeaponDamage, Pierce, RegenAmount, RegenInterval, Health, Attack, AttackSpeed, MoveSpeed, Defense, CurrencyReward, HealReward }
+    public enum UpgradeEffect { WeaponDamage, Pierce, RegenAmount, RegenInterval, Health, Attack, AttackSpeed, MoveSpeed, Defense, CurrencyReward, HealReward,
+        WeaponArea, MagnetRadius, MagnetSpeed, EchoDamage, ThornsDamage, TrailDamage, StormDamage, SanctuaryDefense }
     [Serializable]
     public sealed class UpgradeEffectDefinition
     {

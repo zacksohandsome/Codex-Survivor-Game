@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9eca0859ad9e4a4daf965bdda5d3fcf, type: 3}
+  m_Name: pulse
+  m_EditorClassIdentifier: Survivor.Runtime::Survivor.Data.UpgradeDefinition
+  id: pulse
+  category: 0
+  maxLevel: 5
+  acquisition:
+    id: pulse.new
+    nameKey: upgrade.pulse.new
+    descriptionKey: upgrade.pulse.new.desc
+    effect: 0
+    amount: 0
+  effects:
+  - id: pulse.damage
+    nameKey: upgrade.pulse.damage
+    descriptionKey: upgrade.pulse.damage.desc
+    effect: 0
+    amount: 0.25
+  - id: pulse.area
+    nameKey: upgrade.pulse.area
+    descriptionKey: upgrade.pulse.area.desc
+    effect: 11
+    amount: 0.4

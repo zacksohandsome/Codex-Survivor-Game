@@ -19,5 +19,6 @@ namespace Survivor.Data
         [Min(0.01f)] public float projectileSpeed = 14;
         [Min(0.01f)] public float projectileLifetime = 2.5f;
         [Min(1)] public int maxHits = 1;
+        [Min(0.1f)] public float areaRadius = 2.4f;
     }
 }

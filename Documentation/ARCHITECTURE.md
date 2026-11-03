@@ -85,3 +85,6 @@ RunResult複製時間、擊殺、角色等級、已拾貨幣與能力等級的�
 
 ## M4 永久資料交易
 SaveRepository 負責版本／摘要驗證、暫存原子替換、三份備份與損毀恢復。MetaProgression 在保存成功後才切換記憶體快照；GameFlow 進入 Result 結算，失敗保留畫面並提供重試。PlayerActor 將五項永久加成與 BuildState 加成相加。詳見 Reports/M4/report.md。
+
+## M6 完整構築
+BattleWorld依BuildState持有內容驅動各武器獨立WeaponController；ProjectileActor區分直線／追蹤／環繞，AreaEffectActor使用有界池處理爆炸／擴張／持續傷害區。PassiveController負責五被動與兩技能的事件和獨立計時，僅在Battle執行。DealEnemyDamage集中傷害、擊殺、掉落與連鎖入口，勝敗清理所有池。武器傷害／穿透／範圍依能力ID分別保存，不跨武器套用。
