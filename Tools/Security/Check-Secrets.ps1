@@ -1,4 +1,4 @@
-param([switch]$Staged)
+param([switch]$Staged, [switch]$History)
 $ErrorActionPreference = 'Stop'
 $scanDirectory = (Get-Location).ProviderPath
 
@@ -28,9 +28,30 @@ function Test-Placeholder([string]$Value) {
 }
 
 try {
-    if (-not $Staged) { throw 'Use -Staged to inspect exactly the index that will be committed.' }
+    if ($Staged.IsPresent -eq $History.IsPresent) { throw 'Select exactly one scope: -Staged or -History.' }
     $repoRoot = (Invoke-GitText @('rev-parse', '--show-toplevel')).Trim()
-    $files = (Invoke-GitText @('diff', '--cached', '--name-only', '--diff-filter=ACMR', '-z')).Split([char]0)
+    $entries = New-Object System.Collections.Generic.List[object]
+    $commitCount = 0
+    if ($History) {
+        $seen = New-Object 'System.Collections.Generic.HashSet[string]'
+        $commits = (Invoke-GitText @('rev-list', '--all')).Split("`n", [System.StringSplitOptions]::RemoveEmptyEntries)
+        foreach ($revision in $commits) {
+            $revision = $revision.Trim()
+            $commitCount++
+            $entries.Add(@{ Path = "commit/$revision/message"; Revision = $revision; Message = $true })
+            foreach ($record in (Invoke-GitText @('ls-tree', '-r', '-z', $revision)).Split([char]0)) {
+                if ($record -match '^\d+ blob ([a-f0-9]+)\t(.+)$') {
+                    $blob = $Matches[1]; $path = $Matches[2]
+                    if ($seen.Add("$blob/$path")) { $entries.Add(@{ Path = $path; Revision = $blob; Message = $false }) }
+                }
+            }
+        }
+    }
+    else {
+        foreach ($path in (Invoke-GitText @('diff', '--cached', '--name-only', '--diff-filter=ACMR', '-z')).Split([char]0)) {
+            if ($path) { $entries.Add(@{ Path = $path; Revision = ":$path"; Message = $false }) }
+        }
+    }
     $findings = New-Object System.Collections.Generic.List[string]
     $quotedAssignment = @'
 (?i)(?:\b(?:access[_-]?token|refresh[_-]?token|api[_-]?key|client[_-]?secret|password|passwd|authorization|cbmEditorLicense|cbmMachineId)\b)["']?\s*[:=]\s*(?:"(?<value>[^"\r\n]+)"|'(?<value>[^'\r\n]+)')
@@ -50,8 +71,8 @@ try {
         'jwt-format' = '\beyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}'
     }
     $inspected = 0
-    foreach ($file in $files) {
-        if ([string]::IsNullOrEmpty($file)) { continue }
+    foreach ($entry in $entries) {
+        $file = $entry.Path
         $inspected++
         $name = [System.IO.Path]::GetFileName($file)
         if ($name -match '^(?:\.env(?:\..+)?|auth\.json|credentials\.json|secrets\.json|\.netrc|id_rsa|id_ed25519)$' -and $name -notmatch '\.(?:example|template)$' -or
@@ -59,7 +80,8 @@ try {
             $findings.Add("${file}: sensitive-file-name")
             continue
         }
-        $content = Invoke-GitText @('show', ":$file")
+        if ($entry.Message) { $content = Invoke-GitText @('show', '-s', '--format=%B', $entry.Revision) }
+        else { $content = Invoke-GitText @('cat-file', 'blob', $entry.Revision) }
         # Inspect the actual locally cached LFS payload as well as text index blobs. Never fetch.
         if ($content -match '(?m)^version https://git-lfs.github.com/spec/v1\r?$' -and $content -match '(?m)^oid sha256:([a-f0-9]{64})\r?$') {
             $oid = $Matches[1]
@@ -87,7 +109,8 @@ try {
         $findings | Select-Object -Unique | ForEach-Object { Write-Output $_ }
         exit 1
     }
-    Write-Output "Secret guard passed: $inspected staged paths inspected."
+    if ($History) { Write-Output "Secret guard passed: $commitCount reachable commits; $inspected unique file versions and commit messages inspected." }
+    else { Write-Output "Secret guard passed: $inspected staged paths inspected." }
     exit 0
 }
 catch {
