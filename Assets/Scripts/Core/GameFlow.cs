@@ -215,7 +215,7 @@ namespace Survivor.Core
             if (effect.effect == UpgradeEffect.CurrencyReward)
                 Session.Run.CollectedCurrency = checked(Session.Run.CollectedCurrency + (long)effect.amount);
             else if (effect.effect == UpgradeEffect.HealReward) world.Player.Health.Heal((int)effect.amount);
-            world.ApplyBuild(); view.Render(); return true;
+            world.ApplyBuild(); view.RefreshClock(); return true;
         }
         private void Start() { Settings.ApplyInitial(); }
         private void OnDestroy()

@@ -1,0 +1,10 @@
+{
+  "dirtyAssetPaths": [
+    "Assets/UI/TextMeshPro/Fonts/LiberationSans.ttf",
+    "Assets/UI/TextMeshPro/Shaders/TMP_SDF SSD.shader",
+    "Assets/UI/TextMeshPro/Shaders/TMP_SDF.shader",
+    "Assets/UI/TextMeshPro/Shaders/TMP_SDF Overlay.shader"
+  ],
+  "monoUsed": 1131020288,
+  "monoHeap": 1497812992
+}

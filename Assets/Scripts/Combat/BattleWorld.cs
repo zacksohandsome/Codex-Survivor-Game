@@ -82,6 +82,7 @@ namespace Survivor.Combat
             HostileProjectiles = new BoundedPool<HostileProjectileActor>(config.encounters.hostileProjectileCapacity, () => Instantiate(hostileProjectilePrefab, transform));
             Projectiles = new BoundedPool<ProjectileActor>(config.projectileCapacity, () => Instantiate(projectilePrefab, transform));
             DamageNumbers = new BoundedPool<DamageNumber>(config.damageNumberCapacity, () => Instantiate(damageNumberPrefab, transform));
+            foreach(var number in DamageNumbers.Items)number.Prewarm();
             Pickups = new PickupManager(this, pickupPrefab, config.progression);
             Areas = new BoundedPool<AreaEffectActor>(config.areaCapacity, () => Instantiate(areaPrefab, transform));
             if(burstPrefab!=null)Bursts=new BoundedPool<Survivor.Visuals.BurstActor>(48,()=>Instantiate(burstPrefab,transform));

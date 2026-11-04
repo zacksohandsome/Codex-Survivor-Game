@@ -12,6 +12,7 @@ namespace Survivor.UI
 {
     public sealed partial class FlowView : MonoBehaviour
     {
+        private static readonly Unity.Profiling.ProfilerMarker RenderMarker=new Unity.Profiling.ProfilerMarker("Survivor.UI.Render");
         private GameFlow flow;
         private FlowText text;
         private RectTransform content;
@@ -96,9 +97,9 @@ namespace Survivor.UI
         {
             var rect = fill.rectTransform; rect.anchorMax = new Vector2(Mathf.Clamp01(ratio), 1); rect.offsetMax = Vector2.zero;
         }
-        private void Button(string key, Action action, bool enabled = true, bool selected = false, float height = 62)
+        private void Button(string key, Action action, bool enabled = true, bool selected = false, float height = 62,bool upgradeChoice=false)
         {
-            var go = new GameObject("Button_" + key, typeof(RectTransform), typeof(UnityEngine.UI.Image), typeof(UnityEngine.UI.Button), typeof(UnityEngine.UI.LayoutElement));
+            var go = new GameObject("Button_" + key, typeof(RectTransform), typeof(UnityEngine.UI.Image), upgradeChoice?typeof(UpgradeChoiceButton):typeof(UnityEngine.UI.Button), typeof(UnityEngine.UI.LayoutElement));
             go.transform.SetParent(content, false);
             go.GetComponent<UnityEngine.UI.LayoutElement>().preferredHeight = height;
             var image = go.GetComponent<UnityEngine.UI.Image>();
@@ -120,8 +121,13 @@ namespace Survivor.UI
         private void Ask(string key, Action action, Action onCancel = null) { confirmationKey = key; confirmation = action; cancellation = onCancel; Render(); }
         public void Render()
         {
+            using var renderScope=RenderMarker.Auto();
             clockCached=vitalsCached=progressCached=bossCached=noticeCached=false;
             HideTooltip();
+            bool battleHud = !flow.IsTransitioning && !HasModal &&
+                (flow.Session.State == GameState.Battle || flow.Session.State == GameState.IntroCountdown);
+            bool upgrade=!flow.IsTransitioning && !HasModal && flow.Session.State==GameState.LevelUp;
+            PrepareBattleHud(battleHud);PrepareUpgradePanel(upgrade);content.gameObject.SetActive(!battleHud && !upgrade);
             // These are distinct screen contents, not edits to the persistent Canvas or EventSystem.
             for (int i = content.childCount - 1; i >= 0; i--)
             {
@@ -129,14 +135,12 @@ namespace Survivor.UI
             }
             clock = null; status = null; healthFill = null; experienceFill = null; progressText = null; buildText = null;
             bossText = encounterText = lowHealthText = null; bossFill = null;
-            bool battleHud = !flow.IsTransitioning && !HasModal &&
-                (flow.Session.State == GameState.Battle || flow.Session.State == GameState.IntroCountdown);
             content.GetComponent<UnityEngine.UI.VerticalLayoutGroup>().enabled = !battleHud;
             backgroundImage.color = battleHud ? Color.clear : new Color(0.035f, 0.055f, 0.09f, flow.Session.State==GameState.MainMenu?0.25f:0.97f);
             Stretch(content, battleHud ? new Vector2(0.02f, 0.74f) : new Vector2(0.18f, 0.06f),
                 battleHud ? new Vector2(0.98f, 0.99f) : new Vector2(0.82f, 0.94f));
             content.GetComponent<UnityEngine.UI.VerticalLayoutGroup>().spacing = battleHud ? 3 : 12;
-            if (!battleHud) Label(text.Get("stage"), 20, 32);
+            if (!battleHud && !upgrade) Label(text.Get("stage"), 20, 32);
             if (flow.IsTransitioning) { Label(text.Get("loading"), 40); return; }
             if (HasModal)
             {
@@ -199,7 +203,7 @@ namespace Survivor.UI
                     Button("back", () => session.ReturnToMenu()); break;
                 case GameState.IntroCountdown:
                 case GameState.Battle:
-                    BuildBattleHud(); RefreshClock(); break;
+                    ShowBattleHud(); RefreshClock(); break;
                 case GameState.Pause:
                     Label(text.Get("pause"), 52, 100); clock = Label("", 32, 70); RefreshClock();
                     Label(text.Format("pause.summary", session.Run.Level, session.Run.Kills), 26, 60);
@@ -207,37 +211,7 @@ namespace Survivor.UI
                     Button("restart", () => Ask("abandon", () => flow.ReturnToMenu(true)));
                     Button("menu", () => Ask("abandon", () => flow.ReturnToMenu())); break;
                 case GameState.LevelUp:
-                    Label(text.Get("levelup"), 44, 80);
-                    Label(text.Format("upgrade.level", session.Run.Level), 26, 60);
-                    var progression = flow.Progression;
-                    if (progression != null && progression.Choices != null)
-                    {
-                        int revision = progression.ChoiceRevision;
-                        for (int i = 0; i < progression.Choices.Length; i++)
-                        {
-                            int choice = i; var option = progression.Choices[i];
-                            Button("upgrade.card", () => flow.ChooseUpgrade(choice, revision), height: 120);
-                            var button = content.GetChild(content.childCount - 1);
-                            var label = button.GetComponentInChildren<TextMeshProUGUI>();
-                            label.text = (i + 1) + "  " + text.Get(option.Effect.nameKey) + "\n" + text.Get(option.Effect.descriptionKey) +
-                                "\n" + (option.IsSpecial ? text.Get("upgrade.reward") : text.Format("upgrade.current", option.CurrentLevel));
-                            label.fontSize = 24;
-                            var icon = new GameObject("Icon", typeof(RectTransform), typeof(UnityEngine.UI.Image));
-                            icon.transform.SetParent(button, false);
-                            var iconRect = icon.GetComponent<RectTransform>(); iconRect.anchorMin = iconRect.anchorMax = new Vector2(0, 0.5f);
-                            iconRect.sizeDelta = new Vector2(36, 36); iconRect.anchoredPosition = new Vector2(38, 0);
-                            icon.GetComponent<UnityEngine.UI.Image>().color = option.IsSpecial ? new Color(1, 0.8f, 0.25f) : Color.cyan;
-                            var cardSprite = flow.Config.Icon(option.IsSpecial ? option.Effect.effect == Survivor.Data.UpgradeEffect.CurrencyReward ? "coins" : "stat.health" : option.AbilityId);
-                            if(cardSprite != null) { icon.GetComponent<UnityEngine.UI.Image>().sprite = cardSprite; icon.GetComponent<UnityEngine.UI.Image>().color = Color.white; }
-                            icon.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
-                            label.rectTransform.offsetMin = new Vector2(75, 0);
-                            button.GetComponent<UnityEngine.UI.Image>().color = option.IsSpecial
-                                ? new Color(0.35f, 0.25f, 0.12f) : option.Category == Survivor.Data.UpgradeCategory.Passive
-                                ? new Color(0.15f, 0.32f, 0.20f) : new Color(0.10f, 0.20f, 0.32f);
-                            button.gameObject.name = "Button_upgrade." + i;
-                        }
-                    }
-                    Label(text.Get("upgrade.note"), 24, 60); break;
+                    ShowUpgradePanel();break;
                 case GameState.Victory: Label(text.Get("victory"), 52, 120); break;
                 case GameState.Defeat:
                     Label(text.Get("defeat"), 52, 100); Label(text.Get("defeat.note"), 28, 100);

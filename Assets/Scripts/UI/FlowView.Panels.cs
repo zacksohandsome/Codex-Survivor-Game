@@ -12,6 +12,116 @@ namespace Survivor.UI
     {
         private RectTransform tooltip;
         private TextMeshProUGUI tooltipText;
+        private sealed class BattleHudCache
+        {
+            public RectTransform Root;public Survivor.Core.RunContext Run;public bool English;public int Revision;
+            public TextMeshProUGUI Clock,Status,Progress,Boss,Notice,Low;
+            public UnityEngine.UI.Image Health,Experience,BossFill;
+        }
+        private sealed class AbilitySlot
+        {
+            public GameObject Root;public UnityEngine.UI.Image Image;public TextMeshProUGUI Label;
+            public UpgradeCategory Category;public int Ordinal,Level;public string Id;
+        }
+        private BattleHudCache retainedHud;
+        private sealed class UpgradeCard
+        {public UpgradeChoiceButton Button;public TextMeshProUGUI Label;public UnityEngine.UI.Image Icon,Background;}
+        private sealed class UpgradePanelCache
+        {public RectTransform Root;public Survivor.Core.RunContext Run;public bool English;public TextMeshProUGUI Level;public UpgradeCard[] Cards;}
+        private UpgradePanelCache upgradePanel;
+        private uint upgradeGeneration;
+        private readonly System.Collections.Generic.List<AbilitySlot> abilitySlots=new System.Collections.Generic.List<AbilitySlot>(10);
+        private void PrepareBattleHud(bool visible)
+        {
+            if(retainedHud==null)return;
+            bool discard=retainedHud.Run!=flow.Session.Run || retainedHud.English!=Survivor.Localization.FlowText.UsesEnglish;
+            retainedHud.Root.gameObject.SetActive(visible && !discard);
+            if(!discard)return;
+            Destroy(retainedHud.Root.gameObject);retainedHud=null;abilitySlots.Clear();
+        }
+        private void ShowBattleHud()
+        {
+            if(retainedHud==null)
+            {
+                var overlay=content;
+                var root=new GameObject("BattleHud",typeof(RectTransform)).GetComponent<RectTransform>();root.SetParent(content.parent,false);
+                content=root;BuildBattleHud();content=overlay;
+                retainedHud=new BattleHudCache{Root=root,Run=flow.Session.Run,English=Survivor.Localization.FlowText.UsesEnglish,Revision=flow.Session.Run.Build.Revision,
+                    Clock=clock,Status=status,Progress=progressText,Boss=bossText,Notice=encounterText,Low=lowHealthText,Health=healthFill,Experience=experienceFill,BossFill=bossFill};
+                EnsureUpgradePanel();
+            }
+            clock=retainedHud.Clock;status=retainedHud.Status;progressText=retainedHud.Progress;bossText=retainedHud.Boss;encounterText=retainedHud.Notice;
+            lowHealthText=retainedHud.Low;healthFill=retainedHud.Health;experienceFill=retainedHud.Experience;bossFill=retainedHud.BossFill;
+            if(retainedHud.Revision!=flow.Session.Run.Build.Revision)
+            { RefreshAbilitySlots();retainedHud.Revision=flow.Session.Run.Build.Revision; }
+            retainedHud.Root.gameObject.SetActive(true);
+        }
+        private void PrepareUpgradePanel(bool visible)
+        {
+            if(upgradePanel==null)return;
+            bool discard=upgradePanel.Run!=flow.Session.Run || upgradePanel.English!=Survivor.Localization.FlowText.UsesEnglish;
+            upgradePanel.Root.gameObject.SetActive(visible && !discard);
+            if(!discard)return;Destroy(upgradePanel.Root.gameObject);upgradePanel=null;
+        }
+        private void EnsureUpgradePanel()
+        {
+            if(upgradePanel!=null)return;
+            var overlay=content;var root=new GameObject("UpgradePanel",typeof(RectTransform),typeof(UnityEngine.UI.VerticalLayoutGroup)).GetComponent<RectTransform>();
+            root.SetParent(overlay.parent,false);Stretch(root,new Vector2(0.18f,0.06f),new Vector2(0.82f,0.94f));
+            var layout=root.GetComponent<UnityEngine.UI.VerticalLayoutGroup>();layout.spacing=12;layout.childControlHeight=layout.childControlWidth=true;
+            layout.childForceExpandHeight=false;layout.childForceExpandWidth=true;layout.childAlignment=TextAnchor.MiddleCenter;
+            root.gameObject.SetActive(false);content=root;
+            Label(text.Get("stage"),20,32);Label(text.Get("levelup"),44,80);var level=Label("",26,60);
+            var cards=new UpgradeCard[3];
+            for(int i=0;i<3;i++)
+            {
+                Button("upgrade.card",()=>{},height:120,upgradeChoice:true);var go=content.GetChild(content.childCount-1).gameObject;go.name="Button_upgrade."+i;
+                var label=go.GetComponentInChildren<TextMeshProUGUI>(true);label.fontSize=24;label.rectTransform.offsetMin=new Vector2(75,0);
+                // Reserve text/mesh buffers during the intro, before any combat event.
+                label.text=new string('W',512);label.ForceMeshUpdate(true,true);label.text="";
+                var icon=new GameObject("Icon",typeof(RectTransform),typeof(UnityEngine.UI.Image));icon.transform.SetParent(go.transform,false);
+                var rect=icon.GetComponent<RectTransform>();rect.anchorMin=rect.anchorMax=new Vector2(0,0.5f);rect.sizeDelta=new Vector2(36,36);rect.anchoredPosition=new Vector2(38,0);
+                var image=icon.GetComponent<UnityEngine.UI.Image>();image.raycastTarget=false;
+                cards[i]=new UpgradeCard{Button=go.GetComponent<UpgradeChoiceButton>(),Label=label,Icon=image,Background=go.GetComponent<UnityEngine.UI.Image>()};
+            }
+            Label(text.Get("upgrade.note"),24,60);content=overlay;
+            upgradePanel=new UpgradePanelCache{Root=root,Run=flow.Session.Run,English=Survivor.Localization.FlowText.UsesEnglish,Level=level,Cards=cards};
+        }
+        private void ShowUpgradePanel()
+        {
+            EnsureUpgradePanel();upgradePanel.Level.text=text.Format("upgrade.level",flow.Session.Run.Level);
+            var progression=flow.Progression;var choices=progression==null?null:progression.Choices;uint generation=++upgradeGeneration;
+            for(int i=0;i<3;i++)
+            {
+                var card=upgradePanel.Cards[i];bool visible=choices!=null && i<choices.Length;card.Button.gameObject.SetActive(visible);if(!visible)continue;
+                var option=choices[i];int choice=i,revision=progression.ChoiceRevision;var run=flow.Session.Run;
+                card.Button.BindGeneration(generation);card.Button.onClick=new UnityEngine.UI.Button.ButtonClickedEvent();
+                card.Button.onClick.AddListener(()=>{if(!ReferenceEquals(run,flow.Session.Run))return;flow.Audio.PlayUi("ui");flow.ChooseUpgrade(choice,revision);});
+                card.Label.text=(i+1)+"  "+text.Get(option.Effect.nameKey)+"\n"+text.Get(option.Effect.descriptionKey)+"\n"+(option.IsSpecial?text.Get("upgrade.reward"):text.Format("upgrade.current",option.CurrentLevel));
+                card.Icon.sprite=flow.Config.Icon(option.IsSpecial?option.Effect.effect==UpgradeEffect.CurrencyReward?"coins":"stat.health":option.AbilityId);
+                card.Icon.color=card.Icon.sprite!=null?Color.white:Color.cyan;
+                card.Background.color=option.IsSpecial?new Color(0.35f,0.25f,0.12f):option.Category==UpgradeCategory.Passive?new Color(0.15f,0.32f,0.2f):new Color(0.1f,0.2f,0.32f);
+            }
+            upgradePanel.Root.gameObject.SetActive(true);
+        }
+        private void RefreshAbilitySlots()
+        {
+            foreach(var slot in abilitySlots)
+            {
+                string id=null;int level=0,ordinal=0;
+                foreach(var ability in flow.Config.battle.progression.abilities)
+                {
+                    int current=flow.Session.Run.Build.Level(ability.id);
+                    if(ability.category!=slot.Category || current<=0)continue;
+                    if(ordinal++!=slot.Ordinal)continue;id=ability.id;level=current;break;
+                }
+                if(slot.Id==id && slot.Level==level)continue;
+                slot.Id=id;slot.Level=level;slot.Root.name=id==null?"EmptySlot":"Ability_"+id;
+                slot.Image.sprite=id==null?null:flow.Config.Icon(id);
+                slot.Image.color=id==null?new Color(0.12f,0.17f,0.23f):Color.white;
+                slot.Label.text=level==0?"":level.ToString(Survivor.Localization.FlowText.Culture);
+            }
+        }
         private RectTransform Panel(string name,Vector2 min,Vector2 max)
         {
             var rect=new GameObject(name,typeof(RectTransform),typeof(UnityEngine.UI.VerticalLayoutGroup)).GetComponent<RectTransform>();
@@ -69,8 +179,10 @@ namespace Survivor.UI
             Stretch(labelObject.GetComponent<RectTransform>(),Vector2.zero,Vector2.one);
             var label=labelObject.GetComponent<TextMeshProUGUI>(); label.font=flow.Config.uiFont; label.fontSize=19;
             label.text=level==0?"":level.ToString(Survivor.Localization.FlowText.Culture); label.alignment=TextAlignmentOptions.BottomRight; label.raycastTarget=false;
-            string abilityId=id; var hover=go.GetComponent<AbilityTooltip>();
-            hover.Enter=()=>ShowTooltip(abilityId==null?text.Get("hud.empty"):DescribeAbility(abilityId)); hover.Exit=HideTooltip;
+            int ordinal=0;foreach(var existing in abilitySlots)if(existing.Category==category)ordinal++;
+            var slot=new AbilitySlot{Root=go,Image=image,Label=label,Category=category,Ordinal=ordinal,Id=id,Level=level};abilitySlots.Add(slot);
+            var hover=go.GetComponent<AbilityTooltip>();
+            hover.Enter=()=>ShowTooltip(slot.Id==null?text.Get("hud.empty"):DescribeAbility(slot.Id)); hover.Exit=HideTooltip;
         }
         private string DescribeAbility(string id)
         {

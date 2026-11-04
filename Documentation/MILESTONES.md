@@ -201,7 +201,7 @@
 | M7 | 2026-11-04 | Reports/M7/report.md；Edit60/60、Play32/32、600秒完整實玩 | 依報告摘要查詢 | D03已確認；Editor完成 |
 | M8 | 2026-11-04 | Reports/M8/report.md；Edit71/71、Play37/37 | 依報告摘要查詢 | Editor完成；OS全螢幕／Build暫緩 |
 | M9 | 2026-11-04 | Reports/M9/report.md；Edit73/73、Play40/40 | 依報告摘要查詢 | Editor完成；人工聽覺品質未驗收 |
-| M10 | 2026-11-04／部分完成 | Reports/M10/report.md；Edit76/76、Play44/44；五構築、1080p壓測 | 依報告摘要查詢 | 分離成本改善；偶發慢幀未達穩定60 |
+| M10 | 2026-11-04／部分完成 | Reports/M10/report.md；Edit76/76、Play51/51；五構築、1080p壓測 | 6d6460a | 分離成本改善；偶發慢幀未達穩定60 |
 | M11 | 回歸中 | Reports/M11/qa-matrix.md | — | Windows Build依授權暫緩；效能紅項保留 |
 
 每階段成果報告依 CODEX_WORKFLOW §9 包含：完成內容、測試結果、Bug 與修正、Commit 與未提交狀態、後續工作、人工介入。任何未通過項目列原因、已嘗試方法、影響及下一步，不能勾選為完成。

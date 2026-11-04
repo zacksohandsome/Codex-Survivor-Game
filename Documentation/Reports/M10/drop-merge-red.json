@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "duration": 2.07,
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "Survivor.Tests.BattleIntegrationTests.FullAgedDropMergePreservesValueWithinCpuBudget",
+      "Status": "Failed",
+      "Duration": 2.0004692,
+      "Message": "  Median of five full-capacity simultaneous age merges on M0 hardware\r\n  Expected: less than 4\r\n  But was:  10.208600000000001d\r\n",
+      "StackTrace": "at Survivor.Tests.BattleIntegrationTests+<FullAgedDropMergePreservesValueWithinCpuBudget>d__11.MoveNext () [0x0020a] in F:\\unity project\\Codex Survivor Game\\Assets\\Tests\\PlayMode\\BattleIntegrationTests.cs:132\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+    }
+  ]
+}

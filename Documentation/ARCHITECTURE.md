@@ -99,3 +99,5 @@ EncounterTimeline只標記成功生成的180／420秒事件；EnemyActor保存�
 - AudioDirector 持久管理兩個音樂聲道、8戰鬥聲道與1個UI聲道；AudioCatalog 強引用預先產生的原創音訊。角色動作只修改視覺子物件，Burst池48、每個32粒子，勝敗與卸載清理。
 - Enemy separation 固定scratch陣列保留原配對／推開順序，將原本每對native讀寫改成每敵一次；ProfilerMarker 提供 World／Separation／Projectiles／Pickups 分段資料。
 - SaveData v3 明確遷移v1→v2→v3，metaUpgradeSpent記錄各屬性實際累積支付額；舊版依歷史固定價格10推回成本，退款使用帳本而非現行價格。磁碟成功後才更換記憶體快照，讀取遷移不主動覆寫原檔。
+
+事件UI補充：FlowView.Panels保存單場BattleHud及UpgradePanel，與通用選單Content分開，升級／暫停只切顯示；能力格固定10個並按Build revision更新。語言／場次變更清除舊cache。ChooseUpgrade依Session.Changed重建一次，後續只RefreshClock。重新綁定升級卡片時換新的UnityEvent物件，舊事件保留舊run／revision；自訂Button另外記錄按下世代，避免持續按壓釋放到新選項。DamageNumber在World.Awake建立固定池後預備TMP mesh，再清空停用，不改遊戲資料。

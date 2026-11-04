@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "duration": 1.76,
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "Survivor.Tests.BattleIntegrationTests.UpgradeEventsStayWithinAllocationBudget",
+      "Status": "Failed",
+      "Duration": 1.6889533,
+      "Message": "  A single upgrade event must stay below 150KB additional per-frame allocation\r\n  Expected: less than 150000\r\n  But was:  273750\r\n",
+      "StackTrace": "at Survivor.Tests.BattleIntegrationTests+<UpgradeEventsStayWithinAllocationBudget>d__8.MoveNext () [0x00268] in F:\\unity project\\Codex Survivor Game\\Assets\\Tests\\PlayMode\\BattleIntegrationTests.cs:86\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+    }
+  ]
+}

@@ -8,6 +8,12 @@ namespace Survivor.Combat
     {
         public TextMeshPro label;
         public float Remaining { get; private set; }
+        public void Prewarm()
+        {
+            // Build each pooled TMP mesh before combat, including long currency bundles.
+            gameObject.SetActive(true);label.text="+01234567890123456789";label.ForceMeshUpdate(true,true);
+            ResetForReturn();label.ForceMeshUpdate(true,true);gameObject.SetActive(false);
+        }
         public void Show(Vector2 position, int damage, float lifetime, bool playerHit)
         {
             transform.position = position; Remaining = lifetime;

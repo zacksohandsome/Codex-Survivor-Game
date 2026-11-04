@@ -63,11 +63,106 @@ namespace Survivor.Tests
             var flow=GameFlow.Instance;flow.enabled=false;var view=flow.GetComponent<Survivor.UI.FlowView>();view.RefreshClock();
             using(var allocations=Unity.Profiling.ProfilerRecorder.StartNew(Unity.Profiling.ProfilerCategory.Memory,"GC Allocated In Frame",1))
             {
-                yield return null;long baseline=allocations.LastValue;
+                yield return null;yield return null;long baseline=allocations.LastValue;
                 for(int i=0;i<1000;i++)view.RefreshClock();
                 yield return null;long measured=allocations.LastValue;
                 Assert.That(measured-baseline,Is.LessThan(100000),"1000 unchanged HUD refreshes should not format and box every field again");
             }
+        }
+        [UnityTest, Category("Performance")]
+        public IEnumerator UpgradeEventsStayWithinAllocationBudget()
+        {
+            var flow=GameFlow.Instance;flow.enabled=false;
+            using(var allocations=Unity.Profiling.ProfilerRecorder.StartNew(Unity.Profiling.ProfilerCategory.Memory,"GC Allocated In Frame",1))
+            using(var render=Unity.Profiling.ProfilerRecorder.StartNew(Unity.Profiling.ProfilerCategory.Scripts,"Survivor.UI.Render",1))
+            {
+                yield return null;yield return null;long baseline=allocations.LastValue;
+                flow.Progression.GainExperience(flow.Progression.RequiredExperience);
+                yield return null;long opening=allocations.LastValue-baseline;long openingRenders=render.Count>0?render.GetSample(render.Count-1).Count:0;
+                var timer=System.Diagnostics.Stopwatch.StartNew();Assert.That(flow.ChooseUpgrade(0,flow.Progression.ChoiceRevision),Is.True);timer.Stop();
+                yield return null;long closing=allocations.LastValue-baseline;long closingRenders=render.Count>0?render.GetSample(render.Count-1).Count:0;
+                string data=System.FormattableString.Invariant($"{{\"baselineBytes\":{baseline},\"openBytes\":{opening},\"chooseBytes\":{closing},\"openRenders\":{openingRenders},\"chooseRenders\":{closingRenders},\"chooseCpuMilliseconds\":{timer.Elapsed.TotalMilliseconds}}}");
+                System.IO.File.WriteAllText(System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,"../Documentation/Reports/M10/event-cost-latest.json")),data);
+                Assert.That(System.Math.Max(opening,closing),Is.LessThan(150000),"A single upgrade event must stay below 150KB additional per-frame allocation");
+            }
+        }
+        [UnityTest, Category("Performance")] public IEnumerator FirstSpawnAndKillEventsStayWithinAllocationBudget()
+        {
+            var flow=GameFlow.Instance;flow.enabled=false;int objects=world.transform.childCount;
+            using(var allocations=Unity.Profiling.ProfilerRecorder.StartNew(Unity.Profiling.ProfilerCategory.Memory,"GC Allocated In Frame",1))
+            {
+                yield return null;yield return null;long baseline=allocations.LastValue;
+                var timer=System.Diagnostics.Stopwatch.StartNew();Assert.That(world.TrySpawnEnemy(),Is.True);timer.Stop();double spawnCpu=timer.Elapsed.TotalMilliseconds;
+                yield return null;long spawn=allocations.LastValue-baseline;
+                var enemy=world.SpawnEnemy(new Vector2(5,0),0);yield return null;
+                timer.Restart();world.DealEnemyDamage(enemy,100000);timer.Stop();double killCpu=timer.Elapsed.TotalMilliseconds;
+                yield return null;long kill=allocations.LastValue-baseline;
+                string data=System.FormattableString.Invariant($"{{\"baselineBytes\":{baseline},\"spawnBytes\":{spawn},\"killBytes\":{kill},\"spawnCpuMilliseconds\":{spawnCpu},\"killCpuMilliseconds\":{killCpu},\"objectsBefore\":{objects},\"objectsAfter\":{world.transform.childCount}}}");
+                System.IO.File.WriteAllText(System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,"../Documentation/Reports/M10/spawn-kill-cost.json")),data);
+                Assert.That(System.Math.Max(spawn,kill),Is.LessThan(150000),"First spawn/kill must stay below 150KB additional per-frame allocation");
+                Assert.That(world.transform.childCount,Is.EqualTo(objects));Assert.That(flow.Session.Run.Kills,Is.EqualTo(1));
+            }
+        }
+        [UnityTest, Category("Performance")] public IEnumerator SixteenSimultaneousKillsStayBounded()
+        {
+            var flow=GameFlow.Instance;flow.enabled=false;int objects=world.transform.childCount;
+            var victims=new Survivor.Enemy.EnemyActor[16];for(int i=0;i<victims.Length;i++)victims[i]=world.SpawnEnemy(new Vector2(5+i%4*0.2f,i/4*0.2f),0);
+            using(var allocations=Unity.Profiling.ProfilerRecorder.StartNew(Unity.Profiling.ProfilerCategory.Memory,"GC Allocated In Frame",1))
+            {
+                yield return null;yield return null;long baseline=allocations.LastValue;var timer=System.Diagnostics.Stopwatch.StartNew();
+                foreach(var enemy in victims)world.DealEnemyDamage(enemy,100000);timer.Stop();
+                yield return null;long bytes=allocations.LastValue-baseline;
+                string data=System.FormattableString.Invariant($"{{\"kills\":16,\"additionalBytes\":{bytes},\"cpuMilliseconds\":{timer.Elapsed.TotalMilliseconds},\"objectsBefore\":{objects},\"objectsAfter\":{world.transform.childCount},\"numbers\":{world.DamageNumbers.ActiveCount},\"drops\":{world.Pickups.Pool.ActiveCount}}}");
+                System.IO.File.WriteAllText(System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,"../Documentation/Reports/M10/burst-kill-cost.json")),data);
+                Assert.That(bytes,Is.LessThan(150000));Assert.That(world.transform.childCount,Is.EqualTo(objects));Assert.That(flow.Session.Run.Kills,Is.EqualTo(16));
+                Assert.That(world.DamageNumbers.ActiveCount,Is.EqualTo(16),"Every actual hit still has its own number");Assert.That(world.Pickups.UncollectedExperience,Is.EqualTo(64));
+            }
+        }
+        [UnityTest, Category("Performance")] public IEnumerator FullAgedDropMergePreservesValueWithinCpuBudget()
+        {
+            GameFlow.Instance.enabled=false;var times=new double[5];
+            for(int attempt=0;attempt<times.Length;attempt++)
+            {
+                world.Pickups.Clear();for(int i=0;i<256;i++)world.Pickups.Spawn(new Vector2(8+i%8,-10+i/8*0.6f),1,1);
+                yield return null;var timer=System.Diagnostics.Stopwatch.StartNew();world.Pickups.Tick(31);timer.Stop();times[attempt]=timer.Elapsed.TotalMilliseconds;
+                Assert.That(world.Pickups.UncollectedExperience,Is.EqualTo(256));Assert.That(world.Pickups.UncollectedCurrency,Is.EqualTo(256));Assert.That(world.Pickups.Pool.ActiveCount,Is.EqualTo(1));yield return null;
+            }
+            System.Array.Sort(times);string data=System.FormattableString.Invariant($"{{\"trials\":5,\"drops\":256,\"medianMilliseconds\":{times[2]},\"minimumMilliseconds\":{times[0]},\"maximumMilliseconds\":{times[4]},\"experience\":256,\"currency\":256}}");
+            System.IO.File.WriteAllText(System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,"../Documentation/Reports/M10/drop-merge-latest.json")),data);
+            Assert.That(times[2],Is.LessThan(4),"Median of five full-capacity simultaneous age merges on M0 hardware");
+        }
+        [UnityTest] public IEnumerator AgedMergeUsesCurrentMagnetMovementAndExternalPositionChanges()
+        {
+            var flow=GameFlow.Instance;flow.enabled=false;
+            var old=world.Pickups.Spawn(new Vector2(8,0),5,0);old.Tick(31,Vector2.zero,3,7);old.transform.position=new Vector2(2.4f,0);
+            var behind=world.Pickups.Spawn(new Vector2(2.7f,0),3,0);var ahead=world.Pickups.Spawn(new Vector2(1,0),7,0);
+            world.Pickups.Tick(0.1f);
+            Assert.That(old.IsRented,Is.False);Assert.That(ahead.IsRented,Is.False,"The closer target after movement is collected");
+            Assert.That(behind.IsRented,Is.True);Assert.That(behind.Experience,Is.EqualTo(3));
+            Assert.That(flow.Session.Run.Level,Is.EqualTo(2));Assert.That(flow.Session.Run.Experience,Is.EqualTo(4));
+            Assert.That(world.Pickups.UncollectedExperience,Is.EqualTo(3));yield return null;
+        }
+        [UnityTest] public IEnumerator HeldPointerAndOldUpgradeEventsCannotChooseTheNextDisplay()
+        {
+            var flow=GameFlow.Instance;flow.Progression.GainExperience(40);
+            var button=GameObject.Find("Button_upgrade.0").GetComponent<Survivor.UI.UpgradeChoiceButton>();var oldEvent=button.onClick;
+            var pointer=new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current){button=UnityEngine.EventSystems.PointerEventData.InputButton.Left};
+            button.OnPointerDown(pointer);Assert.That(flow.ChooseUpgrade(0,flow.Progression.ChoiceRevision),Is.True);
+            Assert.That(flow.Session.Run.Level,Is.EqualTo(3));oldEvent.Invoke();button.OnPointerUp(pointer);button.OnPointerClick(pointer);
+            Assert.That(flow.Session.Run.Level,Is.EqualTo(3),"A held old press cannot release onto the next choices");
+            button.OnPointerDown(pointer);button.OnPointerUp(pointer);button.OnPointerClick(pointer);
+            Assert.That(flow.Session.Run.Level,Is.EqualTo(4));yield return null;
+        }
+        [UnityTest] public IEnumerator RetainedHudUpdatesAcquiredSlotsAndDiscardsThemForANewRun()
+        {
+            var flow=GameFlow.Instance;flow.Progression.GainExperience(flow.Progression.RequiredExperience);
+            string id=flow.Progression.Choices[0].AbilityId;Assert.That(string.IsNullOrEmpty(id),Is.False);
+            Assert.That(flow.ChooseUpgrade(0,flow.Progression.ChoiceRevision),Is.True);yield return null;
+            var icon=GameObject.Find("Ability_"+id);Assert.That(icon,Is.Not.Null);Assert.That(icon.GetComponentInChildren<TMPro.TextMeshProUGUI>().text,Is.EqualTo("1"));
+            flow.ReturnToMenu();while(flow.IsTransitioning)yield return null;yield return null;
+            Assert.That(GameObject.Find("Ability_"+id),Is.Null);flow.OpenWeaponSelection();flow.SelectWeapon("bolt");flow.StartRun();
+            while(flow.IsTransitioning)yield return null;world=BattleWorld.Instance;world.enabled=false;world.AutomaticSpawning=false;flow.Session.Tick(3);yield return null;
+            Assert.That(flow.Session.Run.Build.Level(id),Is.Zero);Assert.That(GameObject.Find("Ability_"+id),Is.Null);
         }
         [UnityTest] public IEnumerator HudCacheRefreshesOnHealthCurrencyClockAndLocaleChanges()
         {
