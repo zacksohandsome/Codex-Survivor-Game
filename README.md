@@ -4,6 +4,14 @@ Unity 6000.3.27f2 的 2D 倖存者遊戲。開啟 `Assets/Scenes/MainMenu.unity`
 
 五種武器、五被動、兩技能、精英與 Boss、十分鐘勝利、永久強化、安全存檔及繁中／英文介面已實作。Windows Build 依使用者要求暫緩；Editor 效能仍有偶發慢幀，詳見 [量測報告](Documentation/Reports/M10/performance-notes.md)。
 
+## MVP 展示影片
+
+[![秘林倖存者 MVP 展示影片](https://img.youtube.com/vi/szRQLWN61vc/hqdefault.jpg)](https://youtu.be/szRQLWN61vc)
+
+[▶ 在 YouTube 觀看 MVP 剪輯](https://youtu.be/szRQLWN61vc)
+
+## 專案文件
+
 - [操作指南](Documentation/EDITOR_PLAY_GUIDE.md)
 - [專案文件](Documentation/README.md)
 - [里程碑及驗收](Documentation/MILESTONES.md)
