@@ -67,3 +67,11 @@ optimized-moving-ai-60s保留原始移速與攻擊範圍，使用高血／零傷
 optimized-moving-final-60s（掉落快取後）：6428幀，平均107.12 FPS、最低15.53、P99 14.29ms，11慢幀；World最大8.547→3.677ms，掉落最大7.543→2.363ms，物件仍883。最慢64.38ms幀World1.20ms、GC23.25ms，故穩定60尚未通過。完整回歸Edit76/76、Play51/51，16擊殺整體回歸額外2704 bytes／CPU1.87ms，掉落中位3.174ms（五次最大3.825ms）。
 
 長時間工具／測試會話停止Play後Mono使用約1.13GB、heap1.50GB，只有MainMenu且scene.isDirty=false；另有4個本專案加入TMP字型／shader的dirty狀態，已限縮保存這些資源，沒有全域保存使用者其他資產。後續在同一程式碼、版本與負載下重啟Editor複驗，以區分長會話影響，結果不覆蓋以上舊數據。
+
+## 乾淨會話控制
+
+重啟同版本Editor並使用已編譯QA選單，不執行動態C#求值。第一輪fresh-editor-moving-60s出現14.174秒無遊戲幀推進空窗，而對應Main Thread只47.10ms、World1.89ms；完整wall-clock樣本仍保留（平均74.43、最低0.071FPS），不刪除空窗來宣稱通過，也不把14秒誤報成戰鬥CPU。背景／Game View條件未足夠控制，因此增加QA背景執行及明確Game View focus，原本設定於退出Play後還原；Runtime程式不變。新的標籤fresh-editor-background-moving-60s另檔複驗。
+
+明確focus／背景執行的D3D12輪：6167幀、平均102.77FPS、最低16.46、P99 29.86ms、96慢幀。重新啟動Editor並僅加入暫時的`-force-d3d11`，同程式與負載的fresh-editor-d3d11-moving-60s：6401幀、平均106.66FPS、最低46.83、P99 14.19ms、8慢幀，World最大4.680ms、GC marker最大0、World物件883固定。實際圖形後端由SystemInfo驗證，未修改專案圖形API設定、驅動或使用者URP資產。這支持本機Editor圖形後端影響尾端幀時間的推論，單次對照不能證明普遍因果，且D3D11仍未達每幀60FPS，因此PERF-001保持未完成。最後正常實玩採D3D11，與先前D3D12數據清楚區分。
+
+QA重現入口為Survivor/QA/Run Clean Moving Probe，僅Edit Mode可啟動，使用隔離存檔並在完成後退出Play。一般自動tick已恢復16ms；0ms僅用壓測，不持久保存。不要在有未保存場景時執行。Runtime凍結於e4238cf，後續僅增加Editor驗證入口與文件。

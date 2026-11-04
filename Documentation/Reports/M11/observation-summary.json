@@ -1,0 +1,21 @@
+{
+  "recordingOverheadIncluded": true,
+  "notAnFpsAcceptance": true,
+  "rows": 23748,
+  "runs": [
+    1,
+    2
+  ],
+  "battleRows": 23525,
+  "battleTimeScales": [
+    1.0
+  ],
+  "captureDeltas": [
+    0.0
+  ],
+  "maxCpuMs": 537.7063,
+  "maxWorldMs": 9.0594,
+  "maxGcMs": 343.7967,
+  "levelUpRows": 40,
+  "runtimeHashUnchanged": true
+}

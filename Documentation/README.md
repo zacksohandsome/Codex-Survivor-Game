@@ -6,7 +6,7 @@
 
 本專案是一款使用 Unity 開發的 2D 俯視角倖存者類型遊戲。
 
-目前進度（2026-11-04）：M0～M9 已完成 Editor 驗收；M10 已完成五種構築樣本與敵人分離最佳化，仍追蹤偶發 Editor 慢幀，M11 最終回歸進行中。已具完整五武器／五被動／兩技能、三普通敵人／精英／Boss、永久強化與安全存檔、繁中／英文、設定、生成美術及原創合成音訊。詳見 [里程碑](MILESTONES.md) 與各階段 Reports。
+目前進度（2026-11-04）：M0～M9 已完成 Editor 驗收；M10 已完成五種構築樣本與敵人分離最佳化，仍追蹤偶發 Editor 慢幀，M11 Editor 最終回歸與交接已完成（Windows Build暫緩）。已具完整五武器／五被動／兩技能、三普通敵人／精英／Boss、永久強化與安全存檔、繁中／英文、設定、生成美術及原創合成音訊。詳見 [里程碑](MILESTONES.md) 與各階段 Reports。
 
 在 Unity 開啟 `Assets/Scenes/MainMenu.unity` 後進入 Play Mode 即可遊玩。WASD 移動、ESC 暫停、滑鼠或 1／2／3 選升級；操作見 [Editor指南](EDITOR_PLAY_GUIDE.md)，數值與資產設定見 [資料指南](DATA_GUIDE.md)。Windows Build 依使用者要求全部暫緩。效能限制見 [M10量測](Reports/M10/performance-notes.md)；尚未宣稱穩定60 FPS。
 本專案同時是一項 Codex 自主開發能力測試，目標是讓 Codex 在使用本機 IDE、終端機與 Unity Editor 的情況下，盡可能獨立完成遊戲開發。
@@ -126,3 +126,5 @@ MVP 可以使用幾何圖形、色塊與佔位音效，並只需少量代表性�
 - [M6 報告](Reports/M6/report.md)：五武器、五被動、兩技能與測試；[完整內容矩陣](CONTENT_MATRIX.md)。目前完成至M6，M7待D03確認。
 
 - [M7 報告](Reports/M7/report.md)：三種普通敵人、精英、Boss、五段難度與完整實玩。
+
+最終交接：[DELIVERY_REPORT.md](DELIVERY_REPORT.md)；Editor啟動與平台暫緩範圍：[BUILD_GUIDE.md](BUILD_GUIDE.md)。

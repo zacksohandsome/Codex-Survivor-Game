@@ -1,0 +1,17 @@
+{
+    "status": "normal-start",
+    "unityVersion": "6000.3.27f2",
+    "runtimeHash": "8a50164ea0048db3a0d25f2e133c3664904aca42d8ad921d96a9f3d54396d7f0",
+    "graphicsApi": "Direct3D11",
+    "scenePath": "Assets/Scenes/MainMenu.unity",
+    "monoUsed": 912449536,
+    "monoHeap": 1273884672,
+    "totalAllocated": 380213037,
+    "width": 1920,
+    "height": 1080,
+    "timeScale": 0.0,
+    "captureDelta": 0.0,
+    "runInBackground": true,
+    "focused": true,
+    "sceneDirty": false
+}

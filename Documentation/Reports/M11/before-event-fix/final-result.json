@@ -1,0 +1,14 @@
+{
+  "state": "Result",
+  "secondWon": false,
+  "secondSeconds": 168.670774159953,
+  "secondKills": 133,
+  "secondCurrency": 52,
+  "balance": 455,
+  "runs": 2,
+  "victories": 1,
+  "healthUpgrade": 1,
+  "healthSpend": 75,
+  "saveVersion": 3,
+  "driver": "passed"
+}

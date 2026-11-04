@@ -1,0 +1,162 @@
+[
+  {
+    "name": "attack.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 0.3,
+    "peak": 0.258026123046875,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "Battle.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 32.0,
+    "peak": 0.268707275390625,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "boss.defeated.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 0.3,
+    "peak": 0.259033203125,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "boss.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 0.9,
+    "peak": 0.250335693359375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "coin.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 0.3,
+    "peak": 0.252044677734375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "death.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 0.3,
+    "peak": 0.226165771484375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "defeat.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 1.2,
+    "peak": 0.384613037109375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "elite.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 0.3,
+    "peak": 0.260345458984375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "hurt.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 0.3,
+    "peak": 0.220062255859375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "levelup.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 0.3,
+    "peak": 0.26171875,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "Menu.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 24.0,
+    "peak": 0.15789794921875,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "skill.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 0.3,
+    "peak": 0.265350341796875,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "spawn.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 0.3,
+    "peak": 0.259033203125,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "stage.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 0.3,
+    "peak": 0.26171875,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "ui.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 0.3,
+    "peak": 0.259033203125,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "name": "victory.wav",
+    "rate": 22050,
+    "channels": 1,
+    "sampleBytes": 2,
+    "seconds": 1.2,
+    "peak": 0.381866455078125,
+    "first": 0,
+    "last": 0
+  }
+]
